@@ -12,6 +12,7 @@
 
 # Strings
 
+* Strings are immutable, i.e. a character within a string cannot be changed.
 * Strings have a `length property`
 * `\u` convention
   * 'A' === '\u0041'

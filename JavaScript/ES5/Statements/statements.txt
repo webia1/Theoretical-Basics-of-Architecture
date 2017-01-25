@@ -12,4 +12,4 @@
 #Miscellaneous
 
 ## hasOwnProperty
-/hasOwnProperty
+/hasOwnProperty.js

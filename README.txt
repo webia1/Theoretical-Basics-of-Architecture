@@ -1,6 +1,9 @@
 #Theoretical Principles
 
-1. JavaScript 
+1. JavaScript
+	2. ES5
+	3. ES6
+	4. ES7
 2. TypeScript
 3. CSS3
 4. HTML5

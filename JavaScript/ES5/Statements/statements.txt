@@ -1,0 +1,10 @@
+#Statements (Excerpt) in ES5
+
+## for
+/for.js
+## while
+/while.js
+## do while
+/do_while.js
+## switch
+/switch.js

@@ -64,18 +64,3 @@ switch (whatever) {
         console.log('Hello '+whatever);
 }
 ```
-
-#Miscellaneous
-
-## hasOwnProperty
-
-```javascript
-var myObj = {
-    myData: ['one', 'two', 'three', 'four']
-};
-
-if (myObj.hasOwnProperty('myData')) {
-    console.log(myObj.myData);
-}
-
-```

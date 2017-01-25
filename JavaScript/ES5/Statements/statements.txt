@@ -8,3 +8,8 @@
 /do_while.js
 ## switch
 /switch.js
+
+#Miscellaneous
+
+## hasOwnProperty
+/hasOwnProperty

@@ -64,3 +64,8 @@ switch (whatever) {
         console.log('Hello '+whatever);
 }
 ```
+
+#Miscellaneous
+
+## hasOwnProperty
+/hasOwnProperty

@@ -38,5 +38,5 @@
 
 * all other values (see above: falsy values)
 * `true`
-* `false` Attention: String 'false' is also true!
+* `'false'` Attention: String 'false' is also true!
 * and all objects

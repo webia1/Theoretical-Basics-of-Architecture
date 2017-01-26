@@ -67,4 +67,4 @@ The `for in` statement can loop over all of the property names including functio
 * Update by assignment: `myObject.foo = false`
 * If object does not have the property name, the object will be augmented: `myObject.anotherFoo = false`
 * Objects are passed around by reference. They are never copied.
-* 
+* The `hasOwnProperty` method does not look at the prototype chain.

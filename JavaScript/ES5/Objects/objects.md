@@ -107,4 +107,4 @@ for (var whatever in myObj) {
 * Update by assignment: `myObject.foo = false`
 * If object does not have the property name, the object will be augmented: `myObject.anotherFoo = false`
 * Objects are passed around by reference. They are never copied.
-* 
+* The `hasOwnProperty` method does not look at the prototype chain.

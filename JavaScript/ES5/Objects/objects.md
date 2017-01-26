@@ -100,7 +100,7 @@ for (var whatever in myObj) {
 ```
 
 
-## Miscellaneous[^JavaScript Good Parts - Douglas Crockford]
+## Miscellaneous[^1]
 
 * A property name can be any string
 * A property value can be any JavaScript value, except for `undefined`.
@@ -108,3 +108,5 @@ for (var whatever in myObj) {
 * If object does not have the property name, the object will be augmented: `myObject.anotherFoo = false`
 * Objects are passed around by reference. They are never copied.
 * The `hasOwnProperty` method does not look at the prototype chain.
+
+[^1]: JavaScript Good Parts - Douglas Crockford

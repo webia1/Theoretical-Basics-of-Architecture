@@ -40,3 +40,7 @@
 * `true`
 * `'false'` Attention: String 'false' is also true!
 * and all objects
+
+# Unexpected Behavior
+
+* `typeof(null) === 'object' // true` 

@@ -1,0 +1,15 @@
+#Functions
+
+## Invocation Patterns related to `this`
+
+### Function Invocation Pattern
+/invocationPattern_function.js
+
+### Method Invocation Pattern
+/invocationPattern_method.js
+
+### Constructor Invocation Pattern
+/invocationPattern_constructor.js
+
+### Apply Invocation Pattern
+/invocationPattern_apply.js

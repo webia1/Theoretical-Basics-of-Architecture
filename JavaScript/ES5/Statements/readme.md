@@ -1,6 +1,6 @@
 #Statements (Excerpt) in ES5
 
-## for
+## for and for in
 
 ```javascript
 var myData = ['zero', 'one', 'two', 'three'];

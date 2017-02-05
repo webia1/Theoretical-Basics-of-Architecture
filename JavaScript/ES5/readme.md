@@ -7,4 +7,4 @@
 5. [Objects](Objects/objects.md)
 6. [Functions](Functions/readme.md)
 7. [Native Methods](Native_Methods/methods.md)
-8. [Miscellaneous](Miscellaneous/miscellaneous.md)
+8. [Miscellaneous](Miscellaneous/readme.md)

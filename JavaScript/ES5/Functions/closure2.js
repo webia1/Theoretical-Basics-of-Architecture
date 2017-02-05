@@ -6,7 +6,7 @@ var myObj = function (myValue) {
     };
 };
 
-var myNewObj = myObj('newValue');
+var myNewObj = new myObj('newValue');
 
 console.log(myNewObj.myValue);  // undefined
 console.log(myNewObj.getMyValue());  // newValue

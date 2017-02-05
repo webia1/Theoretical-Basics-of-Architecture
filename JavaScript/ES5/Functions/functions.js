@@ -1,28 +1,15 @@
-// anonymous function f
+// anonymous function
 var f = function (a,b) {
-    var e = a*b;
-    return e;
+    return a*b;
 };
 
 function nonAno (a,b) {
-    var e = a*b;
-    console.log (e);
-    return e;
+    return a*b;
 };
 
-console.log(f(2,3));    // 6
-nonAno(4,5);  // 20
+console.log(f(2,3));        // 6
+console.log(nonAno(4,5));   // 20
 
-var whatever = 'Hallo';
-
-// Auto Execute
-(function(whatever){
-    console.log ("I am, what I am,..", whatever);
-    // I am, what I am,.. OK ?
-})('OK ?');
-
-console.log ('Whatever: ', whatever);
-// Whatever:  Hallo
 
 
 

@@ -1,6 +1,30 @@
 #Functions
 
-## Invocation Patterns related to `this`
+## Table of Contents
+
+{{TOC}}
+
+## Introduction
+
+/functions.js
+
+### Callbacks
+
+/callbacks4.js
+
+### Closure
+
+/closure1.js
+
+### Auto Execution
+
+/auto_execute.js
+
+### Reduce
+
+/reduce.js
+
+## Invocation Patterns related to ***this***
 
 ### Function Invocation Pattern
 /invocationPattern_function.js

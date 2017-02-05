@@ -1,1 +1,7 @@
 #Miscellaneous
+
+## hasOwnProperty
+/hasOwnProperty.js
+
+## typeof
+/typeof.js

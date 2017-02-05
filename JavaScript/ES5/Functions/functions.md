@@ -1,6 +1,96 @@
 #Functions
 
-## Invocation Patterns related to `this`
+## Table of Contents
+
+{{TOC}}
+
+## Introduction
+
+```javascript
+// anonymous function
+var f = function (a,b) {
+    return a*b;
+};
+
+function nonAno (a,b) {
+    return a*b;
+};
+
+console.log(f(2,3));        // 6
+console.log(nonAno(4,5));   // 20
+
+
+
+
+```
+
+### Callbacks
+
+```javascript
+function myFunction (arg1, arg2, callback) {
+    var my_number = Math.ceil(Math.random() * (arg1 - arg2) + arg2);
+    callback(my_number);
+}
+
+myFunction (1, 49, function(num) {
+    console.log("1 from 49: " + num);
+});
+```
+
+### Closure
+
+```javascript
+var myObj = (function () {
+   var myValue = 'whatever';
+
+   return {
+       getMyValue: function () {
+           return myValue;
+       },
+       setMyValue: function (value) {
+           myValue = value;
+       }
+   };
+
+}());
+
+myObj.setMyValue('Webia1')
+console.log(myObj.getMyValue());
+```
+
+### Auto Execution
+
+```javascript
+// Auto Execute
+(function(whatever){
+    console.log ("I am, what I am,..", whatever);
+    // I am, what I am,.. OK ?
+})('OK ?');
+```
+
+### Reduce
+
+```javascript
+var data = [1,2,3,4,5,6,7,8,9];
+
+/*
+data.reduce = function (f,value) {
+    for (var i=0; i < this.length; i++) {
+        value = f(this[i],value);
+    }
+    return value;
+}
+*/
+
+function add (a,b) { return a+b; }
+function multiply (a,b) { return a*b; }
+
+console.log(data.reduce(add,0));
+console.log(data.reduce(multiply,1));
+
+```
+
+## Invocation Patterns related to ***this***
 
 ### Function Invocation Pattern
 

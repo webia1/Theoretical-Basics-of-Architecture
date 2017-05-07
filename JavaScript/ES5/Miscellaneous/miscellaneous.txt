@@ -5,3 +5,6 @@
 
 ## typeof
 /typeof.js
+
+## path get extension name
+/path.js

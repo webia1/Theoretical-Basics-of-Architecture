@@ -1,6 +1,4 @@
-#Angular CLI
-
-    Lastupdate: 2017-10-27
+# Angular CLI
 
 * [Config Schema](https://github.com/angular/angular-cli/wiki/angular-cli)
 * [Examples & Stories](https://github.com/angular/angular-cli/wiki/stories) 

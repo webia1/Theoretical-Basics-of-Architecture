@@ -20,7 +20,7 @@ Angular CLI (@angular/cli) is a CLI Tool for Angular Applications.
 ** [Webpack - Bundle for JavaScript](https://webpack.js.org/)
 **  [Jasmine - Unit & Integration Tests](https://jasmine.github.io/)
 **  [Protractor - End to end Testing for Angular](http://www.protractortest.org/#/)
-**  Karma - Testrunner for JavaScript
+**  [Karma - Testrunner for JavaScript](https://karma-runner.github.io/)
 **  Istanbul - JavaScript Code Coverage Tool
 **  Linter (eslint, tslint,..)
 

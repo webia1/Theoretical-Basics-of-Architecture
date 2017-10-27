@@ -1,4 +1,8 @@
+
+
 # Angular CLI
+    Last update: 2017-10-27
+{{TOC}}
 
 * [Config Schema](https://github.com/angular/angular-cli/wiki/angular-cli)
 * [Examples & Stories](https://github.com/angular/angular-cli/wiki/stories) 
@@ -28,12 +32,12 @@ ng build
 Component	ng g component my-new-component
 Directive	ng g directive my-new-directive
 Pipe	    ng g pipe my-new-pipe
-Service	    ng g service my-new-service
+Service	  ng g service my-new-service
 Class	    ng g class my-new-class
 Guard	    ng g guard my-new-guard
 Interface	ng g interface my-new-interface
 Enum	    ng g enum my-new-enum
-Module	    ng g module my-module
+Module	  ng g module my-module
 ```
 
 #### Custom Modules and Components

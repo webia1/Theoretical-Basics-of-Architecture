@@ -1,6 +1,6 @@
 # Testing in Angular 
 ## Introduction
-![](//Images/Angular_Testing.png)
+![](/Images/Angular_Testing.png)
 ## Setup
 ``` 
 npm install -g @angular/cli
@@ -26,13 +26,7 @@ Angular CLI (@angular/cli) is a CLI Tool for Angular Applications.
 
 ## Jasmine
 
-```javascript
-describe('suite title', function () {
-    it('spec title', function () {
-        // ...
-    });
-});
-```
+/jasmine/01_basics.spec.js
 
 
 

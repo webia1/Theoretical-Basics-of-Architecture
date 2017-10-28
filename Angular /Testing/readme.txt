@@ -2,7 +2,6 @@
 `Last update: 2017-10-28`
 
 {{TOC}}
-
 ## Introduction
 ![](./Images/Angular_Testing.png)
 ## Setup

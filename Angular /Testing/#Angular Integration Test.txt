@@ -164,7 +164,7 @@ describe('WhateverComponent', () => {
 
 Angular CLI uses a different approach in its initial AppComponent:
 
-```
+```javascript
 it('should render title in a h1 tag', async(() => {
     
     const fixture = TestBed.createComponent(AppComponent);
@@ -178,13 +178,13 @@ it('should render title in a h1 tag', async(() => {
 
 In a - by ng later - generated component there are 2 Variables in the `describe()`-Block:
 
-```
+```javascript
 let component: WhateverComponent;
 let fixture: ComponentFixture<WhateverComponent>;
 ```
 and `fixture.detectChanges()` is located in `beforeEach()` Block:
 
-```
+```javascript
 fixture = TestBed.createComponent(WhateverComponent);
 component = fixture.componentInstance;
 fixture.detectChanges();
@@ -194,41 +194,39 @@ There are also other possibilities to access DOM & Co as used in initial AppComp
 
 First Step is importing `By`:
 
-```
+```javascript
 import { By } from '@angular/platform-browser';
 ```
 
 then use it
 
-```
+```javascript
 let debugElement = fixture.debugElement.query(By.css('some-class'));
 let element: HTMLElement = de.nativeElement;
 
 expect(element.innerText).toContain(1);
-
 ```
 
 Compare it with the Angular CLI's initial approach:
 
-```
+```javascript
 const fixture = TestBed.createComponent(AppComponent);
 fixture.detectChanges(); 
 const compiled = fixture.debugElement.nativeElement;
 expect(compiled.querySelector('h1').textContent)
     .toContain('Welcome to app!');
-
 ```
 
 **First Approach: Set nativeElement and query**
 
-```
+```javascript
 const compiled = fixture.debugElement.nativeElement;
 compiled.querySelector('some-selector').textContent
 ```
 
 **Second Approach: Query and set nativeElement**
 
-```
+```javascript
 let debugElement = fixture.debugElement.query(By.css('some-class'));
 let element: HTMLElement = de.nativeElement;
 expect(element.innerText).toContain(1);
@@ -242,7 +240,7 @@ expect(element.innerText).toContain(1);
 
 **Another Approach is accessing attributes or classes directly:**
 
-```
+```javascript
 let debugElement = fixture.debugElement.query(By.css('some-class'));
 
 expect(debugElement.attributes['some-attr']).toBeTruthy 

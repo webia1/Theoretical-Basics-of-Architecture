@@ -252,8 +252,291 @@ expect(debugElement.styles['some-style']).toBeTruthy
 
 ### Testing Event Bindings
 
+Click on a button and test if the related property gets the correct value. 
+
+```javascript
+it ('spec description', () => {
+	let button = fixture.debugElement.query(By.css('menu-icon'));
+	// equivalent to component.someMethod();
+	button.triggerEventHandler('click',null);
+	expect(component.someProperty).toBe(someValue)
+});
+```
+
+### Working with Dependencies
+
+To testing a component, which contains service dependencies, you need first to import it and to add provider to your TestBed.configureTestingModule. The same applies to services like `Http`:
+
+```javascript
+import { HttpModule } from 'angular/http';
+import { SomeService } from './some.service';
+```
+
+Here is the configuration:
+
+```javascript
+beforeEach(async(() => {
+
+    TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+        HttpModule
+      ],
+      declarations: [
+        AppComponent
+      ],
+      providers: [
+	      SomeService
+      ]
+    }).compileComponents();
+  }));
+```
+
+Now we will change the Behavior of this `SomeService`, first we import necessary Libraries:
+
+```javascript
+import { Observable } from 'rxjs';
+```
+
+and 
+
+```javascript
+it ('should do something with SomeService', () => {
+	
+	let someArray = [1,2,3];
+	
+	// let service = fixture.debugElement.injector.get(SomeService);
+	let service = TestBed.get(SomeService); 
+	spyOn(service, 'nameOfTheMethod').and.returnValue (Obervable.from(someArray));
+	fixture.detectChanges();
+	expect(components.someProperty.length).toBe(3);
+	
+});
+```
+
+### Stubs
+
+A typical example would be a Router, first import the real Router:
+
+```javascript
+import ( Router, ActivatedRoute ) from '@angular/router';
+import ( Observable ) from 'rxjs';
+```
 
 
+Define a class out of the describe block, example:
+
+```javascript
+class RouterStub {
+	navigate(params){}
+}
+
+class ActivatedRouteStub {
+	params: Obervable<any> = Observable.empty();
+}
+
+```
+
+than overwrite original router in the configuration section in beforeEach():
+
+```javascript
+	TestBed.configureTestingModule (
+	  declarations: [WhatEverComponent],
+	  providers: [
+		  { provide: Router, useClass: RouterStub },
+		  { provide: ActivatedRoute, useClass: ActivatedRouteStub },
+	  ]
+	);
+```
+
+than the test:
+
+```javascript
+it ('should go to a route', () => {
+	let router = TestBed.get(Router);
+	let spy = spyOn (router, 'navigate')
+	
+	component.changingRouteMethode();
+	
+	expect(spy).toHaveBeenCalledWith(['someRoute']);
+});
+```
+
+#### Testing Routes
+
+If you want to be sure, that the given route exists, you can specify also a test for the routes in app.routes.spec.ts:
+
+```javascript
+import (routes) from './app.routes';
+import (SomeComponent) from './whatEver/some.component';
+
+describe ('Routes are existing', () => {
+  expect(routes).toContain(
+	  {path: 'someRoute', component: SomeComponent }
+  );
+});
+```
+
+#### Working with Route Params
+
+Some additional libraries like `Subject`:
+
+```javascript
+
+import ( Observable, Subject ) from 'rxjs';
+
+class ActivatedRouteStub {
+  private subject = new Subject();
+  push(value) {
+	  this.subject.next(value)
+  };
+  
+  get params() {
+   return this.subject.asObservable();
+  }
+  
+	// params: Obervable<any> = Observable.empty();
+}
+```
+
+Then the spec part:
+
+```javascript
+it ('should go to a initial route, given as route param', () => {
+	let router = TestBed.get(Router);
+	let spy = spyOn (router, 'navigate')
+	let route: ActivatedRouteStub = TestBed.get(ActivatedRoute);
+	
+	route.push({id: 0});
+	
+	expect(spy).toHaveBeenCalledWith(['someDefaultRoute']);
+});
+```
+
+#### Working with RouterOutlet
+
+Import the RouterOutlet, RouterLinkWithHref and RouterTestingModule
+
+```javascript
+import ( RouterOutlet, RouterLinkWithHref ) from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+```
+
+change the configuration:
+
+```javascript
+TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule.withRoutes([])
+      ],
+      //...
+```
+
+then the spec part:
+
+```javascript
+it ('should contain a router-outlet', () => {
+	let de = fixture.debugElement.query(By.directive(RouterOutlet));
+	
+	expect(de).not.toBeNull();
+});
 
 
+it ('should have a certain link', () => {
+	let debugElements = fixture.debugElement.queryAll(By.directive(RouterLinkWithHref));
+	
+	// <a href ="/certainLink"> my certain link </a>
+	
+	let index = debugElements.findIndex(de => de.properties['href'] === '/certainLink');
+	
+	expect(index).toBeGreaterThen(-1);
+});
+
+```
+
+## Shallow Component Tests
+
+When something is not a known element, you can ignore this in your configuration `schemas: [ NO_ERRORS_SCHEMA ]`, first you need to import it:
+
+`import { DebugElement } from '@angular/core';`
+
+then use it:
+
+```javascript
+TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule.withRoutes([])
+      ],
+      declarations: [..],
+      schemas: [ NO_ERRORS_SCHEMA ]
+      //...
+```
+
+## Testing Attribute Directives
+
+**New:** `injector.get(SomeDirective)`
+
+Do not forget to import and declare `DirectiveHostComponent` and the testing WhateverDirective in `beforeEach` section.
+
+```javascript
+fixture = TestBed.createComponent(DirectiveHostComponent);
+fixture.detectChanges();
+```
+
+then the spec:
+
+```javascript
+it ('should color first paragraph lite-gray', () => {
+  // e.g. first parapraph
+	let de = fixture.debugElement.queryAll(By.css('p'))[0];
+	let el:HTMLElement = de.nativeElement;
+  expect(el.style.backgroundColor).toBe('#EBEBEB');	
+});
+
+it ('should color second paragraph with default color', () => {
+  // e.g. first parapraph
+	let de = fixture.debugElement.queryAll(By.css('p'))[1];
+	let directive = de.injector.get(SomeDirective)
+  expect(el.style.backgroundColor).toBe(directive.defaultColor);	
+});
+```
+
+## Working with asynchronous operations
+
+**First Method**
+
+```javascript
+it ('should do something async', async (() => {
+		let service = TestBed.get(SomeService);
+		spyOn (service, 'someMethod').and
+			.returnValue(Promise.resolve([3,4]));
+		fixture.detectChanges();
+		fixture.whenStable().then(() => {
+			expect (component.someProperty.length).toBe (2);
+		});	
+}));
+```
+
+**Second Method**
+
+Import necessary stuf first:
+
+```javascript
+import { TestBed, async, fakeAsync, tick, ComponentFixture } 
+from '@angular/core/testing';
+```
+
+then the spec:
+
+```javascript
+it ('should do something async', async (() => {
+		let service = TestBed.get(SomeService);
+		spyOn (service, 'someMethod').and
+			.returnValue(Promise.resolve([3,4]));
+		fixture.detectChanges();
+		tick();
+		expect (component.someProperty.length).toBe (2);	
+		
+}));
+```
 

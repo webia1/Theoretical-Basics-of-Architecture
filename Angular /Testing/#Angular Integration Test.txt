@@ -319,8 +319,8 @@ it ('should do something with SomeService', () => {
 A typical example would be a Router, first import the real Router:
 
 ```javascript
-import ( Router, ActivatedRoute ) from '@angular/router';
-import ( Observable ) from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 ```
 
 
@@ -367,8 +367,8 @@ it ('should go to a route', () => {
 If you want to be sure, that the given route exists, you can specify also a test for the routes in app.routes.spec.ts:
 
 ```javascript
-import (routes) from './app.routes';
-import (SomeComponent) from './whatEver/some.component';
+import { routes } from './app.routes';
+import { SomeComponent } from './whatEver/some.component';
 
 describe ('Routes are existing', () => {
   expect(routes).toContain(
@@ -383,7 +383,7 @@ Some additional libraries like `Subject`:
 
 ```javascript
 
-import ( Observable, Subject ) from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 class ActivatedRouteStub {
   private subject = new Subject();
@@ -418,7 +418,7 @@ it ('should go to a initial route, given as route param', () => {
 Import the RouterOutlet, RouterLinkWithHref and RouterTestingModule
 
 ```javascript
-import ( RouterOutlet, RouterLinkWithHref ) from '@angular/router';
+import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 ```
 

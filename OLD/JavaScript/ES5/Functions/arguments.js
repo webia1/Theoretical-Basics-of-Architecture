@@ -6,11 +6,6 @@ function add() {
     return sum;
 }
 
-var myNumbers = [];
-for (var i=0; i<100; i++){
-    myNumbers.push(i);
-}
 
-console.log(add(1,2,3,4,5,6));
-
-console.log(add(myNumbers));
+var sum = add(3,6,7,4,9,12);
+console.log(sum);

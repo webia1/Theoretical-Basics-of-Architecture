@@ -1,22 +1,11 @@
-myObj = function (myProp) {
-    this.myProp = myProp + ' my new instance ;) ';
+var Person = function (name) {
+    this.name = name;
 };
 
-myObj.prototype.setMyName = function (myName) {
-    this.myName = myName;
+Person.prototype.getName = function () {
+    return 'Name: ' + this.name;
 };
 
-myObj.prototype.getMyProp = function () {
-    return 'myProp: ' + this.myProp;
-};
-
-myObj.prototype.getMyName = function () {
-    return 'myName: ' + this.myName;
-};
-
-var newObj = new myObj('Hello');
-newObj.setMyName('Webia1');
-
-console.log(newObj.getMyProp());
-console.log(newObj.getMyName());
+var person = new Person('Michael Jackson');
+console.log(person.getName());
 

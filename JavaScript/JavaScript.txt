@@ -399,9 +399,9 @@ console.log(myObj2); // { foo: 10, bar: 20 }
 
 Functions in JavaScript are objects and they are linked to `Function.prototype`, which is itself linked to `Object.prototype`.
 
-#### Invocation, this, args
+#### Invocation, this, arguments
 
-Every function receives two additional parameters `this` and `args`.
+Every function receives two additional parameters `this` and `arguments`.
 
 #### Function Invocation Pattern
 
@@ -433,8 +433,205 @@ myObj.double(); // myObj.myValue = 20
 #### Method Invocation Pattern
 
 ```javascript
+var person = {
+    name: 'Not set yet',
+    setPersonName: function (name) {
+        // this refers to person
+        this.name = name;
+    }
+};
 
+person.setPersonName('Michael Jackson');
 ```
+
+#### Constructor Invocation Pattern
+
+Functions that are intended to be used with the `new` prefix are `constructors`. By convention they are kept in variables with a capitalized name.
+
+```javascript
+var Person = function (name) {
+    this.name = name;
+};
+
+Person.prototype.getName = function () {
+    return 'Name: ' + this.name;
+};
+
+var person = new Person('Michael Jackson');
+console.log(person.getName());
+```
+
+
+#### Apply Invocation Pattern
+
+Example with Functions
+
+```javascript
+function add (a,b) { return a+b; }
+
+var myArray = [2,3];
+
+// this refers to null
+var sum = add.apply(null,myArray);
+
+console.log (sum); // 5
+```
+
+Example with Methods
+
+```javascript
+var Person = function (){};
+  
+Person.prototype.getMyName = 
+	function () {return this.name};
+
+var SomePerson = { name: 'Michael Jackson'};
+
+// No null as first parameter, 
+// this refers to SomePerson
+  
+var nameOfSomePerson = 
+	Person.prototype.getMyName.apply(SomePerson);
+console.log (nameOfSomePerson); // Michael Jackson
+```
+
+#### Arguments
+
+Bonus parameter, which gives access to all of the arguments. It is an array-like-object, has a `length` property, but it lacks all of the array methods.
+
+[>> See here more](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments)
+
+#### Return
+
+A function always returns a value, if not specified then `undefined`. 
+
+#### Exceptions
+
+```javascript
+function giveMeAnException () {
+    throw {
+        name: 'Kind greetings from @Webia1',
+        message: 'Demo Exception'
+    }
+}
+
+function catchingException () {
+    try {
+        giveMeAnException();
+    } catch (e) {
+        console.log('Exception: ', e);
+    }
+}
+
+catchingException();
+```
+
+#### Augmenting
+
+```javascript
+String.prototype.sayHello = function () {
+    return 'Hello!'
+};
+
+console.log ('someString'.sayHello());
+```
+
+#### Self-Executing Anonymous Functions or better said "Immediately-Invoked Function Expression (IIFE)
+
+Two different syntaxes:
+
+```javascript
+(function(){}())
+(function(){})()
+```
+
+#### Cascade
+
+An object with chain-able methods, that returning `this`, make it possible to cascade:
+
+```javascript
+var myOperations = {
+    result: 0,
+    plus2: function (){
+        this.result = this.result + 2;
+        return this;
+    },
+    timesThree: function () {
+        this.result = this.result * 3;
+        return this;
+    },
+    logResult: function () {
+        console.log(this.result);
+    }
+};
+
+myOperations.plus2().timesThree().logResult();
+```
+
+#### Closures
+
+```javascript
+var myObj = (function () {
+   var myValue = 'whatever';
+   return {
+       getMyValue: function () { return myValue;},
+       setMyValue: function (value) {
+           myValue = value;
+       }
+   };
+}());
+
+myObj.setMyValue('Webia1');
+console.log(myObj.getMyValue()); // Webia1
+console.log(myObj.myValue); // undefined
+```
+
+#### Callbacks
+
+```JavaScript
+function someFunction () {
+    return 'Some data ';
+}
+
+function callback (f1,f2) {
+    return f2(f1());
+}
+
+var foo = callback (someFunction, function(data){
+   return data + 'received';
+});
+
+console.log(foo); // Some data received
+```
+
+#### Curry
+Currying is the way to reduce functions with several arguments to single-one. (Concatenating arguments)
+
+```javascript
+function add (a,b) {
+    return a + b;
+}
+
+Function.prototype.curry = function () {
+    // arguments array is not an array
+    // it does not have the concat method
+    // that's the gimmick:
+    var slice = Array.prototype.slice;
+    var args = slice.apply(arguments);
+    var that = this;
+
+    return function () {
+        return that.apply(null, args.concat(slice.apply(arguments)));
+    };
+};
+
+var add1 = add.curry(1);
+console.log(add1(6)); // 7
+``` 
+
+#### Module
+
+Definition: A module is a function or object that presents an interface but that hides its state and implementation. (Closures + IIFE)
 
 ## Regular Expressions
 

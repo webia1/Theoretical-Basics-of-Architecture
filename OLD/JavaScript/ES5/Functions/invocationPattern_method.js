@@ -1,14 +1,10 @@
-var myObj = {
-    value: 'Initial Value',
-    changeValue: function (value) {
-        this.value = value;
+
+var person = {
+    name: 'Not set yet',
+    setPersonName: function (name) {
+        // this refers to person
+        this.name = name;
     }
 };
 
-console.log (myObj);
-// { value: 'Initial Value', changeValue: [Function: changeValue] }
-
-myObj.changeValue('New Value');
-
-console.log (myObj);
-// { value: 'New Value', changeValue: [Function: changeValue] }
+person.setPersonName('Michael Jackson');

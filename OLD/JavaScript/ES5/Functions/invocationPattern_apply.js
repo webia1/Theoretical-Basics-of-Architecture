@@ -1,8 +1,13 @@
-var myArray = [2,3];
+
 function add (a,b) { return a+b; }
-
-// apply's first argument is the value,
-// that should be bound to 'this'
+var myArray = [2,3];
+// this refers to null
 var sum = add.apply(null,myArray);
+console.log (sum); // 5
 
-console.log (sum);
+var Person = function (){};
+Person.prototype.getMyName = function () {return this.name};
+var SomePerson = { name: 'Michael Jackson'};
+// No null as first parameter, this refers to SomePerson
+var nameOfSomePerson = Person.prototype.getMyName.apply(SomePerson);
+console.log (nameOfSomePerson); // Michael Jackson

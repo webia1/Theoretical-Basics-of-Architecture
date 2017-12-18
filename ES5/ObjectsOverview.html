@@ -1,0 +1,404 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ObjectsOverview</title>
+</head>
+<body>
+<h1 id="standard-built-in-objects">Standard Built In Objects</h1>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects">
+
+
+<blockquote>
+<p>See upto-date-version online </p>
+</blockquote></a></p>
+
+<h1 id="table-of-contents">Table of Contents</h1><div class="TOC">
+
+
+<ul>
+<li><a href="#standard-built-in-objects">Standard Built In Objects</a></li>
+<li><a href="#table-of-contents">Table of Contents</a>
+
+<ul>
+<li><a href="#value-properties">Value properties</a>
+
+<ul>
+<li><a href="#infinity">Infinity</a></li>
+<li><a href="#nan">NaN</a></li>
+<li><a href="#undefined">undefined</a></li>
+<li><a href="#null">null</a></li>
+</ul></li>
+<li><a href="#function-properties">Function properties</a>
+
+<ul>
+<li><a href="#eval">eval()</a></li>
+<li><a href="#uneval">uneval()</a></li>
+<li><a href="#isfinite">isFinite()</a></li>
+<li><a href="#isnan">isNaN()</a></li>
+<li><a href="#parsefloat">parseFloat()</a></li>
+<li><a href="#parseint">parseInt()</a></li>
+<li><a href="#decodeuri">decodeURI()</a></li>
+<li><a href="#decodeuricomponent">decodeURIComponent()</a></li>
+<li><a href="#encodeuri">encodeURI()</a></li>
+<li><a href="#encodeuricomponent">encodeURIComponent()</a></li>
+<li><a href="#escape">escape()</a></li>
+<li><a href="#unescape">unescape()</a></li>
+</ul></li>
+<li><a href="#fundamental-objects">Fundamental objects</a>
+
+<ul>
+<li><a href="#object">Object</a></li>
+<li><a href="#function">Function</a></li>
+<li><a href="#boolean">Boolean</a></li>
+<li><a href="#symbol">Symbol</a></li>
+<li><a href="#error">Error</a></li>
+<li><a href="#evalerror">EvalError</a></li>
+<li><a href="#internalerror-non-standard">InternalError (non standard)</a></li>
+<li><a href="#rangeerror">RangeError</a></li>
+<li><a href="#referenceerror">ReferenceError</a></li>
+<li><a href="#syntaxerror">SyntaxError</a></li>
+<li><a href="#typeerror">TypeError</a></li>
+<li><a href="#urierror">URIError</a></li>
+</ul></li>
+<li><a href="#number-and-dates">Number and dates</a>
+
+<ul>
+<li><a href="#number">Number</a></li>
+<li><a href="#math">Math</a></li>
+<li><a href="#date">Date</a></li>
+</ul></li>
+<li><a href="#text-processing">Text processing</a>
+
+<ul>
+<li><a href="#string">String</a></li>
+<li><a href="#regexp">RegExp</a></li>
+</ul></li>
+<li><a href="#indexed-collections">Indexed collections</a>
+
+<ul>
+<li><a href="#array">Array</a></li>
+<li><a href="#int8array">Int8Array</a></li>
+<li><a href="#uint8array">Uint8Array</a></li>
+<li><a href="#uint8clampedarray">Uint8ClampedArray</a></li>
+<li><a href="#int16array">Int16Array</a></li>
+<li><a href="#uint16array">Uint16Array</a></li>
+<li><a href="#int32array">Int32Array</a></li>
+<li><a href="#uint32array">Uint32Array</a></li>
+<li><a href="#float32array">Float32Array</a></li>
+<li><a href="#float64array">Float64Array</a></li>
+</ul></li>
+<li><a href="#keyed-collections">Keyed Collections</a>
+
+<ul>
+<li><a href="#map">Map</a></li>
+<li><a href="#set">Set</a></li>
+<li><a href="#weakmap">WeakMap</a></li>
+<li><a href="#weakset">WeakSet</a></li>
+</ul></li>
+<li><a href="#vector-collections-experimental">Vector collections (Experimental)</a>
+
+<ul>
+<li><a href="#simd">SIMD</a></li>
+<li><a href="#simdfloat32x4">SIMD.Float32x4</a></li>
+<li><a href="#simdfloat64x2">SIMD.Float64x2</a></li>
+<li><a href="#simdint8x16">SIMD.Int8x16</a></li>
+<li><a href="#simdint16x8">SIMD.Int16x8</a></li>
+<li><a href="#simdint32x4">SIMD.Int32x4</a></li>
+<li><a href="#simduint8x16">SIMD.Uint8x16</a></li>
+<li><a href="#simduint16x8">SIMD.Uint16x8</a></li>
+<li><a href="#simduint32x4">SIMD.Uint32x4</a></li>
+<li><a href="#simdbool8x16">SIMD.Bool8x16</a></li>
+<li><a href="#simdbool16x8">SIMD.Bool16x8</a></li>
+<li><a href="#simdbool32x4">SIMD.Bool32x4</a></li>
+<li><a href="#simdbool64x2">SIMD.Bool64x2</a></li>
+</ul></li>
+<li><a href="#structured-data">Structured Data</a>
+
+<ul>
+<li><a href="#arraybuffer">ArrayBuffer</a></li>
+<li><a href="#sharedarraybuffer">SharedArrayBuffer</a></li>
+<li><a href="#atomics">Atomics</a></li>
+<li><a href="#dataview">DataView</a></li>
+<li><a href="#json">JSON</a></li>
+</ul></li>
+<li><a href="#control-abstraction-objects">Control abstraction objects</a>
+
+<ul>
+<li><a href="#promise">Promise</a></li>
+<li><a href="#generator">Generator</a></li>
+<li><a href="#generatorfunction">GeneratorFunction</a></li>
+<li><a href="#asyncfunction">AsyncFunction</a></li>
+</ul></li>
+<li><a href="#reflection">Reflection</a>
+
+<ul>
+<li><a href="#reflect">Reflect</a></li>
+<li><a href="#proxy">Proxy</a></li>
+</ul></li>
+<li><a href="#internationalization">Internationalization</a>
+
+<ul>
+<li><a href="#intl">Intl</a></li>
+<li><a href="#intlcollator">Intl.Collator</a></li>
+<li><a href="#intldatetimeformat">Intl.DateTimeFormat</a></li>
+<li><a href="#intlnumberformat">Intl.NumberFormat</a></li>
+</ul></li>
+<li><a href="#webassembly">WebAssembly</a>
+
+<ul>
+<li><a href="#webassembly">WebAssembly</a>
+
+<ul>
+<li><a href="#compileerror">CompileError</a></li>
+<li><a href="#instance">Instance</a></li>
+<li><a href="#linkerror">LinkError</a></li>
+<li><a href="#memory">Memory</a></li>
+<li><a href="#module">Module</a></li>
+<li><a href="#runtimeerror">RuntimeError</a></li>
+<li><a href="#table">Table</a></li>
+<li><a href="#compile">compile</a></li>
+<li><a href="#instantiate">instantiate</a></li>
+<li><a href="#validate">validate</a></li>
+</ul></li>
+<li><a href="#webassemblymodule">WebAssembly.Module</a></li>
+<li><a href="#webassemblyinstance">WebAssembly.Instance</a></li>
+<li><a href="#webassemblymemory">WebAssembly.Memory</a></li>
+<li><a href="#webassemblytable">WebAssembly.Table</a></li>
+<li><a href="#webassemblycompileerror">WebAssembly.CompileError</a></li>
+<li><a href="#webassemblylinkerror">WebAssembly.LinkError</a></li>
+<li><a href="#webassemblyruntimeerror">WebAssembly.RuntimeError</a></li>
+</ul></li>
+<li><a href="#other">Other</a>
+
+<ul>
+<li><a href="#arguments">arguments</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+
+<h2 id="value-properties">Value properties</h2>
+
+<p>These global properties return a simple value; they have no properties or methods.</p>
+
+<h3 id="infinity">Infinity</h3>
+
+<h3 id="nan">NaN</h3>
+
+<h3 id="undefined">undefined</h3>
+
+<h3 id="null">null</h3>
+
+<h2 id="function-properties">Function properties</h2>
+
+<p>These global functions—functions which are called globally rather than on an object—directly return their results to the caller.</p>
+
+<h3 id="eval">eval()</h3>
+
+<h3 id="uneval">uneval()</h3>
+
+<h3 id="isfinite">isFinite()</h3>
+
+<h3 id="isnan">isNaN()</h3>
+
+<h3 id="parsefloat">parseFloat()</h3>
+
+<h3 id="parseint">parseInt()</h3>
+
+<h3 id="decodeuri">decodeURI()</h3>
+
+<h3 id="decodeuricomponent">decodeURIComponent()</h3>
+
+<h3 id="encodeuri">encodeURI()</h3>
+
+<h3 id="encodeuricomponent">encodeURIComponent()</h3>
+
+<h3 id="escape">escape()</h3>
+
+<h3 id="unescape">unescape()</h3>
+
+<h2 id="fundamental-objects">Fundamental objects</h2>
+
+<p>These are the fundamental, basic objects upon which all other objects are based. This includes objects that represent general objects, functions, and errors.</p>
+
+<h3 id="object">Object</h3>
+
+<h3 id="function">Function</h3>
+
+<h3 id="boolean">Boolean</h3>
+
+<h3 id="symbol">Symbol</h3>
+
+<h3 id="error">Error</h3>
+
+<h3 id="evalerror">EvalError</h3>
+
+<h3 id="internalerror-non-standard">InternalError (non standard)</h3>
+
+<h3 id="rangeerror">RangeError</h3>
+
+<h3 id="referenceerror">ReferenceError</h3>
+
+<h3 id="syntaxerror">SyntaxError</h3>
+
+<h3 id="typeerror">TypeError</h3>
+
+<h3 id="urierror">URIError</h3>
+
+<h2 id="number-and-dates">Number and dates</h2>
+
+<h3 id="number">Number</h3>
+
+<h3 id="math">Math</h3>
+
+<h3 id="date">Date</h3>
+
+<h2 id="text-processing">Text processing</h2>
+
+<h3 id="string">String</h3>
+
+<h3 id="regexp">RegExp</h3>
+
+<h2 id="indexed-collections">Indexed collections</h2>
+
+<h3 id="array">Array</h3>
+
+<h3 id="int8array">Int8Array</h3>
+
+<h3 id="uint8array">Uint8Array</h3>
+
+<h3 id="uint8clampedarray">Uint8ClampedArray</h3>
+
+<h3 id="int16array">Int16Array</h3>
+
+<h3 id="uint16array">Uint16Array</h3>
+
+<h3 id="int32array">Int32Array</h3>
+
+<h3 id="uint32array">Uint32Array</h3>
+
+<h3 id="float32array">Float32Array</h3>
+
+<h3 id="float64array">Float64Array</h3>
+
+<h2 id="keyed-collections">Keyed Collections</h2>
+
+<h3 id="map">Map</h3>
+
+<h3 id="set">Set</h3>
+
+<h3 id="weakmap">WeakMap</h3>
+
+<h3 id="weakset">WeakSet</h3>
+
+<h2 id="vector-collections-experimental">Vector collections (Experimental)</h2>
+
+<h3 id="simd">SIMD</h3>
+
+<h3 id="simdfloat32x4">SIMD.Float32x4</h3>
+
+<h3 id="simdfloat64x2">SIMD.Float64x2</h3>
+
+<h3 id="simdint8x16">SIMD.Int8x16</h3>
+
+<h3 id="simdint16x8">SIMD.Int16x8</h3>
+
+<h3 id="simdint32x4">SIMD.Int32x4</h3>
+
+<h3 id="simduint8x16">SIMD.Uint8x16</h3>
+
+<h3 id="simduint16x8">SIMD.Uint16x8</h3>
+
+<h3 id="simduint32x4">SIMD.Uint32x4</h3>
+
+<h3 id="simdbool8x16">SIMD.Bool8x16</h3>
+
+<h3 id="simdbool16x8">SIMD.Bool16x8</h3>
+
+<h3 id="simdbool32x4">SIMD.Bool32x4</h3>
+
+<h3 id="simdbool64x2">SIMD.Bool64x2</h3>
+
+<h2 id="structured-data">Structured Data</h2>
+
+<h3 id="arraybuffer">ArrayBuffer</h3>
+
+<h3 id="sharedarraybuffer">SharedArrayBuffer</h3>
+
+<h3 id="atomics">Atomics</h3>
+
+<h3 id="dataview">DataView</h3>
+
+<h3 id="json">JSON</h3>
+
+<h2 id="control-abstraction-objects">Control abstraction objects</h2>
+
+<h3 id="promise">Promise</h3>
+
+<h3 id="generator">Generator</h3>
+
+<h3 id="generatorfunction">GeneratorFunction</h3>
+
+<h3 id="asyncfunction">AsyncFunction</h3>
+
+<h2 id="reflection">Reflection</h2>
+
+<h3 id="reflect">Reflect</h3>
+
+<h3 id="proxy">Proxy</h3>
+
+<h2 id="internationalization">Internationalization</h2>
+
+<h3 id="intl">Intl</h3>
+
+<h3 id="intlcollator">Intl.Collator</h3>
+
+<h3 id="intldatetimeformat">Intl.DateTimeFormat</h3>
+
+<h3 id="intlnumberformat">Intl.NumberFormat</h3>
+
+<h2 id="webassembly">WebAssembly</h2>
+
+<h3 id="webassembly">WebAssembly</h3>
+
+<h4 id="compileerror">CompileError</h4>
+
+<h4 id="instance">Instance</h4>
+
+<h4 id="linkerror">LinkError</h4>
+
+<h4 id="memory">Memory</h4>
+
+<h4 id="module">Module</h4>
+
+<h4 id="runtimeerror">RuntimeError</h4>
+
+<h4 id="table">Table</h4>
+
+<h4 id="compile">compile</h4>
+
+<h4 id="instantiate">instantiate</h4>
+
+<h4 id="validate">validate</h4>
+
+<h3 id="webassemblymodule">WebAssembly.Module</h3>
+
+<h3 id="webassemblyinstance">WebAssembly.Instance</h3>
+
+<h3 id="webassemblymemory">WebAssembly.Memory</h3>
+
+<h3 id="webassemblytable">WebAssembly.Table</h3>
+
+<h3 id="webassemblycompileerror">WebAssembly.CompileError</h3>
+
+<h3 id="webassemblylinkerror">WebAssembly.LinkError</h3>
+
+<h3 id="webassemblyruntimeerror">WebAssembly.RuntimeError</h3>
+
+<h2 id="other">Other</h2>
+
+<h3 id="arguments">arguments</h3>
+</body>
+</html>

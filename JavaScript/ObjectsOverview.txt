@@ -1,12 +1,6 @@
 # Standard Built In Objects
 [>> See upto-date-version online ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects)
 
-# Table of Contents
-
-
-{{TOC}}
-
-
 ## Value properties
 
 These global properties return a simple value; they have no properties or methods.

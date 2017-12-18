@@ -3,7 +3,6 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Standard Built In Objects](#standard-built-in-objects)
-- [Table of Contents](#table-of-contents)
   - [Value properties](#value-properties)
     - [Infinity](#infinity)
     - [NaN](#nan)
@@ -117,12 +116,6 @@
 
 # Standard Built In Objects
 [>> See upto-date-version online ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects)
-
-# Table of Contents
-
-
-{{TOC}}
-
 
 ## Value properties
 

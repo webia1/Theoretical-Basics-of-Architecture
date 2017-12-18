@@ -1,6 +1,12 @@
-var arr = [1,2,3,4,5,6,7,'8',9,10];
-var evenNumbers = arr.filter (evenFilter);
+var arr = ['big','bank', 'bold','DAnk', 'gaNg'];
 
-function evenFilter (number){return number%2 === 0;}
+function searchArray (query) {
+    return arr.filter(function (item) {
+       var tmp = item.toUpperCase();
+       return (tmp.indexOf(query.toUpperCase()) !== -1)
+    });
+}
 
-console.log(evenNumbers);
+var searchResult = searchArray('an');
+
+console.log(searchResult); // [ 'bank', 'DAnk', 'gaNg' ]

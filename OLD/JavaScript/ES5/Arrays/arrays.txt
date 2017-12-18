@@ -1,5 +1,0 @@
-# Arrays
-
-## slice and splice
-
-/slice_splice.js

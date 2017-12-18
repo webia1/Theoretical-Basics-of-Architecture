@@ -19,7 +19,7 @@
 │   │       │   ├── 01_basics.spec.js
 │   │       │   └── 01_basics.spec.ts
 │   │       └── readme.md
-│   ├── React\ &\ Co
+│   ├── React
 │   │   └── #React.txt
 │   └── RxJS
 │       ├── basics.js

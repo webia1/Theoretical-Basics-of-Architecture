@@ -1,6 +1,3 @@
-# Frontend Development
-
-```javascript
 .
 ├── Design
 │   └── SASS
@@ -53,5 +50,3 @@
 └── tree.txt
 
 21 directories, 28 files
-```
-

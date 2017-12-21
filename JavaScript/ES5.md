@@ -1162,7 +1162,84 @@ console.log(strArr.sort(compareStrings));
 ```
 
 ### lastIndexOf
+The lastIndexOf() method returns the last index at which a given element can be found in the array, or -1 if it is not present. The array is searched (case-sensitiv) backwards, starting at fromIndex.
+
+> `arr.lastIndexOf(searchElement)`
+
+> `arr.lastIndexOf(searchElement, fromIndex)`
+
+```javascript
+var s = "on tuesday or on monday";
+var a = s.split(' ');
+
+console.log (a.map(e => a.indexOf(e)+': '+e));
+// [ '0: on', '1: tuesday', '2: or', '3: on', '4: monday' ]
+
+console.log (a.lastIndexOf('on')); // 3
+console.log (a.indexOf('on')); // 0
+console.log (a.lastIndexOf('xx')); // -1
+```
 ### copyWithin
+The copyWithin() method shallow copies part of an array to another location in the same array and returns it, without modifying its size.
+
+> `arr.copyWithin(target)`
+
+> `arr.copyWithin(target, start)`
+
+> `arr.copyWithin(target, start, end)`
+
+```javascript
+var a = ['a','b','c','d','e','f','g','h'];
+console.log(a.copyWithin(2));
+// moving array from 0 if not given 2 places right (if positive)
+//  [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' ]
+//     0 -  1 -  2 -  3  - 4 -  5 -  6 -  7
+//              'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'
+//  [ 'a', 'b', 'a', 'b', 'c', 'd', 'e', 'f' ]
+
+
+b = ['a','b','c','d','e','f','g','h'];
+console.log(b.copyWithin(2,1));
+//  [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' ]
+//     0 -  1 -  2 -  3  - 4 -  5 -  6 -  7
+//              'b', 'c', 'd', 'e', 'f', 'g', 'h'
+//  [ 'a', 'b',                              ]
+//  [ 'a', 'b', 'b', 'c', 'd', 'e', 'f', 'g' ]
+
+c = ['a','b','c','d','e','f','g','h'];
+console.log(c.copyWithin(3,0));
+//  [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' ]
+//     0 -  1 -  2 -  3  - 4 -  5 -  6 -  7
+//                   'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'
+//  [ 'a', 'b', 'c',                         ]
+//  [ 'a', 'b', 'c', 'a', 'b', 'c', 'd', 'e' ]
+
+d = ['a','b','c','d','e','f','g','h'];
+console.log(d.copyWithin(1,4));
+//  [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' ]
+//     0 -  1 -  2 -  3  - 4 -  5 -  6 -  7
+//         'e', 'f', 'g', 'h'
+//  [ 'a',                     'f', 'g', 'h' ]
+//  [ 'a', 'e', 'f', 'g', 'h', 'f', 'g', 'h' ]
+
+
+e = ['a','b','c','d','e','f','g','h'];
+console.log(e.copyWithin(1,4,5));
+//  [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' ]
+//     0 -  1 -  2 -  3  - 4 -  5 -  6 -  7
+//         'e',
+//  [ 'a',      'c', 'd', 'e', 'f', 'g', 'h' ]
+//  [ 'a', 'e', 'c', 'd', 'e', 'f', 'g', 'h' ]
+
+f = ['a','b','c','d','e','f','g','h'];
+console.log(f.copyWithin(4,2,5));
+//  [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' ]
+//     0 -  1 -  2 -  3  - 4 -  5 -  6 -  7
+//                        'c', 'd', 'e', 
+//  [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' ]
+//  [ 'a', 'b', 'c', 'd', 'c', 'd', 'e', 'h' ]
+```
+
 ### find
 ### findIndex
 ### fill

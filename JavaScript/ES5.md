@@ -1126,7 +1126,41 @@ console.log (a);                // [ 'A', 'B' ]
 ```
 
 ### reverse
+The reverse() method reverses an array in place. The first array element becomes the last, and the last array element becomes the first.
+```javascript
+var a = [1,2,3,4];
+a.reverse();
+console.log(a); // [ 4, 3, 2, 1 ]
+```
 ### sort
+The sort() method sorts the elements of an array in place and returns the array. The sort is not necessarily stable. The default sort order is according to string Unicode code points.
+
+The time and space complexity of the sort cannot be guaranteed as it is implementation independent.
+
+```javascript
+var numArr = [1, 10, 21, 2];
+console.log(numArr.sort()); // [1, 10, 2, 21]
+
+function compareNumbers(a, b) {
+    return a - b;
+}
+console.log(numArr.sort(compareNumbers)); // 1,2,10,21
+
+function compareStrings (a,b) {
+    var A = a.toUpperCase();
+    var B = b.toUpperCase();
+
+    if (A < B ) return -1;
+    if (A > B ) return 1;
+    return 0;
+}
+
+var strArr = ['Mon','FRI','SAT', 'MON','TUE', 'Son' ];
+
+console.log(strArr.sort(compareStrings));
+// [ 'FRI', 'Mon', 'MON', 'SAT', 'Son', 'TUE' ]
+```
+
 ### lastIndexOf
 ### copyWithin
 ### find

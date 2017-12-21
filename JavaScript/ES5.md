@@ -1271,6 +1271,33 @@ console.log(numbers.fill(1));       // [ 1, 1, 1,  1,   1,  1 ]
 console.log(numbers.fill('a',3,5)); // [ 1, 1, 1, 'a', 'a', 1 ]
 ```
 
+### Array.from 
+The `Array.from()` method creates a new Array instance from an array-like or iterable object.
+
+> Parameters: arrayLike, [mapFn], [thisArg]
+
+> Return value: A new Array instance
+
+```javascript
+var a = Array.from('foo');
+console.log(a); // [ 'f', 'o', 'o' ]
+
+function returnArrayFromArgs () {
+    return Array.from(arguments);
+}
+
+var result = returnArrayFromArgs(1,2,4,'hallo',true,{a: 2});
+console.log(result); [ 1, 2, 4, 'hallo', true, { a: 2 } ]
+
+var x = [9,25];
+result = Array.from (x,Math.sqrt);
+console.log(result); // [ 3, 5 ]
+
+x = [3,5];
+result = Array.from (x,x => x*x);
+console.log(result); // [ 9, 25 ]
+```
+
 # Functions
 
 Functions in JavaScript are objects and they are linked to `Function.prototype`, which is itself linked to `Object.prototype`.

@@ -1042,6 +1042,20 @@ console.log(arr2.every(isNumeric)); // true
 ```
 
 ### some
+
+The some() method tests whether at least one element in the array passes the test implemented by the provided function.
+
+```javascript
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+var arr = ['existing', 'a', 'numeric', 'value', 7];
+
+// ES6 Syntax - short pattern
+console.log(arr.some(isNumeric)); // true
+```
+
 ### reduce
 ### reduceRight
 ### toString

@@ -1241,8 +1241,35 @@ console.log(f.copyWithin(4,2,5));
 ```
 
 ### find
+The find() method returns the value of the first element in the array that satisfies the provided testing function. Otherwise undefined is returned.
+
+```javascript
+var a = [11,2,13,4,15,6,17,8];
+
+console.log(a.find(i => i > 13)); // 15
+console.log(a.find(i => i > 100)); // undefined
+```
+
 ### findIndex
+The findIndex() method returns the index of the first element in the array that satisfies the provided testing function. Otherwise -1 is returned.
+
+```javascript
+var a = [11,2,13,4,15,6,17,8];
+
+console.log(a.findIndex(i => i > 13)); // 4
+console.log(a.findIndex(i => i > 100)); // -1
+```
+
 ### fill
+The fill() method fills all the elements of an array from a start index to an end index with a static value.
+
+> `arr.fill(value[, start[, end]])`
+
+```javascript
+var numbers = [1, 2, 3, 4, 5, 6];
+console.log(numbers.fill(1));       // [ 1, 1, 1,  1,   1,  1 ]
+console.log(numbers.fill('a',3,5)); // [ 1, 1, 1, 'a', 'a', 1 ]
+```
 
 # Functions
 

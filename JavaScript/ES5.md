@@ -1086,7 +1086,30 @@ console.log(flattened);
 // [ 3, '4', 5, 2, 3, 0, 1 ]
 ```
 ### toString
+
+The `toString()` method returns a string representing the specified array and its elements.
+
+```javascript
+var arr = ['one', 'two', 3];
+
+var toStringResult = arr.toString();
+var joinResult = arr.join();
+
+console.log (toStringResult); // one,two,3
+console.log (joinResult); // one,two,3
+
+console.log (toStringResult == joinResult);  // true
+console.log (toStringResult === joinResult); // true
+```
+
 ### toLocaleString
+
+The toLocaleString() method returns a string representing the elements of the array. The elements are converted to Strings using their toLocaleString methods and these Strings are separated by a locale-specific String (such as a comma “,”).
+
+> [See Details at Developer.Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toLocaleString)
+
+> [See some related issues at StackOverFlow](https://stackoverflow.com/questions/47931763/array-prototype-tolocalestring-number-formatting-issue)
+
 ### join
 
 The `join()` method joins all elements of an array (or an array-like object) into a string and returns this string. If not given comma is the standard separator.

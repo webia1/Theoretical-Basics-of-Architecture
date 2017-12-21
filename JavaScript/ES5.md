@@ -1057,7 +1057,34 @@ console.log(arr.some(isNumeric)); // true
 ```
 
 ### reduce
+The reduce() method applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value.
+
+```javascript
+const array1 = [1, 2, 3, 4];
+const reducer = function (accumulator, currentValue) {
+    return accumulator + currentValue;
+}
+
+console.log(array1.reduce(reducer));
+// 1 + 2 + 3 + 4 = 10
+
+console.log(array1.reduce(reducer, 5));
+// 5 + 1 + 2 + 3 + 4 = 15
+```
 ### reduceRight
+The reduceRight() method applies a function against an accumulator and each value of the array (from right-to-left) to reduce it to a single value.
+
+```javascript
+var arr = [[0, 1], [2, 3], ['4', 5]];
+function concatElements (a,b){
+    return a.concat(b);
+}
+
+var flattened = arr.reduceRight(concatElements,[3]);
+
+console.log(flattened);
+// [ 3, '4', 5, 2, 3, 0, 1 ]
+```
 ### toString
 ### toLocaleString
 ### join

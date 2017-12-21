@@ -1298,6 +1298,27 @@ result = Array.from (x,x => x*x);
 console.log(result); // [ 9, 25 ]
 ```
 
+### Array.isArray
+The `Array.isArray()` function determines whether the passed value is an Array.
+
+```javascript
+Array.isArray([1, 2, 3]);  // true
+```
+
+### Array.of
+The Array.of() method creates a new Array instance with a variable number of arguments, regardless of number or type of the arguments.
+
+The difference between Array.of() and the Array constructor is in the handling of integer arguments: Array.of(7) creates an array with a single element, 7, whereas Array(7) creates an empty array with a length property of 7 (Note: this implies an array of 7 empty slots, not slots with actual undefined values).
+
+```javascript
+console.log(Array.of(7));  // [ 7 ]
+console.log(Array.of(2018, 'Hi', '!')); // [ 2018, 'Hi', '!' ]
+
+console.log(Array(7));  // [ <7 empty items> ]
+console.log(Array(2018, 'Hi', '!'));    // [ 2018, 'Hi', '!' ]
+```
+
+
 # Functions
 
 Functions in JavaScript are objects and they are linked to `Function.prototype`, which is itself linked to `Object.prototype`.

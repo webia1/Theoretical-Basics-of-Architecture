@@ -1009,7 +1009,19 @@ console.log(resultNew); // [ 30, 40 ]
 The map() method creates a new array with the results of calling a provided function on every element in the calling array.
 
 ```javascript
+var arr = [9,16,25,36];
+console.log(arr.map(Math.sqrt)); // [ 3, 4, 5, 6 ]
 
+var arr2 = [
+    {foo: 'What', bar: 'Take'},
+    {foo: 'Ever', bar: 5}
+];
+
+console.log(arr2.map(i => i.foo)); 
+// [ 'What', 'Ever' ]
+
+console.log(arr2.map(i => i.bar)); 
+// [ 'Take', 5 ]
 ```
 
 ### every

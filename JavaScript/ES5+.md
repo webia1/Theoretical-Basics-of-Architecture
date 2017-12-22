@@ -414,34 +414,189 @@ NaN === NaN    // false
 1.3e2 == 130   // true
 ```
 
-### Number Object.getOwnPropertyNames(Number)
-#### length
-#### name
-#### prototype
-#### isFinite
-#### isInteger
-#### isNaN
-#### isSafeInteger
-#### parseFloat
-#### parseInt
-#### MAX_VALUE
-#### MIN_VALUE
-#### NaN
-#### NEGATIVE_INFINITY
-#### POSITIVE_INFINITY
-#### MAX_SAFE_INTEGER
-#### MIN_SAFE_INTEGER
-#### EPSILON
+### PROPERTIES
+```javascript
+console.log(
+    Number.EPSILON, // smallest float point difference
+    Number.MAX_SAFE_INTEGER,
+    Number.MAX_VALUE, // MAX_VALUE + 1 <= INFINITY
+    Number.MIN_SAFE_INTEGER, // = - MAX_SAFE_INTEGER
+    Number.MIN_VALUE, // Values < MIN_VALUE = 0
+    Number.NEGATIVE_INFINITY, // -Infinity
+    Number.NaN, // NaN
+    Number.POSITIVE_INFINITY // Infinity
+);
+```
 
-### Number Object.getOwnPropertyNames(Number.prototype)
+### METHODS
 
-#### constructor
-#### toExponential
-#### toFixed
-#### toPrecision
-#### toString
-#### valueOf
-#### toLocaleString
+#### Number.isFinite()
+
+The Number.isFinite() method determines whether the passed value is a finite number. **Important:** In comparison to the global `isFinite()` function, this method doesn't forcibly convert the parameter to a number. This means only values of the type number, that are also finite, return true.
+
+```javascript
+Number.isFinite(Infinity);  // false
+Number.isFinite(NaN);       // false
+Number.isFinite(-Infinity); // false
+
+Number.isFinite(0);         // true
+Number.isFinite(2e40);      // true
+
+Number.isFinite('0');       // false, would've been true with
+                            // global isFinite('0')
+Number.isFinite(null);      // false, would've been true with
+                            // global isFinite(null)
+```
+#### Number.isInteger()
+The Number.isInteger() method determines whether the passed value is an integer. If the target value is an integer, return true, otherwise return false. If the value is NaN or infinite, return false.
+
+#### Number.isNaN()
+The `Number.isNaN()` method determines whether the passed value is `NaN` and its type is Number. It is a more robust version of the original, global isNaN().
+
+Due to both equality operators, == and ===, evaluating to false when checking if NaN is NaN, the function `Number.isNaN()` has become necessary. This situation is unlike all other possible value comparisons in JavaScript.
+
+#### Number.isSafeInteger()
+The `Number.isSafeInteger()` method determines whether the provided value is a number that is a safe integer. A safe integer is an integer that
+
+- can be exactly represented as an IEEE-754 double precision number, and
+- whose IEEE-754 representation cannot be the result of rounding any other integer to fit the IEEE-754 representation.
+
+For example, 253 - 1 is a safe integer: it can be exactly represented, and no other integer rounds to it under any IEEE-754 rounding mode. In contrast, 253 is not a safe integer: it can be exactly represented in IEEE-754, but the integer 253 + 1 can't be directly represented in IEEE-754 but instead rounds to 253 under round-to-nearest and round-to-zero rounding.  The safe integers consist of all integers from -(253 - 1) inclusive to 253 - 1 inclusive (± 9007199254740991 or ± 9,007,199,254,740,991).  
+
+Handling values larger or smalller than ~9 quadrillion with full precision requires using an arbitrary precision arithmetic library.  See [What Every Programmer Needs to Know about Floating Point Arithmetic](http://floating-point-gui.de/) for more information [on floating point representations of numbers](https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic).
+
+> [Academic Paper about Floaing Point Arithmetic from Oracle](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
+
+
+#### Number.parseFloat()
+
+The `Number.parseFloat()` method parses a string argument and returns a floating point number. This method behaves identically to the global function [`parseFloat()`](#TODO) and is part of ECMAScript 2015 (its purpose is modularization of globals).
+
+#### Number.parseInt()
+
+**Important Suggestion:** always specify a radix!
+
+This method has the same functionality as the global [`parseInt()`](#TODO) function.
+
+> `parseInt(string, radix);`
+
+**radix:** An integer between 2 and 36 that represents the radix (the base in mathematical numeral systems)
+
+Return value: An integer number parsed from the given string. If the first character cannot be converted to a number, `NaN` is returned.
+
+**Attention:**
+
+Because some numbers include the e character in their string representation (e.g. 6.022e23), using parseInt to truncate numeric values will produce unexpected results when used on very large or very small numbers. parseInt should not be used as a substitute for `Math.floor()`.
+
+To convert number to its string literal in a particular radix use intValue.toString(radix).
+
+```javascript
+a = 5;
+console.log(a.toString (2)); // 101
+
+// ATTENTION!
+// console.log(5.toString(2));
+// SyntaxError: Invalid or unexpected token
+
+console.log(5..toString(2)); // 101
+
+```
+
+#### Number.prototype.toExponential()
+The toExponential() method returns a string representing the Number object in exponential notation.
+
+ ```javascript
+ (1230.456).toExponential(2); // "1.23e+3"
+ ```
+
+#### Number.prototype.toFixed()
+The toFixed() method formats a number using fixed-point notation. The number is rounded if necessary, and the fractional part is padded with zeros if necessary so that it has the specified length. If numObj is greater than 1e+21, this method simply calls Number.prototype.toString() and returns a string in exponential notation.
+
+```javascript
+console.log(
+  2.4673.toFixed(),      // 2
+  2.4673.toFixed(1),     // 2,5
+  2.4673.toFixed(2),     // 2,47
+
+  -2.4673.toFixed(2),    // -2,47 number
+  (-2.4673).toFixed(2),  // "-2,47" string
+    
+  //ATTENTION  
+  typeof (-2.4673.toFixed(2)),    // number
+  typeof ((-2.4673).toFixed(2)),  // string
+);
+```
+
+#### Number.prototype.toLocaleString()
+
+The toLocaleString() method returns a string with a language sensitive representation of this number. [See Details here online.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)
+
+```javascript
+var number = 123456.78912;
+
+function toLocaleStringSupportsOptions() {
+    return !!(typeof Intl == 'object' && Intl && typeof Intl.NumberFormat == 'function');
+}
+
+if (toLocaleStringSupportsOptions()) {
+// request a currency format
+    console.log(number.toLocaleString('de-DE', {
+        style: 'currency',
+        currency: 'EUR',
+        maximumSignificantDigits: 8,
+        minimumFractionDigits: 2
+    }));
+
+// → 123.456,79 €
+}
+```
+#### Number.prototype.toPrecision()
+
+The toPrecision() method returns a string representing the Number object to the specified precision.
+
+> `numObj.toPrecision([precision])`
+
+```javascript
+var n = 0.2345;
+var j = 3.2345;
+// precision between 1 and 100
+console.log(
+    n.toPrecision(),   // "0.2345"
+    n.toPrecision(1),  // "0.2"
+    n.toPrecision(2),  // "0.23"
+    n.toPrecision(3),  // "0.234" <-- ROUND DOWN
+    n.toPrecision(4),  // "0.2345" 
+    n.toPrecision(5),   // "0.23450"
+
+    j.toPrecision(),   // "3.2345"
+    j.toPrecision(1),  // "3.2"
+    j.toPrecision(2),  // "3.23"
+    j.toPrecision(3),  // "3.235" <-- ROUND UP
+    j.toPrecision(4),  // "3.2345"
+    j.toPrecision(5)   // "3.23450"
+);
+```
+#### Number.prototype.toSource()
+Non-Standard, do not use!
+#### Number.prototype.toString()
+
+> `numObj.toString([radix])`
+
+#### Number.prototype.valueOf()
+The valueOf() method returns the wrapped primitive value of a Number object.
+
+> `numObj.valueOf()`
+
+This method is usually called internally by JavaScript and not explicitly in web code.
+
+```javascript
+var numObj = new Number(10);
+console.log(typeof numObj); // object
+
+var num = numObj.valueOf();
+console.log(num);           // 10
+console.log(typeof num);    // number
+```
 
 ## String
 

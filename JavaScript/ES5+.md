@@ -599,61 +599,153 @@ console.log(typeof num);    // number
 'car'.toUpperCase() === 'CAR'  // true
 ```
 
-### String Object.getOwnPropertyNames(String)
+### PROPERTIES
+#### String.prototype
+#### string.length
 
-#### length
-#### name
-#### prototype
-#### fromCharCode
-#### fromCodePoint
-#### raw
+### METHODS
+#### String.fromCharCode()
+The static String.fromCharCode() method returns a string created from the specified sequence of UTF-16 code units.
 
-### String Object.getOwnPropertyNames(String.prototype)
-#### length
-#### constructor
-#### charAt
-#### charCodeAt
-#### concat
-#### endsWith
-#### includes
-#### indexOf
-#### lastIndexOf
-#### localeCompare
-#### normalize
-#### replace
-#### slice
-#### split
-#### substr
-#### substring
-#### startsWith
-#### toString
-#### trim
-#### trimLeft
-#### trimRight
-#### toLowerCase
-#### toUpperCase
-#### valueOf
-#### match
-#### search
-#### anchor
-#### big
-#### blink
-#### bold
-#### fixed
-#### fontcolor
-#### fontsize
-#### italics
-#### link
-#### small
-#### strike
-#### sub
-#### sup
-#### repeat
-#### codePointAt
-#### padStart
-#### padEnd
-#### toLocaleLowerCase
-#### toLocaleUpperCase
+> `String.fromCharCode(num1[, ...[, numN]])`
+
+`String.fromCharCode(65, 66, 67); // "ABC"`
+
+#### String.fromCodePoint()
+The static String.fromCodePoint() method returns a string created by using the specified sequence of code points.
+
+> `String.fromCodePoint(num1[, ...[, numN]])`
+
+
+- `String.fromCodePoint()` Not supported by Internet Explorer and Safari
+- `String.fromCharCode()` Supported since for ever, double as fast
+
+**The difference:**
+
+Although most common Unicode values can be represented with one 16-bit number (as expected early on during JavaScript standardization) and fromCharCode() can be used to return a single character for the most common values (i.e., UCS-2 values which are the subset of UTF-16 with the most common characters), in order to deal with ALL legal Unicode values (up to 21 bits), fromCharCode() alone is inadequate. Since the higher code point characters use two (lower value) "surrogate" numbers to form a single character, `String.fromCodePoint()` (part of the ES6 draft) can be used to return such a pair and thus adequately represent these higher valued characters.
+
+#### String.prototype.anchor()
+> Deprecated
+
+#### String.prototype.big()
+> Deprecated
+
+#### String.prototype.blink()
+> Deprecated
+
+#### String.prototype.bold()
+> Deprecated
+
+#### String.prototype.charAt()
+The String object's charAt() method returns a new string consisting of the single UTF-16 code unit located at the specified offset into the string.
+> [See better online](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt)
+
+#### String.prototype.charCodeAt()
+`'ABC'.charCodeAt(0); // 65`
+
+#### String.prototype.codePointAt()
+`'ABC'.codePointAt(1); // 66`
+
+#### String.prototype.concat()
+The concat() function combines the text from one or more strings and returns a new string. Changes to the text in one string do not affect the other string.
+
+```javascript
+var hello = 'Hello, ';
+console.log(hello.concat('World', '. Have a nice day.'));
+// Hello, World. Have a nice day.
+
+var greetList = ['Hello', ' ', 'World', '!'];
+var result = "".concat(...greetList);
+
+console.log(result); // Hello World!
+```
+
+#### String.prototype.endsWith()
+The endsWith() method determines whether a string ends with the characters of a specified string, returning true or false as appropriate.
+
+> `str.endsWith(searchString[, length])`
+
+```javascript
+var str = 'To be, or not to be, that is the question.';
+
+console.log(str.endsWith('question.')); // true
+console.log(str.endsWith('to be'));     // false
+console.log(str.endsWith('to be', 19)); // true
+``` 
+
+#### String.prototype.fixed()
+> Deprecated
+
+#### String.prototype.fontcolor()
+> Deprecated
+
+#### String.prototype.fontsize()
+> Deprecated
+
+#### String.prototype.includes()
+The includes() method determines whether one string may be found within another string, returning true or false as appropriate. The `includes()` method is case sensitive.
+
+> `str.includes(searchString[, position])`
+
+```javascript
+var s = "On the roof";
+console.log(s.includes('on')); // false
+console.log(s.includes('On')); // true
+``` 
+#### String.prototype.indexOf()
+The indexOf() method returns the index within the calling String object of the first occurrence of the specified value, starting the search at fromIndex. Returns -1 if the value is not found. The `indexOf()` is case sensitive.
+
+The return value is the index of the first occurrence of searchValue, or -1 if not found.
+An empty string searchValue will match at any index between 0 and `str.length`.
+
+> `str.indexOf(searchValue[, fromIndex])`
+
+```javascript
+var s = 'Come on onto the roof';
+// -----------^--^-------------
+// ------0----5--8-------------
+
+console.log(s.indexOf('on'));   // 5
+console.log(s.indexOf('on',6)); // 8
+``` 
+
+#### String.prototype.italics()
+> Deprecated
+
+#### String.prototype.lastIndexOf()
+
+
+#### String.prototype.link()
+#### String.prototype.localeCompare()
+#### String.prototype.match()
+#### String.prototype.normalize()
+#### String.prototype.padEnd()
+#### String.prototype.padStart()
+#### String.prototype.quote()
+#### String.prototype.repeat()
+#### String.prototype.replace()
+#### String.prototype.search()
+#### String.prototype.slice()
+#### String.prototype.small()
+#### String.prototype.split()
+#### String.prototype.startsWith()
+#### String.prototype.strike()
+#### String.prototype.sub()
+#### String.prototype.substr()
+#### String.prototype.substring()
+#### String.prototype.sup()
+#### String.prototype.toLocaleLowerCase()
+#### String.prototype.toLocaleUpperCase()
+#### String.prototype.toLowerCase()
+#### String.prototype.toSource()
+#### String.prototype.toString()
+#### String.prototype.toUpperCase()
+#### String.prototype.trim()
+#### String.prototype.trimLeft()
+#### String.prototype.trimRight()
+#### String.prototype.valueOf()
+#### String.prototype[@@iterator]()
+#### String.raw()
 
 # typeof
 

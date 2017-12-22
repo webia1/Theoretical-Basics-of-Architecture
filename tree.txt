@@ -24,10 +24,46 @@
 │       └── package.json
 ├── JavaScript
 │   ├── Cookbook.md
-│   ├── ES5.md
+│   ├── ES5+.md
 │   ├── ES6.md
 │   ├── EXAMPLES
-│   │   ├── ES5
+│   │   ├── ES5+
+│   │   │   ├── ARRAY
+│   │   │   │   ├── Array.from_ES6.js
+│   │   │   │   ├── Array.isArray.js
+│   │   │   │   ├── Array.observe_deprecated.js
+│   │   │   │   ├── Array.of.js
+│   │   │   │   ├── concat.js
+│   │   │   │   ├── copyWithin.js
+│   │   │   │   ├── entries.js
+│   │   │   │   ├── every.js
+│   │   │   │   ├── fill.js
+│   │   │   │   ├── filter.js
+│   │   │   │   ├── find.js
+│   │   │   │   ├── forEach_intermediate.js
+│   │   │   │   ├── forEach_simple.js
+│   │   │   │   ├── forEach_thisArg.js
+│   │   │   │   ├── includes.js
+│   │   │   │   ├── indexOf.js
+│   │   │   │   ├── keys.js
+│   │   │   │   ├── lastIndexOf.js
+│   │   │   │   ├── map.js
+│   │   │   │   ├── reduce.js
+│   │   │   │   ├── reduceRight.js
+│   │   │   │   ├── reverse.js
+│   │   │   │   ├── slice.js
+│   │   │   │   ├── some.js
+│   │   │   │   ├── sort.js
+│   │   │   │   ├── splice.js
+│   │   │   │   ├── toLocaleString.js
+│   │   │   │   ├── toSource.js
+│   │   │   │   └── toString.js
+│   │   │   ├── FUNCTION
+│   │   │   │   └── date.toLocaleString.js
+│   │   │   ├── GLOBAL
+│   │   │   │   └── globalObject.js
+│   │   │   ├── NUMBER
+│   │   │   │   └── toLocalString.js
 │   │   │   ├── PATTERNS
 │   │   │   │   └── for_performance.js
 │   │   │   └── STATEMENTS
@@ -49,4 +85,4 @@
 ├── ReadMe.md
 └── tree.txt
 
-21 directories, 28 files
+25 directories, 60 files

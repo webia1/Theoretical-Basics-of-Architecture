@@ -713,11 +713,53 @@ console.log(s.indexOf('on',6)); // 8
 > Deprecated
 
 #### String.prototype.lastIndexOf()
+The lastIndexOf() method returns the index within the calling String object of the last occurrence of the specified value, searching backwards from fromIndex. Returns -1 if the value is not found, it is is case sensitive.
+
+
+> `str.lastIndexOf(searchValue[, fromIndex])`
+
+```javascript
+var s = "to be or not to be";
+// ------0---------------^--
+console.log(s.lastIndexOf('be')); // 16
+```
 
 
 #### String.prototype.link()
+> Deprecated
+
 #### String.prototype.localeCompare()
+The localeCompare() method returns a number indicating whether a reference string comes before or after or is the same as the given string in sort order.
+
+The new locales and options arguments let applications specify the language whose sort order should be used and customize the behavior of the function. In older implementations, which ignore the locales and options arguments, the locale and sort order used are entirely implementation dependent.
+> `referenceStr.localeCompare(compareString[, locales[, options]])`
+
+```javascript
+// The letter "a" is before "c" yielding a negative value
+'a'.localeCompare('c'); // -2 or -1 (or some other negative value)
+
+// Alphabetically the word "check" comes after "against" yielding a positive value
+'check'.localeCompare('against'); // 2 or 1 (or some other positive value)
+
+// "a" and "a" are equivalent yielding a neutral value of zero
+'a'.localeCompare('a'); // 0
+``` 
+
+localeCompare enables a case-insensitive sort of an array:
+
+```javascript
+var items = ['cliché', 'communiqué', 'café', 'adieu'];
+items.sort((a, b) => a.localeCompare(b)); 
+// ['adieu', 'café', 'cliché', 'communiqué']
+``` 
+
 #### String.prototype.match()
+The match() method retrieves the matches when matching a string against a regular expression.
+
+> `str.match(regexp)`
+
+If the string matches the expression, it will return an Array containing the entire matched string as the first element, followed by any results captured in parentheses. If there were no matches, null is returned.
+
 #### String.prototype.normalize()
 #### String.prototype.padEnd()
 #### String.prototype.padStart()
@@ -1471,11 +1513,17 @@ console.log(e.copyWithin(1,4,5));
 //  [ 'a', 'e', 'c', 'd', 'e', 'f', 'g', 'h' ]
 
 f = ['a','b','c','d','e','f','g','h'];
+
 console.log(f.copyWithin(4,2,5));
+
+//  copy elements between 2 & 5 (= c,d,e) -> to 4 
 //  [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' ]
+//               ^    ^    ^
+//               |    |    |
 //     0 -  1 -  2 -  3  - 4 -  5 -  6 -  7
+//                         |    
 //                        'c', 'd', 'e', 
-//  [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' ]
+//  [ 'a', 'b', 'c', 'd',  |    |    |   'h' ]
 //  [ 'a', 'b', 'c', 'd', 'c', 'd', 'e', 'h' ]
 ```
 

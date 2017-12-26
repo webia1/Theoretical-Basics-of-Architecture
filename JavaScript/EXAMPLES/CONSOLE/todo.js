@@ -1,0 +1,28 @@
+/*
+ console.log
+ console.debug
+ console.info
+ console.warn
+ console.error
+ console.dir
+ console.dirxml
+ console.time
+ console.timeEnd
+ console.trace
+ console.assert
+ console.clear
+ console.count
+ console.countReset
+ console.group
+ console.groupCollapsed
+ console.groupEnd
+ console.Console
+ console.table
+ console.markTimeline
+ console.profile
+ console.profileEnd
+ console.timeline
+ console.timelineEnd
+ console.timeStamp
+ console.context
+*/

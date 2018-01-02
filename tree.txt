@@ -2,87 +2,271 @@
 ├── Design
 │   └── SASS
 │       └── ReadMe.md
-├── Frameworks
-│   ├── Angular\ 
-│   │   ├── CLI
-│   │   │   └── readme.md
-│   │   └── Testing
-│   │       ├── #Angular_Integration_Tests.md
-│   │       ├── Images
-│   │       │   └── Angular_Testing.png
-│   │       ├── integration-tests
-│   │       │   └── basic.spec.js
-│   │       ├── jasmine
-│   │       │   ├── 01_basics.spec.js
-│   │       │   └── 01_basics.spec.ts
-│   │       └── readme.md
-│   ├── React
-│   │   └── #React.txt
-│   └── RxJS
-│       ├── basics.js
-│       ├── map_filter_reduce.js
-│       └── package.json
+├── Documentation
+│   ├── AsciiDoc
+│   └── Markdown
+│       └── tables.txt
+├── Git
+│   └── readMe.md
 ├── JavaScript
 │   ├── Cookbook.md
 │   ├── ES5+.md
 │   ├── ES6.md
 │   ├── EXAMPLES
-│   │   ├── ES5+
+│   │   ├── BUILT-IN
 │   │   │   ├── ARRAY
-│   │   │   │   ├── Array.from_ES6.js
+│   │   │   │   ├── Array.from.js
 │   │   │   │   ├── Array.isArray.js
 │   │   │   │   ├── Array.observe_deprecated.js
 │   │   │   │   ├── Array.of.js
-│   │   │   │   ├── concat.js
-│   │   │   │   ├── copyWithin.js
-│   │   │   │   ├── entries.js
-│   │   │   │   ├── every.js
-│   │   │   │   ├── fill.js
-│   │   │   │   ├── filter.js
-│   │   │   │   ├── find.js
-│   │   │   │   ├── forEach_intermediate.js
-│   │   │   │   ├── forEach_simple.js
-│   │   │   │   ├── forEach_thisArg.js
-│   │   │   │   ├── includes.js
-│   │   │   │   ├── indexOf.js
-│   │   │   │   ├── keys.js
-│   │   │   │   ├── lastIndexOf.js
-│   │   │   │   ├── map.js
-│   │   │   │   ├── reduce.js
-│   │   │   │   ├── reduceRight.js
-│   │   │   │   ├── reverse.js
-│   │   │   │   ├── slice.js
-│   │   │   │   ├── some.js
-│   │   │   │   ├── sort.js
-│   │   │   │   ├── splice.js
-│   │   │   │   ├── toLocaleString.js
-│   │   │   │   ├── toSource.js
-│   │   │   │   └── toString.js
+│   │   │   │   ├── Array.prototype.concat.js
+│   │   │   │   ├── Array.prototype.constructor.js
+│   │   │   │   ├── Array.prototype.copyWithin.js
+│   │   │   │   ├── Array.prototype.entries.js
+│   │   │   │   ├── Array.prototype.every.js
+│   │   │   │   ├── Array.prototype.fill.js
+│   │   │   │   ├── Array.prototype.filter.js
+│   │   │   │   ├── Array.prototype.find.js
+│   │   │   │   ├── Array.prototype.findIndex.js
+│   │   │   │   ├── Array.prototype.forEach.js
+│   │   │   │   ├── Array.prototype.includes.js
+│   │   │   │   ├── Array.prototype.indexOf.js
+│   │   │   │   ├── Array.prototype.join.js
+│   │   │   │   ├── Array.prototype.keys.js
+│   │   │   │   ├── Array.prototype.lastIndexOf.js
+│   │   │   │   ├── Array.prototype.map.js
+│   │   │   │   ├── Array.prototype.pop.js
+│   │   │   │   ├── Array.prototype.push.js
+│   │   │   │   ├── Array.prototype.reduce.js
+│   │   │   │   ├── Array.prototype.reduceRight.js
+│   │   │   │   ├── Array.prototype.reverse.js
+│   │   │   │   ├── Array.prototype.shift.js
+│   │   │   │   ├── Array.prototype.slice.js
+│   │   │   │   ├── Array.prototype.some.js
+│   │   │   │   ├── Array.prototype.sort.js
+│   │   │   │   ├── Array.prototype.splice.js
+│   │   │   │   ├── Array.prototype.toLocaleString.js
+│   │   │   │   ├── Array.prototype.toSource.js
+│   │   │   │   ├── Array.prototype.toString.js
+│   │   │   │   ├── Array.prototype.unshift.js
+│   │   │   │   └── __ARRAY__PROPERTIES.js
+│   │   │   ├── DATE
+│   │   │   │   ├── Date.UTC.js
+│   │   │   │   ├── Date.now.js
+│   │   │   │   ├── Date.parse.js
+│   │   │   │   ├── Date.prototype.constructor.js
+│   │   │   │   ├── Date.prototype.getDate.js
+│   │   │   │   ├── Date.prototype.getDay.js
+│   │   │   │   ├── Date.prototype.getFullYear.js
+│   │   │   │   ├── Date.prototype.getHours.js
+│   │   │   │   ├── Date.prototype.getMilliseconds.js
+│   │   │   │   ├── Date.prototype.getMinutes.js
+│   │   │   │   ├── Date.prototype.getMonth.js
+│   │   │   │   ├── Date.prototype.getSeconds.js
+│   │   │   │   ├── Date.prototype.getTime.js
+│   │   │   │   ├── Date.prototype.getTimezoneOffset.js
+│   │   │   │   ├── Date.prototype.getUTCDate.js
+│   │   │   │   ├── Date.prototype.getUTCDay.js
+│   │   │   │   ├── Date.prototype.getUTCFullYear.js
+│   │   │   │   ├── Date.prototype.getUTCHours.js
+│   │   │   │   ├── Date.prototype.getUTCMilliseconds.js
+│   │   │   │   ├── Date.prototype.getUTCMinutes.js
+│   │   │   │   ├── Date.prototype.getUTCMonth.js
+│   │   │   │   ├── Date.prototype.getUTCSeconds.js
+│   │   │   │   ├── Date.prototype.getYear.js
+│   │   │   │   ├── Date.prototype.setDate.js
+│   │   │   │   ├── Date.prototype.setFullYear.js
+│   │   │   │   ├── Date.prototype.setHours.js
+│   │   │   │   ├── Date.prototype.setMilliseconds.js
+│   │   │   │   ├── Date.prototype.setMinutes.js
+│   │   │   │   ├── Date.prototype.setMonth.js
+│   │   │   │   ├── Date.prototype.setSeconds.js
+│   │   │   │   ├── Date.prototype.setTime.js
+│   │   │   │   ├── Date.prototype.setUTCDate.js
+│   │   │   │   ├── Date.prototype.setUTCFullYear.js
+│   │   │   │   ├── Date.prototype.setUTCHours.js
+│   │   │   │   ├── Date.prototype.setUTCMilliseconds.js
+│   │   │   │   ├── Date.prototype.setUTCMinutes.js
+│   │   │   │   ├── Date.prototype.setUTCMonth.js
+│   │   │   │   ├── Date.prototype.setUTCSeconds.js
+│   │   │   │   ├── Date.prototype.setYear.js
+│   │   │   │   ├── Date.prototype.toDateString.js
+│   │   │   │   ├── Date.prototype.toGMTString.js
+│   │   │   │   ├── Date.prototype.toISOString.js
+│   │   │   │   ├── Date.prototype.toJSON.js
+│   │   │   │   ├── Date.prototype.toLocaleDateString.js
+│   │   │   │   ├── Date.prototype.toLocaleString.js
+│   │   │   │   ├── Date.prototype.toLocaleTimeString.js
+│   │   │   │   ├── Date.prototype.toString.js
+│   │   │   │   ├── Date.prototype.toTimeString.js
+│   │   │   │   ├── Date.prototype.toUTCString.js
+│   │   │   │   ├── Date.prototype.valueOf.js
+│   │   │   │   └── __Date__PROPERTIES.js
 │   │   │   ├── FUNCTION
-│   │   │   │   └── date.toLocaleString.js
-│   │   │   ├── GLOBAL
-│   │   │   │   └── globalObject.js
+│   │   │   │   ├── Function.prototype.apply.js
+│   │   │   │   ├── Function.prototype.bind.js
+│   │   │   │   ├── Function.prototype.call.js
+│   │   │   │   ├── Function.prototype.constructor.js
+│   │   │   │   ├── Function.prototype.toString.js
+│   │   │   │   ├── MISC
+│   │   │   │   │   └── bind_and_setTimeout.js
+│   │   │   │   └── __Function__PROPERTIES.js
+│   │   │   ├── MATH
 │   │   │   ├── NUMBER
-│   │   │   │   └── toLocalString.js
-│   │   │   ├── PATTERNS
-│   │   │   │   └── for_performance.js
-│   │   │   └── STATEMENTS
-│   │   │       ├── do_while.js
-│   │   │       ├── for.js
-│   │   │       ├── switch.js
-│   │   │       └── while.js
-│   │   └── ES6
-│   │       ├── es6_tmp.js
-│   │       └── promise.js
+│   │   │   │   ├── Number.isFinite.js
+│   │   │   │   ├── Number.isInteger.js
+│   │   │   │   ├── Number.isNan.js
+│   │   │   │   ├── Number.isSafeInteger.js
+│   │   │   │   ├── Number.parseFloat.js
+│   │   │   │   ├── Number.parseInt.js
+│   │   │   │   ├── Number.prototype.toExponential.js
+│   │   │   │   ├── Number.prototype.toFixed.js
+│   │   │   │   ├── Number.prototype.toLocalString.js
+│   │   │   │   ├── Number.prototype.toPrecision.js
+│   │   │   │   ├── Number.prototype.toString.js
+│   │   │   │   ├── Number.prototype.valueOf.js
+│   │   │   │   └── __Number__PROPERTIES.js
+│   │   │   ├── OBJECT
+│   │   │   │   ├── Object.assign.js
+│   │   │   │   ├── Object.create.js
+│   │   │   │   ├── Object.defineProperties.js
+│   │   │   │   ├── Object.defineProperty.js
+│   │   │   │   ├── Object.entries.js
+│   │   │   │   ├── Object.freeze.js
+│   │   │   │   ├── Object.getOwnPropertyDescriptor.js
+│   │   │   │   ├── Object.getOwnPropertyDescriptors.js
+│   │   │   │   ├── Object.getOwnPropertyNames.js
+│   │   │   │   ├── Object.getOwnPropertySymbols.js
+│   │   │   │   ├── Object.getPrototypeOf.js
+│   │   │   │   ├── Object.is.js
+│   │   │   │   ├── Object.isExtensible.js
+│   │   │   │   ├── Object.isFrozen.js
+│   │   │   │   ├── Object.isSealed.js
+│   │   │   │   ├── Object.keys.js
+│   │   │   │   ├── Object.preventExtensions.js
+│   │   │   │   ├── Object.prototype.__defineGetter__.js
+│   │   │   │   ├── Object.prototype.__defineSetter__.js
+│   │   │   │   ├── Object.prototype.__lookupGetter__.js
+│   │   │   │   ├── Object.prototype.__lookupSetter__.js
+│   │   │   │   ├── Object.prototype.constructor.js
+│   │   │   │   ├── Object.prototype.hasOwnProperty.js
+│   │   │   │   ├── Object.prototype.isPrototypeOf.js
+│   │   │   │   ├── Object.prototype.propertyIsEnumerable.js
+│   │   │   │   ├── Object.prototype.toLocaleString.js
+│   │   │   │   ├── Object.prototype.toString.js
+│   │   │   │   ├── Object.prototype.valueOf.js
+│   │   │   │   ├── Object.seal.js
+│   │   │   │   ├── Object.setPrototypeOf.js
+│   │   │   │   ├── Object.values.js
+│   │   │   │   └── __Object__PROPERTIES.js
+│   │   │   ├── REGEXP
+│   │   │   └── STRING
+│   │   │       ├── String.fromCharCode.js
+│   │   │       ├── String.fromCodePoint.js
+│   │   │       ├── String.properties.js
+│   │   │       ├── String.prototype.IndexOf.js
+│   │   │       ├── String.prototype.anchor.js
+│   │   │       ├── String.prototype.big.js
+│   │   │       ├── String.prototype.blink.js
+│   │   │       ├── String.prototype.bold.js
+│   │   │       ├── String.prototype.charAt.js
+│   │   │       ├── String.prototype.charCodeAt.js
+│   │   │       ├── String.prototype.codePointAt.js
+│   │   │       ├── String.prototype.concat.js
+│   │   │       ├── String.prototype.constructor.js
+│   │   │       ├── String.prototype.endsWith.js
+│   │   │       ├── String.prototype.fixed.js
+│   │   │       ├── String.prototype.fontcolor.js
+│   │   │       ├── String.prototype.fontsize.js
+│   │   │       ├── String.prototype.includes.js
+│   │   │       ├── String.prototype.italics.js
+│   │   │       ├── String.prototype.lastIndexOf.js
+│   │   │       ├── String.prototype.link.js
+│   │   │       ├── String.prototype.localeCompare.js
+│   │   │       ├── String.prototype.match.js
+│   │   │       ├── String.prototype.normalize.js
+│   │   │       ├── String.prototype.padEnd.js
+│   │   │       ├── String.prototype.padStart.js
+│   │   │       ├── String.prototype.repeat.js
+│   │   │       ├── String.prototype.replace.js
+│   │   │       ├── String.prototype.search.js
+│   │   │       ├── String.prototype.slice.js
+│   │   │       ├── String.prototype.small.js
+│   │   │       ├── String.prototype.split.js
+│   │   │       ├── String.prototype.startsWith.js
+│   │   │       ├── String.prototype.strike.js
+│   │   │       ├── String.prototype.sub.js
+│   │   │       ├── String.prototype.substr.js
+│   │   │       ├── String.prototype.substring.js
+│   │   │       ├── String.prototype.sup.js
+│   │   │       ├── String.prototype.toLocaleLowerCase.js
+│   │   │       ├── String.prototype.toLocaleUpperCase.js
+│   │   │       ├── String.prototype.toLowerCase.js
+│   │   │       ├── String.prototype.toString.js
+│   │   │       ├── String.prototype.toUpperCase.js
+│   │   │       ├── String.prototype.trim.js
+│   │   │       ├── String.prototype.trimLeft.js
+│   │   │       ├── String.prototype.trimRight.js
+│   │   │       ├── String.prototype.valueOf.js
+│   │   │       └── String.raw.js
+│   │   ├── MISC
+│   │   │   ├── BUFFER
+│   │   │   │   └── todo.js
+│   │   │   ├── CONSOLE
+│   │   │   │   └── todo.js
+│   │   │   └── PROCESS
+│   │   │       └── todo.js
+│   │   ├── STATEMENTS
+│   │   │   ├── do_while.js
+│   │   │   ├── for.js
+│   │   │   ├── switch.js
+│   │   │   └── while.js
+│   │   ├── __CONCEPTS
+│   │   │   ├── Currying.js
+│   │   │   ├── GLOBAL
+│   │   │   │   ├── searchInGlobalObject.js
+│   │   │   │   └── todo.js
+│   │   │   ├── convertingNumberToArray.js
+│   │   │   ├── creating_a_subclass.js
+│   │   │   ├── deep_cloning.js
+│   │   │   ├── for_performance.js
+│   │   │   └── promise.js
+│   │   └── __MGM
+│   │       ├── createDirectories.js
+│   │       ├── createFiles.js
+│   │       ├── node_modules
+│   │       │   └── fs
+│   │       │       ├── README.md
+│   │       │       └── package.json
+│   │       ├── package-lock.json
+│   │       └── package.json
 │   ├── ObjectsOverview.md
-│   └── ReadMe.md
+│   ├── ReadMe.md
+│   └── __FRAMEWORKS
+│       ├── Angular\ 
+│       │   ├── CLI
+│       │   │   └── readme.md
+│       │   └── Testing
+│       │       ├── #Angular_Integration_Tests.md
+│       │       ├── Images
+│       │       │   └── Angular_Testing.png
+│       │       ├── integration-tests
+│       │       │   └── basic.spec.js
+│       │       ├── jasmine
+│       │       │   ├── 01_basics.spec.js
+│       │       │   └── 01_basics.spec.ts
+│       │       └── readme.md
+│       ├── React
+│       │   └── #React.txt
+│       └── RxJS
+│           ├── basics.js
+│           ├── map_filter_reduce.js
+│           └── package.json
 ├── Lessons
 │   └── Angular
 │       └── readme.txt
 ├── MacOS
-├── Markdown
-│   └── tables.txt
 ├── ReadMe.md
 └── tree.txt
 
-25 directories, 60 files
+40 directories, 229 files

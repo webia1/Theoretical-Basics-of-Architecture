@@ -13,7 +13,11 @@ console.log(sliceResult);    // [ ]
 var sliceResult = arr.slice(1);
 console.log(sliceResult);      // [ 'FEB', 'MAR', 'APR' ]
 
-var sliceResult = arr.slice();
+var sliceResult = arr.slice(); // Copying Array (Independent)
 console.log(sliceResult);      // [ JAN, 'FEB', 'MAR', 'APR' ]
 
 console.log(arr); // [ 'JAN', 'FEB', 'MAR', 'APR' ]
+
+arr.push('MAY');
+console.log(arr,sliceResult);
+

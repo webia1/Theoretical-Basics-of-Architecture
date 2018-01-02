@@ -15,3 +15,6 @@ console.log(result); // [ 3, 5 ]
 x = [3,5];
 result = Array.from (x,x => x*x);
 console.log(result); // [ 9, 25 ]
+
+var n = 3;
+console.log(Array.from(n)); // []

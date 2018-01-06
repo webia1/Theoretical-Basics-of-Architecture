@@ -1,6 +1,15 @@
+:compat-mode!:
+:source-highlighter: coderay
+:icons: font
+:experimental:
+:doctype: book
+:checkedbox: pass:normal[{startsb}&#10004;{endsb}]
+:stem:
+:sectnums:
+
 `freeze, seal & preventExtensions in JavaScript`
 |===
-| - | `EXTEND` | `READ` | `UPDATE` | `DELETE
+| - | `EXTEND` | `READ` | `UPDATE` | `DELETE`
 
 | `Object.freeze`
 | -

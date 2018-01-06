@@ -5,6 +5,11 @@
 
 // Object.create(proto[, propertiesObject])
 
+var p = {foo: 'bar'};
+var o = Object.create(p);
+console.log(Object.getPrototypeOf(o)); // { foo: 'bar' }
+console.log(Object.getPrototypeOf(o) === p); // true
+
 
 // CLASSICAL INHERITANCE WITH Object.create()
 

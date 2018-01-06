@@ -1,0 +1,27 @@
+@startuml
+scale 1.5
+skinparam ArrowThickness 1
+skinparam padding 10
+skinparam ActivityFontName Monaco
+skinparam ActivityBackgroundColor white
+skinparam ActivityDiamondBackgroundColor white
+skinparam ActivityBorderColor grey
+skinparam ActivityDiamondBorderColor grey
+skinparam ArrowColor grey
+skinparam ActivityBorderThickness 2
+skinparam ActivityFontColor #000
+
+
+start
+
+: var obj = { foo: 'bar' };;
+    :not frozen
+    not sealed
+    extensible
+    writable
+    enumerable
+    configurable;
+    stop
+
+
+@enduml

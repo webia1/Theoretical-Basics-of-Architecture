@@ -1,0 +1,23 @@
+`freeze, seal & preventExtensions in JavaScript`
+|===
+| - | `EXTEND` | `READ` | `UPDATE` | `DELETE
+
+| `Object.freeze`
+| -
+| `YES`
+| -
+| -
+
+| `Object.seal`
+| -
+| `YES`
+| `YES`
+| -
+
+| `Object.preventExtensions`
+| -
+| `YES`
+| `YES`
+| `YES`
+
+|===

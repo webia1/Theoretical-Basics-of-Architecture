@@ -13,6 +13,8 @@
 │   ├── ES5+.md
 │   ├── ES6.md
 │   ├── EXAMPLES
+│   │   ├── APIS
+│   │   │   └── FETCH
 │   │   ├── BUILT-IN
 │   │   │   ├── ARRAY
 │   │   │   │   ├── Array.from.js
@@ -231,15 +233,23 @@
 │   │   │   ├── deep_cloning.js
 │   │   │   ├── for_performance.js
 │   │   │   └── promise.js
-│   │   └── __MGM
-│   │       ├── createDirectories.js
-│   │       ├── createFiles.js
-│   │       ├── node_modules
-│   │       │   └── fs
-│   │       │       ├── README.md
-│   │       │       └── package.json
-│   │       ├── package-lock.json
-│   │       └── package.json
+│   │   ├── __MGM
+│   │   │   ├── createDirectories.js
+│   │   │   ├── createFiles.js
+│   │   │   ├── node_modules
+│   │   │   │   └── fs
+│   │   │   │       ├── README.md
+│   │   │   │       └── package.json
+│   │   │   ├── package-lock.json
+│   │   │   └── package.json
+│   │   ├── __TMP
+│   │   │   ├── PropertyComparison.adoc
+│   │   │   ├── PropertyComparison.html
+│   │   │   ├── deletable.js
+│   │   │   └── map.js
+│   │   └── __UML
+│   │       ├── ObjectProperties.puml
+│   │       └── SkinparamExample.puml
 │   ├── ObjectsOverview.md
 │   ├── ReadMe.md
 │   └── __FRAMEWORKS
@@ -269,4 +279,4 @@
 ├── ReadMe.md
 └── tree.txt
 
-40 directories, 229 files
+44 directories, 235 files

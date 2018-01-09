@@ -1,1 +1,3 @@
-Console.log ();
+console.log (
+    'abc'.padStart(10,'-'), // -------abc
+);

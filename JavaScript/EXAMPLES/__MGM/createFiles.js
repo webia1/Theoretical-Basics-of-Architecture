@@ -1,12 +1,12 @@
 
 var fs = require('fs');
 
-var type = Function;
-var aktuell = '../FUNCTION/Function.';
+var type = Symbol;
+var aktuell = '../BUILT-IN/SYMBOL/Symbol.';
 
 var m0 = Object.getOwnPropertyNames(type);
 
-var m1 = m0.filter (i => typeof type[i] == 'function');
+var m1 = m0.filter (i => typeof type[i] !== 'function');
 
 
 var m00 = Object.getOwnPropertyNames(type.prototype);
@@ -16,7 +16,7 @@ var forbiddenOnStrictMode = ['caller', 'callee', 'arguments'];
 var m2 = m00.filter (i => {
     var x = false;
     if (forbiddenOnStrictMode.indexOf(i) == -1) {
-        return typeof type.prototype[i] == 'function'
+        return typeof type.prototype[i] !== 'function'
     }
     return x;}
     );
@@ -36,7 +36,7 @@ m2.forEach (i => {
 });
 
 function writeFile (fileName) {
-    var standardContent = 'Console.log ();';
+    var standardContent = 'console.log ();';
 
     fs.exists(fileName, exists => {
         if (exists) {

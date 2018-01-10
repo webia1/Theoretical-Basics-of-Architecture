@@ -9,9 +9,6 @@
 ├── Git
 │   └── readMe.md
 ├── JavaScript
-│   ├── Cookbook.md
-│   ├── ES5+.md
-│   ├── ES6.md
 │   ├── EXAMPLES
 │   │   ├── APIS
 │   │   │   └── FETCH
@@ -113,7 +110,21 @@
 │   │   │   │   ├── MISC
 │   │   │   │   │   └── bind_and_setTimeout.js
 │   │   │   │   └── __Function__PROPERTIES.js
+│   │   │   ├── GLOBAL
+│   │   │   │   ├── decodeURI.js
+│   │   │   │   ├── decodeURIComponent.js
+│   │   │   │   ├── encodeURI.js
+│   │   │   │   ├── encodeURIComponent.js
+│   │   │   │   ├── escape.js
+│   │   │   │   ├── eval.js
+│   │   │   │   ├── isFinite.js
+│   │   │   │   ├── isNaN.js
+│   │   │   │   ├── parseFloat.js
+│   │   │   │   ├── parseInt.js
+│   │   │   │   ├── unescape.js
+│   │   │   │   └── uneval.js
 │   │   │   ├── MATH
+│   │   │   ├── MISC
 │   │   │   ├── NUMBER
 │   │   │   │   ├── Number.isFinite.js
 │   │   │   │   ├── Number.isInteger.js
@@ -146,10 +157,6 @@
 │   │   │   │   ├── Object.isSealed.js
 │   │   │   │   ├── Object.keys.js
 │   │   │   │   ├── Object.preventExtensions.js
-│   │   │   │   ├── Object.prototype.__defineGetter__.js
-│   │   │   │   ├── Object.prototype.__defineSetter__.js
-│   │   │   │   ├── Object.prototype.__lookupGetter__.js
-│   │   │   │   ├── Object.prototype.__lookupSetter__.js
 │   │   │   │   ├── Object.prototype.constructor.js
 │   │   │   │   ├── Object.prototype.hasOwnProperty.js
 │   │   │   │   ├── Object.prototype.isPrototypeOf.js
@@ -160,64 +167,93 @@
 │   │   │   │   ├── Object.seal.js
 │   │   │   │   ├── Object.setPrototypeOf.js
 │   │   │   │   ├── Object.values.js
-│   │   │   │   └── __Object__PROPERTIES.js
+│   │   │   │   ├── ___Object.prototype.__defineGetter__.js
+│   │   │   │   ├── ___Object.prototype.__defineSetter__.js
+│   │   │   │   ├── ___Object.prototype.__lookupGetter__.js
+│   │   │   │   └── ___Object.prototype.__lookupSetter__.js
 │   │   │   ├── REGEXP
-│   │   │   └── STRING
-│   │   │       ├── String.fromCharCode.js
-│   │   │       ├── String.fromCodePoint.js
-│   │   │       ├── String.properties.js
-│   │   │       ├── String.prototype.IndexOf.js
-│   │   │       ├── String.prototype.anchor.js
-│   │   │       ├── String.prototype.big.js
-│   │   │       ├── String.prototype.blink.js
-│   │   │       ├── String.prototype.bold.js
-│   │   │       ├── String.prototype.charAt.js
-│   │   │       ├── String.prototype.charCodeAt.js
-│   │   │       ├── String.prototype.codePointAt.js
-│   │   │       ├── String.prototype.concat.js
-│   │   │       ├── String.prototype.constructor.js
-│   │   │       ├── String.prototype.endsWith.js
-│   │   │       ├── String.prototype.fixed.js
-│   │   │       ├── String.prototype.fontcolor.js
-│   │   │       ├── String.prototype.fontsize.js
-│   │   │       ├── String.prototype.includes.js
-│   │   │       ├── String.prototype.italics.js
-│   │   │       ├── String.prototype.lastIndexOf.js
-│   │   │       ├── String.prototype.link.js
-│   │   │       ├── String.prototype.localeCompare.js
-│   │   │       ├── String.prototype.match.js
-│   │   │       ├── String.prototype.normalize.js
-│   │   │       ├── String.prototype.padEnd.js
-│   │   │       ├── String.prototype.padStart.js
-│   │   │       ├── String.prototype.repeat.js
-│   │   │       ├── String.prototype.replace.js
-│   │   │       ├── String.prototype.search.js
-│   │   │       ├── String.prototype.slice.js
-│   │   │       ├── String.prototype.small.js
-│   │   │       ├── String.prototype.split.js
-│   │   │       ├── String.prototype.startsWith.js
-│   │   │       ├── String.prototype.strike.js
-│   │   │       ├── String.prototype.sub.js
-│   │   │       ├── String.prototype.substr.js
-│   │   │       ├── String.prototype.substring.js
-│   │   │       ├── String.prototype.sup.js
-│   │   │       ├── String.prototype.toLocaleLowerCase.js
-│   │   │       ├── String.prototype.toLocaleUpperCase.js
-│   │   │       ├── String.prototype.toLowerCase.js
-│   │   │       ├── String.prototype.toString.js
-│   │   │       ├── String.prototype.toUpperCase.js
-│   │   │       ├── String.prototype.trim.js
-│   │   │       ├── String.prototype.trimLeft.js
-│   │   │       ├── String.prototype.trimRight.js
-│   │   │       ├── String.prototype.valueOf.js
-│   │   │       └── String.raw.js
+│   │   │   ├── STRING
+│   │   │   │   ├── String.fromCharCode.js
+│   │   │   │   ├── String.fromCodePoint.js
+│   │   │   │   ├── String.prototype.IndexOf.js
+│   │   │   │   ├── String.prototype.charAt.js
+│   │   │   │   ├── String.prototype.charCodeAt.js
+│   │   │   │   ├── String.prototype.codePointAt.js
+│   │   │   │   ├── String.prototype.concat.js
+│   │   │   │   ├── String.prototype.endsWith.js
+│   │   │   │   ├── String.prototype.includes.js
+│   │   │   │   ├── String.prototype.lastIndexOf.js
+│   │   │   │   ├── String.prototype.localeCompare.js
+│   │   │   │   ├── String.prototype.match.js
+│   │   │   │   ├── String.prototype.normalize.js
+│   │   │   │   ├── String.prototype.padEnd.js
+│   │   │   │   ├── String.prototype.padStart.js
+│   │   │   │   ├── String.prototype.repeat.js
+│   │   │   │   ├── String.prototype.replace.js
+│   │   │   │   ├── String.prototype.search.js
+│   │   │   │   ├── String.prototype.slice.js
+│   │   │   │   ├── String.prototype.split.js
+│   │   │   │   ├── String.prototype.startsWith.js
+│   │   │   │   ├── String.prototype.substr.js
+│   │   │   │   ├── String.prototype.substring.js
+│   │   │   │   ├── String.prototype.toLocaleLowerCase.js
+│   │   │   │   ├── String.prototype.toLocaleUpperCase.js
+│   │   │   │   ├── String.prototype.toLowerCase.js
+│   │   │   │   ├── String.prototype.toString.js
+│   │   │   │   ├── String.prototype.toUpperCase.js
+│   │   │   │   ├── String.prototype.trim.js
+│   │   │   │   ├── String.prototype.trimLeft.js
+│   │   │   │   ├── String.prototype.trimRight.js
+│   │   │   │   ├── String.prototype.valueOf.js
+│   │   │   │   ├── String.raw.js
+│   │   │   │   ├── ___String.prototype.anchor.js
+│   │   │   │   ├── ___String.prototype.big.js
+│   │   │   │   ├── ___String.prototype.blink.js
+│   │   │   │   ├── ___String.prototype.bold.js
+│   │   │   │   ├── ___String.prototype.fixed.js
+│   │   │   │   ├── ___String.prototype.fontcolor.js
+│   │   │   │   ├── ___String.prototype.fontsize.js
+│   │   │   │   ├── ___String.prototype.italics.js
+│   │   │   │   ├── ___String.prototype.link.js
+│   │   │   │   ├── ___String.prototype.small.js
+│   │   │   │   ├── ___String.prototype.strike.js
+│   │   │   │   ├── ___String.prototype.sub.js
+│   │   │   │   └── ___String.prototype.sup.js
+│   │   │   └── SYMBOL
+│   │   │       ├── Symbol.for.js
+│   │   │       ├── Symbol.hasInstance.js
+│   │   │       ├── Symbol.isConcatSpreadable.js
+│   │   │       ├── Symbol.iterator.js
+│   │   │       ├── Symbol.js
+│   │   │       ├── Symbol.keyFor.js
+│   │   │       ├── Symbol.length.js
+│   │   │       ├── Symbol.match.js
+│   │   │       ├── Symbol.name.js
+│   │   │       ├── Symbol.prototype.constructor.js
+│   │   │       ├── Symbol.prototype.js
+│   │   │       ├── Symbol.prototype.toString.js
+│   │   │       ├── Symbol.prototype.valueOf.js
+│   │   │       ├── Symbol.replace.js
+│   │   │       ├── Symbol.search.js
+│   │   │       ├── Symbol.species.js
+│   │   │       ├── Symbol.split.js
+│   │   │       ├── Symbol.toPrimitive.js
+│   │   │       ├── Symbol.toStringTag.js
+│   │   │       └── Symbol.unscopables.js
 │   │   ├── MISC
-│   │   │   ├── BUFFER
-│   │   │   │   └── todo.js
-│   │   │   ├── CONSOLE
-│   │   │   │   └── todo.js
-│   │   │   └── PROCESS
-│   │   │       └── todo.js
+│   │   │   ├── ArrayBuffer.js
+│   │   │   ├── AsyncFunction.js
+│   │   │   ├── Atomics.js
+│   │   │   ├── DataView.js
+│   │   │   ├── Generator.js
+│   │   │   ├── GeneratorFunction.js
+│   │   │   ├── Intl.js
+│   │   │   ├── JSON.js
+│   │   │   ├── Promise.js
+│   │   │   ├── Proxy.js
+│   │   │   ├── Reflect.js
+│   │   │   ├── SharedArrayBuffer.js
+│   │   │   └── WebAssembly.js
 │   │   ├── STATEMENTS
 │   │   │   ├── do_while.js
 │   │   │   ├── for.js
@@ -225,9 +261,8 @@
 │   │   │   └── while.js
 │   │   ├── __CONCEPTS
 │   │   │   ├── Currying.js
-│   │   │   ├── GLOBAL
-│   │   │   │   ├── searchInGlobalObject.js
-│   │   │   │   └── todo.js
+│   │   │   ├── absurdExamples.js
+│   │   │   ├── capitalizing.js
 │   │   │   ├── convertingNumberToArray.js
 │   │   │   ├── creating_a_subclass.js
 │   │   │   ├── deep_cloning.js
@@ -247,31 +282,37 @@
 │   │   │   ├── PropertyComparison.html
 │   │   │   ├── deletable.js
 │   │   │   └── map.js
+│   │   ├── __TRICKY
+│   │   │   └── flatten_arrays.js
 │   │   └── __UML
 │   │       ├── ObjectProperties.puml
 │   │       └── SkinparamExample.puml
-│   ├── ObjectsOverview.md
-│   ├── ReadMe.md
-│   └── __FRAMEWORKS
-│       ├── Angular\ 
-│       │   ├── CLI
-│       │   │   └── readme.md
-│       │   └── Testing
-│       │       ├── #Angular_Integration_Tests.md
-│       │       ├── Images
-│       │       │   └── Angular_Testing.png
-│       │       ├── integration-tests
-│       │       │   └── basic.spec.js
-│       │       ├── jasmine
-│       │       │   ├── 01_basics.spec.js
-│       │       │   └── 01_basics.spec.ts
-│       │       └── readme.md
-│       ├── React
-│       │   └── #React.txt
-│       └── RxJS
-│           ├── basics.js
-│           ├── map_filter_reduce.js
-│           └── package.json
+│   └── OLD
+│       ├── Cookbook.md
+│       ├── ES5+.md
+│       ├── ES6.md
+│       ├── ObjectsOverview.md
+│       └── ReadMe.md
+├── JavaScriptFrameworks
+│   ├── Angular\ 
+│   │   ├── CLI
+│   │   │   └── readme.md
+│   │   └── Testing
+│   │       ├── #Angular_Integration_Tests.md
+│   │       ├── Images
+│   │       │   └── Angular_Testing.png
+│   │       ├── integration-tests
+│   │       │   └── basic.spec.js
+│   │       ├── jasmine
+│   │       │   ├── 01_basics.spec.js
+│   │       │   └── 01_basics.spec.ts
+│   │       └── readme.md
+│   ├── React
+│   │   └── #React.txt
+│   └── RxJS
+│       ├── basics.js
+│       ├── map_filter_reduce.js
+│       └── package.json
 ├── Lessons
 │   └── Angular
 │       └── readme.txt
@@ -279,4 +320,4 @@
 ├── ReadMe.md
 └── tree.txt
 
-44 directories, 235 files
+45 directories, 275 files

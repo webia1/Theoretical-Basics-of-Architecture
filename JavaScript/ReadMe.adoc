@@ -1,0 +1,51 @@
+:toc: left
+:compat-mode!:
+:source-highlighter: coderay
+:icons: font
+:experimental:
+:doctype: book
+:checkedbox: pass:normal[{startsb}&#10004;{endsb}]
+:stem:
+:sectnums:
+:media: prepress
+
+= JavaScript
+
+
+
+menu:Variables[var > let > const]
+
+menu:Variables[scope > hoisting > ]
+
+menu:Variables[scope > hoisting > ]
+
+[source, javascript, numbered]
+----
+console.log('Hello World!') <1>
+----
+<1> Imports the library
+
+
+
+
+[index]
+= Index
+
+[appendix]
+= Appendix
+
+[glossary]
+= Glossary
+mud:: wet, cold dirt
+rain::
+	water falling from the sky
+
+
+
+
+
+
+
+
+
+

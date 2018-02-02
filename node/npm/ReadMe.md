@@ -1,4 +1,4 @@
-#NPM
+# NPM
 
 ## Where does npm install packages?
 
@@ -7,3 +7,4 @@
 ## Show globally installed packages
 
 `npm list -g --depth=0`
+

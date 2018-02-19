@@ -28,4 +28,21 @@
     
 ## Set MacOs KeyChain as Git credential store 
 
-   git config --global credential.helper osxkeychain    
+   git config --global credential.helper osxkeychain   
+   
+## Rename local branch
+
+    git branch -m old_name new_name
+    git branch -m new_name // if current branch
+   
+## Delete local branch   
+
+    git branch -d branch_name
+   
+## Delete remote branch
+
+    git push origin --delete branch_name
+   
+## Create/Connect to remote branch  
+
+    git push --set-upstream origin desired_branch_name

@@ -24,7 +24,11 @@
 ## Create remote Github repository from Commandline
 
     git remote add origin https://github.com/webia1/vueDb.git
-    git push -u origin master    
+    git push -u origin master  
+    
+## Set autocrlf to false
+
+    git config --global core.autocrlf false
     
 ## Store Git Credentials on Mac in Key permanently
 

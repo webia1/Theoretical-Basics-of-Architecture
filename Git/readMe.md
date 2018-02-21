@@ -11,7 +11,7 @@
     
 ## Log pretty only commit hashes and titles and save in a file
 
-   git log --pretty="%h %s" > commits.txt
+    git log --pretty="%h %s" > commits.txt
     
 
 ## Remove ignored files from remote repository
@@ -33,7 +33,7 @@
     
 ## Set MacOs KeyChain as Git credential store 
 
-   git config --global credential.helper osxkeychain   
+    git config --global credential.helper osxkeychain   
    
 ## Rename local branch
 

@@ -1,8 +1,13 @@
 # Git
 
-## Show Global Configration Path
+## Show Configration Paths
 
-    git config --list --show-origin
+    git config --list --show-origin                                 // all config files
+    git config --list --system --show-origin                        // system config files
+    git config --list --show-origin | awk '{print $1}' | uniq       // show locations
+    git config --list --local                                       // local config
+    
+    
     
 ## Log pretty only commit hashes and titles and save in a file
 

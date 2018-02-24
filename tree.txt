@@ -1,4 +1,6 @@
 .
+├── Bash
+│   └── ReadMe.md
 ├── Design
 │   └── SASS
 │       └── ReadMe.md
@@ -6,6 +8,9 @@
 │   ├── AsciiDoc
 │   └── Markdown
 │       └── tables.txt
+├── Ebooks
+│   └── Performance
+│       └── front-end-performance-checklist-2018.pdf
 ├── Git
 │   └── readMe.md
 ├── JavaScript
@@ -283,16 +288,18 @@
 │   │   │   ├── deletable.js
 │   │   │   └── map.js
 │   │   ├── __TRICKY
-│   │   │   └── flatten_arrays.js
+│   │   │   ├── flatten_arrays.js
+│   │   │   └── removing_duplicate_characters.js
 │   │   └── __UML
 │   │       ├── ObjectProperties.puml
 │   │       └── SkinparamExample.puml
-│   └── OLD
-│       ├── Cookbook.md
-│       ├── ES5+.md
-│       ├── ES6.md
-│       ├── ObjectsOverview.md
-│       └── ReadMe.md
+│   ├── OLD
+│   │   ├── Cookbook.md
+│   │   ├── ES5+.md
+│   │   ├── ES6.md
+│   │   ├── ObjectsOverview.md
+│   │   └── ReadMe.md
+│   └── ReadMe.adoc
 ├── JavaScriptFrameworks
 │   ├── Angular\ 
 │   │   ├── CLI
@@ -309,15 +316,30 @@
 │   │       └── readme.md
 │   ├── React
 │   │   └── #React.txt
-│   └── RxJS
-│       ├── basics.js
-│       ├── map_filter_reduce.js
-│       └── package.json
+│   ├── RxJS
+│   │   ├── basics.js
+│   │   ├── map_filter_reduce.js
+│   │   └── package.json
+│   └── VueJS
+│       ├── Documents
+│       │   └── State\ of\ Vue.js\ report\ 2017\ by\ Monterail.pdf
+│       ├── ReadMe.md
+│       └── Vuex
+│           └── ReadMe.md
 ├── Lessons
 │   └── Angular
 │       └── readme.txt
 ├── MacOS
+├── News
+│   └── ReadMe.txt
 ├── ReadMe.md
-└── tree.txt
+├── node
+│   └── npm
+│       ├── ReadMe.md
+│       └── npm-l.md
+├── tree.txt
+└── yarn
+    ├── readme.md
+    └── yarn_vs_npm.md
 
-45 directories, 275 files
+55 directories, 287 files

@@ -9,23 +9,23 @@
 * The following code illustrates this:
 * */
 
-var o = {foo: 'bar'};
-console.log (o.toString()); // [object Object]
-
+var o = { foo: 'bar' };
+console.log(o.toString()); // [object Object]
 
 // USING toString() TO DETECT OBJECT CLASS
 
 var toString = Object.prototype.toString;
 
 console.log(
-    toString.call(new Date),        // [object Date]
-    toString.call(new String),      // [object String]
-    toString.call(Math),            // [object Math]
-    toString.call(0),               // [object Number]
-    toString.call(undefined),       // [object Undefined]
-    toString.call(null),            // [object Null]
-    toString.call(NaN),             // [object Number]
+  toString.call(new Date()), // [object Date]
+ 
+  // Do not use String as a constructor. (W053)
+  /*jshint -W053 */
+  toString.call(new String()), // [object String]
+
+  toString.call(Math), // [object Math]
+  toString.call(0), // [object Number]
+  toString.call(undefined), // [object Undefined]
+  toString.call(null), // [object Null]
+  toString.call(NaN) // [object Number]
 );
-
-
-

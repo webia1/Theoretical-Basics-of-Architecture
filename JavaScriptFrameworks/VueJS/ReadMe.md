@@ -2,7 +2,7 @@
 
 ## ESLint Configuration
 
-```json
+```javascript
 {
   "extends": ["plugin:vue/essential", "@vue/airbnb"],
   "rules": {

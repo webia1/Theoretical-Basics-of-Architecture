@@ -362,6 +362,43 @@ When you use a CSS property that requires vendor prefixes in v-bind:style, for e
 ```
 This will only render the last value in the array which the browser supports. In this example, it will render display: flex for browsers that support the unprefixed version of flexbox.
 
+## Array change detection
+
+Mutation methods: push, pop, shift, unshift, splice, sort, reverse,..
+Non mutating methods: filter, concat, slice,..
+
+### Caveats (Vorsichtsmaßnahmen)
+Vue cannot detect detect (due to limitations in Javascript) following changes:
+
+```jsx
+1) vm.items[indexOfItem] = newValue
+2) vm.items.length = newLength
+```
+better use
+
+```jsx
+1) Vue.set(example1.items, indexOfItem, newValue) // or
+1) example1.items.splice(indexOfItem, 1, newValue)
+2) example1.items.splice(newLength)
+```
+
+Again due to limitations of modern JavaScript, Vue cannot detect property 
+addition or deletion in objects. Also in this case use `Vue.set(object, key, value)`.
+You can also use the `vm.$set` instance method, which is an alias for the global `Vue.set`:
+
+Sometimes you may want to assign a number of new properties to an existing object, 
+for example using `Object.assign()` or `_.extend()`. In such cases, you should create 
+a fresh object with properties from both objects
+
+You would add new, reactive properties with:
+
+```jsx
+vm.userProfile = Object.assign({}, vm.userProfile, {
+  age: 27,
+  favoriteColor: 'Vue Green'
+})
+```
+
 
 ## Lifecycle Hooks
 ### Overview

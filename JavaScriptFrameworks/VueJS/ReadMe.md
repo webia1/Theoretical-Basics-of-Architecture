@@ -93,6 +93,34 @@ Double Bindings
 </li>
 ```
 
+## Template Syntax Revisited
+
+```jsx
+<span v-once,... // only once, no updates
+<span v-html,... // insert rawHtml
+
+<span v-bind:id="dynamicId",... // data property dynamicId
+<button v-bind:disabled="isButtonDisabled",.. // Boolean, true or false (null, undefined, false)
+```
+
+Using Expressions
+
+```jsx
+{{ number + 1 }}
+{{ ok ? 'yes' : 'no' }}
+{{ message.split('').reverse().join('') }}
+```
+
+The following ist not possible (because statement not an expression)
+
+```jsx
+{{ var a = 1 }}  // does not work
+{{ if (ok) { return message } }} // flow control won't work either, use ternary expressions
+```
+
+From offical documentation: Template expressions are sandboxed and only have access to a whitelist of globals such as Math and Date. You should not attempt to access user defined globals in template expressions.
+
+
 ## Components
 
 ## Lifecycle Hooks

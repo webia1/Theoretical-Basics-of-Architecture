@@ -489,6 +489,84 @@ computed: {
 }
 ```
 
+## Event Handling
+
+```jsx
+1) <button v-on:click="greet">Greet</button>
+2) <button v-on:click="say('what')">Say what</button>
+```
+// Accessing original DOM event using the special `$event` variable
+```jsx
+3) <button v-on:click="warn('Form cannot be submitted yet.', $event)">Submit</button>
+
+to 3) warn: function (message, event) { if (event) event.preventDefault(),.. 
+
+```
+
+### Event Modifiers
+
+It is a very common need to call `event.preventDefault()` or `event.stopPropagation()` 
+inside event handlers. Although we can do this easily inside methods, it would be 
+better if the methods can be purely about data logic rather than having to deal 
+with DOM event details.
+
+To address this problem, Vue provides event modifiers for `v-on`. Recall that 
+modifiers are directive postfixes denoted by a dot.
+
+.stop
+.prevent
+.capture
+.self
+.once
+
+```jsx
+<!-- the click event's propagation will be stopped -->
+<a v-on:click.stop="doThis"></a>
+
+<!-- the submit event will no longer reload the page -->
+<form v-on:submit.prevent="onSubmit"></form>
+
+<!-- modifiers can be chained -->
+<a v-on:click.stop.prevent="doThat"></a>
+
+<!-- just the modifier -->
+<form v-on:submit.prevent></form>
+
+<!-- use capture mode when adding the event listener -->
+<!-- i.e. an event targeting an inner element is handled here before being handled by that element -->
+<div v-on:click.capture="doThis">...</div>
+
+<!-- only trigger handler if event.target is the element itself -->
+<!-- i.e. not from a child element -->
+<div v-on:click.self="doThat">...</div>
+
+
+// New in 2.1.4
+
+<!-- the click event will be triggered at most once -->
+<a v-on:click.once="doThis"></a>
+
+// New in 2.3.0
+// Vue also offers the .passive modifier, corresponding to addEventListener‘s passive option.
+<!-- the scroll event's default behavior (scrolling) will happen -->
+<!-- immediately, instead of waiting for `onScroll` to complete  -->
+<!-- in case it contains `event.preventDefault()`                -->
+<div v-on:scroll.passive="onScroll">...</div>
+```
+Order matters when using modifiers because the relevant code is generated in the same order. 
+Therefore using `v-on:click.prevent.self` will prevent all clicks while `v-on:click.self.prevent` 
+will only prevent clicks on the element itself.
+
+Don’t use .passive and .prevent together, because .prevent will be ignored and your browser 
+will probably show you a warning. Remember, .passive communicates to the browser that you 
+don’t want to prevent the event’s default behavior.
+
+
+
+
+
+
+
 ## Lifecycle Hooks
 ### Overview
 ![](https://vuejs.org/images/lifecycle.png)

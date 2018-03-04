@@ -67,17 +67,42 @@ export default {
 
 ```
 
-### Bindings
+### Bindings v-bind & v-model
 
-Long form: 
+Long forms: 
 
 ```jsx
 <span v-bind:title="message">...</span>
+<button v-on:click="someMethod">...</button>
 ```
 Short form:
 ```jsx
 <span :title="message">...</span>
+<button @click="someMethod">...</button>
 ```
+Double Bindings
+```jsx
+<p>{{ message }}</p>
+<input v-model="message">
+```
+
+### v-for
+```jsx
+<li v-for="todo in todos">
+  {{ todo.text }}
+</li>
+```
+
+## Components
+
+## Lifecycle Hooks
+### Overview
+TODO: Graphic (https://vuejs.org/images/lifecycle.png)
+### created
+### mounted
+### updated
+### destroyed
+
 
 ## ESLint Configuration
 

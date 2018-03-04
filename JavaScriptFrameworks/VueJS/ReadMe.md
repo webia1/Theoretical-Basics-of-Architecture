@@ -95,12 +95,65 @@ Double Bindings
 <input v-model="message">
 ```
 
-### v-for
+### v-for & key
+
 ```jsx
-<li v-for="todo in todos">
+<li v-for="todo in todos">   // todos is an ARRAY!
   {{ todo.text }}
 </li>
+
+...
+// with key
+<div v-for="item in items" :key="item.id">
+  <!-- content -->
+</div>
 ```
+It is recommended to provide a key with v-for whenever possible, 
+unless the iterated DOM content is simple, or you are intentionally 
+relying on the default behavior for performance gains.
+
+```jsx
+<ul id="example-2">
+  <li v-for="(item, index) in items"> // items is an ARRAY!
+    {{ parentMessage }} - {{ index }} - {{ item.message }}
+  </li>
+</ul>
+```
+
+v-for in objects:
+
+```jsx
+object: {
+      firstName: 'John',
+      lastName: 'Doe',
+      age: 30
+    }
+```
+
+```jsx
+<ul id="object-example" class="demo"> // myObject is an object
+  <li v-for="value in myObject">
+    {{ value }}
+  </li>
+</ul>
+```
+
+v-for in objects, 2nd parameter
+
+```jsx
+<div v-for="(value, key) in object">
+  {{ key }}: {{ value }}
+</div>
+```
+
+v-for in objects, 3th parameter
+
+```jsx
+<div v-for="(value, key, index) in object">
+  {{ index }}. {{ key }}: {{ value }}
+</div>
+```
+
 
 ### v-if, v-else, v-else-if (New in 2.1.0),key
 

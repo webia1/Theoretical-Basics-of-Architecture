@@ -98,11 +98,25 @@ Double Bindings
 ## Lifecycle Hooks
 ### Overview
 TODO: Graphic (https://vuejs.org/images/lifecycle.png)
-### created
+### created 
+Init Events & LifeCyle, 
+beforeCreate,
+Init injections & reactivity
+created
 ### mounted
+compile template, 
+beforeMount, 
+create vm.$el and replace "el" with, 
+mounted
 ### updated
+beforeUpdate, 
+Virtual DOM re-render and patch
+updated
+mounted
 ### destroyed
-
+beforeDestroy
+Teardown watchers, child components and event listeners
+destroyed
 
 ## ESLint Configuration
 

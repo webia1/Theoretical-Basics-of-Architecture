@@ -154,6 +154,77 @@ v-for in objects, 3th parameter
 </div>
 ```
 
+v-for with a range
+
+```jsx
+<span v-for="n in 10">{{ n }} </span>
+```
+
+v-for with v-if
+
+```jsx
+<li v-for="todo in todos" v-if="!todo.isComplete">
+  {{ todo }}
+</li>
+
+... 
+
+<ul v-if="todos.length">
+  <li v-for="todo in todos">
+    {{ todo }}
+  </li>
+</ul>
+<p v-else>No todos left!</p>
+
+```
+
+v-for with a component
+
+In 2.2.0+, when using v-for with a component, a key is now required.
+
+```jsx
+<my-component v-for="item in items" :key="item.id"></my-component>
+```
+
+However, this won’t automatically pass any data to the component, because components 
+have isolated scopes of their own. In order to pass the iterated data into the component, 
+we should also use props:
+
+```jsx
+<my-component
+  v-for="(item, index) in items"
+  v-bind:item="item"
+  v-bind:index="index"
+  v-bind:key="item.id"
+></my-component>
+
+... 
+
+<div id="todo-list-example">
+  <input
+    v-model="newTodoText"
+    v-on:keyup.enter="addNewTodo"
+    placeholder="Add a todo"
+  >
+  <ul>
+    <li
+      is="todo-item"
+      v-for="(todo, index) in todos"
+      v-bind:key="todo.id"
+      v-bind:title="todo.title"
+      v-on:remove="todos.splice(index, 1)"
+    ></li>
+  </ul>
+</div>
+
+```
+
+**Attention!** Note the `is="todo-item"` attribute. This is necessary in DOM templates, 
+because only an `<li>` element is valid inside a `<ul>`. It does the same thing as <todo-item>, 
+but works around a potential browser parsing error. 
+See DOM Template Parsing Caveats 
+(https://vuejs.org/v2/guide/components.html#DOM-Template-Parsing-Caveats) to learn more.
+
 
 ### v-if, v-else, v-else-if (New in 2.1.0),key
 
@@ -399,6 +470,24 @@ vm.userProfile = Object.assign({}, vm.userProfile, {
 })
 ```
 
+## Displaying Filtered/Sorted Results
+
+Use in nested `v-for` loops better methods instead of computed
+
+```jsx
+<li v-for="n in evenNumbers">{{ n }}</li>
+...
+data: {
+  numbers: [ 1, 2, 3, 4, 5 ]
+},
+computed: {
+  evenNumbers: function () {
+    return this.numbers.filter(function (number) {
+      return number % 2 === 0
+    })
+  }
+}
+```
 
 ## Lifecycle Hooks
 ### Overview

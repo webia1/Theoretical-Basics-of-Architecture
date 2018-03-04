@@ -226,8 +226,34 @@ also toggling is possible, the following will always apply errorClass, but will 
 using object synthax within array syntax is also possible:
 
 ```jsx
-<div v-bind:class="[{ active: isActive }, errorClass]"></div>
+  <div v-bind:class="[{ active: isActive }, errorClass]"></div>
 ```
+
+with components
+
+```jsx
+<my-component class="baz boo"></my-component>
+<my-component v-bind:class="{ active: isActive }"></my-component>
+
+```
+
+inline styles
+
+```jsx
+<div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+<div v-bind:style="styleObject"></div>
+<div v-bind:style="[baseStyles, overridingStyles]"></div>
+```
+
+Auto-prefixing
+
+When you use a CSS property that requires vendor prefixes in v-bind:style, for example transform, Vue will automatically detect and add appropriate prefixes to the applied styles. Starting in 2.3.0+ you can provide an array of multiple (prefixed) values to a style property, for example:
+
+```jsx
+<div v-bind:style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>
+```
+This will only render the last value in the array which the browser supports. In this example, it will render display: flex for browsers that support the unprefixed version of flexbox.
+
 
 ## Lifecycle Hooks
 ### Overview

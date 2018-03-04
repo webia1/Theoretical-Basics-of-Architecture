@@ -97,7 +97,7 @@ Double Bindings
 
 ## Lifecycle Hooks
 ### Overview
-TODO: Graphic (https://vuejs.org/images/lifecycle.png)
+![](https://vuejs.org/images/lifecycle.png)
 ### created 
 Init Events & LifeCyle, 
 beforeCreate,

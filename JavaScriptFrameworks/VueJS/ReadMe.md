@@ -557,14 +557,86 @@ Order matters when using modifiers because the relevant code is generated in the
 Therefore using `v-on:click.prevent.self` will prevent all clicks while `v-on:click.self.prevent` 
 will only prevent clicks on the element itself.
 
-Don’t use .passive and .prevent together, because .prevent will be ignored and your browser 
-will probably show you a warning. Remember, .passive communicates to the browser that you 
+Don’t use `.passive` and `.prevent` together, because `.prevent` will be ignored and your browser 
+will probably show you a warning. Remember, `.passive` communicates to the browser that you 
 don’t want to prevent the event’s default behavior.
 
+### Key Modifiers
 
+```jsx
+<!-- only call `vm.submit()` when the `keyCode` is 13 -->
+<input v-on:keyup.13="submit">
+```
+Remembering all the keyCodes is a hassle, so Vue provides aliases for the most commonly used keys:
 
+```jsx
+<!-- same as above -->
+<input v-on:keyup.enter="submit">
 
+<!-- also works for shorthand -->
+<input @keyup.enter="submit">
 
+// Here is the full list of key modifier aliases
+
+.enter
+.tab
+.delete (captures both “Delete” and “Backspace” keys)
+.esc
+.space
+.up
+.down
+.left
+.right
+
+// You can also define custom key modifier aliases via the global config.keyCodes object:
+
+// enable `v-on:keyup.f1`
+Vue.config.keyCodes.f1 = 112
+
+```
+#### Automatic Key Modifiers (New in 2.5.0)
+
+You can also directly use any valid key names exposed via KeyboardEvent.key as modifiers by converting them to kebab-case:
+
+`<input @keyup.page-down="onPageDown">`
+
+In the above example, the handler will only be called if $event.key === 'PageDown'.
+
+A few keys (.esc and all arrow keys) have inconsistent key values in IE9, their built-in aliases should be preferred if you need to support IE9.
+
+#### System Modifier Keys
+
+.ctrl
+.alt
+.shift
+.meta
+.exact // New in 2.5.0
+
+```jsx
+<!-- Alt + C -->
+<input @keyup.alt.67="clear">
+
+<!-- Ctrl + Click -->
+<div @click.ctrl="doSomething">Do something</div>
+```
+The .exact modifier allows control of the exact combination of system modifiers needed to trigger an event.
+
+```jsx
+<!-- this will fire even if Alt or Shift is also pressed -->
+<button @click.ctrl="onClick">A</button>
+
+<!-- this will only fire when Ctrl and no other keys are pressed -->
+<button @click.ctrl.exact="onCtrlClick">A</button>
+
+<!-- this will only fire when no system modifiers are pressed -->
+<button @click.exact="onClick">A</button>
+```
+
+#### Mouse Button Modifiers
+
+.left
+.right
+.middle
 
 
 ## Lifecycle Hooks

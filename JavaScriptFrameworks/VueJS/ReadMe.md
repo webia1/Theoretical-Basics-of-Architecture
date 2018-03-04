@@ -135,6 +135,7 @@ From offical documentation: Template expressions are sandboxed and only have acc
 
 
 ## Components
+### Methods
 ### Computed Properties
 Better use computed properties instead of exressions in templates. Computed Properties 
 are cached and won'be calculated anew each time.
@@ -158,6 +159,20 @@ are cached and won'be calculated anew each time.
   }
   ....
 
+```
+### Watchers
+```jsx
+  data: {
+    question: '',
+  ...
+  watch: {
+    question: function (newQuestion, oldQuestion) {
+      this.answer = 'Waiting for you to stop typing...'
+      this.getAnswer()
+    }
+  },
+  methods: {
+    getAnswer: _.debounce(,..
 ```
 
 ## Lifecycle Hooks

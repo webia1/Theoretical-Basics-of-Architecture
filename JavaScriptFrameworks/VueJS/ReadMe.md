@@ -67,19 +67,28 @@ export default {
 
 ```
 
-### Bindings v-bind & v-model
+### Bindings v-bind (:), v-on (@) & v-model
 
 Long forms: 
 
 ```jsx
-<span v-bind:title="message">...</span>
-<button v-on:click="someMethod">...</button>
+<span v-bind:title="message",..
+<button v-on:click="someMethod",..
+<a v-bind:href="url",..
+
 ```
 Short form:
 ```jsx
-<span :title="message">...</span>
-<button @click="someMethod">...</button>
+<span :title="message",..
+<button @click="someMethod",..
+<a :href="url",..
 ```
+Modifiers (event.preventDefault(),..)
+```jsx
+<form v-on:submit.prevent="onSubmit",..
+
+```
+
 Double Bindings
 ```jsx
 <p>{{ message }}</p>
@@ -92,6 +101,10 @@ Double Bindings
   {{ todo.text }}
 </li>
 ```
+
+### v-if
+
+<p v-if="seen",..
 
 ## Template Syntax Revisited
 
@@ -122,6 +135,30 @@ From offical documentation: Template expressions are sandboxed and only have acc
 
 
 ## Components
+### Computed Properties
+Better use computed properties instead of exressions in templates. Computed Properties 
+are cached and won'be calculated anew each time.
+
+```jsx
+<template,..
+<h2>{{someComputedValues.reversed}}</h2>
+<h2>{{someComputedValues.upper}}</h2>
+
+<script,..
+  ...
+  computed: {
+    someComputedValues () {
+      var reversed = this.someData.split('').reverse().join('');
+      var upper = reversed.toUpperCase();
+      return {
+        reversed,
+        upper,
+      }
+    }
+  }
+  ....
+
+```
 
 ## Lifecycle Hooks
 ### Overview

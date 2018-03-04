@@ -102,9 +102,64 @@ Double Bindings
 </li>
 ```
 
-### v-if
+### v-if, v-else, v-else-if (New in 2.1.0),key
 
+```jsx
 <p v-if="seen",..
+
+...
+
+<template v-if="ok">
+  <h1>Title</h1>
+  <p>Paragraph 1</p>
+  <p>Paragraph 2</p>
+</template>
+...
+
+<div v-if="Math.random() > 0.5">
+  Now you see me
+</div>
+<div v-else>
+  Now you don't
+</div>
+...
+
+<div v-if="type === 'A'">
+  A
+</div>
+<div v-else-if="type === 'B'">
+  B
+</div>
+<div v-else-if="type === 'C'">
+  C
+</div>
+<div v-else>
+  Not A/B/C
+</div>
+ ...
+ // Label elements re-used but different inputs -> thank key
+ <template v-if="loginType === 'username'">
+  <label>Username</label>
+  <input placeholder="Enter your username" key="username-input">
+</template>
+<template v-else>
+  <label>Email</label>
+  <input placeholder="Enter your email address" key="email-input">
+</template>
+```
+
+### v-show
+
+The difference between v-if and v-show is that an element with v-show will always be rendered and remain in the DOM; v-show only toggles the display CSS property of the element.
+
+```jsx
+<h1 v-show="ok">Hello!</h1>
+```
+
+### important issues
+
+When used together with v-if, v-for has a higher priority than v-if. See the list rendering 
+guide (https://vuejs.org/v2/guide/list.html#v-for-with-v-if) for details.
 
 ## Template Syntax Revisited
 

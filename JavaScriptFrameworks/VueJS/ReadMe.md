@@ -638,6 +638,142 @@ The .exact modifier allows control of the exact combination of system modifiers 
 .right
 .middle
 
+## Form Input Bindings
+
+`v-model` is essentially syntax sugar for updating data on user input events, 
+plus special care for some edge cases. v-model will ignore the initial value, 
+checked or selected attributes found on any form elements. It will always treat 
+the Vue instance data as the source of truth. You should declare the initial 
+value on the JavaScript side, inside the data option of your component.
+plus special care for some edge cases. v-model will ignore the initial value, checked or selected attributes found on any form elements. It will always treat the Vue instance data as the source of truth. You should declare the initial value on the JavaScript side, inside the data option of your component.
+
+```jsx
+<input v-model="message",..
+<textarea v-model="message",..
+```
+### (Multiple) checkboxes/radio 
+
+```jsx
+<div id='example-3'>
+  <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+  <label for="jack">Jack</label>
+  <input type="checkbox" id="john" value="John" v-model="checkedNames">
+  <label for="john">John</label>
+  <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+  <label for="mike">Mike</label>
+  <br>
+  <span>Checked names: {{ checkedNames }}</span>
+</div>
+...
+data: {
+    checkedNames: []
+  },..
+  
+...
+
+<input type="radio" id="one" value="One" v-model="picked">
+<label for="one">One</label>
+<br>
+<input type="radio" id="two" value="Two" v-model="picked">
+<label for="two">Two</label>
+<br>
+<span>Picked: {{ picked }}</span>
+
+```
+
+### Select
+
+```jsx
+<select v-model="selected">
+  <option disabled value="">Please select one</option>
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
+</select>
+<span>Selected: {{ selected }}</span>
+
+... 
+// Multiple Select
+<select v-model="selected" multiple>
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
+</select>
+<br>
+<span>Selected: {{ selected }}</span>
+
+...
+// Dynamic options rendered with v-for
+<select v-model="selected">
+  <option v-for="option in options" v-bind:value="option.value">
+    {{ option.text }}
+  </option>
+</select>
+<span>Selected: {{ selected }}</span>
+...
+options: [
+      { text: 'One', value: 'A' },
+      { text: 'Two', value: 'B' },
+      { text: 'Three', value: 'C' }
+    ],..
+...
+```
+
+### Value Bindings
+
+```jsx
+<input
+  type="checkbox"
+  v-model="toggle"
+  true-value="yes"
+  false-value="no"
+>
+... 
+// when checked:
+vm.toggle === 'yes'
+// when unchecked:
+vm.toggle === 'no'
+...
+<input type="radio" v-model="pick" v-bind:value="a">
+...
+// when checked:
+vm.pick === vm.a
+...
+<select v-model="selected">
+  <!-- inline object literal -->
+  <option v-bind:value="{ number: 123 }">123</option>
+</select>
+...
+// when selected:
+typeof vm.selected // => 'object'
+vm.selected.number // => 123
+```
+### Modifiers
+
+.lazy (sync after change events)
+
+```jsx
+<!-- synced after "change" instead of "input" -->
+<input v-model.lazy="msg" >
+```
+
+.number (If you want user input to be automatically typecast as a number, 
+you can add the number modifier to your v-model managed inputs:)
+
+```jsx
+<input v-model.number="age" type="number">
+```
+
+This is often useful, because even with type="number", the value of HTML input elements 
+always returns a string.
+
+.trim (If you want user input to be trimmed automatically, you can add the trim 
+modifier to your v-model managed inputs:)
+
+```jsx
+<input v-model.trim="msg">
+```
+
 
 ## Lifecycle Hooks
 ### Overview

@@ -174,6 +174,60 @@ are cached and won'be calculated anew each time.
   methods: {
     getAnswer: _.debounce(,..
 ```
+## Binding HTML Classes
+
+```jsx
+<div class="static"
+     v-bind:class="{ active: isActive, 'text-danger': hasError }">
+</div>
+```
+We can also bind to a computed property
+
+```jsx
+
+<div v-bind:class="classObject"></div>
+...
+
+data() {
+    return {
+      isActive: true,
+      error: null
+    }
+},
+
+computed: {
+  classObject: function () {
+    return {
+      active: this.isActive && !this.error,
+      'text-danger': this.error && this.error.type === 'fatal'
+    }
+  }
+}
+```
+
+or use an array
+
+```jsx
+<div v-bind:class="[activeClass, errorClass]"></div>
+...
+data() {
+  return {
+    activeClass: 'active',
+    errorClass: 'text-danger'
+  }
+}
+```
+
+also toggling is possible, the following will always apply errorClass, but will only apply activeClass when isActive is truthy.
+
+```jsx
+<div v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
+```
+using object synthax within array syntax is also possible:
+
+```jsx
+<div v-bind:class="[{ active: isActive }, errorClass]"></div>
+```
 
 ## Lifecycle Hooks
 ### Overview

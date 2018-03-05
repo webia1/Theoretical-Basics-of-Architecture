@@ -467,6 +467,121 @@ string templates from one of the following sources:
 
 Therefore, prefer using string templates whenever possible.
 
+### Composing Components
+
+In Vue, the parent-child component relationship can be summarized as 
+props down, events up. Every component instance has its own isolated scope. 
+
+`camelCase` in JavaScript, `kebap-case` in HTML
+
+```jsx
+props: ['myMessage'],
+...
+<child my-message="hello!"></child>
+```
+
+Similar to binding a normal attribute to an expression, 
+we can also use v-bind for dynamically binding props 
+to data on the parent. Whenever the data is updated in the parent, 
+it will also flow down to the child:
+
+```jsx
+<div id="prop-example-2">
+  <input v-model="parentMsg">
+  <br>
+  <child v-bind:my-message="parentMsg"></child>
+</div>
+```
+
+If you want to pass all the properties in an object as props:
+
+```jsx
+todo: {
+  text: 'Learn Vue',
+  isComplete: false
+}
+...
+<todo-item v-bind="todo"></todo-item>
+```
+
+Initial value for a prop:
+
+```jsx
+<!-- this passes down an actual number -->
+<comp v-bind:some-prop="1"></comp>
+```
+but better use following approaches for initial values:
+
+```jsx
+props: ['initialCounter'],
+data: function () {
+  return { counter: this.initialCounter }
+}
+... // or something like that
+props: ['size'],
+computed: {
+  normalizedSize: function () {
+    return this.size.trim().toLowerCase()
+  }
+}
+```
+
+**Note** that objects and arrays in JavaScript are passed by reference, 
+so if the prop is an array or object, mutating the object or array 
+itself inside the child will affect parent state.
+
+#### Prop Validation
+
+```jsx
+props: {
+    // basic type check (`null` means accept any type)
+    propA: Number,
+    // multiple possible types
+    propB: [String, Number],
+    // a required string
+    propC: {
+      type: String,
+      required: true
+    },
+    // a number with default value
+    propD: {
+      type: Number,
+      default: 100
+    },
+    // object/array defaults should be returned from a
+    // factory function
+    propE: {
+      type: Object,
+      default: function () {
+        return { message: 'hello' }
+      }
+    },
+    // custom validator function
+    propF: {
+      validator: function (value) {
+        return value > 10
+      }
+    }
+  }
+```
+The type can be one of the following native constructors:
+
+- String
+- Number
+- Boolean
+- Function
+- Object
+- Array
+- Symbol
+
+In addition, type can also be a custom constructor function and the 
+assertion will be made with an instanceof check.
+
+When prop validation fails, Vue will produce a console warning 
+(if using the development build). Note that props are validated before 
+a component instance is created, so within default or validator functions, 
+instance properties such as from data, computed, or methods will not be available.
+
 ## Array change detection
 
 Mutation methods: push, pop, shift, unshift, splice, sort, reverse,..

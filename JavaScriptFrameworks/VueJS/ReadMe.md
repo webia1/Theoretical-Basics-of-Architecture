@@ -353,7 +353,7 @@ are cached and won'be calculated anew each time.
   methods: {
     getAnswer: _.debounce(,..
 ```
-## Binding HTML Classes
+### Binding HTML Classes
 
 ```jsx
 <div class="static"
@@ -432,6 +432,8 @@ When you use a CSS property that requires vendor prefixes in v-bind:style, for e
 <div v-bind:style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>
 ```
 This will only render the last value in the array which the browser supports. In this example, it will render display: flex for browsers that support the unprefixed version of flexbox.
+
+### DOM Template Parsing Caveats
 
 ## Array change detection
 

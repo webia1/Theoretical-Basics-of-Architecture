@@ -530,6 +530,9 @@ computed: {
 so if the prop is an array or object, mutating the object or array 
 itself inside the child will affect parent state.
 
+**Note** components can accept arbitrary attributes, which are added 
+to the component’s root element.
+
 #### Prop Validation
 
 ```jsx

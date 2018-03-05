@@ -1091,7 +1091,67 @@ And the template for the list component:
 </ul>
 ```
 
+## Dynamic Components, keep-alive
 
+- https://vuejs.org/v2/guide/components.html#Dynamic-Components
+- https://vuejs.org/v2/guide/components.html#keep-alive
+
+```jsx
+<component v-bind:is="currentView">
+  <!-- component changes when vm.currentView changes! -->
+</component>
+```
+
+If you want to keep the switched-out components in memory so that you 
+can preserve their state or avoid re-rendering, you can wrap a dynamic 
+component in a <keep-alive> element:
+
+```jsx
+<keep-alive>
+  <component :is="currentView">
+    <!-- inactive components will be cached! -->
+  </component>
+</keep-alive>
+```
+Check out more details on <keep-alive> in the API (https://vuejs.org/v2/api/#keep-alive) reference.
+
+## Misc
+- Reusable Components: https://vuejs.org/v2/guide/components.html#Authoring-Reusable-Components
+- Child Component Refs: https://vuejs.org/v2/guide/components.html#Child-Component-Refs
+- **Async Component:** https://vuejs.org/v2/guide/components.html#Async-Components
+- **Advanced Async Components:** https://vuejs.org/v2/guide/components.html#Advanced-Async-Components
+
+```jsx
+const AsyncComp = () => ({
+  // The component to load. Should be a Promise
+  component: import('./MyComp.vue'),
+  // A component to use while the async component is loading
+  loading: LoadingComp,
+  // A component to use if the load fails
+  error: ErrorComp,
+  // Delay before showing the loading component. Default: 200ms.
+  delay: 200,
+  // The error component will be displayed if a timeout is
+  // provided and exceeded. Default: Infinity.
+  timeout: 3000
+})
+```
+**Note** You also need to use `vue-router 2.4.0+` if you wish to use the above syntax for route components.
+
+- Component Naming Conventions (https://vuejs.org/v2/guide/components.html#Component-Naming-Conventions)
+- Recursive Components (https://vuejs.org/v2/guide/components.html#Recursive-Components)
+- Circular References Between Components (https://vuejs.org/v2/guide/components.html#Circular-References-Between-Components)
+
+**See beforeCreate hook** for Circular References Between Components! 
+
+- Inline Templates (https://vuejs.org/v2/guide/components.html#Inline-Templates)
+- X-Templates (https://vuejs.org/v2/guide/components.html#X-Templates)
+
+Another way to define templates is inside of a script element with the type text/x-template, then referencing the template by an id.
+
+- Cheap Static Components with `v-once` (https://vuejs.org/v2/guide/components.html#Cheap-Static-Components-with-v-once)
+
+Rendering plain HTML elements is very fast in Vue, but sometimes you might have a component that contains a lot of static content. In these cases, you can ensure that it’s only evaluated once and then cached by adding the v-once directive to the root element.
 
 ## ESLint Configuration
 

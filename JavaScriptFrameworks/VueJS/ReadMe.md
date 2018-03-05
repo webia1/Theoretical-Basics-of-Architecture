@@ -790,6 +790,67 @@ The .exact modifier allows control of the exact combination of system modifiers 
 .right
 .middle
 
+### Custom Events
+
+Every Vue instance implements an **events interface**, which means it can:
+
+- Listen to an event using `$on(eventName)`
+- Trigger an event using `$emit(eventName, optionalPayload)`
+
+**Note** that Vue’s event system is different from the browser’s EventTarget API. Though they work similarly, $on and $emit are not aliases for addEventListener and dispatchEvent. 
+
+In addition, a parent component can listen to the events emitted from a child component using v-on directly in the template where the child component is used. **But** You cannot use `$on` to listen to events emitted by children. You must use `v-on` directly in the template, like:
+
+```jsx
+<div id="counter-event-example">
+  <p>{{ total }}</p>
+  <button-counter v-on:increment="incrementTotal"></button-counter>
+  <button-counter v-on:increment="incrementTotal"></button-counter>
+</div>
+```
+
+Same approach with payload
+
+```jsx
+// Child Template
+<input type="text" v-model="message" />
+<button v-on:click="handleSendMessage">Send</button>
+...
+// Child Component
+data: function () {
+    return {
+      message: 'test message'
+    }
+  },
+  methods: {
+    handleSendMessage: function () {
+      this.$emit('message', { message: this.message })
+    }
+  }
+  ...
+  // parent template
+<p v-for="(msg, index) in messages" :key="index">{{ msg }}</p>
+<HelloWorld v-on:message="handleMessage"></HelloWorld>
+...
+// parent component
+data() {
+    return {
+      messages: [],
+    };
+  },
+   methods: {
+    handleMessage: function (payload) {
+      this.messages.push(payload.message)
+    }
+  },
+  components: {
+    HelloWorld,
+  },
+//
+
+```
+
+
 ## Form Input Bindings
 
 `v-model` is essentially syntax sugar for updating data on user input events, 

@@ -847,9 +847,32 @@ data() {
     HelloWorld,
   },
 //
-
 ```
+### Binding Native Events to Components
+There may be times when you want to listen for a native event on the 
+root element of a component. In these cases, you can use the 
+`.native` modifier for `v-on`. For example:
 
+`<my-component v-on:click.native="doTheThing"></my-component>`
+
+### .sync Modifier (2.3.0+)
+```jsx
+<comp :foo.sync="bar"></comp> // is expanded into:
+<comp :foo="bar" @update:foo="val => bar = val"></comp>
+```
+For the child component to update foo‘s value, it needs to explicitly 
+emit an event instead of mutating the prop:
+
+```jsx
+this.$emit('update:foo', newValue)
+```
+The `.sync` modifier can also be used with v-bind when using an 
+object to set multiple properties at once:
+
+```jsx
+<comp v-bind.sync="{ foo: 1, bar: 2 }"></comp>
+```
+This has the effect of adding v-on update listeners for both foo and bar.
 
 ## Form Input Bindings
 

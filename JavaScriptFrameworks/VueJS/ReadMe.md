@@ -1185,6 +1185,25 @@ Another way to define templates is inside of a script element with the type text
 
 Rendering plain HTML elements is very fast in Vue, but sometimes you might have a component that contains a lot of static content. In these cases, you can ensure that it’s only evaluated once and then cached by adding the v-once directive to the root element.
 
+## Functional Components
+
+In 2.5.0+, if you are using single-file components, template-based functional components can be declared with:
+
+```
+<template functional>
+</template>
+```
+Everything the component needs is passed through context, which is an object containing:
+
+- props: An object of the provided props
+- children: An array of the VNode children
+- slots: A function returning a slots object
+- data: The entire data object passed to the component
+- parent: A reference to the parent component
+- listeners: (2.3.0+) An object containing parent-registered event listeners. This is an alias to data.on
+- injections: (2.3.0+) if using the inject option, this will contain resolved injections.
+
+
 ## ESLint Configuration
 
 ```javascript

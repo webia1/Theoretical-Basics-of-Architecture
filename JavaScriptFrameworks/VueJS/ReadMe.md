@@ -665,11 +665,22 @@ with DOM event details.
 To address this problem, Vue provides event modifiers for `v-on`. Recall that 
 modifiers are directive postfixes denoted by a dot.
 
-.stop
-.prevent
-.capture
-.self
-.once
+- .stop
+- .prevent
+- .capture (prefix: !)
+- .capture.once or .once.capture (prefix: ~!)
+- .self
+- .once (prefix: ~ )
+
+- .passive (prefix: &)
+
+```jsx
+on: {
+  '!click': this.doThisInCapturingMode,
+  '~keyup': this.doThisOnce,
+  '~!mouseover': this.doThisOnceInCapturingMode
+}
+```
 
 ```jsx
 <!-- the click event's propagation will be stopped -->
@@ -744,8 +755,29 @@ Remembering all the keyCodes is a hassle, so Vue provides aliases for the most c
 
 // enable `v-on:keyup.f1`
 Vue.config.keyCodes.f1 = 112
-
 ```
+Here’s an example with all of these modifiers used together:
+
+```jsx
+on: {
+  keyup: function (event) {
+    // Abort if the element emitting the event is not
+    // the element the event is bound to
+    if (event.target !== event.currentTarget) return
+    // Abort if the key that went up is not the enter
+    // key (13) and the shift key was not held down
+    // at the same time
+    if (!event.shiftKey || event.keyCode !== 13) return
+    // Stop event propagation
+    event.stopPropagation()
+    // Prevent the default keyup handler for this element
+    event.preventDefault()
+    // ...
+  }
+}
+```
+
+
 #### Automatic Key Modifiers (New in 2.5.0)
 
 You can also directly use any valid key names exposed via KeyboardEvent.key as modifiers by converting them to kebab-case:

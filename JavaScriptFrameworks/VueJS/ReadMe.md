@@ -1009,7 +1009,10 @@ modifier to your v-model managed inputs:)
 ```jsx
 <input v-model.trim="msg">
 ```
-
+### Form Input Components using Custom Events
+see details here: 
+https://vuejs.org/v2/guide/components.html#Form-Input-Components-using-Custom-Events
+https://vuejs.org/v2/guide/components.html#Customizing-Component-v-model
 
 ## Lifecycle Hooks
 ### Overview
@@ -1033,6 +1036,62 @@ mounted
 beforeDestroy
 Teardown watchers, child components and event listeners
 destroyed
+
+## Content Distribution with Slots
+
+It is about a process called content distribution (or “transclusion” if you are 
+familiar with Angular). Vue.js implements a content distribution API that 
+is modeled after the current Web Components spec 
+(https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md) draft, 
+using the special `<slot>` element to serve as distribution outlets for the original content.
+
+### Compilation Scope
+
+Everything in the parent template is compiled in parent scope; everything in the child template is compiled in child scope.
+
+### Single Slot, Named Slots, Scoped Slots
+
+Parent content will be discarded unless the child component template contains at 
+least one <slot> outlet. When there is only one slot with no attributes, the entire 
+content fragment will be inserted at its position in the DOM, replacing the slot itself.
+  
+Anything originally inside the <slot> tags is considered fallback content. Fallback content 
+is compiled in the child scope and will only be displayed if the hosting element is 
+empty and has no content to be inserted.  
+
+- https://vuejs.org/v2/guide/components.html#Single-Slot
+- https://vuejs.org/v2/guide/components.html#Named-Slots
+- https://vuejs.org/v2/guide/components.html#Scoped-Slots
+
+In 2.5.0+, slot-scope is no longer limited to <template> and can be used on any element or component.
+
+A more typical use case for scoped slots would be a list component that allows the component 
+consumer to customize how each item in the list should be rendered: 
+
+```jsx
+<my-awesome-list :items="items">
+  <!-- scoped slot can be named too -->
+  <li
+    slot="item"
+    slot-scope="props"
+    class="my-fancy-item">
+    {{ props.text }}
+  </li>
+</my-awesome-list>
+```
+And the template for the list component:
+
+```jsx
+<ul>
+  <slot name="item"
+    v-for="item in items"
+    :text="item.text">
+    <!-- fallback content here -->
+  </slot>
+</ul>
+```
+
+
 
 ## ESLint Configuration
 

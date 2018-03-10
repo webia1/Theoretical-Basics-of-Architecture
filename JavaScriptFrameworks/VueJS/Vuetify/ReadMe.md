@@ -1,21 +1,20 @@
 
-# Vuetify {ignore=true} :+1: 
+# Vuetify {ignore=true} 
 
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
 
-* [Vuetify {ignore=true} :+1:](#vuetify-ignoretrue-1)
-	* [Introduction](#introduction)
-	* [Design Principles](#design-principles)
-		* [Layouts](#layouts)
-			* [Basis Example](#basis-example)
-	* [Snippets](#snippets)
-		* [Light or dark theme for the application](#light-or-dark-theme-for-the-application)
-		* [Centering vertically](#centering-vertically)
-		* [Turn off default scroll bar](#turn-off-default-scroll-bar)
-		* [`activator` pitfalls](#activator-pitfalls)
+* [Introduction](#introduction)
+* [Design Principles](#design-principles)
+	* [Layouts](#layouts)
+		* [Basis Example](#basis-example)
+* [Snippets](#snippets)
+	* [Light or dark theme for the application](#light-or-dark-theme-for-the-application)
+	* [Centering vertically](#centering-vertically)
+	* [Turn off default scroll bar](#turn-off-default-scroll-bar)
+	* [`activator` pitfalls](#activator-pitfalls)
 
 <!-- /code_chunk_output -->
 

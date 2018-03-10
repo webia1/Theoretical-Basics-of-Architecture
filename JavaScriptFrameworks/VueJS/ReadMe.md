@@ -1,4 +1,73 @@
-# Vue
+# Vue {ignore=true}
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+****
+* [Basics](#basics)
+	* [main.js](#mainjs)
+	* [App.vue](#appvue)
+	* [Bindings v-bind (:), v-on (@) & v-model](#bindings-v-bind-v-on-v-model)
+		* [Long forms:](#long-forms)
+		* [Short form:](#short-form)
+		* [Modifiers (event.preventDefault(),..)](#modifiers-eventpreventdefault)
+		* [Double Bindings](#double-bindings)
+	* [v-for & key](#v-for-key)
+		* [v-for in objects:](#v-for-in-objects)
+		* [v-for in objects, 2nd parameter](#v-for-in-objects-2nd-parameter)
+		* [v-for in objects, 3th parameter](#v-for-in-objects-3th-parameter)
+		* [v-for with a range](#v-for-with-a-range)
+		* [v-for with v-if](#v-for-with-v-if)
+		* [v-for with a component](#v-for-with-a-component)
+	* [v-if, v-else, v-else-if (New in 2.1.0),key](#v-if-v-else-v-else-if-new-in-210key)
+	* [v-show](#v-show)
+	* [important issues](#important-issues)
+* [Template Syntax Revisited](#template-syntax-revisited)
+	* [Using Expressions](#using-expressions)
+* [Components](#components)
+	* [Methods](#methods)
+	* [Computed Properties](#computed-properties)
+	* [Watchers](#watchers)
+	* [Binding HTML Classes](#binding-html-classes)
+		* [with components](#with-components)
+		* [inline styles](#inline-styles)
+		* [Auto-prefixing](#auto-prefixing)
+	* [DOM Template Parsing Caveats](#dom-template-parsing-caveats)
+	* [Composing Components](#composing-components)
+		* [Prop Validation](#prop-validation)
+* [Array change detection](#array-change-detection)
+	* [Caveats (Vorsichtsmaßnahmen)](#caveats-vorsichtsmaßnahmen)
+* [Displaying Filtered/Sorted Results](#displaying-filteredsorted-results)
+* [Event Handling](#event-handling)
+	* [Event Modifiers](#event-modifiers)
+	* [Key Modifiers](#key-modifiers)
+		* [Automatic Key Modifiers (New in 2.5.0)](#automatic-key-modifiers-new-in-250)
+		* [System Modifier Keys](#system-modifier-keys)
+		* [Mouse Button Modifiers](#mouse-button-modifiers)
+	* [Custom Events](#custom-events)
+	* [Binding Native Events to Components](#binding-native-events-to-components)
+	* [.sync Modifier (2.3.0+)](#sync-modifier-230)
+* [Form Input Bindings](#form-input-bindings)
+	* [(Multiple) checkboxes/radio](#multiple-checkboxesradio)
+	* [Select](#select)
+	* [Value Bindings](#value-bindings)
+	* [Modifiers](#modifiers)
+	* [Form Input Components using Custom Events](#form-input-components-using-custom-events)
+* [Lifecycle Hooks](#lifecycle-hooks)
+	* [Overview](#overview)
+	* [created](#created)
+	* [mounted](#mounted)
+	* [updated](#updated)
+	* [destroyed](#destroyed)
+* [Content Distribution with Slots](#content-distribution-with-slots)
+	* [Compilation Scope](#compilation-scope)
+	* [Single Slot, Named Slots, Scoped Slots](#single-slot-named-slots-scoped-slots)
+* [Dynamic Components, keep-alive](#dynamic-components-keep-alive)
+* [Misc](#misc)
+* [Functional Components](#functional-components)
+* [ESLint Configuration](#eslint-configuration)
+
+<!-- /code_chunk_output -->
 
 ## Basics
 ### main.js
@@ -69,7 +138,7 @@ export default {
 
 ### Bindings v-bind (:), v-on (@) & v-model
 
-Long forms: 
+#### Long forms: 
 
 ```jsx
 <span v-bind:title="message",..
@@ -77,19 +146,19 @@ Long forms:
 <a v-bind:href="url",..
 
 ```
-Short form:
+#### Short form:
 ```jsx
 <span :title="message",..
 <button @click="someMethod",..
 <a :href="url",..
 ```
-Modifiers (event.preventDefault(),..)
+#### Modifiers (event.preventDefault(),..)
 ```jsx
 <form v-on:submit.prevent="onSubmit",..
 
 ```
 
-Double Bindings
+#### Double Bindings
 ```jsx
 <p>{{ message }}</p>
 <input v-model="message">
@@ -120,7 +189,7 @@ relying on the default behavior for performance gains.
 </ul>
 ```
 
-v-for in objects:
+#### v-for in objects:
 
 ```jsx
 object: {
@@ -138,7 +207,7 @@ object: {
 </ul>
 ```
 
-v-for in objects, 2nd parameter
+#### v-for in objects, 2nd parameter
 
 ```jsx
 <div v-for="(value, key) in object">
@@ -146,7 +215,7 @@ v-for in objects, 2nd parameter
 </div>
 ```
 
-v-for in objects, 3th parameter
+#### v-for in objects, 3th parameter
 
 ```jsx
 <div v-for="(value, key, index) in object">
@@ -154,13 +223,13 @@ v-for in objects, 3th parameter
 </div>
 ```
 
-v-for with a range
+#### v-for with a range
 
 ```jsx
 <span v-for="n in 10">{{ n }} </span>
 ```
 
-v-for with v-if
+#### v-for with v-if
 
 ```jsx
 <li v-for="todo in todos" v-if="!todo.isComplete">
@@ -178,7 +247,7 @@ v-for with v-if
 
 ```
 
-v-for with a component
+#### v-for with a component
 
 In 2.2.0+, when using v-for with a component, a key is now required.
 
@@ -295,7 +364,7 @@ guide (https://vuejs.org/v2/guide/list.html#v-for-with-v-if) for details.
 <button v-bind:disabled="isButtonDisabled",.. // Boolean, true or false (null, undefined, false)
 ```
 
-Using Expressions
+### Using Expressions
 
 ```jsx
 {{ number + 1 }}
@@ -408,7 +477,7 @@ using object synthax within array syntax is also possible:
   <div v-bind:class="[{ active: isActive }, errorClass]"></div>
 ```
 
-with components
+#### with components
 
 ```jsx
 <my-component class="baz boo"></my-component>
@@ -416,7 +485,7 @@ with components
 
 ```
 
-inline styles
+#### inline styles
 
 ```jsx
 <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
@@ -424,7 +493,7 @@ inline styles
 <div v-bind:style="[baseStyles, overridingStyles]"></div>
 ```
 
-Auto-prefixing
+#### Auto-prefixing
 
 When you use a CSS property that requires vendor prefixes in v-bind:style, for example transform, Vue will automatically detect and add appropriate prefixes to the applied styles. Starting in 2.3.0+ you can provide an array of multiple (prefixed) values to a style property, for example:
 
@@ -526,11 +595,11 @@ computed: {
 }
 ```
 
-**Note** that objects and arrays in JavaScript are passed by reference, 
+> **Note** that objects and arrays in JavaScript are passed by reference, 
 so if the prop is an array or object, mutating the object or array 
 itself inside the child will affect parent state.
 
-**Note** components can accept arbitrary attributes, which are added 
+> **Note** components can accept arbitrary attributes, which are added 
 to the component’s root element.
 
 #### Prop Validation
@@ -644,15 +713,21 @@ computed: {
 ## Event Handling
 
 ```jsx
-1) <button v-on:click="greet">Greet</button>
-2) <button v-on:click="say('what')">Say what</button>
+<button v-on:click="greet">Greet</button>
+<button v-on:click="say('what')">Say what</button>
 ```
-// Accessing original DOM event using the special `$event` variable
+Accessing original DOM event using the special `$event` variable
+
 ```jsx
-3) <button v-on:click="warn('Form cannot be submitted yet.', $event)">Submit</button>
-
-to 3) warn: function (message, event) { if (event) event.preventDefault(),.. 
-
+// Template
+  <button 
+      v-on:click="warn('Form cannot be submitted yet.', $event">
+        Submit
+  </button>
+```
+```jsx 
+// Component
+warn: function (message, event) { if (event) event.preventDefault(),.. 
 ```
 
 ### Event Modifiers
@@ -829,7 +904,7 @@ Every Vue instance implements an **events interface**, which means it can:
 - Listen to an event using `$on(eventName)`
 - Trigger an event using `$emit(eventName, optionalPayload)`
 
-**Note** that Vue’s event system is different from the browser’s EventTarget API. Though they work similarly, $on and $emit are not aliases for addEventListener and dispatchEvent. 
+> **Note** that Vue’s event system is different from the browser’s EventTarget API. Though they work similarly, `$on` and `$emit` are not aliases for `addEventListener` and `dispatchEvent`. 
 
 In addition, a parent component can listen to the events emitted from a child component using v-on directly in the template where the child component is used. **But** You cannot use `$on` to listen to events emitted by children. You must use `v-on` directly in the template, like:
 
@@ -1050,24 +1125,24 @@ https://vuejs.org/v2/guide/components.html#Customizing-Component-v-model
 ### Overview
 ![](https://vuejs.org/images/lifecycle.png)
 ### created 
-Init Events & LifeCyle, 
-beforeCreate,
-Init injections & reactivity
-created
+- Init Events & LifeCyle, 
+- beforeCreate,
+- Init injections & reactivity
+- **created**
 ### mounted
-compile template, 
-beforeMount, 
-create vm.$el and replace "el" with, 
-mounted
+- compile template, 
+- beforeMount, 
+- create `vm.$el` and replace `el` with, 
+- **mounted**
 ### updated
-beforeUpdate, 
-Virtual DOM re-render and patch
-updated
-mounted
+- beforeUpdate, 
+- Virtual DOM re-render and patch
+- updated
+- **mounted**
 ### destroyed
-beforeDestroy
-Teardown watchers, child components and event listeners
-destroyed
+- beforeDestroy
+- Teardown watchers, child components and event listeners
+- **destroyed**
 
 ## Content Distribution with Slots
 

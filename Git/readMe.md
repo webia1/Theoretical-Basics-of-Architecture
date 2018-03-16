@@ -55,3 +55,7 @@
 ## Create/Connect to remote branch  
 
     git push --set-upstream origin desired_branch_name
+    
+## Merge without checkout
+
+    git fetch . dev:master // same as: git checkout master && git merge dev

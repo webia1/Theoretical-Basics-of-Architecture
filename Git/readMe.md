@@ -1,19 +1,32 @@
 # Git
 
+## First Steps
+
+    git config --global user.name mmustermann
+    git config --global user.email "max.mustermann@example.com"
+
+## .gitignore
+
+    folder/file.txt
+    generated/
+    *.backup
+    !someException.bak
+    
+## Update Index
+
+    git update-index --assume-unchanged
+
 ## Show Configration Paths
 
     git config --list --show-origin                                 // all config files
     git config --list --system --show-origin                        // system config files
     git config --list --show-origin | awk '{print $1}' | uniq       // show locations
-    git config --list --local                                       // local config
-    
-    
+    git config --list --local                                       // local config    
     
 ## Log pretty only commit hashes and titles and save in a file
 
     git log --pretty="%h %s" > commits.txt
     
-
 ## Remove ignored files from remote repository
 
     git rm -r --cached .
@@ -47,6 +60,7 @@
 ## Delete local branch   
 
     git branch -d branch_name
+    git branch -D branch_name
    
 ## Delete remote branch
 
@@ -55,7 +69,60 @@
 ## Create/Connect to remote branch  
 
     git push --set-upstream origin desired_branch_name
+    git push -u origin desired_branch_name
     
 ## Merge without checkout
 
-    git fetch . dev:master // same as: git checkout master && git merge dev
+    git fetch . dev:master // from dev -> into -> master
+    
+## stash
+    
+    git stash --include-untracked
+    git stash pop
+    git stash list
+    git stash pop stash@{1}
+    
+## Correct last commit
+
+    git commit --amend
+    
+## Status 
+
+    git status --short // One liners 
+    
+## Reset/Revert/Checkout/..
+
+    git reset HEAD .    
+    git reset --hard commithash  // back to commit
+    git checkout --force someBranch // local changes are away
+    
+## Diff
+
+    git diff --stat commit1 commit2
+    
+## Log (and relevant config settings)
+
+    git log --oneline
+    git log --graph
+    git log --graph --oneline --decorate
+    git log --summary -M90% | grep -e "^ rename"
+    git log --follow a-modified-file.txt
+    git config diff.renames true  // Rename Detection = true
+    
+## Blame
+
+    git blame folder/filename.extension
+   
+## Check Integrity
+
+    git fsck
+   
+## Create Branch from Commit Hash
+
+    git branch desired-branch-name commithash
+    
+## Merge
+
+    git mergetool --tool-help   // list of merge tools
+    git reset --merge  // cancel merge
+    git log --merges

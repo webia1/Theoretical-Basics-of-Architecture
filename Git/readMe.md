@@ -18,6 +18,14 @@
     git symbolic-ref --short HEAD
     git branch | grep '*'
     git branch --contains HEAD
+    git name-rev --name-only HEAD
+    cat .git/HEAD
+    basename $(git symbolic-ref HEAD)
+    git symbolic-ref HEAD | cut -d/ -f3-
+    git branch | sed -n '/\* /s///p'
+    git rev-parse --symbolic-full-name --abbrev-ref @{u}
+    git branch | awk '/^\*/{print $2}'
+    
     
 ## Update Index
 

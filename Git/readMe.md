@@ -11,6 +11,13 @@
     generated/
     *.backup
     !someException.bak
+
+## Show just the current branch
+
+    git rev-parse --abbrev-ref HEAD
+    git symbolic-ref --short HEAD
+    git branch | grep '*'
+    git branch --contains HEAD
     
 ## Update Index
 

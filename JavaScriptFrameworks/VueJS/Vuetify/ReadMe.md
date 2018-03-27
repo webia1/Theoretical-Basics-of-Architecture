@@ -1,6 +1,13 @@
+---
+ebook:
+  title: Vuetify
+  pdf:
+    paper-size: A4
+    default-font-size: 14   
+---
 
-# Vuetify {ignore=true} 
 
+# Vuetify {ignore: true}
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 

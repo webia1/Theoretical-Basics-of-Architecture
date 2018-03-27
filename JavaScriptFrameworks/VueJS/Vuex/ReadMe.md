@@ -1,5 +1,12 @@
-# Vuex
+---
+ebook:
+  title: Vuex
+  pdf:
+    paper-size: A4
+    default-font-size: 14   
+---
 
+# Vuex
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 

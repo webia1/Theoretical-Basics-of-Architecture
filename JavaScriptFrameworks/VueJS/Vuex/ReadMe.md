@@ -19,7 +19,7 @@ ebook:
 
 <!-- /code_chunk_output -->
 
-![Vuex Overview](img/overview.png =480x)
+<img src="img/overview.png" width="480">
 
 Vuex is a ***state management pattern + library*** for ==Vue.js applications==. It serves as a centralized store for all the components in an application, with rules ensuring that the state can only be mutated in a predictable fashion. It also integrates with [Vue's official devtools](https://github.com/vuejs/vue-devtools) extension to provide advanced features such as 
 > zero-config time-travel debugging and

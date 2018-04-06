@@ -2,7 +2,7 @@
 
 ## Where does npm install packages?
 
-`npm root`
+`npm root [-g]`
 
 ## Show globally installed packages
 

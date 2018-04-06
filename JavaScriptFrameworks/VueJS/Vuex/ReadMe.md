@@ -75,7 +75,7 @@ npm install vuex --save
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-Vue.use(Vuex)
+Vue.use(Vuex) // e.g. in store.js
 ```
 
 ### Using Dev Build

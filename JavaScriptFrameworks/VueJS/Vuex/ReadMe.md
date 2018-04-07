@@ -16,6 +16,18 @@ ebook:
   - [Introduction](#introduction)
   - [Installation](#installation)
     - [Using Dev Build](#using-dev-build)
+    - [Example Module Structure](#example-module-structure)
+      - [main.js](#mainjs)
+      - [src/base/index.js](#srcbaseindexjs)
+  - [Core Concepts](#core-concepts)
+    - [State](#state)
+      - [The mapState Helper](#the-mapstate-helper)
+      - [Object Spread Operator](#object-spread-operator)
+      - [Components Can Still Have Local State](#components-can-still-have-local-state)
+    - [Getters](#getters)
+    - [Mutations](#mutations)
+    - [Actions](#actions)
+    - [Modules](#modules)
 
 <!-- /code_chunk_output -->
 
@@ -87,3 +99,63 @@ npm install
 npm run build
 ```
 
+### Example Module Structure
+
+```jsx
+├── src
+    ├── App.vue
+    ├── main.js
+    ├── store
+        ├── base // module base
+        │   ├── actions.js
+        │   ├── getters.js
+        │   ├── index.js
+        │   ├── mutations.js
+        │   └── state.js
+        └── store.js
+```
+#### main.js
+
+By providing the store option to the root instance, the store will be injected into all child components of the root and will be available on them as `this.$store`
+
+```jsx
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store/store'; // IMPORT STATE
+import './registerServiceWorker';
+
+Vue.config.productionTip = false;
+                        
+new Vue({                        
+  router,                        
+  store,  // <------------ INJECT STORE 
+  render: h => h(App)
+}).$mount('#app');
+```
+#### src/base/index.js
+
+```jsx
+import state from './state';
+import * as getters from './getters';
+import * as mutations from './mutations';
+import * as actions from './actions';
+
+export default {
+  namespaced: true,
+  state,
+  getters,
+  mutations,
+  actions
+};
+```
+
+## Core Concepts
+### State
+#### The mapState Helper
+#### Object Spread Operator
+#### Components Can Still Have Local State
+### Getters
+### Mutations
+### Actions
+### Modules

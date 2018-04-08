@@ -12,22 +12,22 @@ ebook:
 
 <!-- code_chunk_output -->
 
-- [Vuex](#vuex)
-  - [Introduction](#introduction)
-  - [Installation](#installation)
-    - [Using Dev Build](#using-dev-build)
-    - [Example Module Structure](#example-module-structure)
-      - [main.js](#mainjs)
-      - [src/base/index.js](#srcbaseindexjs)
-  - [Core Concepts](#core-concepts)
-    - [State](#state)
-      - [The mapState Helper](#the-mapstate-helper)
-      - [Object Spread Operator](#object-spread-operator)
-      - [Components Can Still Have Local State](#components-can-still-have-local-state)
-    - [Getters](#getters)
-    - [Mutations](#mutations)
-    - [Actions](#actions)
-    - [Modules](#modules)
+* [Vuex](#vuex)
+	* [Introduction](#introduction)
+	* [Installation](#installation)
+		* [Using Dev Build](#using-dev-build)
+		* [Example Module Structure](#example-module-structure)
+			* [main.js](#mainjs)
+			* [src/base/index.js](#srcbaseindexjs)
+	* [Core Concepts](#core-concepts)
+		* [State](#state)
+			* [The mapState Helper](#the-mapstate-helper)
+			* [Object Spread Operator](#object-spread-operator)
+			* [Components Can Still Have Local State](#components-can-still-have-local-state)
+		* [Getters](#getters)
+		* [Mutations](#mutations)
+		* [Actions](#actions)
+		* [Modules](#modules)
 
 <!-- /code_chunk_output -->
 

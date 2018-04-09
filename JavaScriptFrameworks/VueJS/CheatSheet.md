@@ -426,10 +426,10 @@ Via `$emit` method.
 
 
 // Parent component
-<myParentComponent :bigger-font="myFontSize += 0.1" />
-<myParentComponent :bigger-font="myFontSize += $event" />
+<myParentComponent v-on:bigger-font="myFontSize += 0.1" />
+<myParentComponent v-on:bigger-font="myFontSize += $event" />
 // or 
-<myParentComponent :bigger-font="onBiggerFont" /> 
+<myParentComponent v-on:bigger-font="onBiggerFont" /> 
 methods: {
   onBiggerFont: function (value) {
     this.myFontSize += value

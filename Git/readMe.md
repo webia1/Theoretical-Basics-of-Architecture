@@ -85,7 +85,11 @@
 
     git push --set-upstream origin desired_branch_name
     git push -u origin desired_branch_name
-    
+
+## Merge: Overwrite 
+
+    git merge -X theirs source_branch_name
+
 ## Merge without checkout
 
     git fetch . dev:master // from dev -> into -> master

@@ -30,6 +30,10 @@
 ## Update Index
 
     git update-index --assume-unchanged
+    
+## Git Alias
+
+    git config --global alias.today 'log --since=7am --oneline'  // git today
 
 ## Show Configration Paths
 

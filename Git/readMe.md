@@ -42,6 +42,21 @@
 
     git log --pretty="%h %s" > commits.txt
     
+## Log all modified changes by a certain user
+
+### Short version
+``` 
+git log --no-merges --author="authorname" --name-only --pretty=format:"" | sort -u
+```
+### Long Version
+```bash
+git log --pretty="%H" --author="authorname" |
+    while read commit_hash
+    do
+        git show --oneline --name-only $commit_hash | tail -n+2
+    done | sort | uniq
+```
+    
 ## Remove ignored files from remote repository
 
     git rm -r --cached .

@@ -160,3 +160,10 @@ git log --pretty="%H" --author="authorname" |
     git mergetool --tool-help   // list of merge tools
     git reset --merge  // cancel merge
     git log --merges
+
+## Statistics
+    git shortlog -sn // top list
+    git shortlog -sne // with Email Addresses
+    git shortlog -sn --no-merges  // top list ohne merges
+    
+    

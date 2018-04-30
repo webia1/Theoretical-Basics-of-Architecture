@@ -20,8 +20,12 @@ tv                Extra large     xl	4k and ultra-wides            > 1904px*
 See original Post here: https://gist.github.com/basham/2175a16ab7c60ce8e001#file-css-units-best-practices-md
 
 ### Further Reading
+- Browser Support: https://www.quirksmode.org/css/units-values/
+- Can I use Viewpoint units: https://caniuse.com/#feat=viewport-units
 - https://www.w3.org/Style/Examples/007/units.de.html
 - https://webdesign.tutsplus.com/articles/7-css-units-you-might-not-know-about--cms-22573
+- Font related: http://meyerweb.com/eric/thoughts/2012/05/15/defining-ch/ 
+- Web Typography: https://webdesign.tutsplus.com/articles/the-anatomy-of-web-typography--webdesign-10533
 
 
 Media | Recommended | Mostly in use | Seldom | Not recommended

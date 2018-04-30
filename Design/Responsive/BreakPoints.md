@@ -19,6 +19,9 @@ tv                Extra large     xl	4k and ultra-wides            > 1904px*
 ## CSS units
 See original Post here: https://gist.github.com/basham/2175a16ab7c60ce8e001#file-css-units-best-practices-md
 
+### Further Reading
+- https://www.w3.org/Style/Examples/007/units.de.html
+
 Media | Recommended | Mostly in use | Seldom | Not recommended
 :--- | :--- | :--- | :--- | :---
 Screen | em, rem, % | px | ch, ex, vw, vh, vmin, vmax | cm, mm, in, pt, pc
@@ -314,3 +317,6 @@ iPad 3
 /* Styles */
 }
 ```
+#### Further Reading
+
+- https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862

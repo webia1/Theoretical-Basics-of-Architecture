@@ -1,6 +1,9 @@
 # Advanced Topics
 
 ## Introduction
+
+> Firs rule: use `let` instead of `var` whenever possible
+
 ### Declaration
 ```typescript
 // It is a question of style
@@ -30,4 +33,11 @@ The never type represents the type of values that never occur.
 function error(message: string): never {
     throw new Error(message);
 }
+```
+### Type assertions
+
+```
+let someValue: any = "this is a string";
+let strLength: number = (<string>someValue).length;
+let strLength: number = (someValue as string).length;
 ```

@@ -111,18 +111,6 @@ clone.m(); // error!
 
 Second, the Typescript compiler doesn’t allow spreads of type parameters from generic functions. That feature is expected in future versions of the language.
 
-## Interfaces
-
-It is about defining contracts within your code as well as contracts with code outside of your project:
-
-```typescript
-interface SquareConfig {
-    color : string;     // required
-    width?: number;     // optional
-    
-}
-```
-
 ### readonly
 
 ```typescript
@@ -155,6 +143,17 @@ a = ro as number[];
 
 The easiest way to remember whether to use readonly or const is to ask whether you’re using it on a variable or a property. Variables use const whereas properties use readonly.
 
+## Interfaces
 
+It is about defining contracts within your code as well as contracts with code outside of your project:
+
+```typescript
+interface SquareConfig {
+    color : string;     // required
+    width?: number;     // optional
+    
+}
+```
+### Excess Property Checks
 
     

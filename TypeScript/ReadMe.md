@@ -110,3 +110,51 @@ clone.m(); // error!
 ```
 
 Second, the Typescript compiler doesn’t allow spreads of type parameters from generic functions. That feature is expected in future versions of the language.
+
+## Interfaces
+
+It is about defining contracts within your code as well as contracts with code outside of your project:
+
+```typescript
+interface SquareConfig {
+    color : string;     // required
+    width?: number;     // optional
+    
+}
+```
+
+### readonly
+
+```typescript
+interface Point {
+    readonly x: number;
+    readonly y: number;
+}
+
+let p1: Point = { x: 10, y: 20 };
+p1.x = 5; // error!
+```
+
+TypeScript comes with a ReadonlyArray<T> type that is the same as Array<T> with all mutating methods removed, so you can make sure you don’t change your arrays after creation:
+
+```typescript
+let a: number[] = [1, 2, 3, 4];
+let ro: ReadonlyArray<number> = a;
+ro[0] = 12; // error!
+ro.push(5); // error!
+ro.length = 100; // error!
+a = ro; // error!
+```
+On the last line of the snippet you can see that even assigning the entire ReadonlyArray back to a normal array is illegal. You can still override it with a type assertion, though:
+
+```typescript
+a = ro as number[];
+```
+
+#### readonly vs const
+
+The easiest way to remember whether to use readonly or const is to ask whether you’re using it on a variable or a property. Variables use const whereas properties use readonly.
+
+
+
+    

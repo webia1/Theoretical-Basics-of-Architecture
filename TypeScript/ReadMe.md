@@ -2,7 +2,7 @@
 
 ## Introduction
 
-> Firs rule: use `let` instead of `var` whenever possible
+> First rule: use `let` instead of `var` whenever possible
 
 ### Declaration
 ```typescript

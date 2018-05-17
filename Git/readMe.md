@@ -99,6 +99,7 @@ git log --pretty="%H" --author="authorname" |
 ## Delete remote branch
 
     git push origin --delete branch_name
+    git push origin :branch_name
    
 ## Create/Connect to remote branch  
 

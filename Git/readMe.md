@@ -68,6 +68,10 @@ git log --pretty="%H" --author="authorname" |
     git commit -am "Removed ignored files"
     git push
     
+## Undo add
+    git reset --hard      // to last commit
+    git rm --cached .     // undo add  
+    
 ## Create remote Github repository from Commandline
 
     git remote add origin https://github.com/webia1/vueDb.git

@@ -71,11 +71,18 @@ git log --pretty="%H" --author="authorname" |
 ## Undo add
     git reset --hard      // to last commit
     git rm --cached .     // undo add  
-    
-## Create remote Github repository from Commandline
 
-    git remote add origin https://github.com/webia1/vueDb.git
-    git push -u origin master  
+## Create and connect to remote repository
+
+### Remote add & pull
+
+    git remote add origin https://github.com/webia1/vueDb.git   // remote add
+    git branch --set-upstream-to=origin/master master           // map origin/master to master (= remote/master)
+    
+### Set-upstream & push  
+
+    git push --set-upstream origin desired_branch_name
+    git push -u origin desired_branch_name    
     
 ## Set autocrlf to false
 
@@ -104,11 +111,6 @@ git log --pretty="%H" --author="authorname" |
 
     git push origin --delete branch_name
     git push origin :branch_name
-   
-## Create/Connect to remote branch  
-
-    git push --set-upstream origin desired_branch_name
-    git push -u origin desired_branch_name
 
 ## Merge: Overwrite 
 

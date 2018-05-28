@@ -82,8 +82,12 @@ git log --pretty="%H" --author="authorname" |
 ### Set-upstream & push  
 
     git push --set-upstream origin desired_branch_name
-    git push -u origin desired_branch_name    
+    git push -u origin desired_branch_name   
     
+### fatal: refusing to merge unrelated histories
+
+     git pull origin master --allow-unrelated-histories
+       
 ## Set autocrlf to false
 
     git config --global core.autocrlf false

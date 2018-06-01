@@ -26,10 +26,22 @@
     git rev-parse --symbolic-full-name --abbrev-ref @{u}
     git branch | awk '/^\*/{print $2}'
     
+## Git Diff
+
+    git diff master --name-only     // list of different files
+    git diff master --name-status   // and what kind of differences
+    git diff master --stat          // my favorite
+    git diff master --shortstat
+    
+    
     
 ## Update Index
 
     git update-index --assume-unchanged
+    
+## Git Alias
+
+    git config --global alias.today 'log --since=7am --oneline'  // git today
 
 ## Show Configration Paths
 
@@ -42,6 +54,21 @@
 
     git log --pretty="%h %s" > commits.txt
     
+## Log all modified changes by a certain user
+
+### Short version
+``` 
+git log --no-merges --author="authorname" --name-only --pretty=format:"" | sort -u
+```
+### Long Version
+```bash
+git log --pretty="%H" --author="authorname" |
+    while read commit_hash
+    do
+        git show --oneline --name-only $commit_hash | tail -n+2
+    done | sort | uniq
+```
+    
 ## Remove ignored files from remote repository
 
     git rm -r --cached .
@@ -49,11 +76,26 @@
     git commit -am "Removed ignored files"
     git push
     
-## Create remote Github repository from Commandline
+## Undo add
+    git reset --hard      // to last commit
+    git rm --cached .     // undo add  
 
-    git remote add origin https://github.com/webia1/vueDb.git
-    git push -u origin master  
+## Create and connect to remote repository
+
+### Remote add & pull
+
+    git remote add origin https://github.com/webia1/vueDb.git   // remote add
+    git branch --set-upstream-to=origin/master master           // map origin/master to master (= remote/master)
     
+### Set-upstream & push  
+
+    git push --set-upstream origin desired_branch_name
+    git push -u origin desired_branch_name   
+    
+### fatal: refusing to merge unrelated histories
+
+     git pull origin master --allow-unrelated-histories
+       
 ## Set autocrlf to false
 
     git config --global core.autocrlf false
@@ -80,12 +122,12 @@
 ## Delete remote branch
 
     git push origin --delete branch_name
-   
-## Create/Connect to remote branch  
+    git push origin :branch_name
 
-    git push --set-upstream origin desired_branch_name
-    git push -u origin desired_branch_name
-    
+## Merge: Overwrite 
+
+    git merge -X theirs source_branch_name
+
 ## Merge without checkout
 
     git fetch . dev:master // from dev -> into -> master
@@ -141,3 +183,10 @@
     git mergetool --tool-help   // list of merge tools
     git reset --merge  // cancel merge
     git log --merges
+
+## Statistics
+    git shortlog -sn // top list
+    git shortlog -sne // with Email Addresses
+    git shortlog -sn --no-merges  // top list ohne merges
+    
+    

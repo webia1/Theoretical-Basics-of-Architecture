@@ -4,29 +4,29 @@
 
 <!-- code_chunk_output -->
 
-* [VueJS Code Snippets & Cheat Sheet](#vuejs-code-snippets-cheat-sheet)
-	* [Basics](#basics)
-	* [Lifecycle Hooks](#lifecycle-hooks)
-	* [Events](#events)
-		* [Keyboard Support](#keyboard-support)
-			* [System Modifier Keys](#system-modifier-keys)
-		* [Mouse Button Modifiers](#mouse-button-modifiers)
-	* [Templates](#templates)
-		* [Interpolations](#interpolations)
-		* [Expressions](#expressions)
-		* [Directives, Arguments, Modifiers](#directives-arguments-modifiers)
-	* [CSS Classes/Styles & Rendering](#css-classesstyles-rendering)
-		* [Object Syntax](#object-syntax)
-		* [Array Syntax](#array-syntax)
-		* [Conditional or List Rendering](#conditional-or-list-rendering)
-			* [List Rendering of Components](#list-rendering-of-components)
-		* [Change Detection](#change-detection)
-		* [Filtering/Sorting](#filteringsorting)
-	* [Forms](#forms)
-		* [Modifiers (.lazy, .number, .trim,..)](#modifiers-lazy-number-trim)
-	* [Components](#components)
-		* [Parent/Child Communication](#parentchild-communication)
-		* [Child/Parent Communication](#childparent-communication)
+- [VueJS Code Snippets & Cheat Sheet](#vuejs-code-snippets-cheat-sheet)
+  - [Basics](#basics)
+  - [Lifecycle Hooks](#lifecycle-hooks)
+  - [Events](#events)
+    - [Keyboard Support](#keyboard-support)
+      - [System Modifier Keys](#system-modifier-keys)
+    - [Mouse Button Modifiers](#mouse-button-modifiers)
+  - [Templates](#templates)
+    - [Interpolations](#interpolations)
+    - [Expressions](#expressions)
+    - [Directives, Arguments, Modifiers](#directives--arguments--modifiers)
+  - [CSS Classes/Styles & Rendering](#css-classes-styles-rendering)
+    - [Object Syntax](#object-syntax)
+    - [Array Syntax](#array-syntax)
+    - [Conditional or List Rendering](#conditional-or-list-rendering)
+      - [List Rendering of Components](#list-rendering-of-components)
+    - [Change Detection](#change-detection)
+    - [Filtering/Sorting](#filtering-sorting)
+  - [Forms](#forms)
+    - [Modifiers (.lazy, .number, .trim,..)](#modifiers-lazy--number--trim)
+  - [Components](#components)
+    - [Parent/Child Communication](#parent-child-communication)
+    - [Child/Parent Communication](#child-parent-communication)
 
 <!-- /code_chunk_output -->
 
@@ -426,10 +426,10 @@ Via `$emit` method.
 
 
 // Parent component
-<myParentComponent :bigger-font="myFontSize += 0.1" />
-<myParentComponent :bigger-font="myFontSize += $event" />
+<myParentComponent v-on:bigger-font="myFontSize += 0.1" />
+<myParentComponent v-on:bigger-font="myFontSize += $event" />
 // or 
-<myParentComponent :bigger-font="onBiggerFont" /> 
+<myParentComponent v-on:bigger-font="onBiggerFont" /> 
 methods: {
   onBiggerFont: function (value) {
     this.myFontSize += value
@@ -437,4 +437,3 @@ methods: {
 }
 
 ```
-

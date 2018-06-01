@@ -4,29 +4,29 @@
 
 <!-- code_chunk_output -->
 
-- [VueJS Code Snippets & Cheat Sheet](#vuejs-code-snippets-cheat-sheet)
-  - [Basics](#basics)
-  - [Lifecycle Hooks](#lifecycle-hooks)
-  - [Events](#events)
-    - [Keyboard Support](#keyboard-support)
-      - [System Modifier Keys](#system-modifier-keys)
-    - [Mouse Button Modifiers](#mouse-button-modifiers)
-  - [Templates](#templates)
-    - [Interpolations](#interpolations)
-    - [Expressions](#expressions)
-    - [Directives, Arguments, Modifiers](#directives-arguments-modifiers)
-  - [CSS Classes/Styles & Rendering](#css-classesstyles-rendering)
-    - [Object Syntax](#object-syntax)
-    - [Array Syntax](#array-syntax)
-    - [Conditional or List Rendering](#conditional-or-list-rendering)
-      - [List Rendering of Components](#list-rendering-of-components)
-    - [Change Detection](#change-detection)
-    - [Filtering/Sorting](#filteringsorting)
-  - [Forms](#forms)
-    - [Modifiers (.lazy, .number, .trim,..)](#modifiers-lazy-number-trim)
-  - [Components](#components)
-    - [Parent/Child Communication](#parentchild-communication)
-    - [Child/Parent Communication](#childparent-communication)
+* [VueJS Code Snippets & Cheat Sheet](#vuejs-code-snippets-cheat-sheet)
+	* [Basics](#basics)
+	* [Lifecycle Hooks](#lifecycle-hooks)
+	* [Events](#events)
+		* [Keyboard Support](#keyboard-support)
+			* [System Modifier Keys](#system-modifier-keys)
+		* [Mouse Button Modifiers](#mouse-button-modifiers)
+	* [Templates](#templates)
+		* [Interpolations](#interpolations)
+		* [Expressions](#expressions)
+		* [Directives, Arguments, Modifiers](#directives-arguments-modifiers)
+	* [CSS Classes/Styles & Rendering](#css-classesstyles-rendering)
+		* [Object Syntax](#object-syntax)
+		* [Array Syntax](#array-syntax)
+		* [Conditional or List Rendering](#conditional-or-list-rendering)
+			* [List Rendering of Components](#list-rendering-of-components)
+		* [Change Detection](#change-detection)
+		* [Filtering/Sorting](#filteringsorting)
+	* [Forms](#forms)
+		* [Modifiers (.lazy, .number, .trim,..)](#modifiers-lazy-number-trim)
+	* [Components](#components)
+		* [Parent/Child Communication](#parentchild-communication)
+		* [Child/Parent Communication](#childparent-communication)
 
 <!-- /code_chunk_output -->
 
@@ -437,3 +437,4 @@ methods: {
 }
 
 ```
+

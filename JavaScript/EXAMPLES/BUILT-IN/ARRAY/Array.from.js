@@ -1,3 +1,5 @@
+//@ts-check
+
 var a = Array.from('foo');
 console.log(a); // [ 'f', 'o', 'o' ]
 

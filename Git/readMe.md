@@ -26,6 +26,14 @@
     git rev-parse --symbolic-full-name --abbrev-ref @{u}
     git branch | awk '/^\*/{print $2}'
     
+## Git Diff
+
+    git diff master --name-only     // list of different files
+    git diff master --name-status   // and what kind of differences
+    git diff master --stat          // my favorite
+    git diff master --shortstat
+    
+    
     
 ## Update Index
 

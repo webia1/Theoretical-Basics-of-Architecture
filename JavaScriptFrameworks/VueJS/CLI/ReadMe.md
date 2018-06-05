@@ -13,7 +13,11 @@
 
 ## Vue CLI behind proxy workaround (quick & dirty) :
 
-Modifying `..\AppData(Roaming)\npm\node_modules\@vue\cli\lib\util\getVersions.js`
+Modifying 
+
+Before Beta 15 `..\AppData(Roaming)\npm\node_modules\@vue\cli\lib\util\getVersions.js`
+
+after Beta 15  `..\AppData(Roaming)\npm\node_modules\@vue\cli\lib\util\getPackageVersion.js`
     
     const registry = options.useTaobaoRegistry 
     ? `https://registry.npm.taobao.org` 

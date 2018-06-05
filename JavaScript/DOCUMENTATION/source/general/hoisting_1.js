@@ -6,7 +6,7 @@ function whereAreYou (){
   console.log (typeof me); // undefined
   var me = function (){
     console.log ("I'am inside");
-  } 
+  }; 
   me(); 
 }
 

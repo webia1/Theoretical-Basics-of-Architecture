@@ -1,4 +1,4 @@
-var myString ='webia1'
+var myString ='webia1';
 var i = 0;
 
 do {

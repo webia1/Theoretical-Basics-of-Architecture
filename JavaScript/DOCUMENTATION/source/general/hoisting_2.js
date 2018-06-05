@@ -1,6 +1,6 @@
 var me = function () {
   console.log ("I'am outside");
-} 
+}; 
 
 function whereAreYou (){
   console.log (typeof me); // function

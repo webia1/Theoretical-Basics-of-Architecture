@@ -127,3 +127,56 @@ console.log (
   w2.description, // It is whatever!
 );
 ```
+## Regexp Literal
+
+```javascript {cmd="node"}
+// var re = /pattern/gmi;  // g..Global, m..Multiline, i..Case insensitive
+var re1 = /\\/gm; // looking for a single backslash
+var re2 = new RegExp ("\\\\","gm"); // looking for a single backslash
+
+var someString = "A12X23Y";
+var re = /[a-z]/gi;
+var noLetters = someString.replace (re,""); // 1223
+
+```
+
+## Wrapper für Primitive 
+
+Diese lassen sich durch die eingebauten Konstruktoren `Number(), String() und Boolean()` erzeugen.
+
+```javascript {cmd="node"}
+var hello = "Hello World";
+var myHello = hello.split(' ')[0]; // Hello
+myHello.foo = 'bar'; // no error, but it does not do anything
+console.log (
+  typeof myHello.foo, // undefined
+  myHello, // Hello
+  hello, // Hello World
+  );
+
+var myHello2 = new String('Hello');
+myHello2.foo = 'bar';
+console.log(typeof myHello2.foo); // string
+```
+
+## Error Objects
+
+Einige eingebaute Fehler-Konstruktoren sind: `Error(), SyntaxError(), TypeError()`, sie besitzen die Eigenschaften `name, message`. 
+
+### Eigene Exceptions werfen
+
+```javascript
+// try {} catch (e) {}
+try {
+// es ist etwas bestimmtes passiert
+  throw {
+    name: "MyOwnWhateverErrorType",
+    message: "Uuups, I did it again",
+    foo: "I've a foo whatever it is",
+    remedy: genericErrorHandler // Wer kümmert sich darum
+  };
+} catch (e) {
+    console.log(e.message);
+    e.remedy(); // Aufruf von genericErrorHandler()
+}
+```

@@ -22,3 +22,4 @@ for entry in $(ls); do du -s "$entry"; done | sort -n
 (find . -depth 1 -type f -exec ls -s {} \;; find . -depth 1 -type d -exec du -s {} \;) | sort -n
 
 ```
+## ls 

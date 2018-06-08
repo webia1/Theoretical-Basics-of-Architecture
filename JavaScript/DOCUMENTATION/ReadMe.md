@@ -38,9 +38,89 @@ console.log(global);
 
 ## Hoisting
 
-![Hoisting Example 1](image/hoisting_1.png)
-![Hoisting Example 2](image/hoisting_2.png)
-![Hoisting Example 3](image/hoisting_3.png)
+Function `whereAreYou` has a variable `me` too. Therefore the first `console.log`
+is `undefined`.
+
+```javascript
+var me = "I'am outside";
+
+function whereAreYou (){
+  console.log (me); // undefined
+  var me = "I'am inside";
+  console.log (me);
+}
+
+whereAreYou(); // I'am inside
+```
+
+The same example without the second `me` works as expected:
+
+```javascript
+var me = "I'am outside";
+
+function whereAreYou (){
+  console.log (me);
+}
+
+whereAreYou(); // I'am outside
+```
+
+Same examples with `functions`.
+
+```javascript
+var me = function () {
+  console.log ("I'am outside");
+}
+
+function whereAreYou (){
+  console.log (typeof me); // undefined
+  // me(); would output "TypeError: me is not a function"
+  var me = function () { // anonym function
+    console.log ("I'am inside");
+  };
+  me();
+}
+
+whereAreYou(); // I'am inside
+```
+
+You have exact the same behaviour with so called `array functions (ES6)`:
+
+```javascript
+var me = function () {
+  console.log ("I'am outside");
+};
+
+function whereAreYou () {
+  console.log (typeof me); // undefined
+  // me(); would output "TypeError: me is not a function"
+  var me = () => {
+    console.log ("I'am inside");
+  };
+  me(); // that would work
+}
+
+whereAreYou(); // I'am inside
+```
+
+**Attention!** `function declarations` below work something differently!
+
+```javascript
+var me = function () {
+  console.log ("I'am outside");
+};
+
+function whereAreYou (){
+  console.log (typeof me); // function
+  me (); // I'am inside
+  function me (){
+    console.log ("I'am inside");
+  }
+  me(); // I'am inside
+}
+
+whereAreYou();
+```
 
 ## Performant `for` loops
 
@@ -127,6 +207,7 @@ console.log (
   w2.description, // It is whatever!
 );
 ```
+
 ## Regexp Literal
 
 ```javascript {cmd="node"}
@@ -140,7 +221,7 @@ var noLetters = someString.replace (re,""); // 1223
 
 ```
 
-## Wrapper für Primitive 
+## Wrapper für Primitive
 
 Diese lassen sich durch die eingebauten Konstruktoren `Number(), String() und Boolean()` erzeugen.
 
@@ -161,7 +242,8 @@ console.log(typeof myHello2.foo); // string
 
 ## Error Objects
 
-Einige eingebaute Fehler-Konstruktoren sind: `Error(), SyntaxError(), TypeError()`, sie besitzen die Eigenschaften `name, message`. 
+Einige eingebaute Fehler-Konstruktoren sind: `Error(), SyntaxError(),
+TypeError()`, sie besitzen die Eigenschaften `name, message`.
 
 ### Eigene Exceptions werfen
 
@@ -179,4 +261,20 @@ try {
     console.log(e.message);
     e.remedy(); // Aufruf von genericErrorHandler()
 }
+```
+
+## Funktionen
+
+### Terminologie
+
+```javascript
+var add = function add (a,b) { return a+b; }  // named function
+var add = function (a,b) { return a+b; }  // anonym function
+function add (a,b) { return a+b; }  // function declaration
+```
+
+### Callback Muster
+
+```javascript
+
 ```

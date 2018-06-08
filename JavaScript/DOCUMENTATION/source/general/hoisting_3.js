@@ -1,14 +1,14 @@
 var me = function () {
   console.log ("I'am outside");
-} 
+}; 
 
-function whereAreYou () {
-  console.log (typeof me); // undefined
-  // me(); would output "TypeError: me is not a function"
-  var me = () => {
+function whereAreYou (){
+  console.log (typeof me); // function
+  me (); // I'am inside
+  function me (){
     console.log ("I'am inside");
   } 
-  me(); // that would work
+  me(); // I'am inside 
 }
 
-whereAreYou(); // Where are you? Inside or outside?
+whereAreYou(); 

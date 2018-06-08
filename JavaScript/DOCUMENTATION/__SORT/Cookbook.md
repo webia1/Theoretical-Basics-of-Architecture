@@ -12,6 +12,7 @@ console.log(f); // myFoto
 ```
 
 ## Get file extension
+
 ```javascript
 var filename = 'css/styles.css';
 var ext = require('path').extname(filename);
@@ -36,6 +37,7 @@ console.log(searchResult); // [ 'bank', 'DAnk', 'gaNg' ]
 ```
 
 ## Constants in ES5
+
 ```javascript
 //  only in ES5 through the help of object properties
 //  and only in global context and not in a block scope

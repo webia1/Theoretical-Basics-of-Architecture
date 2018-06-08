@@ -28,13 +28,70 @@ console.log(global);
 
 ## Basic Statements
 
-## [for](./source/basic_statements/for.js)
+### for
 
-## [do while](./source/basic_statements/do_while.js)
+```javascript
+var myData = ['zero', 'one', 'two', 'three'];
 
-## [while](./source/basic_statements/while.js)
+for (var i = 0; i < myData.length; i++) {
+    console.log(myData[i]);
+}
 
-## [switch](./source/basic_statements/switch.js)
+for (var index in myData) {
+    console.log(index, myData[index]);
+}
+
+/* for .. of -> not available in ES5
+
+ for (var item of myData) {
+    console.log(item);
+ }
+
+ */
+```
+
+### do while
+
+```javascript
+var myString ='webia1';
+var i = 0;
+
+do {
+    console.log (myString[i]);
+    i++;
+} while (i < myString.length);
+```
+
+### while
+
+```javascript
+var myName = "webia1";
+var i = 0;
+var j = myName.length;
+var temp = '';
+
+/* Write myName backwards */
+while (i < j) {
+    temp += myName[j - (i+1)];
+    i++;
+}
+
+console.log(myName,' => ' ,temp); // webia1  =>  1aibew
+```
+
+### switch
+
+```javascript
+var whatever = "world";
+
+switch (whatever) {
+    case 'world':
+        console.log ('Hello World!');
+        break;
+    default:
+        console.log('Hello ' + whatever);
+}
+```
 
 ## Hoisting
 
@@ -277,4 +334,142 @@ function add (a,b) { return a+b; }  // function declaration
 
 ```javascript
 
+```
+
+## Currying
+
+```javascript
+/*
+ if the function is invoked, with
+ no arguments => return 0
+ one argument => return preventively a function, because argument(s) missing
+ two or more arguments => return the sum
+
+ */
+
+function add () {
+    var slice = Array.prototype.slice;
+    var x = slice.apply(arguments);
+    if (x.length == 1) return function (n){ return x[0] + n; };
+    if (x.length >= 2) return x.reduce((i,j) => i+j);
+    return 0;
+}
+
+console.log(add());         // 0
+console.log(add(1));        // [function]
+console.log(add(1)(2));     // 3
+console.log(add(1,2));      // 3
+console.log(add(1,2,3,4));  // 10
+```
+
+## Cookbook Part
+
+## isArray
+
+```javascript
+if (typeof Array.isArray === 'undefined') {
+  Array.isArray = function (arg) {
+    return Object.prototype.toString.call(arg) == '[object Array]';
+  }
+}
+```
+
+## isNumber or isNumeric
+
+```javascript
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+```
+
+```javascript
+function isNumeric(n) {
+    return Number(parseFloat(n)) === n;
+}
+```
+
+## isValueSet
+
+```javascript
+isValueSet(value: string): boolean {
+  return value ? true : false;
+}
+```
+
+**Falsy values:**
+
+```javascript
+null
+undefined
+NaN
+"" // Empty String
+0
+false
+```
+
+## Removing duplicate characters (`...new Set()`)
+
+```javascript
+ console.log (
+   [...new Set('xxyzssscabaaxbcc')].join('')
+   // 'xyzscab'
+ );
+```
+
+## Capitalizing (Blockbuchstaben)
+
+```javascript
+var str = "english";
+
+var r1 = str.replace(/^./, str[0].toUpperCase());
+var r2 = str.charAt(0).toUpperCase() + str.slice(1);
+var r3 = str[0].toUpperCase() + str.slice(1);
+var r4 = str[0].toUpperCase() + str.substr(1);
+var r5 = str.replace(/^./, match => match.toUpperCase());
+
+// Here is a defect implementation
+// works with "english" but not with "engel"
+// because engel[0] == engel[3]
+// Use it for demonstration purposes
+// for an unit-test-example
+
+var r6 = str.split('')
+    .map (s => {
+        if (str.indexOf(s) === 0) return s.toUpperCase();
+        return s;
+    }).join ('');
+
+// correct implemention with spread operator
+
+var r7 = [...str]
+    .map((s,i) => i ? s : s.toUpperCase())
+    .join('');
+
+/*
+ * CONSIDER THE CSS SOLUTION
+ p:first-letter {
+ text-transform: capitalize;
+ }
+ * */
+
+console.log (
+    '\n' + r1, r2, r3, r4, r5,r6, r7, // English <--
+    '\n' + str // english <-- not modified
+);
+```
+
+## Number to Array
+
+**Attention!** `Array.from (ES6)`
+
+```javascript
+var n = 0;
+var m = 1234;
+
+function numToArray (num) {
+    return Array.from(num.toString()).map(Number);
+}
+
+console.log(numToArray(n)); // [ 0 ]
+console.log(numToArray(m)); // [ 1, 2, 3, 4 ]
 ```

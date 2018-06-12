@@ -31,9 +31,7 @@
     git diff master --name-only     // list of different files
     git diff master --name-status   // and what kind of differences
     git diff master --stat          // my favorite
-    git diff master --shortstat
-    
-    
+    git diff master --shortstat  
     
 ## Update Index
 
@@ -141,8 +139,10 @@ git log --pretty="%H" --author="authorname" |
 
 ## tag
 
-    $ git tag -a v0.1.0 -m "My Message"
-    
+    git tag -a v0.1.0 -m "My Message"
+    git push origin <tag_name> // or push all tags with the following command:
+    git push --tags
+        
 ## Correct last commit
 
     git commit --amend

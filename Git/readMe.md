@@ -138,6 +138,10 @@ git log --pretty="%H" --author="authorname" |
     git stash pop
     git stash list
     git stash pop stash@{1}
+
+## tag
+
+    $ git tag -a v0.1.0 -m "My Message"
     
 ## Correct last commit
 

@@ -1,0 +1,8 @@
+{
+  "single-h1": { "level": 2 },
+  "MD007": false,
+  "MD010": false,
+  "MD013": false,
+  "MD022": false,
+  "MD026": { "punctuation": ".,;:!" }
+}

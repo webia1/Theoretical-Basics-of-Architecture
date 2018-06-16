@@ -1,6 +1,68 @@
-# JavaScript Documentation
+# JavaScript Concepts & Patterns
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+* [JavaScript Concepts & Patterns](#javascript-concepts-patterns)
+	* [SimpleTypes in ES5 (EcmaScript)](#simpletypes-in-es5-ecmascript)
+	* [Use Strict](#use-strict)
+	* [Unabsichtlich erzeugte globale Variablen](#unabsichtlich-erzeugte-globale-variablen)
+	* [Zugriff auf das globale Objekt](#zugriff-auf-das-globale-objekt)
+	* [Basic Statements](#basic-statements)
+		* [for](#for)
+		* [do while](#do-while)
+		* [while](#while)
+		* [switch](#switch)
+	* [Hoisting](#hoisting)
+	* [Performant `for` loops](#performant-for-loops)
+		* [Suboptimal](#suboptimal)
+		* [Besser](#besser)
+		* [Noch besser](#noch-besser)
+		* [Best (with while loop)](#best-with-while-loop)
+	* [`for in` loop with `hasOwnProperty()`](#for-in-loop-with-hasownproperty)
+	* [Erweitern von eingebauten Prototypen](#erweitern-von-eingebauten-prototypen)
+	* [Konstruktoren mit Großbuchstaben beginnen](#konstruktoren-mit-großbuchstaben-beginnen)
+	* [Selbst aufrufender Konstruktor](#selbst-aufrufender-konstruktor)
+	* [Regexp Literal](#regexp-literal)
+	* [Wrapper für Primitive](#wrapper-für-primitive)
+	* [Error Objects](#error-objects)
+		* [Eigene Exceptions werfen](#eigene-exceptions-werfen)
+	* [Funktionen](#funktionen)
+		* [Terminologie](#terminologie)
+		* [Self-Executing Anonymous Functions or better said "Immediately-Invoked Function Expression (IIFE)](#self-executing-anonymous-functions-or-better-said-immediately-invoked-function-expression-iife)
+		* [Arguments](#arguments)
+		* [Return Value](#return-value)
+		* [constructor](#constructor)
+		* [Callback](#callback)
+			* [Short Example](#short-example)
+			* [Long Example](#long-example)
+	* [Cascade](#cascade)
+	* [Closures](#closures)
+	* [Currying](#currying)
+	* [Objects related](#objects-related)
+		* [Use an Object for own namespace](#use-an-object-for-own-namespace)
+		* [Modul Pattern](#modul-pattern)
+		* [Public Static members](#public-static-members)
+		* [Private Static members](#private-static-members)
+		* [Object Constants](#object-constants)
+	* [Cookbook Part](#cookbook-part)
+		* [isArray](#isarray)
+		* [isNumber or isNumeric](#isnumber-or-isnumeric)
+		* [isValueSet](#isvalueset)
+			* [Falsy values in this context](#falsy-values-in-this-context)
+		* [Removing duplicate characters (`...new Set()`)](#removing-duplicate-characters-new-set)
+		* [Capitalizing (Blockbuchstaben)](#capitalizing-blockbuchstaben)
+		* [Number to Array](#number-to-array)
+		* [Cut file extension or get file extension](#cut-file-extension-or-get-file-extension)
+		* [`filter` array content based on search criteria](#filter-array-content-based-on-search-criteria)
+		* [Constants in ES5](#constants-in-es5)
+	* [Some Oddities](#some-oddities)
+		* [typeof](#typeof)
+		* [Equality](#equality)
+		* [Comments](#comments)
+
+<!-- /code_chunk_output -->
 
 In deutscher Sprache (and sometimes in & English) :)
 
@@ -490,6 +552,84 @@ console.log(add(1));        // [function]
 console.log(add(1)(2));     // 3
 console.log(add(1,2));      // 3
 console.log(add(1,2,3,4));  // 10
+```
+
+## Objects related
+
+### Use an Object for own namespace
+
+```javascript
+var MYAPP = MYAPP || {};
+```
+
+### Modul Pattern
+
+```javascript {cmd="node"}
+var myObj = (function(){
+  // private member
+  var myName = "James Bond";
+  return {
+    getName: function () {
+      return myName;
+    }
+  }
+}());
+console.log(myObj.getName()); // James Bond
+```
+
+### Public Static members
+
+`WhatEver.isFoo` is a static member, it does not need an instance.
+
+```javascript {cmd="node"}
+
+var WhatEver = function () {};
+WhatEver.isFoo = function () {
+  return 'Yes, I\'m FOO';
+};
+
+WhatEver.prototype.isBar = function () {
+  return 'Yes, I\'m BAR';
+}
+
+var something = new WhatEver();
+
+console.log (
+  WhatEver.isFoo (), // Yes, I'm FOO
+  // WhatEver.isBar (), // TypeError: WhatEver.isBar is not a function
+  something.isBar(), // Yes, I'm BAR
+  // something.isFoo() // TypeError: something.isFoo is not a function
+);
+```
+
+### Private Static members
+
+```javascript {cmd="node"}
+var myCounterObj = (function(){
+  var counter = 0; // static variable
+  var myNewCounterObj = function () {
+    counter++;
+  };
+  myNewCounterObj.prototype.getLastNumber = function () {
+    return counter;
+  };
+
+  return myNewCounterObj;
+}());
+
+var fooCounter = new myCounterObj();
+var barCounter = new myCounterObj();
+var bazCounter = new myCounterObj();
+console.log(
+  fooCounter.getLastNumber(), // 3
+  bazCounter.getLastNumber()  // 3
+);
+```
+
+### Object Constants
+
+```javascript
+  // 
 ```
 
 ## Cookbook Part

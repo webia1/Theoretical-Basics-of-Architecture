@@ -1,5 +1,48 @@
 # JavaScript Documentation
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+* [JavaScript Documentation](#javascript-documentation)
+	* [Use Strict](#use-strict)
+	* [Unabsichtlich erzeugte globale Variablen](#unabsichtlich-erzeugte-globale-variablen)
+	* [Zugriff auf das globale Objekt](#zugriff-auf-das-globale-objekt)
+	* [Basic Statements](#basic-statements)
+		* [for](#for)
+		* [do while](#do-while)
+		* [while](#while)
+		* [switch](#switch)
+	* [Hoisting](#hoisting)
+	* [Performant `for` loops](#performant-for-loops)
+		* [Suboptimal](#suboptimal)
+		* [Besser](#besser)
+		* [Noch besser](#noch-besser)
+		* [Best (with while loop)](#best-with-while-loop)
+	* [`for in` loop with `hasOwnProperty()`](#for-in-loop-with-hasownproperty)
+	* [Erweitern von eingebauten Prototypen](#erweitern-von-eingebauten-prototypen)
+	* [Konstruktoren mit Großbuchstaben beginnen](#konstruktoren-mit-großbuchstaben-beginnen)
+	* [Selbst aufrufender Konstruktor](#selbst-aufrufender-konstruktor)
+	* [Regexp Literal](#regexp-literal)
+	* [Wrapper für Primitive](#wrapper-für-primitive)
+	* [Error Objects](#error-objects)
+		* [Eigene Exceptions werfen](#eigene-exceptions-werfen)
+	* [Funktionen](#funktionen)
+		* [Terminologie](#terminologie)
+		* [Callback](#callback)
+			* [Short Example](#short-example)
+			* [Long Example](#long-example)
+	* [Currying](#currying)
+	* [Cookbook Part](#cookbook-part)
+	* [isArray](#isarray)
+	* [isNumber or isNumeric](#isnumber-or-isnumeric)
+	* [isValueSet](#isvalueset)
+	* [Removing duplicate characters (`...new Set()`)](#removing-duplicate-characters-new-set)
+	* [Capitalizing (Blockbuchstaben)](#capitalizing-blockbuchstaben)
+	* [Number to Array](#number-to-array)
+
+<!-- /code_chunk_output -->
+
 In deutscher Sprache (and sometimes in & English) :)
 
 ## Use Strict
@@ -330,11 +373,49 @@ var add = function (a,b) { return a+b; }  // anonym function
 function add (a,b) { return a+b; }  // function declaration
 ```
 
-### Callback Muster
+### Callback 
+
+A callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action. [Source: Developer Mozilla](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
+
+#### Short Example
 
 ```javascript
+function greeting() {
+  console.log("Welcome!");
+}
 
+function doWhateverItIs(callback) {
+  if (typeof callback === 'function') {
+    callback();
+  }
+}
+
+doWhateverItIs(greeting); // Without `()`
 ```
+
+#### Long Example
+
+```javascript
+function greeting(name) {
+  return `Hello ${name}`;
+}
+
+function getName() {
+  return "James";
+}
+
+function doWhateverItIs(callback, itsArgument) {
+  console.log(
+    callback(itsArgument)
+  );
+}
+
+doWhateverItIs(greeting, getName());
+```
+
+**Attention:** There is a big difference: `greeting` is the callback function and `getName()` returns a value.
+
+The above example is a synchronous callback, as it is executed immediately. Note, however, that callbacks are often used to continue code execution after an asynchronous operation has completed — these are called asynchronous callbacks.
 
 ## Currying
 
@@ -472,4 +553,48 @@ function numToArray (num) {
 
 console.log(numToArray(n)); // [ 0 ]
 console.log(numToArray(m)); // [ 1, 2, 3, 4 ]
+```
+
+## Cut file extension or get file extension
+
+```javascript
+var myFName = 'myFoto.postfix.jpg';
+var nameWithPath = 'css/styles.css';
+
+console.log (
+  myFName.substr(0, myFName.lastIndexOf('.')) || myFName, // "myFoto.postfix"
+  myFName.split(".").shift(), // "myFoto"
+  myFName.split(".").pop(), // "jpg"
+  require('path').extname(nameWithPath) // ".css"
+);
+```
+
+## `filter` array content based on search criteria
+
+```javascript
+var arr = ['big','bank', 'bold','DAnk', 'gaNg'];
+
+function searchArray (query) {
+    return arr.filter(function (item) {
+       var tmp = item.toUpperCase();
+       return (tmp.indexOf(query.toUpperCase()) !== -1)
+    });
+}
+
+var searchResult = searchArray('an');
+
+console.log(searchResult); // [ 'bank', 'DAnk', 'gaNg' ]
+```
+
+## Constants in ES5
+
+```javascript
+//  only in ES5 through the help of object properties
+//  and only in global context and not in a block scope
+Object.defineProperty(typeof global === "object" ? global : window, "PI", {
+    value:        3.141593,
+    enumerable:   true,
+    writable:     false,
+    configurable: false
+})
 ```

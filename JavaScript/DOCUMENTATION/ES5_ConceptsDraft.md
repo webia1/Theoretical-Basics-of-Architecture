@@ -2,48 +2,24 @@
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
-<!-- code_chunk_output -->
-
-* [JavaScript Documentation](#javascript-documentation)
-	* [Use Strict](#use-strict)
-	* [Unabsichtlich erzeugte globale Variablen](#unabsichtlich-erzeugte-globale-variablen)
-	* [Zugriff auf das globale Objekt](#zugriff-auf-das-globale-objekt)
-	* [Basic Statements](#basic-statements)
-		* [for](#for)
-		* [do while](#do-while)
-		* [while](#while)
-		* [switch](#switch)
-	* [Hoisting](#hoisting)
-	* [Performant `for` loops](#performant-for-loops)
-		* [Suboptimal](#suboptimal)
-		* [Besser](#besser)
-		* [Noch besser](#noch-besser)
-		* [Best (with while loop)](#best-with-while-loop)
-	* [`for in` loop with `hasOwnProperty()`](#for-in-loop-with-hasownproperty)
-	* [Erweitern von eingebauten Prototypen](#erweitern-von-eingebauten-prototypen)
-	* [Konstruktoren mit Großbuchstaben beginnen](#konstruktoren-mit-großbuchstaben-beginnen)
-	* [Selbst aufrufender Konstruktor](#selbst-aufrufender-konstruktor)
-	* [Regexp Literal](#regexp-literal)
-	* [Wrapper für Primitive](#wrapper-für-primitive)
-	* [Error Objects](#error-objects)
-		* [Eigene Exceptions werfen](#eigene-exceptions-werfen)
-	* [Funktionen](#funktionen)
-		* [Terminologie](#terminologie)
-		* [Callback](#callback)
-			* [Short Example](#short-example)
-			* [Long Example](#long-example)
-	* [Currying](#currying)
-	* [Cookbook Part](#cookbook-part)
-	* [isArray](#isarray)
-	* [isNumber or isNumeric](#isnumber-or-isnumeric)
-	* [isValueSet](#isvalueset)
-	* [Removing duplicate characters (`...new Set()`)](#removing-duplicate-characters-new-set)
-	* [Capitalizing (Blockbuchstaben)](#capitalizing-blockbuchstaben)
-	* [Number to Array](#number-to-array)
-
-<!-- /code_chunk_output -->
-
 In deutscher Sprache (and sometimes in & English) :)
+
+## SimpleTypes in ES5 (EcmaScript)
+
+`boolean`, `null`, `undefined`, `Infinity`, `NaN`, `Number`
+
+```JavaScript
+1 == 1.0       // true
+1 === 1.0      // true
+1 == '1'       // true
+1 === '1'      // false
+1 / 0          // Infinity
+1 / 'x'        // NaN
+NaN == NaN     // false
+NaN === NaN    // false
+1e2 == 100     // true, 1e2 = 1 * 10^2
+1.3e2 == 130   // true
+```
 
 ## Use Strict
 
@@ -373,7 +349,34 @@ var add = function (a,b) { return a+b; }  // anonym function
 function add (a,b) { return a+b; }  // function declaration
 ```
 
-### Callback 
+### Self-Executing Anonymous Functions or better said "Immediately-Invoked Function Expression (IIFE)
+
+Two different syntaxes:
+
+```javascript
+(function() {} ());
+(function() {}) ();
+```
+
+### Arguments
+
+Bonus parameter, which gives access to all of the arguments. It is an array-like-object, has a `length` property, but it lacks all of the array methods.
+
+[>> See here more](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments)
+
+### Return Value
+
+A function always returns a value, if not specified then `undefined`.
+
+### constructor
+
+```javascript {cmd="node"}
+function foo() {}
+console.log(foo.constructor);   // [Function: Function]
+console.log(foo.constructor()); // [Function: anonymous]
+```
+
+### Callback
 
 A callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action. [Source: Developer Mozilla](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
 
@@ -417,6 +420,52 @@ doWhateverItIs(greeting, getName());
 
 The above example is a synchronous callback, as it is executed immediately. Note, however, that callbacks are often used to continue code execution after an asynchronous operation has completed — these are called asynchronous callbacks.
 
+## Cascade
+
+An object with chain-able methods, that returning `this`, make it possible to cascade:
+
+```javascript
+var myOperations = {
+  result: 0,
+  plus2: function() {
+    this.result = this.result + 2;
+    return this;
+  },
+  timesThree: function() {
+    this.result = this.result * 3;
+    return this;
+  },
+  logResult: function() {
+    console.log(this.result);
+  },
+};
+
+myOperations
+  .plus2()
+  .timesThree()
+  .logResult();
+```
+
+## Closures
+
+```javascript
+var myObj = (function() {
+  var myValue = 'whatever';
+  return {
+    getMyValue: function() {
+      return myValue;
+    },
+    setMyValue: function(value) {
+      myValue = value;
+    },
+  };
+})();
+
+myObj.setMyValue('Webia1');
+console.log(myObj.getMyValue()); // Webia1
+console.log(myObj.myValue); // undefined
+```
+
 ## Currying
 
 ```javascript
@@ -445,7 +494,7 @@ console.log(add(1,2,3,4));  // 10
 
 ## Cookbook Part
 
-## isArray
+### isArray
 
 ```javascript
 if (typeof Array.isArray === 'undefined') {
@@ -455,7 +504,7 @@ if (typeof Array.isArray === 'undefined') {
 }
 ```
 
-## isNumber or isNumeric
+### isNumber or isNumeric
 
 ```javascript
 function isNumeric(n) {
@@ -469,7 +518,7 @@ function isNumeric(n) {
 }
 ```
 
-## isValueSet
+### isValueSet
 
 ```javascript
 isValueSet(value: string): boolean {
@@ -477,7 +526,7 @@ isValueSet(value: string): boolean {
 }
 ```
 
-**Falsy values:**
+#### Falsy values in this context
 
 ```javascript
 null
@@ -488,7 +537,7 @@ NaN
 false
 ```
 
-## Removing duplicate characters (`...new Set()`)
+### Removing duplicate characters (`...new Set()`)
 
 ```javascript
  console.log (
@@ -497,7 +546,7 @@ false
  );
 ```
 
-## Capitalizing (Blockbuchstaben)
+### Capitalizing (Blockbuchstaben)
 
 ```javascript
 var str = "english";
@@ -539,7 +588,7 @@ console.log (
 );
 ```
 
-## Number to Array
+### Number to Array
 
 **Attention!** `Array.from (ES6)`
 
@@ -555,7 +604,7 @@ console.log(numToArray(n)); // [ 0 ]
 console.log(numToArray(m)); // [ 1, 2, 3, 4 ]
 ```
 
-## Cut file extension or get file extension
+### Cut file extension or get file extension
 
 ```javascript
 var myFName = 'myFoto.postfix.jpg';
@@ -569,7 +618,7 @@ console.log (
 );
 ```
 
-## `filter` array content based on search criteria
+### `filter` array content based on search criteria
 
 ```javascript
 var arr = ['big','bank', 'bold','DAnk', 'gaNg'];
@@ -586,7 +635,7 @@ var searchResult = searchArray('an');
 console.log(searchResult); // [ 'bank', 'DAnk', 'gaNg' ]
 ```
 
-## Constants in ES5
+### Constants in ES5
 
 ```javascript
 //  only in ES5 through the help of object properties
@@ -597,4 +646,37 @@ Object.defineProperty(typeof global === "object" ? global : window, "PI", {
     writable:     false,
     configurable: false
 })
+```
+
+## Some Oddities
+
+### typeof
+
+```javascript
+console.log(typeof {}); // object
+console.log(typeof Object); // function
+
+console.log(typeof NaN); // number
+console.log(typeof 1); // number
+console.log(typeof Number); // function
+
+console.log(typeof undefined); // undefined
+console.log(typeof null); // object
+```
+
+### Equality
+
+```javascript
+isNaN(NaN); // true
+NaN == NaN; // false
+null == undefined; // true
+null === undefined; // false
+```
+
+### Comments
+
+Block comments `/* .. */` are not safe for commenting out blocks of code, for instance:
+
+```JavaScript
+var r = /a*/.match(s) // better use one line comment here
 ```

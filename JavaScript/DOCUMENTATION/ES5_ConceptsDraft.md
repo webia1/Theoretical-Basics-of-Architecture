@@ -56,7 +56,6 @@
 		* [Number to Array](#number-to-array)
 		* [Cut file extension or get file extension](#cut-file-extension-or-get-file-extension)
 		* [`filter` array content based on search criteria](#filter-array-content-based-on-search-criteria)
-		* [Constants in ES5](#constants-in-es5)
 	* [Some Oddities](#some-oddities)
 		* [typeof](#typeof)
 		* [Equality](#equality)
@@ -629,7 +628,14 @@ console.log(
 ### Object Constants
 
 ```javascript
-  // 
+//  only in ES5 through the help of object properties
+//  and only in global context and not in a block scope
+Object.defineProperty(typeof global === "object" ? global : window, "PI", {
+    value:        3.141593,
+    enumerable:   true,
+    writable:     false,
+    configurable: false
+})
 ```
 
 ## Cookbook Part
@@ -686,10 +692,10 @@ false
  );
 ```
 
-### Capitalizing (Blockbuchstaben)
+### Capitalizing
 
 ```javascript
-var str = "english";
+var str = "english";  // Expected result: English
 
 var r1 = str.replace(/^./, str[0].toUpperCase());
 var r2 = str.charAt(0).toUpperCase() + str.slice(1);
@@ -773,19 +779,6 @@ function searchArray (query) {
 var searchResult = searchArray('an');
 
 console.log(searchResult); // [ 'bank', 'DAnk', 'gaNg' ]
-```
-
-### Constants in ES5
-
-```javascript
-//  only in ES5 through the help of object properties
-//  and only in global context and not in a block scope
-Object.defineProperty(typeof global === "object" ? global : window, "PI", {
-    value:        3.141593,
-    enumerable:   true,
-    writable:     false,
-    configurable: false
-})
 ```
 
 ## Some Oddities

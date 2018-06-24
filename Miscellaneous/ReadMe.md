@@ -1,5 +1,34 @@
 # Miscellaneous
 
+## Computer Programming Jargon
+
+```text
+(    open paren
+)    close paren
+[    open bracket  or open square bracket
+]    close bracket or close square bracket
+{    open curly    or open curly bracket
+}    close curly   or close curly bracket
+<    open angle    or open angle bracket   or less than
+>    close angle   or close angle bracket  or greater than
+|    pipe
+"    double quote
+'    single quote
+:    colon
+;    sem     or semicolon
+!    bang    or not
+^    hat     or caret
+°    degree  or degrees or degree sign
+#    pound   or number  or sharp  or hash sign
+`    back tick
+´    tick
+§    section sign
+-    hyphen  or minus
+_    underline
+~    twiddle or tilde
+
+```
+
 ## [Gif for CLI](https://github.com/google/gif-for-cli)
 
 Takes in a GIF, short video, or a query to the Tenor GIF API 

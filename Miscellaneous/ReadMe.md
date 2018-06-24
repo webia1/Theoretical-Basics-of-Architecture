@@ -13,19 +13,24 @@
 >    close angle   or close angle bracket  or greater than
 |    pipe
 "    double quote
-'    single quote
-:    colon
+'    single quote, apostrophe,
+:    colon, dots (rare), two-spot
 ;    sem     or semicolon
-!    bang    or not
-^    hat     or caret
+!    bang, not, exlamation mark, factorial-sign, 
+^    hat, caret, control (mac),
 °    degree  or degrees or degree sign
 #    pound   or number  or sharp  or hash sign
 `    back tick
 ´    tick
 §    section sign
--    hyphen  or minus
+-    dash, hyphen  or minus
++    plus, cross, intersection
 _    underline
 ~    twiddle or tilde
+&    ampersand, amp, amper, and-sign
+*    star, asterix
+/    slash, stroke, forward slash,
+\    backslash, hack, whack, escape-sign, reverse slash
 
 ```
 
@@ -82,4 +87,19 @@ interested in web in general.
 | 4     | finished  | The proposal is ready to be            |
 |       |           | included in the standard.              |
 +-------+-----------+----------------------------------------+
+```
+
+## Fork Bomb
+
+It exponentially multiplies itself till all the system resource is utilized and the system hangs
+
+```shell
+:(){ :|:& }:
+```
+
+## Linux Tweaks
+
+```shell
+$ [ whereis my brain? 
+bash: [: missing `]'
 ```

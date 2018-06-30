@@ -52,7 +52,7 @@
 		* [isValueSet](#isvalueset)
 			* [Falsy values in this context](#falsy-values-in-this-context)
 		* [Removing duplicate characters (`...new Set()`)](#removing-duplicate-characters-new-set)
-		* [Capitalizing (Blockbuchstaben)](#capitalizing-blockbuchstaben)
+		* [Capitalizing](#capitalizing)
 		* [Number to Array](#number-to-array)
 		* [Cut file extension or get file extension](#cut-file-extension-or-get-file-extension)
 		* [`filter` array content based on search criteria](#filter-array-content-based-on-search-criteria)
@@ -85,13 +85,13 @@ NaN === NaN    // false
 ## Use Strict
 
 ```javascript
-"use strict";
+'use strict';
 ```
 
 ## Unabsichtlich erzeugte globale Variablen
 
 ```javascript
-var a = b = 0; // b globale Variable
+var a = (b = 0); // b globale Variable
 ```
 
 Globale Variablen sind Eigenschaften des globalen Objektes und können daher auch mit `delete` gelöscht werden.
@@ -99,9 +99,9 @@ Globale Variablen sind Eigenschaften des globalen Objektes und können daher auc
 ## Zugriff auf das globale Objekt
 
 ```javascript {cmd="node"}
-var global = (function(){
+var global = (function() {
   return this;
-}()); // Man beachte die zusäztlichen Klammern
+})(); // Man beachte die zusäztlichen Klammern
 
 console.log(global);
 ```
@@ -114,11 +114,11 @@ console.log(global);
 var myData = ['zero', 'one', 'two', 'three'];
 
 for (var i = 0; i < myData.length; i++) {
-    console.log(myData[i]);
+  console.log(myData[i]);
 }
 
 for (var index in myData) {
-    console.log(index, myData[index]);
+  console.log(index, myData[index]);
 }
 
 /* for .. of -> not available in ES5
@@ -133,43 +133,43 @@ for (var index in myData) {
 ### do while
 
 ```javascript
-var myString ='webia1';
+var myString = 'webia1';
 var i = 0;
 
 do {
-    console.log (myString[i]);
-    i++;
+  console.log(myString[i]);
+  i++;
 } while (i < myString.length);
 ```
 
 ### while
 
 ```javascript
-var myName = "webia1";
+var myName = 'webia1';
 var i = 0;
 var j = myName.length;
 var temp = '';
 
 /* Write myName backwards */
 while (i < j) {
-    temp += myName[j - (i+1)];
-    i++;
+  temp += myName[j - (i + 1)];
+  i++;
 }
 
-console.log(myName,' => ' ,temp); // webia1  =>  1aibew
+console.log(myName, ' => ', temp); // webia1  =>  1aibew
 ```
 
 ### switch
 
 ```javascript
-var whatever = "world";
+var whatever = 'world';
 
 switch (whatever) {
-    case 'world':
-        console.log ('Hello World!');
-        break;
-    default:
-        console.log('Hello ' + whatever);
+  case 'world':
+    console.log('Hello World!');
+    break;
+  default:
+    console.log('Hello ' + whatever);
 }
 ```
 
@@ -181,10 +181,10 @@ is `undefined`.
 ```javascript
 var me = "I'am outside";
 
-function whereAreYou (){
-  console.log (me); // undefined
+function whereAreYou() {
+  console.log(me); // undefined
   var me = "I'am inside";
-  console.log (me);
+  console.log(me);
 }
 
 whereAreYou(); // I'am inside
@@ -195,8 +195,8 @@ The same example without the second `me` works as expected:
 ```javascript
 var me = "I'am outside";
 
-function whereAreYou (){
-  console.log (me);
+function whereAreYou() {
+  console.log(me);
 }
 
 whereAreYou(); // I'am outside
@@ -205,15 +205,16 @@ whereAreYou(); // I'am outside
 Same examples with `functions`.
 
 ```javascript
-var me = function () {
-  console.log ("I'am outside");
-}
+var me = function() {
+  console.log("I'am outside");
+};
 
-function whereAreYou (){
-  console.log (typeof me); // undefined
+function whereAreYou() {
+  console.log(typeof me); // undefined
   // me(); would output "TypeError: me is not a function"
-  var me = function () { // anonym function
-    console.log ("I'am inside");
+  var me = function() {
+    // anonym function
+    console.log("I'am inside");
   };
   me();
 }
@@ -224,15 +225,15 @@ whereAreYou(); // I'am inside
 You have exact the same behaviour with so called `array functions (ES6)`:
 
 ```javascript
-var me = function () {
-  console.log ("I'am outside");
+var me = function() {
+  console.log("I'am outside");
 };
 
-function whereAreYou () {
-  console.log (typeof me); // undefined
+function whereAreYou() {
+  console.log(typeof me); // undefined
   // me(); would output "TypeError: me is not a function"
   var me = () => {
-    console.log ("I'am inside");
+    console.log("I'am inside");
   };
   me(); // that would work
 }
@@ -243,15 +244,15 @@ whereAreYou(); // I'am inside
 **Attention!** `function declarations` below work something differently!
 
 ```javascript
-var me = function () {
-  console.log ("I'am outside");
+var me = function() {
+  console.log("I'am outside");
 };
 
-function whereAreYou (){
-  console.log (typeof me); // function
-  me (); // I'am inside
-  function me (){
-    console.log ("I'am inside");
+function whereAreYou() {
+  console.log(typeof me); // function
+  me(); // I'am inside
+  function me() {
+    console.log("I'am inside");
   }
   me(); // I'am inside
 }
@@ -264,7 +265,7 @@ whereAreYou();
 ### Suboptimal
 
 ```javascript
-for (var i=0; i < myarray.length; i++){
+for (var i = 0; i < myarray.length; i++) {
   // ....
 }
 ```
@@ -272,7 +273,7 @@ for (var i=0; i < myarray.length; i++){
 ### Besser
 
 ```javascript
-for (var i=0, max=myarray.length; i < max; i++){
+for (var i = 0, max = myarray.length; i < max; i++) {
   // ....
 }
 ```
@@ -288,7 +289,8 @@ for (var i=myarray.length; i--){
 ### Best (with while loop)
 
 ```javascript
-var myArray = [], i = myArray.length;
+var myArray = [],
+  i = myArray.length;
 while (i--) {
   // ....
 }
@@ -297,7 +299,7 @@ while (i--) {
 ## `for in` loop with `hasOwnProperty()`
 
 ```javascript
-for (var i in whatever ){
+for (var i in whatever) {
   if (whatever.hasOwnProperty(i)) {
     // ....
   }
@@ -308,9 +310,9 @@ for (var i in whatever ){
 
 ```javascript
 if (typeof Object.prototype.myMethod !== 'function') {
-  Object.prototype.myMethod = function () {
+  Object.prototype.myMethod = function() {
     // Implementierung
-  }
+  };
 }
 ```
 
@@ -329,17 +331,17 @@ myWhateverFunction ();
 Hilft, wenn `new` vergessen wird.
 
 ```javascript {cmd="node"}
-function Whatever () {
+function Whatever() {
   if (!(this instanceof Whatever)) {
     return new Whatever();
   }
-  this.description = "It is whatever!";
+  this.description = 'It is whatever!';
 }
 
 var w1 = new Whatever(),
-    w2 = Whatever();
+  w2 = Whatever();
 
-console.log (
+console.log(
   w1.description, // It is whatever!
   w2.description, // It is whatever!
 );
@@ -350,12 +352,11 @@ console.log (
 ```javascript {cmd="node"}
 // var re = /pattern/gmi;  // g..Global, m..Multiline, i..Case insensitive
 var re1 = /\\/gm; // looking for a single backslash
-var re2 = new RegExp ("\\\\","gm"); // looking for a single backslash
+var re2 = new RegExp('\\\\', 'gm'); // looking for a single backslash
 
-var someString = "A12X23Y";
+var someString = 'A12X23Y';
 var re = /[a-z]/gi;
-var noLetters = someString.replace (re,""); // 1223
-
+var noLetters = someString.replace(re, ''); // 1223
 ```
 
 ## Wrapper für Primitive
@@ -363,14 +364,14 @@ var noLetters = someString.replace (re,""); // 1223
 Diese lassen sich durch die eingebauten Konstruktoren `Number(), String() und Boolean()` erzeugen.
 
 ```javascript {cmd="node"}
-var hello = "Hello World";
+var hello = 'Hello World';
 var myHello = hello.split(' ')[0]; // Hello
 myHello.foo = 'bar'; // no error, but it does not do anything
-console.log (
+console.log(
   typeof myHello.foo, // undefined
   myHello, // Hello
   hello, // Hello World
-  );
+);
 
 var myHello2 = new String('Hello');
 myHello2.foo = 'bar';
@@ -379,24 +380,23 @@ console.log(typeof myHello2.foo); // string
 
 ## Error Objects
 
-Einige eingebaute Fehler-Konstruktoren sind: `Error(), SyntaxError(),
-TypeError()`, sie besitzen die Eigenschaften `name, message`.
+Einige eingebaute Fehler-Konstruktoren sind: `Error(), SyntaxError(), TypeError()`, sie besitzen die Eigenschaften `name, message`.
 
 ### Eigene Exceptions werfen
 
 ```javascript
 // try {} catch (e) {}
 try {
-// es ist etwas bestimmtes passiert
+  // es ist etwas bestimmtes passiert
   throw {
-    name: "MyOwnWhateverErrorType",
-    message: "Uuups, I did it again",
+    name: 'MyOwnWhateverErrorType',
+    message: 'Uuups, I did it again',
     foo: "I've a foo whatever it is",
-    remedy: genericErrorHandler // Wer kümmert sich darum
+    remedy: genericErrorHandler, // Wer kümmert sich darum
   };
 } catch (e) {
-    console.log(e.message);
-    e.remedy(); // Aufruf von genericErrorHandler()
+  console.log(e.message);
+  e.remedy(); // Aufruf von genericErrorHandler()
 }
 ```
 
@@ -405,9 +405,15 @@ try {
 ### Terminologie
 
 ```javascript
-var add = function add (a,b) { return a+b; }  // named function
-var add = function (a,b) { return a+b; }  // anonym function
-function add (a,b) { return a+b; }  // function declaration
+var add = function add(a, b) {
+  return a + b;
+}; // named function
+var add = function(a, b) {
+  return a + b;
+}; // anonym function
+function add(a, b) {
+  return a + b;
+} // function declaration
 ```
 
 ### Self-Executing Anonymous Functions or better said "Immediately-Invoked Function Expression (IIFE)
@@ -415,8 +421,8 @@ function add (a,b) { return a+b; }  // function declaration
 Two different syntaxes:
 
 ```javascript
-(function() {} ());
-(function() {}) ();
+(function() {})();
+(function() {})();
 ```
 
 ### Arguments
@@ -433,7 +439,7 @@ A function always returns a value, if not specified then `undefined`.
 
 ```javascript {cmd="node"}
 function foo() {}
-console.log(foo.constructor);   // [Function: Function]
+console.log(foo.constructor); // [Function: Function]
 console.log(foo.constructor()); // [Function: anonymous]
 ```
 
@@ -445,7 +451,7 @@ A callback function is a function passed into another function as an argument, w
 
 ```javascript
 function greeting() {
-  console.log("Welcome!");
+  console.log('Welcome!');
 }
 
 function doWhateverItIs(callback) {
@@ -465,13 +471,11 @@ function greeting(name) {
 }
 
 function getName() {
-  return "James";
+  return 'James';
 }
 
 function doWhateverItIs(callback, itsArgument) {
-  console.log(
-    callback(itsArgument)
-  );
+  console.log(callback(itsArgument));
 }
 
 doWhateverItIs(greeting, getName());
@@ -538,19 +542,22 @@ console.log(myObj.myValue); // undefined
 
  */
 
-function add () {
-    var slice = Array.prototype.slice;
-    var x = slice.apply(arguments);
-    if (x.length == 1) return function (n){ return x[0] + n; };
-    if (x.length >= 2) return x.reduce((i,j) => i+j);
-    return 0;
+function add() {
+  var slice = Array.prototype.slice;
+  var x = slice.apply(arguments);
+  if (x.length == 1)
+    return function(n) {
+      return x[0] + n;
+    };
+  if (x.length >= 2) return x.reduce((i, j) => i + j);
+  return 0;
 }
 
-console.log(add());         // 0
-console.log(add(1));        // [function]
-console.log(add(1)(2));     // 3
-console.log(add(1,2));      // 3
-console.log(add(1,2,3,4));  // 10
+console.log(add()); // 0
+console.log(add(1)); // [function]
+console.log(add(1)(2)); // 3
+console.log(add(1, 2)); // 3
+console.log(add(1, 2, 3, 4)); // 10
 ```
 
 ## Objects related
@@ -564,15 +571,15 @@ var MYAPP = MYAPP || {};
 ### Modul Pattern
 
 ```javascript {cmd="node"}
-var myObj = (function(){
+var myObj = (function() {
   // private member
-  var myName = "James Bond";
+  var myName = 'James Bond';
   return {
-    getName: function () {
+    getName: function() {
       return myName;
-    }
-  }
-}());
+    },
+  };
+})();
 console.log(myObj.getName()); // James Bond
 ```
 
@@ -581,20 +588,19 @@ console.log(myObj.getName()); // James Bond
 `WhatEver.isFoo` is a static member, it does not need an instance.
 
 ```javascript {cmd="node"}
-
-var WhatEver = function () {};
-WhatEver.isFoo = function () {
-  return 'Yes, I\'m FOO';
+var WhatEver = function() {};
+WhatEver.isFoo = function() {
+  return "Yes, I'm FOO";
 };
 
-WhatEver.prototype.isBar = function () {
-  return 'Yes, I\'m BAR';
-}
+WhatEver.prototype.isBar = function() {
+  return "Yes, I'm BAR";
+};
 
 var something = new WhatEver();
 
-console.log (
-  WhatEver.isFoo (), // Yes, I'm FOO
+console.log(
+  WhatEver.isFoo(), // Yes, I'm FOO
   // WhatEver.isBar (), // TypeError: WhatEver.isBar is not a function
   something.isBar(), // Yes, I'm BAR
   // something.isFoo() // TypeError: something.isFoo is not a function
@@ -604,24 +610,24 @@ console.log (
 ### Private Static members
 
 ```javascript {cmd="node"}
-var myCounterObj = (function(){
+var myCounterObj = (function() {
   var counter = 0; // static variable
-  var myNewCounterObj = function () {
+  var myNewCounterObj = function() {
     counter++;
   };
-  myNewCounterObj.prototype.getLastNumber = function () {
+  myNewCounterObj.prototype.getLastNumber = function() {
     return counter;
   };
 
   return myNewCounterObj;
-}());
+})();
 
 var fooCounter = new myCounterObj();
 var barCounter = new myCounterObj();
 var bazCounter = new myCounterObj();
 console.log(
   fooCounter.getLastNumber(), // 3
-  bazCounter.getLastNumber()  // 3
+  bazCounter.getLastNumber(), // 3
 );
 ```
 
@@ -630,30 +636,30 @@ console.log(
 ```javascript
 //  only in ES5 through the help of object properties
 //  and only in global context and not in a block scope
-Object.defineProperty(typeof global === "object" ? global : window, "PI", {
-    value:        3.141593,
-    enumerable:   true,
-    writable:     false,
-    configurable: false
-})
+Object.defineProperty(typeof global === 'object' ? global : window, 'PI', {
+  value: 3.141593,
+  enumerable: true,
+  writable: false,
+  configurable: false,
+});
 ```
 
 Another implementation would be:
 
 ```javascript
-var constant = (function(){
+var constant = (function() {
   var constants = {},
-  i = 0,
-  ownProp = Object.prototype.hasOwnProperty,
-  allowed = {
-    string: true,
-    number: true,
-    boolean: true
-  },
-  prefix = (Math.random()+'_').slice(2); // delete first 2 characters
+    i = 0,
+    ownProp = Object.prototype.hasOwnProperty,
+    allowed = {
+      string: true,
+      number: true,
+      boolean: true,
+    },
+    prefix = (Math.random() + '_').slice(2); // delete first 2 characters
 
   return {
-    set: function (name,value) {
+    set: function(name, value) {
       if (this.isDefined(name)) {
         return false;
       }
@@ -666,29 +672,26 @@ var constant = (function(){
       console.log(constants);
       return true;
     },
-    isDefined: function (name) {
+    isDefined: function(name) {
       i++; // within IIFE global variable
-      console.log(i,prefix+name);
+      console.log(i, prefix + name);
       return ownProp.call(constants, prefix + name);
     },
-    get: function (name) {
-      if (this.isDefined(name)){
-        return constants [prefix + name];
+    get: function(name) {
+      if (this.isDefined(name)) {
+        return constants[prefix + name];
       }
       return null;
-    }
+    },
   };
+})();
 
-}());
-
-
-  constant.isDefined ('maxWidth');   // false
-  constant.set('maxWidth', 480);     // true
-  // e.g. { '13702937294496964_maxWidth': 480 }
-  constant.isDefined ('maxWidth');   // true
-  constant.set('maxWidth', 320);     // false
-  constant.get('maxWidth');           // 480
-
+constant.isDefined('maxWidth'); // false
+constant.set('maxWidth', 480); // true
+// e.g. { '13702937294496964_maxWidth': 480 }
+constant.isDefined('maxWidth'); // true
+constant.set('maxWidth', 320); // false
+constant.get('maxWidth'); // 480
 ```
 
 ## Cookbook Part
@@ -697,9 +700,9 @@ var constant = (function(){
 
 ```javascript
 if (typeof Array.isArray === 'undefined') {
-  Array.isArray = function (arg) {
+  Array.isArray = function(arg) {
     return Object.prototype.toString.call(arg) == '[object Array]';
-  }
+  };
 }
 ```
 
@@ -713,7 +716,7 @@ function isNumeric(n) {
 
 ```javascript
 function isNumeric(n) {
-    return Number(parseFloat(n)) === n;
+  return Number(parseFloat(n)) === n;
 }
 ```
 
@@ -728,27 +731,27 @@ isValueSet(value: string): boolean {
 #### Falsy values in this context
 
 ```javascript
-null
-undefined
-NaN
-"" // Empty String
-0
-false
+null;
+undefined;
+NaN;
+(''); // Empty String
+0;
+false;
 ```
 
 ### Removing duplicate characters (`...new Set()`)
 
 ```javascript
- console.log (
-   [...new Set('xxyzssscabaaxbcc')].join('')
-   // 'xyzscab'
- );
+console.log(
+  [...new Set('xxyzssscabaaxbcc')].join(''),
+  // 'xyzscab'
+);
 ```
 
 ### Capitalizing
 
 ```javascript
-var str = "english";  // Expected result: English
+var str = 'english'; // Expected result: English
 
 var r1 = str.replace(/^./, str[0].toUpperCase());
 var r2 = str.charAt(0).toUpperCase() + str.slice(1);
@@ -762,17 +765,17 @@ var r5 = str.replace(/^./, match => match.toUpperCase());
 // Use it for demonstration purposes
 // for an unit-test-example
 
-var r6 = str.split('')
-    .map (s => {
-        if (str.indexOf(s) === 0) return s.toUpperCase();
-        return s;
-    }).join ('');
+var r6 = str
+  .split('')
+  .map(s => {
+    if (str.indexOf(s) === 0) return s.toUpperCase();
+    return s;
+  })
+  .join('');
 
 // correct implemention with spread operator
 
-var r7 = [...str]
-    .map((s,i) => i ? s : s.toUpperCase())
-    .join('');
+var r7 = [...str].map((s, i) => (i ? s : s.toUpperCase())).join('');
 
 /*
  * CONSIDER THE CSS SOLUTION
@@ -781,9 +784,15 @@ var r7 = [...str]
  }
  * */
 
-console.log (
-    '\n' + r1, r2, r3, r4, r5,r6, r7, // English <--
-    '\n' + str // english <-- not modified
+console.log(
+  '\n' + r1,
+  r2,
+  r3,
+  r4,
+  r5,
+  r6,
+  r7, // English <--
+  '\n' + str, // english <-- not modified
 );
 ```
 
@@ -795,8 +804,8 @@ console.log (
 var n = 0;
 var m = 1234;
 
-function numToArray (num) {
-    return Array.from(num.toString()).map(Number);
+function numToArray(num) {
+  return Array.from(num.toString()).map(Number);
 }
 
 console.log(numToArray(n)); // [ 0 ]
@@ -809,24 +818,24 @@ console.log(numToArray(m)); // [ 1, 2, 3, 4 ]
 var myFName = 'myFoto.postfix.jpg';
 var nameWithPath = 'css/styles.css';
 
-console.log (
+console.log(
   myFName.substr(0, myFName.lastIndexOf('.')) || myFName, // "myFoto.postfix"
-  myFName.split(".").shift(), // "myFoto"
-  myFName.split(".").pop(), // "jpg"
-  require('path').extname(nameWithPath) // ".css"
+  myFName.split('.').shift(), // "myFoto"
+  myFName.split('.').pop(), // "jpg"
+  require('path').extname(nameWithPath), // ".css"
 );
 ```
 
 ### `filter` array content based on search criteria
 
 ```javascript
-var arr = ['big','bank', 'bold','DAnk', 'gaNg'];
+var arr = ['big', 'bank', 'bold', 'DAnk', 'gaNg'];
 
-function searchArray (query) {
-    return arr.filter(function (item) {
-       var tmp = item.toUpperCase();
-       return (tmp.indexOf(query.toUpperCase()) !== -1)
-    });
+function searchArray(query) {
+  return arr.filter(function(item) {
+    var tmp = item.toUpperCase();
+    return tmp.indexOf(query.toUpperCase()) !== -1;
+  });
 }
 
 var searchResult = searchArray('an');
@@ -838,8 +847,12 @@ console.log(searchResult); // [ 'bank', 'DAnk', 'gaNg' ]
 
 ### typeof
 
+The values produced by `typeof` are: `number`, `string`, `boolean`, `undefined`, `function`, `object`
+
 ```javascript
-console.log(typeof {}); // object
+console.log(typeof array); // 'object'
+console.log(typeof {}); // 'object'
+console.log(typeof null); // 'object'
 console.log(typeof Object); // function
 
 console.log(typeof NaN); // number

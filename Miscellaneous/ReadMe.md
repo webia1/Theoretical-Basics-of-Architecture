@@ -16,7 +16,7 @@
 '    single quote, apostrophe,
 :    colon, dots (rare), two-spot
 ;    sem     or semicolon
-!    bang, not, exlamation mark, factorial-sign, 
+!    bang, not, exlamation mark, factorial-sign,
 ^    hat, caret, control (mac),
 °    degree  or degrees or degree sign
 #    pound   or number  or sharp  or hash sign
@@ -31,30 +31,29 @@ _    underline
 *    star, asterix
 /    slash, stroke, forward slash,
 \    backslash, hack, whack, escape-sign, reverse slash
-
 ```
 
 ## [Gif for CLI](https://github.com/google/gif-for-cli)
 
-Takes in a GIF, short video, or a query to the Tenor GIF API 
-and converts it to animated ASCII art. Animation and color 
+Takes in a GIF, short video, or a query to the Tenor GIF API
+and converts it to animated ASCII art. Animation and color
 support are performed using ANSI escape sequences.
 
 ## [GitHub Flavored Markdown Specification](https://github.github.com/gfm/)
 
-GitHub Flavored Markdown, often shortened as GFM, is the dialect of Markdown 
+GitHub Flavored Markdown, often shortened as GFM, is the dialect of Markdown
 that is currently supported for user content on GitHub.com and GitHub Enterprise.
 
 ## [TC39](https://www.ecma-international.org/memento/TC39-M.htm)
 
-TC39 or Technical Committee 39 at ECMA International is responsible 
-for maintaining ECMAScript language specifications. Members of this 
-team belongs to ECMA International, browser vendors and companies 
+TC39 or Technical Committee 39 at ECMA International is responsible
+for maintaining ECMAScript language specifications. Members of this
+team belongs to ECMA International, browser vendors and companies
 interested in web in general.
 
 - [Current Status- ECMA 262](https://github.com/tc39/ecma262/)
 - [Standard ECMA-414 (PDF)](https://www.ecma-international.org/publications/files/ECMA-ST/ECMA-414.pdf)
-- [Standard ECMA-262 - ECMAScript® 2017 Language Specification](https://www.ecma-international.org/publications/standards/Ecma-262.htm) 
+- [Standard ECMA-262 - ECMAScript® 2017 Language Specification](https://www.ecma-international.org/publications/standards/Ecma-262.htm)
 - [Draft ECMA-262 - ECMAScript® 2019 Language Specification](https://tc39.github.io/ecma262/)
 
 ```
@@ -100,6 +99,6 @@ It exponentially multiplies itself till all the system resource is utilized and 
 ## Linux Tweaks
 
 ```shell
-$ [ whereis my brain? 
+$ [ whereis my brain?
 bash: [: missing `]'
 ```

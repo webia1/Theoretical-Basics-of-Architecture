@@ -51,3 +51,13 @@ define(..., ['someLib'], function(someLib) {
 
 });
 ```
+
+Modular libraries will typically have at least some of the following:
+
+- Unconditional calls to require or define
+- Declarations like import * as a from 'b'; or export c;
+- Assignments to exports or module.exports
+
+They will rarely have:
+
+- Assignments to properties of window or global

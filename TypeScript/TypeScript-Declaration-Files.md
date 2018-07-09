@@ -65,3 +65,17 @@ They will rarely have:
 #### UMD
 
 A UMD module is one that can either be used as module (through an import), or as a global (when run in an environment without a module loader).
+
+[UMD modules](https://github.com/umdjs/umd) check for the existence of a module loader environment. This is an easy-to-spot pattern that looks something like this:
+
+```javascript
+(function (root, factory) {
+    if (typeof define === "function" && define.amd) {
+        define(["libName"], factory);
+    } else if (typeof module === "object" && module.exports) {
+        module.exports = factory(require("libName"));
+    } else {
+        root.returnExports = factory(root.libName);
+    }
+}(this, function (b) { .....
+```

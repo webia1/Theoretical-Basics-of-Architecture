@@ -37,3 +37,32 @@ tsc -w --outFile bundle.js index.ts
 ```javascript
 tsc --init
 ```
+
+## Debugging TypeScript in Visual Studio Code
+
+### Install ts-node locally
+
+```
+npm init -y
+npm install ts-node --save-dev
+```
+
+### Edit `.vscode/launch.json`
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch current file w/ ts-node",
+      "protocol": "inspector",
+      "args": ["${relativeFile}"],
+      "cwd": "${workspaceRoot}",
+      "runtimeArgs": ["-r", "ts-node/register"],
+      "internalConsoleOptions": "openOnSessionStart"
+    }
+  ]
+}
+```

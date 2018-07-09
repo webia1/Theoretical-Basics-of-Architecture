@@ -40,11 +40,12 @@ tsc --init
 
 ## Debugging TypeScript in Visual Studio Code
 
-### Install ts-node locally
+### Install typescript & ts-node locally
 
 ```
 npm init -y
-npm install ts-node --save-dev
+npm install typescript --save // dependency
+npm install ts-node --save-dev // dev-dependency
 ```
 
 ### Edit `.vscode/launch.json`

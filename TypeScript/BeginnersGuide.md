@@ -1,13 +1,15 @@
 # Beginner's Guide
 
-## Install TypeScript
+## Setup
+
+### Install TypeScript
 
 ```javascript
 npm i typescript -g
 tsc -v // Version 2.9.2
 ```
 
-## Transpile & watch
+### Transpile & watch
 
 ```javascript
 tsc index.ts
@@ -17,7 +19,7 @@ tsc -w --out bundle.js index.ts // out DEPRECATED. Use --outFile instead
 tsc -w --outFile bundle.js index.ts
 ```
 
-### tsc --lib
+#### tsc --lib
 
 ```javascript
  'es5' 'es6' 'es2015' 'es7' 'es2016' 'es2017'
@@ -32,7 +34,7 @@ tsc -w --outFile bundle.js index.ts
  'esnext.asynciterable'
 ```
 
-## Create tsconfig.json
+### Create tsconfig.json
 
 ```javascript
 tsc --init
@@ -67,3 +69,7 @@ npm install ts-node --save-dev // dev-dependency
   ]
 }
 ```
+
+# TypeScript Definition/Declaration Files 
+
+If you want to see some examples at the very beginning, [click here](http://www.typescriptlang.org/docs/handbook/declaration-files/templates.html).  

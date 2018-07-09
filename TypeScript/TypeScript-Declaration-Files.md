@@ -79,3 +79,5 @@ A UMD module is one that can either be used as module (through an import), or as
     }
 }(this, function (b) { .....
 ```
+
+If you see tests for typeof define, typeof window, or typeof module in the code of a library, especially at the top of the file, it’s almost always a UMD library. Documentation for UMD libraries will also often demonstrate a “Using in Node.js” example showing require, and a “Using in the browser” example showing using a <script> tag to load the script.

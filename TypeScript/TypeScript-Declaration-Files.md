@@ -61,3 +61,7 @@ Modular libraries will typically have at least some of the following:
 They will rarely have:
 
 - Assignments to properties of `window` or `global`
+
+#### UMD
+
+A UMD module is one that can either be used as module (through an import), or as a global (when run in an environment without a module loader).

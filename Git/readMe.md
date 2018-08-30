@@ -28,6 +28,7 @@
     
 ## Git Diff
 
+    git diff --stat commit1 commit2
     git diff master --name-only     // list of different files
     git diff master --name-status   // and what kind of differences
     git diff master --stat          // my favorite
@@ -164,11 +165,7 @@ git log --pretty="%H" --author="authorname" |
 
     git reset HEAD .    
     git reset --hard commithash  // back to commit
-    git checkout --force someBranch // local changes are away
-    
-## Diff
-
-    git diff --stat commit1 commit2
+    git checkout --force someBranch // local changes are away  
     
 ## Log (and relevant config settings)
 

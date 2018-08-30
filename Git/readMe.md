@@ -129,6 +129,15 @@ git log --pretty="%H" --author="authorname" |
 ## Merge without checkout
 
     git fetch . dev:master // from dev -> into -> master
+
+## Merge: Abort if conflicts (1)
+
+    git merge --no-commit branch2
+    git merge --abort
+    
+## Merge: Abort if conflicts (2)
+
+    git format-patch $(git merge-base branch1 branch2)..branch2 --stdout | git apply --check -
     
 ## stash
     

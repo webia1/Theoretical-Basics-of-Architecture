@@ -1,4 +1,18 @@
-# ES6 Import & Exports
+# ES6 (=ES2015) Import & Exports
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [ES6 (=ES2015) Import & Exports](#es6-es2015-import--exports)
+  - [Imports](#imports)
+  - [Exports](#exports)
+  - [Using ES2015 with Node](#using-es2015-with-node)
+    - [Install Babel Presets](#install-babel-presets)
+    - [Create .babelrc](#create-babelrc)
+    - [Use babel-node](#use-babel-node)
+
+<!-- /code_chunk_output -->
 
 ## Imports
 
@@ -31,4 +45,27 @@ export { name1 as default, … };
 export * from …;
 export { name1, name2, …, nameN } from …;
 export { import1 as name1, import2 as name2, …, nameN } from …;
+```
+
+## Using ES2015 with Node
+
+### Install Babel Presets
+
+```shell
+npm install babel-preset-es2015 -D
+```
+
+### Create .babelrc
+
+```json
+{
+  "presets": [
+    "es2015"
+  ]
+}
+```
+### Use babel-node
+
+```shell
+babel-node index.js
 ```

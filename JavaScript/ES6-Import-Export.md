@@ -4,13 +4,20 @@
 
 <!-- code_chunk_output -->
 
-* [ES6 (=ES2015) Import & Exports](#es6-es2015-import-exports)
-	* [Imports](#imports)
-	* [Exports](#exports)
-	* [Using ES2015 with Node](#using-es2015-with-node)
-		* [Install Babel Presets](#install-babel-presets)
-		* [Create .babelrc](#create-babelrc)
-		* [Use babel-node](#use-babel-node)
+- [ES6 (=ES2015) Import & Exports](#es6-es2015-import--exports)
+	- [Imports](#imports)
+	- [Exports](#exports)
+	- [Using ES2015 with Node](#using-es2015-with-node)
+		- [Install Babel-CLI(v6+) or @Babel/CLI (v7+)](#install-babel-cliv6-or-babelcli-v7)
+		- [Install Babel Presets](#install-babel-presets)
+		- [Create .babelrc](#create-babelrc)
+		- [Use babel-node](#use-babel-node)
+  _ [Imports](#imports)
+  _ [Exports](#exports)
+  _ [Using ES2015 with Node](#using-es2015-with-node)
+  _ [Install Babel-CLI(v6+) or @Babel/CLI (v7+)](#install-babel-cliv6-or-babelcli-v7)
+  _ [Install Babel Presets](#install-babel-presets)
+  _ [Create .babelrc](#create-babelrc) \* [Use babel-node](#use-babel-node)
 
 <!-- /code_chunk_output -->
 
@@ -49,6 +56,22 @@ export { import1 as name1, import2 as name2, …, nameN } from …;
 
 ## Using ES2015 with Node
 
+### Install Babel-CLI(v6+) or @Babel/CLI (v7+)
+
+> Better approach would be to install locally!
+> See details here: <https://babeljs.io/docs/en/babel-cli>
+
+```shell
+npm install -g babel-cli  // Babel 6+
+npm install -g @babel/cli // Babel 7+
+```
+
+If you use Babel 7+ please consider: _@babel/core is required by @babel/cli_, you have to install it additionally:
+
+```shell
+npm install -g @babel/core
+```
+
 ### Install Babel Presets
 
 ```shell
@@ -59,11 +82,10 @@ npm install babel-preset-es2015 -D
 
 ```json
 {
-  "presets": [
-    "es2015"
-  ]
+  "presets": ["es2015"]
 }
 ```
+
 ### Use babel-node
 
 ```shell

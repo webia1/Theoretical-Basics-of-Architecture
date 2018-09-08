@@ -4,9 +4,9 @@
 
 ### Install TypeScript
 
-```javascript
+```bash {cmd=true}
 npm i typescript -g
-tsc -v // Version 2.9.2
+tsc -v // Version 3.0.3
 ```
 
 ### Transpile & watch
@@ -42,7 +42,7 @@ tsc --init
 
 ## Debugging TypeScript in Visual Studio Code
 
-### Install typescript & ts-node locally
+### Install Typescript & ts-node locally
 
 ```
 npm init -y

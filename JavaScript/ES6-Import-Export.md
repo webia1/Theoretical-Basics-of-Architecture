@@ -4,13 +4,13 @@
 
 <!-- code_chunk_output -->
 
-- [ES6 (=ES2015) Import & Exports](#es6-es2015-import--exports)
-  - [Imports](#imports)
-  - [Exports](#exports)
-  - [Using ES2015 with Node](#using-es2015-with-node)
-    - [Install Babel Presets](#install-babel-presets)
-    - [Create .babelrc](#create-babelrc)
-    - [Use babel-node](#use-babel-node)
+* [ES6 (=ES2015) Import & Exports](#es6-es2015-import-exports)
+	* [Imports](#imports)
+	* [Exports](#exports)
+	* [Using ES2015 with Node](#using-es2015-with-node)
+		* [Install Babel Presets](#install-babel-presets)
+		* [Create .babelrc](#create-babelrc)
+		* [Use babel-node](#use-babel-node)
 
 <!-- /code_chunk_output -->
 

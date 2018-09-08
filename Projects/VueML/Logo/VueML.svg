@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="600" height="600" viewBox="0, 0, 600, 600">
+  <g id="Ebene_1">
+    <path d="M431.5,235.5 L359.5,266 L359.556,273.213 L300.5,300 L300.5,346 L300.5,432.667 L361.333,397.5 L430,362 L431.5,235.5 z" fill="#000000"/>
+    <path d="M174.5,233 L246.5,263.5 L246.444,270.713 L303,297 L303,345 L303,428 L244,397.5 L176,359.5 L174.5,233 z" fill="#000000"/>
+    <path d="M169,223 L174,359" fill-opacity="0" stroke="#000000" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M174,359 L241,398" fill-opacity="0" stroke="#000000" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M241,398 L241,312" fill-opacity="0" stroke="#000000" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M241,398 L301,433.167" fill-opacity="0" stroke="#000000" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M301,433.167 L359,398" fill-opacity="0" stroke="#000000" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M359,312 L359,398" fill-opacity="0" stroke="#000000" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M359,398 L427,359" fill-opacity="0" stroke="#000000" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M427,359 L432,223" fill-opacity="0" stroke="#000000" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M432,223 L301,296" fill-opacity="0" stroke="#000000" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M301,296 L169,223" fill-opacity="0" stroke="#000000" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="Ebene_2">
+    <g>
+      <path d="M303.5,184.5 L427,223 L301,285.833 L174,223 L303.5,184.5 z" fill="#000000"/>
+      <path d="M303.5,184.5 L427,223 L301,285.833 L174,223 L303.5,184.5 z" fill-opacity="0" stroke="#FFFFFF" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+</svg>

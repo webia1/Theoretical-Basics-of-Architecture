@@ -1,6 +1,6 @@
 # Vuetify
 
-Vuetify supports 
+Vuetify supports
 
 - SSR/SPA/PWA/..
 - Standard Browser
@@ -11,3 +11,4 @@ Vuetify supports
 
 Not supported: IE10/9/..
 
+See JavaScript Frameworks Section -> Vue > Vuetify

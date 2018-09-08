@@ -1,4 +1,4 @@
-# Beginner's Guide
+# Installing and Debugging TypeScript in VSCode
 
 ## Setup
 

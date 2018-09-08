@@ -28,6 +28,7 @@
     
 ## Git Diff
 
+    git diff --stat commit1 commit2
     git diff master --name-only     // list of different files
     git diff master --name-status   // and what kind of differences
     git diff master --stat          // my favorite
@@ -129,6 +130,15 @@ git log --pretty="%H" --author="authorname" |
 ## Merge without checkout
 
     git fetch . dev:master // from dev -> into -> master
+
+## Merge: Abort if conflicts (1)
+
+    git merge --no-commit branch2
+    git merge --abort
+    
+## Merge: Abort if conflicts (2)
+
+    git format-patch $(git merge-base branch1 branch2)..branch2 --stdout | git apply --check -
     
 ## stash
     
@@ -155,11 +165,7 @@ git log --pretty="%H" --author="authorname" |
 
     git reset HEAD .    
     git reset --hard commithash  // back to commit
-    git checkout --force someBranch // local changes are away
-    
-## Diff
-
-    git diff --stat commit1 commit2
+    git checkout --force someBranch // local changes are away  
     
 ## Log (and relevant config settings)
 

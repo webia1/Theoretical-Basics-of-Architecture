@@ -1,5 +1,9 @@
 # Miscellaneous
 
+## Bookmark Manager
+
+- [Papaly](https://papaly.com/ebia0/fH141/Programming-IT)
+
 ## Computer Programming Jargon
 
 ```text

@@ -1,13 +1,15 @@
 # Beginner's Guide
 
-## Install TypeScript
+## Setup
+
+### Install TypeScript
 
 ```javascript
 npm i typescript -g
 tsc -v // Version 2.9.2
 ```
 
-## Transpile & watch
+### Transpile & watch
 
 ```javascript
 tsc index.ts
@@ -17,7 +19,7 @@ tsc -w --out bundle.js index.ts // out DEPRECATED. Use --outFile instead
 tsc -w --outFile bundle.js index.ts
 ```
 
-### tsc --lib
+#### tsc --lib
 
 ```javascript
  'es5' 'es6' 'es2015' 'es7' 'es2016' 'es2017'
@@ -32,8 +34,38 @@ tsc -w --outFile bundle.js index.ts
  'esnext.asynciterable'
 ```
 
-## Create tsconfig.json
+### Create tsconfig.json
 
 ```javascript
 tsc --init
+```
+
+## Debugging TypeScript in Visual Studio Code
+
+### Install typescript & ts-node locally
+
+```
+npm init -y
+npm install typescript --save // dependency
+npm install ts-node --save-dev // dev-dependency
+```
+
+### Edit `.vscode/launch.json`
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch current file w/ ts-node",
+      "protocol": "inspector",
+      "args": ["${relativeFile}"],
+      "cwd": "${workspaceRoot}",
+      "runtimeArgs": ["-r", "ts-node/register"],
+      "internalConsoleOptions": "openOnSessionStart"
+    }
+  ]
+}
 ```

@@ -12,3 +12,4 @@ Frameworks/RxJS/node_modules/
 /.JavaScript/EXAMPLES/__MGM/node_modules/
 
 node_modules
+package-lock.json

@@ -63,6 +63,7 @@ If you use Babel 7+ please consider: _@babel/core is required by @babel/cli_, yo
 
 ```shell
 npm install -g @babel/core
+npm install -g @babel/node
 ```
 
 ### Install Babel Presets

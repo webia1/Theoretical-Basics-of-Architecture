@@ -199,4 +199,10 @@ git log --pretty="%H" --author="authorname" |
     git shortlog -sne // with Email Addresses
     git shortlog -sn --no-merges  // top list ohne merges
     
-    
+## ERRORS & SOLUTIONS
+
+### Your configuration specifies to merge with the <branch name> from the remote, but no such ref was fetched
+    Reason: Most probably the remote branch has been deleted.
+    git config --global --unset-all remote.origin.url
+    git fetch
+

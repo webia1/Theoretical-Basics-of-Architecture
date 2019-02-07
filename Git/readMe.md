@@ -202,7 +202,32 @@ git log --pretty="%H" --author="authorname" |
 ## ERRORS & SOLUTIONS
 
 ### Your configuration specifies to merge with the <branch name> from the remote, but no such ref was fetched
+    
     Reason: Most probably the remote branch has been deleted.
     git config --global --unset-all remote.origin.url
     git fetch
+
+### Git autocomplete on Windows Visual Studio Code integrated Terminal (VSCode/Cygwin/Git/Autocomplete)
+
+#### Install Cygwin and following cygwin packages
+    
+    bash-completion
+    bash-completion-devel
+    
+#### Add VSCode Settings
+
+    "terminal.integrated.shell.windows": "C:\\Cygwin64\\bin\\bash.exe",
+    "terminal.integrated.shellArgs.windows": ["/bin/xhere", "/bin/bash"],
+
+#### Copy `.git-completion.bash` into your Cygwin Home
+
+    C:\cygwin64\home\--myuserfolder--\
+
+#### Edit your `.bash_profile` in your cygwin home folder and add
+
+    if [ -e "${HOME}/.git-completion.bash" ] ; then 
+    source "${HOME}"/.git-completion.bash 
+    fi 
+
+
 

@@ -107,5 +107,25 @@
   "workbench.colorTheme": "Cobalt2",
   "workbench.editor.swipeToNavigate": true,
   "workbench.iconTheme": "vscode-great-icons",
-  "workbench.tree.horizontalScrolling": true
+  "workbench.tree.horizontalScrolling": true,
+    "workbench.colorCustomizations": {
+    "editorGroup.border": "#ff000066",
+    "tab.activeBackground": "#8b095abb",
+    "tab.inactiveBackground": "#8b095a55",
+    "tab.activeForeground": "#eeff00",
+    "tab.unfocusedActiveBorderTop": "#ffffff00",
+    "tab.unfocusedActiveBorder": "#ffffff00",
+    "tab.unfocusedActiveForeground": "#EEE",
+    "tab.activeBorder": "#CCC",
+    // "tab.activeBorderTop": "#eeff00",
+    "tab.inactiveForeground": "#DDD",
+    "tab.unfocusedInactiveForeground": "#CCC",
+    //   "tab.border": "#888",
+    "panelTitle.activeForeground": "#eeff00",
+    "panelTitle.activeBorder": "#eeff00",
+    "statusBar.background": "#8b095a55",
+    "statusBar.foreground": "#CCC",
+    "titleBar.activeBackground": "#8b095a",
+    "titleBar.activeForeground": "#EEE"
+  }
 }

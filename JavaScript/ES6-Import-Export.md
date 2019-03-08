@@ -49,6 +49,33 @@ export { import1 as name1, import2 as name2, …, nameN } from …;
 
 ## Using ES2015 with Node
 
+### Update Feb 2019 --> Use 'babel-preset-env'
+
+.babelrc
+
+```json
+{
+ "plugins": ["@babel/plugin-syntax-export-default-from"],
+ "presets": ["env"]
+}
+```
+
+package.json
+
+```json
+"scripts": {
+    "start": "npm run start:defaultExportsSupport",
+    "start:defaultExportsSupport": "babel-node --plugins @babel/plugin-syntax-export-default-from index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }, 
+  
+"devDependencies": {
+    "@babel/plugin-syntax-export-default-from": "^7.2.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+}
+```
+
 ### Install Babel-CLI(v6+) or @Babel/CLI (v7+)
 
 > Better approach would be to install locally!

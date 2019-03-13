@@ -71,7 +71,8 @@ package.json
   
 "devDependencies": {
     "@babel/plugin-syntax-export-default-from": "^7.2.0",
-    "babel-preset-env": "^1.7.0",
+    "babel-preset-env": "^1.7.0", // Babel6
+    "babel-preset-env": "^2.0.0-alpha.20", // Babel 7
     "babel-preset-es2015": "^6.24.1",
 }
 ```

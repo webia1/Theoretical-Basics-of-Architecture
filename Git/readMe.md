@@ -78,6 +78,16 @@ git log --pretty="%H" --author="authorname" |
 ## Undo add
     git reset --hard      // to last commit
     git rm --cached .     // undo add  
+    
+## Restore deleted file
+
+First find the commit-id. That can help: 
+    
+    git log --diff-filter=D --summary
+
+Then restore it. Please take notive of `~1` after commit-id
+
+    git checkout commitid~1 .npmrc
 
 ## Create and connect to remote repository
 

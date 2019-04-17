@@ -88,6 +88,14 @@ First find the commit-id. That can help:
 Then restore it. Please take notive of `~1` after commit-id
 
     git checkout commitid~1 .npmrc
+    
+You can also create an Alias [original post](https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository?rq=1) (everything in one line):
+
+    git config alias.restore '!f() { git checkout $(git rev-list -n 1 HEAD -- $1)~1 -- $(git diff --name-status $(git rev-list -n 1 HEAD -- $1)~1 | grep '^D' | cut -f 2); }; f'
+    
+then use it:
+
+    git restore my_deleted_file
 
 ## Create and connect to remote repository
 

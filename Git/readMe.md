@@ -48,7 +48,7 @@
     
 ## Git Alias
 
-    git config --global alias.today 'log --since=7am --oneline'  // git today
+    git config --global alias.today 'log --since=7am'  // git today
 
 ## Show Configration Paths
 
@@ -189,8 +189,9 @@ then use it:
     
 ## Reset/Revert/Checkout/..
 
-    git reset HEAD .    
-    git reset --hard commithash  // back to commit
+    git reset HEAD .  
+    git reset --hard // go to last commit
+    git reset --hard commithash  // change back to a certain commit
     git checkout --force someBranch // local changes are away  
     
 ## Log (and relevant config settings)
@@ -204,7 +205,7 @@ then use it:
     
 ## Blame
 
-    git blame folder/filename.extension
+    git blame folder/filename.extension // shows what revision and author last modified each line of a file
    
 ## Check Integrity
 
@@ -224,6 +225,29 @@ then use it:
     git shortlog -sn // top list
     git shortlog -sne // with Email Addresses
     git shortlog -sn --no-merges  // top list ohne merges
+    
+## Bisect
+
+git bisect uses a binary search algorithm to find which commit in your project's history introduced a bug. You use it by first telling it a "bad" commit that is known to contain the bug, and a "good" commit that is known to be before the bug was introduced. Then git bisect picks a commit between those two endpoints and asks you whether the selected commit is "good" or "bad". It continues narrowing down the range until it finds the exact commit that introduced the change.
+
+```shell
+git bisect start
+git bisect bad
+git bisect good #commithash
+```
+the rest is interactive,..
+
+## Miscellaneous
+
+```
+git log --oneline
+git log --graph
+git log --graph --oneline --decorate
+git log --summary -M90% | grep -e "^ rename"
+git log --follow a-modified-file.txt
+git config diff.renames true  // Rename Detection = true
+```
+    
     
 ## ERRORS & SOLUTIONS
 

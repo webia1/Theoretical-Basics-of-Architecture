@@ -25,7 +25,11 @@
     git branch | sed -n '/\* /s///p'
     git rev-parse --symbolic-full-name --abbrev-ref @{u}
     git branch | awk '/^\*/{print $2}'
-    
+
+## Git Pull and reset/ignore local changes
+
+    git pull -s recursive -X theirs
+
 ## Sort remote branched by up-to-dateness (committer date)
 
     // [credits prof. narebski](https://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit)  

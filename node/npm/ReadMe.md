@@ -2,7 +2,11 @@
 
 ## NPM
 
-## Build From Resource (Some gyp & co related errors)
+### Skip SSL Checks
+
+    Use --insecure flag
+
+### Build From Resource (Some gyp & co related errors)
 
     npm install --build-from-resource
 

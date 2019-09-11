@@ -2,6 +2,10 @@
 
 ## NPM
 
+## Build From Resource (Some gyp & co related errors)
+
+    npm install --build-from-resource
+
 ### Where does npm install packages?
 
 `npm root [-g]`

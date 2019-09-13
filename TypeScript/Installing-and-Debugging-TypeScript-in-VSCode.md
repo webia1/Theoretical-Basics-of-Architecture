@@ -69,3 +69,56 @@ npm install ts-node --save-dev // dev-dependency
   ]
 }
 ```
+
+## New Approach: Using [`gts`](https://www.npmjs.com/package/gts)
+
+### Prepare TypeScript for Browser
+
+#### package.json
+
+```json
+{
+  "name": "ts-examples",
+  "version": "0.0.0",
+  "description": "",
+  "main": "build/src/index.js",
+  "types": "build/src/index.d.ts",
+  "files": [
+    "build/src"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc -p .",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run check"
+  },
+  "devDependencies": {
+    "gts": "^1.1.0",
+    "typescript": "~3.5.0",
+    "@types/node": "^10.0.3"
+  }
+}
+
+```
+
+#### tsconfig.json
+
+```
+{
+  "extends": "./node_modules/gts/tsconfig-google.json",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "rootDir": ".",
+    "outDir": "build"
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts"]
+}
+```
+
+

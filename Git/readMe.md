@@ -2,6 +2,7 @@
 
 ## First Steps
 
+    git config --global --edit // OR The following below
     git config --global user.name mmustermann
     git config --global user.email "max.mustermann@example.com"
 

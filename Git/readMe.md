@@ -31,6 +31,11 @@
 
     git pull -s recursive -X theirs
 
+## Git Show Remote Git Repository Url
+
+    git config --get remote.origin.url  // SIMPLE
+    git remote show origin              // DETAILS    
+
 ## Sort remote branched by up-to-dateness (committer date)
 
     // [credits prof. narebski](https://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit)  

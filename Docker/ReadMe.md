@@ -135,6 +135,9 @@ Without `-p HostPort:ContainerPort`
     36cd57528afa        none                null                local
     fe034ae08547        webia-net           bridge              local
 
+    docker run -d --name webia1 --network=webia-net --rm yeasy/simple-web
+    docker run -d --name webia2 --network=webia-net --rm yeasy/simple-web
+
 **Connecting to a started container via `docker exec`**
 
     docker exec -it CONTAINER_ID sh

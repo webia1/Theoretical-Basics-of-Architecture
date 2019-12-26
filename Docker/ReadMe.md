@@ -1,10 +1,31 @@
 # Docker
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Docker](#docker)
+  - [Basic Commands](#basic-commands)
+    - [Remove all unused Objects](#remove-all-unused-objects)
+    - [Stop and Remove all Containers](#stop-and-remove-all-containers)
+  - [Network Modes](#network-modes)
+    - [The Bridge Network mode](#the-bridge-network-mode)
+    - [Host Network mode](#host-network-mode)
+    - [None Network mode](#none-network-mode)
+    - [User Defined Network](#user-defined-network)
+  - [Docker Images in Detail](#docker-images-in-detail)
+    - [`ADD` Command](#add-command)
+    - [Image Cache - No Cache](#image-cache-no-cache)
+  - [Trouble Shooting](#trouble-shooting)
+    - [Unable to connect to the Docker Container from the host browser on MacOS](#unable-to-connect-to-the-docker-container-from-the-host-browser-on-macos)
+
+<!-- /code_chunk_output -->
+
 ## Basic Commands
 
 ### Remove all unused Objects
 
-    docker system prune
+    docker system prune -a
     docker system prune -f  # or --force
     docker system prune --volumes
 
@@ -147,6 +168,71 @@ Without `-p HostPort:ContainerPort`
     docker run -it --rm busybox
 
 BusBox is the Swiss Army Knife of Embedded Linux [see here](wikipedia.org/wiki/BusyBox)
+
+## Docker Images in Detail
+
+### `ADD` Command
+
+**Create a `Dockerfile` with the following content:**
+
+    FROM alpine
+    ADD sample_deletable_files/myfiles.tar /home/
+
+**Build Docker**
+
+`docker` `build` `-t` `image-name`:`Version` `/path-to/Dockerfile`
+
+If version is not given then it will be the `latest`
+
+    docker build -t my-image-name:1.0.0 .
+
+
+    Sending build context to Docker daemon  23.55kB
+    Step 1/2 : FROM alpine
+    latest: Pulling from library/alpine
+    e6b0cf9c0882: Pull complete
+    Digest: sha256:2171658620155679240babee0a7714f6509fae66898db422ad803b951257db78
+    Status: Downloaded newer image for alpine:latest
+    ---> cc0abc535e36
+    Step 2/2 : ADD sample_deletable_files/myfiles.tar /home/
+    ---> a8125f6dd3b0
+    Successfully built a8125f6dd3b0
+    Successfully tagged my-image-name:1.0.0
+
+**Run Docker**
+
+    `docker` `run` `-it` `image-name`[:`version]` `shell-name`
+
+    -i, --interactive    Keep STDIN open even if not attached
+    -t, --tty            Allocate a pseudo-TTY
+
+Example:
+
+    docker images
+
+    REPOSITORY      TAG       IMAGE ID        CREATED         SIZE
+    my-image-name   1.0.0     a8125f6dd3b0    4 minutes ago   5.59MB
+    alpine          latest    cc0abc535e36    40 hours ago    5.59MB
+
+If the version is not the `latest` you have the use it so:
+
+    docker run -it my-image-name:1.0.0 sh
+
+## Cook Book
+
+### Image No Cache
+
+    docker build -t my-image-name:1.0.0 . --no-cache
+
+### OnBuild in Dockerfile - Deprecated ??
+
+    FROM  python:onbuild
+    CMD   python app.py
+
+**See Following Issues:**
+
+- [Docker ONBUILD deprecated?](https://github.com/pypa/pipenv/issues/2627)
+- [Python removes onbuild](https://github.com/docker-library/python/pull/314)
 
 ## Trouble Shooting
 

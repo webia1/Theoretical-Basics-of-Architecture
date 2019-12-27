@@ -5,6 +5,11 @@
     chsh -s /bin/zsh
     chsh -s /bin/bash
     ...
+    
+## Turn Off Screen if connected to external monitors
+
+    sudo nvram boot-args="iog=0x0"  // OFF
+    sudo nvram -d boot-args         // ON AGAIN    
 
 ## Show Hidden Files in Finder
 

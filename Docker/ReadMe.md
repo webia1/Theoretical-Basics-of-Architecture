@@ -15,7 +15,10 @@
     - [User Defined Network](#user-defined-network)
   - [Docker Images in Detail](#docker-images-in-detail)
     - [`ADD` Command](#add-command)
-    - [Image Cache - No Cache](#image-cache-no-cache)
+  - [Cook Book](#cook-book)
+    - [Image No Cache](#image-no-cache)
+    - [OnBuild in Dockerfile - Deprecated ??](#onbuild-in-dockerfile-deprecated)
+    - [Docker-Machine Virtualbox](#docker-machine-virtualbox)
   - [Trouble Shooting](#trouble-shooting)
     - [Unable to connect to the Docker Container from the host browser on MacOS](#unable-to-connect-to-the-docker-container-from-the-host-browser-on-macos)
 
@@ -233,6 +236,54 @@ If the version is not the `latest` you have the use it so:
 
 - [Docker ONBUILD deprecated?](https://github.com/pypa/pipenv/issues/2627)
 - [Python removes onbuild](https://github.com/docker-library/python/pull/314)
+
+### Docker-Machine Virtualbox
+
+**Notice:** Virtualbox is already installed.
+
+1. Create a docker-machine
+
+   ```
+   docker-machine create --driver virtualbox ebia-docker-host1
+   ```
+
+2. Get the env-variables of the created machine
+
+   ```
+   docker-machine env ebia-docker-host1
+
+   export DOCKER_TLS_VERIFY="1"
+   export DOCKER_HOST="tcp://192.168.99.100:2376"
+   export DOCKER_CERT_PATH="/Users/userxy/.docker/machine/machines/ebia-docker-host1"
+   export DOCKER_MACHINE_NAME="ebia-docker-host1"
+   # Run this command to configure your shell:
+   # eval $(docker-machine env ebia-docker-host1)
+   ```
+
+3. Add env-variables to your current shell
+
+   ```
+   eval $(docker-machine env ebia-docker-host1)
+   ```
+
+4. Run an http server
+
+   ```
+   docker run -d -p 8080:80 httpd
+   ```
+
+5. Get the IP-Adress of the created docker-machine
+
+   ```
+   docker-machine ip ebia-docker-host1
+   ```
+
+6. Open browser: http://the-ip-adress-given-above:8080
+
+7. Then stop the virtual machine on virtualbox and remove it:
+   ```
+   docker-machine rm ebia-docker-host1
+   ```
 
 ## Trouble Shooting
 

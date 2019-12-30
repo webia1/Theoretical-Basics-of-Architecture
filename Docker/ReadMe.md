@@ -79,7 +79,7 @@ If containers started with `-d` flag, they will be immediately removed after sto
 
 **shows:**
 
-    CONTAINER ID    somestring
+    CONTAINER ID    some-string
     IMAGE           yeasy/simple-web
     COMMAND         "/bin/sh -c 'python …"
     CREATED         2 minutes ago

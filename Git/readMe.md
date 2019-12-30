@@ -1,5 +1,65 @@
 # Git
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Git](#git)
+  - [First Steps](#first-steps)
+  - [.gitignore](#gitignore)
+  - [Show just the current branch](#show-just-the-current-branch)
+  - [Git Pull and reset/ignore local changes](#git-pull-and-resetignore-local-changes)
+  - [Git Show Remote Git Repository Url](#git-show-remote-git-repository-url)
+  - [Sort remote branched by up-to-dateness (committer date)](#sort-remote-branched-by-up-to-dateness-committer-date)
+  - [Git Diff](#git-diff)
+  - [Update Index](#update-index)
+  - [Git Alias](#git-alias)
+  - [Show Configration Paths](#show-configration-paths)
+  - [Log pretty only commit hashes and titles and save in a file](#log-pretty-only-commit-hashes-and-titles-and-save-in-a-file)
+  - [Log all modified changes by a certain user](#log-all-modified-changes-by-a-certain-user)
+    - [Short version](#short-version)
+    - [Long Version](#long-version)
+  - [Remove ignored files from remote repository](#remove-ignored-files-from-remote-repository)
+  - [Undo add](#undo-add)
+  - [Restore deleted file](#restore-deleted-file)
+  - [Create and connect to remote repository](#create-and-connect-to-remote-repository)
+    - [Remote add & pull](#remote-add-pull)
+    - [Set-upstream & push](#set-upstream-push)
+    - [fatal: refusing to merge unrelated histories](#fatal-refusing-to-merge-unrelated-histories)
+  - [Set autocrlf to false](#set-autocrlf-to-false)
+  - [Store Git Credentials on Mac in Key permanently](#store-git-credentials-on-mac-in-key-permanently)
+  - [Set MacOs KeyChain as Git credential store](#set-macos-keychain-as-git-credential-store)
+  - [Rename local branch](#rename-local-branch)
+  - [Delete local branch](#delete-local-branch)
+  - [Delete remote branch](#delete-remote-branch)
+  - [Merge: Overwrite](#merge-overwrite)
+  - [Merge without checkout](#merge-without-checkout)
+  - [Merge: Abort if conflicts (1)](#merge-abort-if-conflicts-1)
+  - [Merge: Abort if conflicts (2)](#merge-abort-if-conflicts-2)
+  - [stash](#stash)
+  - [tag](#tag)
+  - [Correct last commit](#correct-last-commit)
+  - [Status](#status)
+  - [Reset/Revert/Checkout/..](#resetrevertcheckout)
+  - [Log (and relevant config settings)](#log-and-relevant-config-settings)
+  - [Blame](#blame)
+  - [Check Integrity](#check-integrity)
+  - [Create Branch from Commit Hash](#create-branch-from-commit-hash)
+  - [Merge](#merge)
+  - [Statistics](#statistics)
+  - [Bisect](#bisect)
+  - [Miscellaneous](#miscellaneous)
+  - [ERRORS & SOLUTIONS](#errors-solutions)
+    - [Your configuration specifies to merge with the <branch name> from the remote, but no such ref was fetched](#your-configuration-specifies-to-merge-with-the-branch-name-from-the-remote-but-no-such-ref-was-fetched)
+    - [Git autocomplete on Windows Visual Studio Code integrated Terminal (VSCode/Cygwin/Git/Autocomplete)](#git-autocomplete-on-windows-visual-studio-code-integrated-terminal-vscodecygwingitautocomplete)
+      - [Install Cygwin and following cygwin packages](#install-cygwin-and-following-cygwin-packages)
+      - [Add VSCode Settings](#add-vscode-settings)
+      - [Copy `.git-completion.bash` into your Cygwin Home](#copy-git-completionbash-into-your-cygwin-home)
+      - [Edit your `.bash_profile` in your cygwin home folder and add](#edit-your-bash_profile-in-your-cygwin-home-folder-and-add)
+    - [Git-TFS-Error: RPC failed; HTTP 501 curl 22 The requested URL returned error: 501 Not Implemented](#git-tfs-error-rpc-failed-http-501-curl-22-the-requested-url-returned-error-501-not-implemented)
+
+<!-- /code_chunk_output -->
+
 ## First Steps
 
     git config --global --edit // OR The following below
@@ -34,28 +94,28 @@
 ## Git Show Remote Git Repository Url
 
     git config --get remote.origin.url  // SIMPLE
-    git remote show origin              // DETAILS    
+    git remote show origin              // DETAILS
 
 ## Sort remote branched by up-to-dateness (committer date)
 
-    // [credits prof. narebski](https://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit)  
+    // [credits prof. narebski](https://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit)
     git for-each-ref --sort=-committerdate refs/heads/
     # Or using git branch (since version 2.7.0)
     git branch --sort=-committerdate  # DESC
     git branch --sort=committerdate  # ASC
-    
+
 ## Git Diff
 
     git diff --stat commit1 commit2
     git diff master --name-only     // list of different files
     git diff master --name-status   // and what kind of differences
     git diff master --stat          // my favorite
-    git diff master --shortstat  
-    
+    git diff master --shortstat
+
 ## Update Index
 
     git update-index --assume-unchanged
-    
+
 ## Git Alias
 
     git config --global alias.today 'log --since=7am'  // git today
@@ -65,19 +125,22 @@
     git config --list --show-origin                                 // all config files
     git config --list --system --show-origin                        // system config files
     git config --list --show-origin | awk '{print $1}' | uniq       // show locations
-    git config --list --local                                       // local config    
-    
+    git config --list --local                                       // local config
+
 ## Log pretty only commit hashes and titles and save in a file
 
     git log --pretty="%h %s" > commits.txt
-    
+
 ## Log all modified changes by a certain user
 
 ### Short version
-``` 
+
+```
 git log --no-merges --author="authorname" --name-only --pretty=format:"" | sort -u
 ```
+
 ### Long Version
+
 ```bash
 git log --pretty="%H" --author="authorname" |
     while read commit_hash
@@ -85,32 +148,33 @@ git log --pretty="%H" --author="authorname" |
         git show --oneline --name-only $commit_hash | tail -n+2
     done | sort | uniq
 ```
-    
+
 ## Remove ignored files from remote repository
 
     git rm -r --cached .
     git add .
     git commit -am "Removed ignored files"
     git push
-    
+
 ## Undo add
+
     git reset --hard      // to last commit
-    git rm --cached .     // undo add  
-    
+    git rm --cached .     // undo add
+
 ## Restore deleted file
 
-First find the commit-id. That can help: 
-    
-    git log --diff-filter=D --summary
+First find the commit-id. That can help:
+
+git log --diff-filter=D --summary
 
 Then restore it. Please take notive of `~1` after commit-id
 
     git checkout commitid~1 .npmrc
-    
+
 You can also create an Alias [original post](https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository?rq=1) (everything in one line):
 
     git config alias.restore '!f() { git checkout $(git rev-list -n 1 HEAD -- $1)~1 -- $(git diff --name-status $(git rev-list -n 1 HEAD -- $1)~1 | grep '^D' | cut -f 2); }; f'
-    
+
 then use it:
 
     git restore my_deleted_file
@@ -121,45 +185,45 @@ then use it:
 
     git remote add origin https://github.com/webia1/vueDb.git   // remote add
     git branch --set-upstream-to=origin/master master           // map origin/master to master (= remote/master)
-    
-### Set-upstream & push  
+
+### Set-upstream & push
 
     git push --set-upstream origin desired_branch_name
-    git push -u origin desired_branch_name   
-    
+    git push -u origin desired_branch_name
+
 ### fatal: refusing to merge unrelated histories
 
      git pull origin master --allow-unrelated-histories
-       
+
 ## Set autocrlf to false
 
     git config --global core.autocrlf false
-    
+
 ## Store Git Credentials on Mac in Key permanently
 
     git config --global credential.helper cache
     git config --global credential.helper 'cache --timeout=3600'
-    
-## Set MacOs KeyChain as Git credential store 
 
-    git config --global credential.helper osxkeychain   
-   
+## Set MacOs KeyChain as Git credential store
+
+    git config --global credential.helper osxkeychain
+
 ## Rename local branch
 
     git branch -m old_name new_name
     git branch -m new_name // if current branch
-   
-## Delete local branch   
+
+## Delete local branch
 
     git branch -d branch_name
     git branch -D branch_name
-   
+
 ## Delete remote branch
 
     git push origin --delete branch_name
     git push origin :branch_name
 
-## Merge: Overwrite 
+## Merge: Overwrite
 
     git merge -X theirs source_branch_name
 
@@ -171,13 +235,13 @@ then use it:
 
     git merge --no-commit branch2
     git merge --abort
-    
+
 ## Merge: Abort if conflicts (2)
 
     git format-patch $(git merge-base branch1 branch2)..branch2 --stdout | git apply --check -
-    
+
 ## stash
-    
+
     git stash --include-untracked
     git stash pop
     git stash list
@@ -188,22 +252,22 @@ then use it:
     git tag -a v0.1.0 -m "My Message"
     git push origin <tag_name> // or push all tags with the following command:
     git push --tags
-        
+
 ## Correct last commit
 
     git commit --amend
-    
-## Status 
 
-    git status --short // One liners 
-    
+## Status
+
+    git status --short // One liners
+
 ## Reset/Revert/Checkout/..
 
-    git reset HEAD .  
+    git reset HEAD .
     git reset --hard // go to last commit
     git reset --hard commithash  // change back to a certain commit
-    git checkout --force someBranch // local changes are away  
-    
+    git checkout --force someBranch // local changes are away
+
 ## Log (and relevant config settings)
 
     git log --oneline
@@ -212,19 +276,19 @@ then use it:
     git log --summary -M90% | grep -e "^ rename"
     git log --follow a-modified-file.txt
     git config diff.renames true  // Rename Detection = true
-    
+
 ## Blame
 
     git blame folder/filename.extension // shows what revision and author last modified each line of a file
-   
+
 ## Check Integrity
 
     git fsck
-   
+
 ## Create Branch from Commit Hash
 
     git branch desired-branch-name commithash
-    
+
 ## Merge
 
     git mergetool --tool-help   // list of merge tools
@@ -232,10 +296,11 @@ then use it:
     git log --merges
 
 ## Statistics
+
     git shortlog -sn // top list
     git shortlog -sne // with Email Addresses
     git shortlog -sn --no-merges  // top list ohne merges
-    
+
 ## Bisect
 
 git bisect uses a binary search algorithm to find which commit in your project's history introduced a bug. You use it by first telling it a "bad" commit that is known to contain the bug, and a "good" commit that is known to be before the bug was introduced. Then git bisect picks a commit between those two endpoints and asks you whether the selected commit is "good" or "bad". It continues narrowing down the range until it finds the exact commit that introduced the change.
@@ -245,6 +310,7 @@ git bisect start
 git bisect bad
 git bisect good #commithash
 ```
+
 the rest is interactive,..
 
 ## Miscellaneous
@@ -257,12 +323,11 @@ git log --summary -M90% | grep -e "^ rename"
 git log --follow a-modified-file.txt
 git config diff.renames true  // Rename Detection = true
 ```
-    
-    
+
 ## ERRORS & SOLUTIONS
 
 ### Your configuration specifies to merge with the <branch name> from the remote, but no such ref was fetched
-    
+
     Reason: Most probably the remote branch has been deleted.
     git config --global --unset-all remote.origin.url
     git fetch
@@ -270,10 +335,10 @@ git config diff.renames true  // Rename Detection = true
 ### Git autocomplete on Windows Visual Studio Code integrated Terminal (VSCode/Cygwin/Git/Autocomplete)
 
 #### Install Cygwin and following cygwin packages
-    
+
     bash-completion
     bash-completion-devel
-    
+
 #### Add VSCode Settings
 
     "terminal.integrated.shell.windows": "C:\\Cygwin64\\bin\\bash.exe",
@@ -285,9 +350,38 @@ git config diff.renames true  // Rename Detection = true
 
 #### Edit your `.bash_profile` in your cygwin home folder and add
 
-    if [ -e "${HOME}/.git-completion.bash" ] ; then 
-    source "${HOME}"/.git-completion.bash 
-    fi 
+    if [ -e "${HOME}/.git-completion.bash" ] ; then
+    source "${HOME}"/.git-completion.bash
+    fi
 
+### Git-TFS-Error: RPC failed; HTTP 501 curl 22 The requested URL returned error: 501 Not Implemented
 
+**Problem:**
 
+    Counting objects: 131, done.
+    Delta compression using up to 8 threads.
+    Compressing objects: 100% (43/43), done.
+    error: RPC failed; HTTP 501 curl 22 The requested URL returned error: 501 Not Implemented
+    fatal: The remote end hung up unexpectedly
+    Writing objects: 100% (131/131), 2.26 MiB | 4.87 MiB/s, done.
+    Total 131 (delta 102), reused 103 (delta 76)
+    fatal: The remote end hung up unexpectedly
+    Everything up-to-date
+
+**Solution:**
+
+At first try a garbage collection:
+
+    git gc --aggressive
+
+Run this command in root folder of git repository
+
+    git config --get http.postBuffer
+
+If it shows nothing, than used default value ( 1 MiB from [git config man page](http://kernel.org/pub/software/scm/git/docs/v1.7.10.1/git-config.html) )
+
+Now set this value
+
+    git config http.postBuffer 524288000
+
+To allow up to the file size 500M

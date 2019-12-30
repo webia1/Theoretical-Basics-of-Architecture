@@ -271,3 +271,12 @@ require('dotenv').config(); // e.g. within index.js
 ```
 node index.js
 ```
+
+## Trouble Shooting
+
+### Brew node / npm Problem: Error: Cannot find module ‘semver’
+
+    sudo rm -rf /usr/local/lib/node_modules
+    sudo rm -rf ~/.npm
+    brew uninstall –force node
+    brew install node

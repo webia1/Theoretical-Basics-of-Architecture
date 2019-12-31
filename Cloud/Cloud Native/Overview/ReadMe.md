@@ -15,6 +15,17 @@
     - [Docker layering](#docker-layering)
   - [Kubernetes](#kubernetes)
     - [Pods](#pods)
+    - [Creating pods from YAML or JSON descriptors](#creating-pods-from-yaml-or-json-descriptors)
+      - [The structure of a pod description file (YAML):](#the-structure-of-a-pod-description-file-yaml)
+      - [Using `kubectl` to get help and description](#using-kubectl-to-get-help-and-description)
+      - [Using `kubectl` to create the pod:](#using-kubectl-to-create-the-pod)
+      - [Retrieving the whole definition of a _running_ pod:](#retrieving-the-whole-definition-of-a-_running_-pod)
+        - [As yaml](#as-yaml)
+        - [As JSON](#as-json)
+      - [Seeing list of _pods_](#seeing-list-of-_pods_)
+      - [Getting Logs](#getting-logs)
+        - [Specifying the container name when getting logs of a multi-container pod](#specifying-the-container-name-when-getting-logs-of-a-multi-container-pod)
+      - [Forwarding a local network port to a port in the pod](#forwarding-a-local-network-port-to-a-port-in-the-pod)
 
 <!-- /code_chunk_output -->
 
@@ -39,6 +50,11 @@
       - Network, IP,..
       - Storage Resources
   - Pods (running container-group(s) in Kubernetes)
+    - Sidecar containers
+      - Log rotators
+      - Collectors
+      - Data processors
+      - Communication adapters
 
 ## Docker
 
@@ -129,4 +145,116 @@ Containers in a pod run in the same **network namespace**, they share the **same
                 |                             |
   --------------+-----------------------------+--------------
                         Flat network
+```
+
+**Recommendation**: Put frontend and backend into different pods. (**A pod** is the **basic unit of scaling**.) A container shouldn't contain multiple containers if they don't need to run on the same machine. See the following figure:
+
+```ditaa {cmd=true args=["-E"]}
+  +---------------------------+  +---------------------------+
+  |      Frontend Pod         |  |      Backend Pod          |
+  |  +--------------------+   |  |  +--------------------+   |
+  +  | Frontend Container |   +  +  | Backend Container  |   +
+  |  |  +--------------+  |   |  |  |  +--------------+  |   |
+  +  |  |   Frontend   |  |   +  +  |  |   Backend    |  |   +
+  |  |  |   Process    |  |   |  |  |  |   Process    |  |   |
+  +  |  +--------------+  |   +  +  |  +--------------+  |   +
+  |  +--------------------+   |  |  +--------------------+   |
+  +-------------+-------------+  +-------------+-------------+
+                |                              |
+  --------------+------------------------------+--------------
+                        Flat network
+```
+
+### Creating pods from YAML or JSON descriptors
+
+> See further details on [Kubernetes Website online](https://kubernetes.io/docs/reference/)
+
+> Examine [**`kubectl`** command here](https://kubernetes.io/docs/reference/kubectl/overview/)
+
+#### The structure of a pod description file (YAML):
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: name-of-the-pod
+spec:
+  containers:
+    - image: some/image
+      name: name-of-the-container
+      ports:
+        - containerPort: 8080 # has no effect, doc only
+          protocol: TCP
+```
+
+#### Using `kubectl` to get help and description
+
+```bash {cmd=true}
+kubectl explain pods
+```
+
+```bash {cmd=true}
+kubectl explain pod.spec
+```
+
+#### Using `kubectl` to create the pod:
+
+```bash
+kubectl create -f my-resource-description.yaml
+```
+
+#### Retrieving the whole definition of a _running_ pod:
+
+##### As yaml
+
+```bash
+kubectl get po my-running-pod-name -o yaml
+```
+
+##### As JSON
+
+```bash
+kubectl get po my-running-pod-name -o json
+```
+
+#### Seeing list of _pods_
+
+```bash
+kubectl get pods
+```
+
+#### Getting Logs
+
+```bash
+docker logs <container-id>
+kubectl logs <pod-name>
+```
+
+##### Specifying the container name when getting logs of a multi-container pod
+
+```bash
+kubectl logs <pod-name> -c <container-name>
+```
+
+**Important notice:** To make a pod#s log available even after the pod is deleted, you need to set up centralized, cluster-wide logging, which stores all the logs into a central store.
+
+#### Forwarding a local network port to a port in the pod
+
+```bash
+kubectl port-forward <pod-name> 8888:8080
+```
+
+A simplified view of what happens when you use `curl` with `kubectl port-forward`:
+
+```ditaa {cmd=true args=["-E"]}
++--------------------------------------+    +---------------------+
+|             Port                     |    | Port                |
+|+--------+   8888  +---------------+  |    | 8080  +------------+|
+||  curl  +-------->|  kubectl      +-------------->|  Pod       ||
+||        |         |  port-forward |  |    |       |  whatever  ||
+||        |<--------|  process      |<--------------|            ||
+|+--------+         +---------------+  |    |       +------------+|
+| Local Machine                        |    | Kubernetes cluster  |
++--------------------------------------+    +---------------------+
+
 ```

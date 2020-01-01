@@ -1,5 +1,7 @@
 # Cloud Native Overview
 
+> My own notices from the Book: [Going Cloud Native by Ian Miell](https://www.manning.com/books/going-cloud-native) purchased at Manning Publications.
+
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
@@ -44,6 +46,12 @@
       - [Adding and modifying annotations](#adding-and-modifying-annotations)
       - [See added annotations](#see-added-annotations)
     - [Namespaces](#namespaces)
+      - [Discovering namespaces and their pods](#discovering-namespaces-and-their-pods)
+      - [Creating a namespaces](#creating-a-namespaces)
+        - [From a YAML file](#from-a-yaml-file)
+        - [With **`kubectl`**](#with-kubectl)
+      - [Managing objects in other namespaces](#managing-objects-in-other-namespaces)
+        - [Creating a pod with a new namespace](#creating-a-pod-with-a-new-namespace)
 
 <!-- /code_chunk_output -->
 
@@ -407,10 +415,85 @@ Get yaml description file to see annotations added by Kubernetes automatically:
 `kubectl` **`describe`** `pod my-pod`
 
 ```yaml
----
 annotations: ebia.eu/myannotation=ia true
 ```
 
 ### Namespaces
 
-Kubernetes **namespaces** isolate groups, they provide **a scope for object names**.
+Kubernetes **namespaces** isolate groups, they provide **a scope for object names**. Instead of having all your resources in one single namespace, you can split them into multiple namespaces which also allows you to use the same resource names multiple times (across different namespaces).
+
+Beside isolating resources, namespaces are also used for allowing only certain users access to particular resources and even for limiting the amount of computational resources available to individual users.
+
+When listing, describing modifying or deleting objects in other namespaces, you need to pass **`--namespace`** (or **`-n`**) flag to `kubectl`. If you don't, `kubectl` performs the action in the default namespace configured in the current kubectl context, that can be changed through **`kubectl config`** commands.
+
+#### Discovering namespaces and their pods
+
+```bash
+kubectl get ns
+
+NAME              STATUS   AGE
+default           Active   77d17h
+docker            Active   77d17h
+kube-node-lease   Active   77d17h
+kube-public       Active   77d17h
+kube-system       Active   77d17h
+
+kubectl get po --namespace kube-system # also -n
+
+NAME                                     READY   STATUS    RESTARTS   AGE
+coredns-6dcc67dcbc-gwvgk                 1/1     Running   0          77d17h
+coredns-6dcc67dcbc-qd8qt                 1/1     Running   0          77d17h
+etcd-docker-desktop                      1/1     Running   0          77d17h
+kube-apiserver-docker-desktop            1/1     Running   0          77d17h
+kube-controller-manager-docker-desktop   1/1     Running   0          77d17h
+kube-proxy-7mwcv                         1/1     Running   0          77d17h
+kube-scheduler-docker-desktop            1/1     Running   0          77d17h
+```
+
+#### Creating a namespaces
+
+##### From a YAML file
+
+```yaml
+# ebia-namespace.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ebia-namespace
+```
+
+```bash
+kubectl create -f ebia-namespace.yaml
+
+namespace/ebia-namespace created
+```
+
+##### With **`kubectl`**
+
+```bash
+kubectl create namespace ebia-deletable-namespace
+```
+
+#### Managing objects in other namespaces
+
+ss
+
+##### Creating a pod with a new namespace
+
+`kubectl` **`create`** `-f` `my-pod-description.yaml` **`-n`** `a-new-custom-namespace`
+
+### Stopping & removing pods
+
+```bash
+kubectl delete po my-pod-name
+kubectl delete po my-pod1 my-pod2 my-pod-n # delete more than one
+kubectl delete po -l creation_method=manual
+kubectl delete po -l rel=canary
+kubectl delete ns my-namespace-incl-all-its-pods
+kubectl delete po --all # all pods in the current namespace
+kubectl delete all --all # delete almost everything incl. ReplicationController (except secrets)
+```
+
+**Important Notice:** As soon as you delete a pod created by the ReplicationController, it immediately creates a new one. To delete the pod, you also need the ReplicationController.
+
+TEMPORARY END ------- 01.01.2020

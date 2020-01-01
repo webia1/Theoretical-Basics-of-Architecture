@@ -14,7 +14,7 @@
       - [Docker diff](#docker-diff)
     - [Docker layering](#docker-layering)
   - [Kubernetes](#kubernetes)
-    - [Pods](#pods)
+    - [What is a pod?](#what-is-a-pod)
     - [Creating pods from YAML or JSON descriptors](#creating-pods-from-yaml-or-json-descriptors)
       - [The structure of a pod description file (YAML):](#the-structure-of-a-pod-description-file-yaml)
       - [Using `kubectl` to get help and description](#using-kubectl-to-get-help-and-description)
@@ -26,6 +26,24 @@
       - [Getting Logs](#getting-logs)
         - [Specifying the container name when getting logs of a multi-container pod](#specifying-the-container-name-when-getting-logs-of-a-multi-container-pod)
       - [Forwarding a local network port to a port in the pod](#forwarding-a-local-network-port-to-a-port-in-the-pod)
+    - [Specifying labels when creating a pod](#specifying-labels-when-creating-a-pod)
+    - [Listing pods with labels](#listing-pods-with-labels)
+      - [Instead of all labels just the desired ones:](#instead-of-all-labels-just-the-desired-ones)
+      - [Listing all with a certain value:](#listing-all-with-a-certain-value)
+      - [Listing all with a certain label:](#listing-all-with-a-certain-label)
+      - [Listing all except a certain label:](#listing-all-except-a-certain-label)
+      - [Matching pods (further possibilities)](#matching-pods-further-possibilities)
+        - [Multiple conditions with comma-separated criteria](#multiple-conditions-with-comma-separated-criteria)
+      - [Modifying labels of existing pods](#modifying-labels-of-existing-pods)
+      - [Label Selectors are important because](#label-selectors-are-important-because)
+    - [Scheduling via Labels and Selectors](#scheduling-via-labels-and-selectors)
+      - [Using labels for categorizing worker nodes](#using-labels-for-categorizing-worker-nodes)
+      - [Scheduling pods to specific nodes](#scheduling-pods-to-specific-nodes)
+      - [Scheduling to one specific node](#scheduling-to-one-specific-node)
+    - [Annotating pods](#annotating-pods)
+      - [Adding and modifying annotations](#adding-and-modifying-annotations)
+      - [See added annotations](#see-added-annotations)
+    - [Namespaces](#namespaces)
 
 <!-- /code_chunk_output -->
 
@@ -55,6 +73,9 @@
       - Collectors
       - Data processors
       - Communication adapters
+    - Labels and selectors
+    - Annotations
+    - Namespaces
 
 ## Docker
 
@@ -114,7 +135,7 @@ Docker internally uses a `copy-on-write` mechanism: you only copy data over when
 
 ## Kubernetes
 
-### Pods
+### What is a pod?
 
 A pod is a **co-located** group of containers and represents the **basic building blocks in Kubernetes**. Instead of deploying containers individually you always deploy and operate on a pod of containers.
 
@@ -257,3 +278,139 @@ A simplified view of what happens when you use `curl` with `kubectl port-forward
 | Local Machine                        |    | Kubernetes cluster  |
 +--------------------------------------+    +---------------------+
 ```
+
+### Specifying labels when creating a pod
+
+> [API Conventions](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md)
+
+> [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
+
+Organizing pods and all other Kubernetes objects is done through **labels** e.g. within pod description file:
+
+```yaml
+# An Example:
+metadata:
+  name: name-of-the-pod
+  labels:
+    creation_method: manual
+    env: prod
+    tier: frontend
+```
+
+You can create the pod as usual:
+
+`kubectl create -f` **`my-pod-desc-file-with-labels.yaml`**
+
+See details on command line:
+
+```bash {cmd=true}
+kubectl explain pod.metadata.labels
+```
+
+### Listing pods with labels
+
+    kubectl get po --show-labels
+    kubectl get pods --show-labels
+
+#### Instead of all labels just the desired ones:
+
+`kubectl get po` **`-L`** `creation_method, env`
+
+#### Listing all with a certain value:
+
+`kubectl get po` **`-l`** `creation_method=manual`
+
+#### Listing all with a certain label:
+
+`kubectl get po` **`-l`** `env`
+
+#### Listing all except a certain label:
+
+`kubectl get po` **`-l`** **`'!env'`**
+
+Make sure to use single quotes around **`!env`**, so the bash shell doesn't evaluate the exclamation mark.
+
+#### Matching pods (further possibilities)
+
+- creation_method!=manual
+- env in (prod, devel)
+- env not in (prod, devel)
+
+##### Multiple conditions with comma-separated criteria
+
+Multiple conditions are also possible: `creation_method=auto,env=debug`
+
+#### Modifying labels of existing pods
+
+`kubectl` **`label`** `po <pod_name> <prop>:<value>`
+
+`kubectl` **`label`** `po my-pod-a env=debug`
+
+**Overwrite** if prop exists:
+
+`kubectl` **`label`** `po my-pod-a env=debug` **`--overwrite`**
+
+#### Label Selectors are important because
+
+Label selectors allow you select a subset of pods tagged with certain labels and perform an operation on those pods. A label selector is a criterion, which filters resources based on whether they include a certain label with a certain value.
+
+### Scheduling via Labels and Selectors
+
+#### Using labels for categorizing worker nodes
+
+```bash
+kubectl get nodes
+# pick one of them e.g. node-name-xyz
+kubectl label node node-name-xyz gpu=true
+```
+
+`kubectl` **`get`** **`nodes`** **`-l`** `gpu=true`
+
+#### Scheduling pods to specific nodes
+
+Section **nodeSelector:**
+
+```yaml
+metadata:
+  name: my-pod1-gpu
+spec:
+  nodeSelector:
+    gpu: 'true'
+```
+
+#### Scheduling to one specific node
+
+Similarly, you could also **schedule** a **pod** to an **exact node**, because each **node** also has a **unique label** with the key **kubernetes.io/hostname** and **value** set to the actual **host name** of the **node**.
+But setting the nodeSelector to a specific node by the hostname label may lead to the pod being unschedulable if the node is offline.
+
+### Annotating pods
+
+```yaml
+#excerpt
+metadata:
+  annotations:
+    whatever:
+```
+
+**Annotations** (similar to labels) cannot be used to group objects the way labels can. There is also **no such thing as an annonation selector**. They are primarily **meant to be used by tools**. Certain annonations are automatically added to objects by Kubernetes, but others are added by users manually.
+
+Get yaml description file to see annotations added by Kubernetes automatically:
+
+`kubectl` **`get`** `po my-pod` **`-o`** `yaml`
+
+#### Adding and modifying annotations
+
+`kubectl` **`annotate`** `pod my-pod` **`ebia.eu/myannotation="ia true"`**
+
+#### See added annotations
+
+`kubectl` **`describe`** `pod my-pod`
+
+```yaml
+---
+annotations: ebia.eu/myannotation=ia true
+```
+
+### Namespaces
+
+Kubernetes **namespaces** isolate groups, they provide **a scope for object names**.

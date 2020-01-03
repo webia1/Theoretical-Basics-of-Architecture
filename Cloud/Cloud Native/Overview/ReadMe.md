@@ -52,6 +52,7 @@
         - [With **`kubectl`**](#with-kubectl)
       - [Managing objects in other namespaces](#managing-objects-in-other-namespaces)
         - [Creating a pod with a new namespace](#creating-a-pod-with-a-new-namespace)
+    - [Stopping & removing pods](#stopping-removing-pods)
 
 <!-- /code_chunk_output -->
 

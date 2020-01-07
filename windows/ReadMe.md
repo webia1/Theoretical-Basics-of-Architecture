@@ -2,6 +2,8 @@
 
 ## Proxy Server With Credentials
 
+Start Powershell with admin rights and:
+
     netsh winhttp import proxy source=ie
     $Wcl=New-Object System.Net.WebClient
     $Creds=Get-Credential

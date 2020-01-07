@@ -8,3 +8,4 @@ Start Powershell with admin rights and:
     netsh winhttp import proxy source=ie
     netsh winhttp set proxy <Proxyserver:Port> bypass-list="*.mydomain.intern" 
     netsh winhttp show proxy
+    netsh winhttp reset proxy  // Remove all

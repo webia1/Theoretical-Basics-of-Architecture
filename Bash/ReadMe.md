@@ -1,3 +1,7 @@
+## Tree on Windows
+
+    C:\cygwin\bin\tree -L 2 -I 'node_modules'
+
 ## Convert CRLFS to LFS 
 
 ```

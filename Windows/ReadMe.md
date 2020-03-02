@@ -4,7 +4,7 @@
 
 ```bash
 #1 find process id
-netstat -ano | findstr "PID :8081"
+netstat -ano | findstr :8081
 
 # kill process
 taskkill /pid 12345 /f

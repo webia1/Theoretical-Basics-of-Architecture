@@ -1,5 +1,16 @@
 # Windows 
 
+## Kill Port Process
+
+```bash
+#1 find process id
+netstat -ano | findstr "PID :8081"
+
+# kill process
+taskkill /pid 12345 /f
+```
+
+
 ## Proxy Server With Credentials
 
 Start Powershell with admin rights and:

@@ -194,6 +194,11 @@ then use it:
 ### fatal: refusing to merge unrelated histories
 
      git pull origin master --allow-unrelated-histories
+     
+## Git remove remote config
+    
+    git remote -v // list existing
+    git remote remove origin // e.g.
 
 ## Set autocrlf to false
 

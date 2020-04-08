@@ -19,6 +19,46 @@ tsc -w --out bundle.js index.ts // out DEPRECATED. Use --outFile instead
 tsc -w --outFile bundle.js index.ts
 ```
 
+### ts-node watch witch nodemon
+
+1) package.json
+
+```js
+{
+  "name": "ts-node-watch-with-nodemon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "watch": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^3.8.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "ts-node": "^8.8.2"
+  }
+}
+```
+
+2) nodemon.json
+
+```js
+{
+  "watch": ["index.ts"],
+  "ignore": ["./**/*.spec.ts"],
+  "exec": "ts-node ./index.ts"
+}
+
+```
+
+
 #### tsc --lib
 
 ```javascript

@@ -114,6 +114,7 @@ npm install ts-node --save-dev // dev-dependency
 
 ### 1) Automatically
 
+    npm install -g npx
     npx gts init
 
 ### 2) Manually: Prepare TypeScript for Browser

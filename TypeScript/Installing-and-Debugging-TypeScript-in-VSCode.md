@@ -112,7 +112,11 @@ npm install ts-node --save-dev // dev-dependency
 
 ## New Approach: Using [`gts`](https://www.npmjs.com/package/gts)
 
-### Prepare TypeScript for Browser
+### 1) Automatically
+
+    npx gts init
+
+### 2) Manually: Prepare TypeScript for Browser
 
 #### package.json
 

@@ -53,7 +53,7 @@ tsc -w --outFile bundle.js index.ts
 {
   "watch": ["./src/**/*.ts"],
   "ignore": ["./src/**/*.spec.ts"],
-  "exec": "ts-node ./index.ts"
+  "exec": "ts-node ./src/index.ts"
 }
 
 ```

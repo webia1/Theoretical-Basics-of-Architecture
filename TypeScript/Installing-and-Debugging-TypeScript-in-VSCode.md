@@ -137,7 +137,7 @@ npm install ts-node --save-dev // dev-dependency
     "test": "echo \"Error: no test specified\" && exit 1",
     "check": "gts check",
     "clean": "gts clean",
-    "compile": "tsc -p .",
+    "build": "tsc -p .", // better build than compile
     "fix": "gts fix",
     "prepare": "npm run compile",
     "pretest": "npm run compile",

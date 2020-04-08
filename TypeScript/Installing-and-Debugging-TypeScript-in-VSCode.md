@@ -139,8 +139,8 @@ npm install ts-node --save-dev // dev-dependency
     "clean": "gts clean",
     "build": "tsc -p .", // better build than compile
     "fix": "gts fix",
-    "prepare": "npm run compile",
-    "pretest": "npm run compile",
+    "prepare": "npm run build",
+    "pretest": "npm run build",
     "posttest": "npm run check"
   },
   "devDependencies": {

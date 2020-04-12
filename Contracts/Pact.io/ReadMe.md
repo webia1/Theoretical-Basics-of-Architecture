@@ -32,6 +32,24 @@
       - [Scope of a Provider Pact Test](#scope-of-a-provider-pact-test)
       - [1) Create the Order API](#1-create-the-order-api)
       - [2) Run provider verification](#2-run-provider-verification)
+  - [Further Readings](#further-readings)
+    - [5 Minute Guide (Examples)](#5-minute-guide-exampleshttpsdocspactio5-minute-getting-started-guide)
+    - [Sharing Pacts with the Pact Broker](#sharing-pacts-with-the-pact-brokerhttpsdocspactiogetting_startedsharing_pacts)
+      - [Versioning in the Pact Broker](#versioning-in-the-pact-brokerhttpsdocspactiogetting_startedversioning_in_the_pact_brokerversioning-in-the-pact-broker)
+      - [Provider States](#provider-stateshttpsdocspactiogetting_startedprovider_states)
+      - [Publishing (PactJS)](#publishing-pactjshttpsgithubcompact-foundationpact-jspublishing-pacts-to-a-broker)
+      - [Provider Verfication (PactJS)](#provider-verfication-pactjshttpsgithubcompact-foundationpact-jsprovider-api-testing)
+      - [Dockerised Pact Broker](#dockerised-pact-brokerhttpsgithubcompact-foundationpact-broker-docker)
+    - [Pact Workshop](#pact-workshophttpsgithubcompact-foundationpact-workshop-js)
+    - [PactJS](#pactjshttpsgithubcompact-foundationpact-js)
+    - [PactNode](#pactnodehttpsgithubcompact-foundationpact-node)
+    - [Pact standalone executables](#pact-standalone-executableshttpsgithubcompact-foundationpact-ruby-standalonereleases)
+    - [Jext-Pact](#jext-pacthttpsgithubcompact-foundationjest-pact)
+    - [Pact Mock Service for NPM](#pact-mock-service-for-npmhttpsgithubcompact-foundationpact-mock-service-npm)
+    - [Pact::Provider::Proxy](#pactproviderproxyhttpsgithubcompact-foundationpact-provider-proxy)
+    - [Pact Nirvana - Effective Pact Setup Guide](#pact-nirvana-effective-pact-setup-guidehttpsdocspactiopact_nirvana)
+    - [Convince me Pact](#convince-me-pacthttpsdocspactiofaqconvinceme)
+    - [Consumer-Driven Contracts: A Service Evolution Pattern - martinfowler.com](#consumer-driven-contracts-a-service-evolution-pattern-martinfowlercomhttpsmartinfowlercomarticlesconsumerdrivencontractshtml)
 
 <!-- /code_chunk_output -->
 
@@ -145,3 +163,39 @@ Order API provider project.
 #### 1) Create the Order API
 
 #### 2) Run provider verification
+
+## Further Readings
+
+### [5 Minute Guide (Examples)](https://docs.pact.io/5-minute-getting-started-guide)
+
+### [Sharing Pacts with the Pact Broker](https://docs.pact.io/getting_started/sharing_pacts)
+
+#### [Versioning in the Pact Broker](https://docs.pact.io/getting_started/versioning_in_the_pact_broker#versioning-in-the-pact-broker)
+
+#### [Provider States](https://docs.pact.io/getting_started/provider_states)
+
+### [Pact::Provider::Proxy](https://github.com/pact-foundation/pact-provider-proxy)
+
+#### [Publishing (PactJS)](https://github.com/pact-foundation/pact-js/#publishing-pacts-to-a-broker)
+
+#### [Provider Verfication (PactJS)](https://github.com/pact-foundation/pact-js/#provider-api-testing)
+
+#### [Dockerised Pact Broker](https://github.com/pact-foundation/pact-broker-docker)
+
+### [Pact Workshop](https://github.com/pact-foundation/pact-workshop-js)
+
+### [PactJS](https://github.com/pact-foundation/pact-js)
+
+### [PactNode](https://github.com/pact-foundation/pact-node)
+
+### [Pact standalone executables](https://github.com/pact-foundation/pact-ruby-standalone/releases)
+
+### [Jext-Pact](https://github.com/pact-foundation/jest-pact)
+
+### [Pact Mock Service for NPM](https://github.com/pact-foundation/pact-mock-service-npm)
+
+### [Pact Nirvana - Effective Pact Setup Guide](https://docs.pact.io/pact_nirvana)
+
+### [Convince me Pact](https://docs.pact.io/faq/convinceme)
+
+### [Consumer-Driven Contracts: A Service Evolution Pattern - martinfowler.com](https://martinfowler.com/articles/consumerDrivenContracts.html)

@@ -37,6 +37,7 @@
     - [Sharing Pacts with the Pact Broker](#sharing-pacts-with-the-pact-brokerhttpsdocspactiogetting_startedsharing_pacts)
       - [Versioning in the Pact Broker](#versioning-in-the-pact-brokerhttpsdocspactiogetting_startedversioning_in_the_pact_brokerversioning-in-the-pact-broker)
       - [Provider States](#provider-stateshttpsdocspactiogetting_startedprovider_states)
+    - [Pact::Provider::Proxy](#pactproviderproxyhttpsgithubcompact-foundationpact-provider-proxy)
       - [Publishing (PactJS)](#publishing-pactjshttpsgithubcompact-foundationpact-jspublishing-pacts-to-a-broker)
       - [Provider Verfication (PactJS)](#provider-verfication-pactjshttpsgithubcompact-foundationpact-jsprovider-api-testing)
       - [Dockerised Pact Broker](#dockerised-pact-brokerhttpsgithubcompact-foundationpact-broker-docker)
@@ -46,7 +47,6 @@
     - [Pact standalone executables](#pact-standalone-executableshttpsgithubcompact-foundationpact-ruby-standalonereleases)
     - [Jext-Pact](#jext-pacthttpsgithubcompact-foundationjest-pact)
     - [Pact Mock Service for NPM](#pact-mock-service-for-npmhttpsgithubcompact-foundationpact-mock-service-npm)
-    - [Pact::Provider::Proxy](#pactproviderproxyhttpsgithubcompact-foundationpact-provider-proxy)
     - [Pact Nirvana - Effective Pact Setup Guide](#pact-nirvana-effective-pact-setup-guidehttpsdocspactiopact_nirvana)
     - [Convince me Pact](#convince-me-pacthttpsdocspactiofaqconvinceme)
     - [Consumer-Driven Contracts: A Service Evolution Pattern - martinfowler.com](#consumer-driven-contracts-a-service-evolution-pattern-martinfowlercomhttpsmartinfowlercomarticlesconsumerdrivencontractshtml)
@@ -190,7 +190,7 @@ Order API provider project.
 
 ### [Pact standalone executables](https://github.com/pact-foundation/pact-ruby-standalone/releases)
 
-### [Jext-Pact](https://github.com/pact-foundation/jest-pact)
+### [Jest-Pact](https://github.com/pact-foundation/jest-pact)
 
 ### [Pact Mock Service for NPM](https://github.com/pact-foundation/pact-mock-service-npm)
 

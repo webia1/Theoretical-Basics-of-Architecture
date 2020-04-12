@@ -45,7 +45,7 @@
     - [PactJS](#pactjshttpsgithubcompact-foundationpact-js)
     - [PactNode](#pactnodehttpsgithubcompact-foundationpact-node)
     - [Pact standalone executables](#pact-standalone-executableshttpsgithubcompact-foundationpact-ruby-standalonereleases)
-    - [Jext-Pact](#jext-pacthttpsgithubcompact-foundationjest-pact)
+    - [Jest-Pact](#jest-pacthttpsgithubcompact-foundationjest-pact)
     - [Pact Mock Service for NPM](#pact-mock-service-for-npmhttpsgithubcompact-foundationpact-mock-service-npm)
     - [Pact Nirvana - Effective Pact Setup Guide](#pact-nirvana-effective-pact-setup-guidehttpsdocspactiopact_nirvana)
     - [Convince me Pact](#convince-me-pacthttpsdocspactiofaqconvinceme)

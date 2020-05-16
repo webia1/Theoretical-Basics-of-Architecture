@@ -31,7 +31,7 @@ tsc -w --outFile bundle.js index.ts
   "main": "index.js",
   "scripts": {
     "start": "ts-node index.ts",
-    "watch": "nodemon",
+    "watch": "nodemon --inspect",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -51,9 +51,11 @@ tsc -w --outFile bundle.js index.ts
 
 ```js
 {
-  "watch": ["./src/index.ts", "./src/**/*.ts"],
-  "ignore": ["./src/**/*.spec.ts"],
-  "exec": "ts-node ./src/index.ts"
+  "watch": ["src/**/*.ts", "nodemon.json", "package.json"],
+  "ignore": ["src/**/*.spec.ts"],
+  "exec": "ts-node src/index.ts",
+  "verbose": "true",
+  "ext": "ts"
 }
 
 ```

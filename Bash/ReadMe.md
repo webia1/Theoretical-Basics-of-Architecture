@@ -1,6 +1,7 @@
 ## Show only file names without extension
 
     ls -1 | sed -e 's/\.js$//'  # in this case *.js
+    basename --suffix=.js -- *.js
 
 ## Tree on Windows
 

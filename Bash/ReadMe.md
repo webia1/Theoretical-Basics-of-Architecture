@@ -1,3 +1,7 @@
+## Show only file names without extension
+
+    ls -1 | sed -e 's/\.js$//'  # in this case *.js
+
 ## Tree on Windows
 
     C:\cygwin\bin\tree -L 2 -I 'node_modules'

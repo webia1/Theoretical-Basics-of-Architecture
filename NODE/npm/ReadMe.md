@@ -101,7 +101,7 @@ Notice `--` here:
 
 ```json
 "scripts": {
-    "start": "ts-node src/server.ts", // e.g. no argument standard port
+    "start": "ts-node src/server.ts",
     "start:differentPort": "npm start -- 4000",
     "start:somethingElse": "npm start -- ${npm_package_config_port}"
 },

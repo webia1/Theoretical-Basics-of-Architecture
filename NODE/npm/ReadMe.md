@@ -24,10 +24,15 @@
 
 ### npm run pass parameter
 
+For professional use-cases use: https://github.com/yargs/
+For all other just:
+
     // Windows
     "args": "echo \"The value of --myParam is '%npm_config_myParam%'\""
     // Linux
     "args": "echo \"The value of --myParam is '${npm_config_myParam}'\""
+    
+  
 
 ### `npm` Command
 

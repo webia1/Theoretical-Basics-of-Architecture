@@ -103,6 +103,7 @@ Notice `--` here:
 "scripts": {
     "start": "ts-node src/server.ts", // e.g. no argument standard port
     "start:differentPort": "npm start -- 4000",
+    "start:somethingElse": "npm start -- ${npm_package_config_port}"
 },
 "config": {
     "port" : "3000"

@@ -82,6 +82,15 @@ constructor(private cis: ClientInfoService) {}
 
 ```ts
 import { DOCUMENT } from '@angular/common';
+import {
+  Component,
+  OnInit,
+  isDevMode,
+  ChangeDetectorRef,
+  HostListener,
+  Inject,
+  AfterViewChecked,
+} from '@angular/core';
 ...
  constructor(
     @Inject(DOCUMENT) private document: Document,

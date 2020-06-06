@@ -78,3 +78,13 @@ constructor(private cis: ClientInfoService) {}
   }
 ```
 
+### Or Inject it directly without Service
+
+```ts
+import { DOCUMENT } from '@angular/common';
+...
+ constructor(
+    @Inject(DOCUMENT) private document: Document,
+    @Inject('WINDOW') private window: Window, ... // Attention it is a String!
+```
+

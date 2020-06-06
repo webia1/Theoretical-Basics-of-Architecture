@@ -11,6 +11,7 @@ providers: [
 ],
 
 // out of everything else
+export declare const MY_CLIENT_INFO: InjectionToken<string>;
 export function getClientInfo() {
   return window ? window : {};
 }

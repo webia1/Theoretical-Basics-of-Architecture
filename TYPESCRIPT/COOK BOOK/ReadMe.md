@@ -56,7 +56,34 @@ class SomeClass {
 }
 ```
 
+## Mixin Classes
+
+> See here: https://github.com/microsoft/TypeScript/pull/13743
+
 ## Type Definitions
+
+> Advanced Types: https://www.typescriptlang.org/docs/handbook/advanced-types.html
+
+### Extending Types
+
+> Diskussion: https://github.com/Microsoft/TypeScript/pull/13604
+
+#### Old Method
+
+    type UserEvent = Event & {UserId: string}
+
+#### New Method (TS ^2.2)
+
+    type Event = {
+       name: string;
+       dateCreated: string;
+       type: string;
+    }
+
+    interface UserEvent extends Event {
+       UserId: string; 
+    }
+    
 
 ### An Array of a certain type at least with e.g. 2 elements
 

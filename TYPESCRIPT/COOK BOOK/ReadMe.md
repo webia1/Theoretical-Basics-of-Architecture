@@ -111,3 +111,25 @@ if (isAtLeastTwoFoos(fooArray)) {
   foo = fooArray; // okay
 }
 ```
+
+### Same Type of Elements
+
+```javascript
+type UnionKeys<U> = U extends U ? keyof U : never;
+
+const test = <T>(x: T & Record<keyof T, Record<UnionKeys<T[keyof T]>, number>>) => true;
+
+const x = test({
+  a: {
+    x: 1,
+    y: 3,
+    z: 5
+  },
+  b: {
+    x: 1,
+    y: 2,
+    z: 7
+
+  },
+})
+```

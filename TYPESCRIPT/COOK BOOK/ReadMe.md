@@ -7,6 +7,7 @@
 - [TypeScript Cookbook](#typescript-cookbook)
   - [Other Ressources](#other-ressources)
   - [Initialize TS](#initialize-ts)
+  - [Show (Effective) Configuration](#show-effective-configuration)
   - [Compiler Options](#compiler-options)
     - [Some Checks](#some-checks)
   - [Use same name for Class and Interface](#use-same-name-for-class-and-interface)

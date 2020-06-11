@@ -13,6 +13,7 @@
   - [Use same name for Class and Interface](#use-same-name-for-class-and-interface)
   - [Mixin Classes](#mixin-classes)
   - [Type Definitions](#type-definitions)
+    - [Built-In Basic Types and Interfaces](#built-in-basic-types-and-interfaces)
     - [Extending Types](#extending-types)
       - [Old Method](#old-method)
       - [New Method (TS ^2.2)](#new-method-ts-22)
@@ -249,4 +250,39 @@ const x = test({
 
   },
 })
+```
+
+### An Excluding List for Initializer
+
+```typescript
+interface MyExcludingList {
+  moonWalking: Function;
+  dancing: Function;
+}
+
+let exclude: keyof MyExcludingList;
+
+class WhatEver {
+  public id!: number;
+  public name!: string;
+  public date!: Date;
+  public moonWalking!: Function;
+
+  constructor(
+    prop: {
+      [prop in keyof WhatEver]?: WhatEver[prop] extends MyExcludingList[typeof exclude]
+        ? never
+        : WhatEver[prop];
+    }
+  ) {
+    Object.assign(this, prop);
+  }
+}
+
+const whatEver = new WhatEver({
+  id: 0,
+  name: 'Michael Jackson',
+  // moonWalking:
+  // No value exists in scope for the shorthand property 'moonWalking'
+});
 ```

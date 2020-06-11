@@ -10,19 +10,32 @@
   - [Compiler Options](#compiler-options)
     - [Some Checks](#some-checks)
   - [Use same name for Class and Interface](#use-same-name-for-class-and-interface)
+  - [Mixin Classes](#mixin-classes)
   - [Type Definitions](#type-definitions)
+    - [Extending Types](#extending-types)
+      - [Old Method](#old-method)
+      - [New Method (TS ^2.2)](#new-method-ts-22)
     - [An Array of a certain type at least with e.g. 2 elements](#an-array-of-a-certain-type-at-least-with-eg-2-elements)
+    - [Same Type of Elements](#same-type-of-elements)
 
 <!-- /code_chunk_output -->
 
 ## Other Ressources
 
-- [Release Notes](https://www.typescriptlang.org/docs/handbook/release-notes/overview.html)
+- [Release Notes - Overview](https://www.typescriptlang.org/docs/handbook/release-notes/overview.html)
+- [Compiler Options](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
+- [tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
 
 ## Initialize TS
 
 ```bash
 tsc --init
+```
+
+## Show (Effective) Configuration
+
+```bash
+tsc --showConfig
 ```
 
 ## Compiler Options
@@ -62,7 +75,8 @@ class SomeClass {
 
 ## Type Definitions
 
-> Advanced Types: https://www.typescriptlang.org/docs/handbook/advanced-types.html
+> Advanced Types:
+> https://www.typescriptlang.org/docs/handbook/advanced-types.html
 
 ### Extending Types
 
@@ -81,9 +95,8 @@ class SomeClass {
     }
 
     interface UserEvent extends Event {
-       UserId: string; 
+       UserId: string;
     }
-    
 
 ### An Array of a certain type at least with e.g. 2 elements
 

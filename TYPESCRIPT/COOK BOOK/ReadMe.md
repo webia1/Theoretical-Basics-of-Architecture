@@ -40,6 +40,13 @@ tsc --init
 tsc --showConfig
 ```
 
+## Disable Lint & Type Checking for a file
+
+```ts
+// tslint:disable
+// @ts-nocheck
+```
+
 ## Compiler Options
 
 ### Some Checks

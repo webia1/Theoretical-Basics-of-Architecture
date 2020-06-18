@@ -1,5 +1,7 @@
 # Angular Installation Checklist - OPINIONATED 
 
+This list is for me to not forget an important step in repetetive installations.
+
 ## 1) Install `@angular/cli`
 
 ```bash
@@ -17,6 +19,12 @@ ng new projectName
  
  ```bash
  ng new projectName --prefix=myPrefix
+ ```
+ 
+ My Own Approach
+ 
+ ```bash
+  ng new ebia -f -s --minimal --prefix=ebia --routing --skip-install --skip-tests --strict --style=scss
  ```
  
 ### During the installation

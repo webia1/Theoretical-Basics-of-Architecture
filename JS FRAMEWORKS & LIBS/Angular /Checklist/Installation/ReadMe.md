@@ -35,10 +35,25 @@ Stylesheet Format &rarr; SCSS
 
 ### 2.1) Overwrite some standard settings
 
-#### 2.1.2) Change `prefix` in angular.json
+#### 2.1.1) Change `prefix` in angular.json
 
 ```
 projects.projectName.prefix: myPrefix
+```
+
+#### 2.1.2) Set Basic Styles
+
+..solves many future problems with certain UI-Libs:
+
+```css
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
 ```
 
 ### 3) Generate a new component and use it as root

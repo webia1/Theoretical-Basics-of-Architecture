@@ -109,8 +109,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 Original `lodash` is not tree shakeable, therefore use [`lodash-es`](https://www.npmjs.com/package/lodash-es), it is the same functionality, just exported as ES modules:
 
 ```bash
-npm install lodash-es --save
-npm install @types/lodash-es --save-dev
+npm i -S lodash-es 
+npm i -D @types/lodash-es 
 ```
 Use it like:
 

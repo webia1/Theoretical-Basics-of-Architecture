@@ -40,3 +40,22 @@ Stylesheet Format &rarr; SCSS
 ```
 projects.projectName.prefix: myPrefix
 ```
+
+### 3) Generate a new component and use it as root
+
+Own approach:
+
+```bash
+ng g c components/dashboard -is --skipTests
+```
+
+Edit `app-routing.module.ts` and set the root-route:
+
+```ts
+const routes: Routes = [
+  {
+    path: '',
+    component: DashboardComponent
+  }
+];
+```

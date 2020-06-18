@@ -56,6 +56,10 @@ body {
 
 ```
 
+#### 2.1.3 Clean up app.component.html
+
+Delete everything except `<router-outlet></router-outlet>`
+
 ### 3) Generate a new component and use it as root
 
 Own approach:
@@ -74,3 +78,27 @@ const routes: Routes = [
   }
 ];
 ```
+
+### 4) Install `@angular/layout`
+
+Details: https://github.com/angular/flex-layout
+
+**Important:** Use an angular compatible version (major versions must be compatible, e.g. 9 &rarr; 9 etc.)
+
+```bash
+npm i -s @angular/flex-layout@9.0.0-beta.31 @angular/cdk
+```
+
+Then edit `app.module.ts`
+
+```ts
+import { FlexLayoutModule } from '@angular/flex-layout';
+...
+
+@NgModule({
+    ...
+    imports: [ FlexLayoutModule ],
+    ...
+});
+```
+

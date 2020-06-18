@@ -79,7 +79,9 @@ const routes: Routes = [
 ];
 ```
 
-### 4) Install `@angular/layout`
+### Installing Useful Libraries
+
+#### 4.1) Install `@angular/layout`
 
 Details: https://github.com/angular/flex-layout
 
@@ -101,4 +103,19 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ...
 });
 ```
+
+### Lodash (Use `lodash-es`)
+
+Original `lodash` is not tree shakeable, therefore use [`lodash-es`](https://www.npmjs.com/package/lodash-es), it is the same functionality, just exported as ES modules:
+
+```bash
+npm install lodash-es --save
+npm install @types/lodash-es --save-dev
+```
+Use it like:
+
+```
+import debounce from 'lodash-es/debounce'
+```
+
 

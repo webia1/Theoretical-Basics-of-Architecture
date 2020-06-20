@@ -19,7 +19,7 @@ import { DateFnsModule } from 'ngx-date-fns';
 })
 ```
 
-### Format Dates with DateFns
+### Format Dates with DateFns (date-fns)
 
 Import necessary parts:
 
@@ -44,8 +44,24 @@ let dayString = '2019-06-20 19:46:20.187'
 let parsedDayString =  parseISO(dayString);
 let myLocalDate = format(parsedDayString, DATE_FORMATS.SHORT, { locale: de });
 ```
+### Time Distance with DateFns (date-fns)
 
+```ts
+// import necessary parts
+import { formatDistanceToNow } from 'date-fns';
+import { de } from 'date-fns/locale';
 
+// then somewhere in your component
+
+const startTime = Date.now();
+// do something meanwhile and then
+
+const itTook = formatDistanceToNow(
+    startTime,
+    { includeSeconds: true, locale: de }
+);
+
+```
 
 ## Injecting Window Object
 

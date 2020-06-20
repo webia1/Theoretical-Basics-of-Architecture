@@ -1,5 +1,52 @@
 # Angular Cookbook
 
+## Working with DateFns
+
+### Installing (also pipes &rarr; ngx-date-fns)
+
+```bash
+npm i -S date-fns
+npm i -S ngx-date-fns
+```
+import { DateFnsModule } from 'ngx-date-fns';
+
+```bash
+@NgModule({
+  imports: [
+    // (...)
+    DateFnsModule.forRoot()
+  ]
+})
+```
+
+### Format Dates with DateFns
+
+Import necessary parts:
+
+```ts
+import { format, parseISO } from 'date-fns';
+import { de } from 'date-fns/locale';
+```
+
+Define desired formats
+
+```ts
+const DATE_FORMATS = {
+  SHORT: 'd .MMM yyyy',
+  MIDDLE: 'd .MMM yyyy, HH:mm, E',
+};
+```
+Use it in your component
+
+```ts
+// e.g. timestamp as "yyyy-MM-dd'T'HH:mm:ss.SSS";
+let dayString = '2019-06-20 19:46:20.187'
+let parsedDayString =  parseISO(dayString);
+let myLocalDate = format(parsedDayString, DATE_FORMATS.SHORT, { locale: de });
+```
+
+
+
 ## Injecting Window Object
 
 ### Provide it

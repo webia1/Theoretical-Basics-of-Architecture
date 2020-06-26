@@ -1,5 +1,37 @@
 # CSS(3) Cook Book
 
+## Styling `hr`
+
+[Link: CSS Tricks](https://css-tricks.com/examples/hrs/)
+
+An Excerpt:
+
+```css
+
+hr.style-one {
+  width: 100%;
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(
+    to right,
+    rgba($gray, 0),
+    rgba($gray, 0.85),
+    rgba($gray, 0)
+  );
+}
+
+
+/* Inset, by Dan Eden */
+
+hr.style-six {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+```
+
+
 ## Min Font Size
 
 [One of the answers at StackOverflow, below an excerpt,..](https://stackoverflow.com/a/61892360/3025289)

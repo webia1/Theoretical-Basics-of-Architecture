@@ -2,7 +2,7 @@
 
 ## Hypens (Bindestriche-Silbentrennung) & Breakpoints
 
-[css-tricks.com](https://css-tricks.com/almanac/properties/h/hyphenate/)
+[css-tricks.com &rarr; hypens](https://css-tricks.com/almanac/properties/h/hyphenate/)
 
 The hyphens property controls hyphenation of text in block level elements. 
 

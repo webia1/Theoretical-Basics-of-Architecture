@@ -1,5 +1,11 @@
 # CSS(3) Cook Book
 
+## Hypens (Bindestriche-Silbentrennung) & Breakpoints
+
+[css-tricks.com](https://css-tricks.com/almanac/properties/h/hyphenate/)
+
+The hyphens property controls hyphenation of text in block level elements. 
+
 ## Styling `hr`
 
 [Link: CSS Tricks](https://css-tricks.com/examples/hrs/)

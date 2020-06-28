@@ -47,6 +47,21 @@ tsc --showConfig
 // @ts-nocheck
 ```
 
+## Using tslint and prettier without conflicts
+
+```json
+{
+  "extends": [
+    "tslint:latest",
+    "tslint-plugin-prettier",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "prettier": [true, ".prettierrc"]
+  }
+}
+```
+
 ## Compiler Options
 
 ### Some Checks

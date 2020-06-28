@@ -1,5 +1,9 @@
 # CSS(3) Cook Book
 
+## Working with Text in Scalable Vector Graphics (SVG)
+
+[>> Here](https://www.hongkiat.com/blog/scalable-vector-graphics-text/)
+
 ## Breaking Words and Lines
 
 [Here is a long explanation](https://css-tricks.com/where-lines-break-is-complicated-heres-all-the-related-css-and-html/) and an excerpt here:

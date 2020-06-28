@@ -1,5 +1,11 @@
 # CSS(3) Cook Book
 
+## Breaking Words and Lines
+
+[Here is a long explanation](https://css-tricks.com/where-lines-break-is-complicated-heres-all-the-related-css-and-html/) and an excerpt here:
+
+The `&shy;` character is just like the `<wbr>` element. You can inject a line break via pseudo-element like `::before { content: "\A"; }` as long as the element isn’t inline (or if it is, it needs white-space: pre;)
+
 ## Hypens (Bindestriche-Silbentrennung) & Breakpoints
 
 [css-tricks.com &rarr; hypens](https://css-tricks.com/almanac/properties/h/hyphenate/)

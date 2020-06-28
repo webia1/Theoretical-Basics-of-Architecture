@@ -1,5 +1,9 @@
 # Angular Cookbook
 
+## Customizing Angular-Flex-Layout Breakpoints
+
+[>> see here](https://stackblitz.com/edit/angular-fxlayout-custom-breakpoints?file=app%2Fcustom-breakpoints.ts)
+
 ## Working with DateFns
 
 ### Installing (also pipes &rarr; ngx-date-fns)

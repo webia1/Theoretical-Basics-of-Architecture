@@ -2,7 +2,9 @@
 
 ## Customizing Angular-Flex-Layout Breakpoints
 
-[>> see here](https://stackblitz.com/edit/angular-fxlayout-custom-breakpoints?file=app%2Fcustom-breakpoints.ts)
+[>> Modifying existing ones](https://stackblitz.com/edit/angular-fxlayout-custom-breakpoints?file=app%2Fcustom-breakpoints.ts)
+
+[>> Adding new ones](https://github.com/angular/flex-layout/wiki/Breakpoints)
 
 ## Working with DateFns
 

@@ -36,3 +36,52 @@ export class CatsController {
   }
 }
 ```
+
+## Error Handling
+
+### Exception Filters
+
+[See Details here](https://docs.nestjs.com/exception-filters)
+
+#### Default Exception Response 
+
+```typescript
+{
+  "statusCode": 500,
+  "message": "Internal server error"
+}
+```
+
+#### Throwing Standard Exceptions
+
+```typescript
+
+// Simple
+
+@Get()
+async findAll() {
+  throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+}
+
+// Better
+
+@Get()
+async findAll() {
+  throw new HttpException({
+    status: HttpStatus.FORBIDDEN,
+    error: 'This is a custom message',
+  }, HttpStatus.FORBIDDEN);
+}
+
+// When the client calls this endpoint, the response looks like this:
+
+{
+  "statusCode": 403,
+  "message": "Forbidden"
+}
+
+```
+
+
+
+

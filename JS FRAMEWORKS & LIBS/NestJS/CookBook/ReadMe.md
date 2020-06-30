@@ -232,6 +232,76 @@ export class AppModule {}
 // Also, useClass is not the only way of dealing with 
 // custom provider registration. Learn more here:
 // https://docs.nestjs.com/fundamentals/custom-providers
+```
+
+#### Catch Everything
+
+In order to catch every unhandled exception (regardless of the exception type), leave the `@Catch()` decorator's parameter list empty, e.g., `@Catch()`.
+
+```typescript
+import {
+  ExceptionFilter,
+  Catch,
+  ArgumentsHost,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
+
+@Catch()
+export class AllExceptionsFilter implements ExceptionFilter {
+  catch(exception: unknown, host: ArgumentsHost) {
+    const ctx = host.switchToHttp();
+    const response = ctx.getResponse();
+    const request = ctx.getRequest();
+
+    const status =
+      exception instanceof HttpException
+        ? exception.getStatus()
+        : HttpStatus.INTERNAL_SERVER_ERROR;
+
+    response.status(status).json({
+      statusCode: status,
+      timestamp: new Date().toISOString(),
+      path: request.url,
+    });
+  }
+}
+
+// In order to delegate exception processing 
+// to the base filter, you need to extend BaseExceptionFilter 
+// and call the inherited catch() method.
+// WARNING: Method-scoped and Controller-scoped filters 
+// that extend the BaseExceptionFilter should not be instantiated 
+// with new. Instead, let the framework instantiate them automatically.
+
+import { Catch, ArgumentsHost } from '@nestjs/common';
+import { BaseExceptionFilter } from '@nestjs/core';
+
+@Catch()
+export class AllExceptionsFilter extends BaseExceptionFilter {
+  catch(exception: unknown, host: ArgumentsHost) {
+    super.catch(exception, host);
+  }
+}
+
+// Global filters can extend the base filter. 
+// This can be done in either of two ways.
+// The first method is to inject the 
+// HttpServer reference when instantiating 
+// the custom global filter:
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+
+  const { httpAdapter } = app.get(HttpAdapterHost);
+  app.useGlobalFilters(new AllExceptionsFilter(httpAdapter));
+
+  await app.listen(3000);
+}
+bootstrap();
+
+// The second method is to use the APP_FILTER 
+// See examples above
 
 
 

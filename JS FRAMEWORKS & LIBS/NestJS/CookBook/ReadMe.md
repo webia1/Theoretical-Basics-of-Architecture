@@ -363,3 +363,46 @@ async findOne(@Param('uuid', new ParseUUIDPipe()) uuid: string) {
 [See Details here](https://docs.nestjs.com/techniques/validation)
 
 
+## Guards
+
+[See Details here](https://docs.nestjs.com/guards)
+
+A guard is a class annotated with the @Injectable() decorator. Guards should implement the CanActivate interface. 
+
+Guards have a single responsibility. They determine whether a given request will be handled by the route handler or not, depending on certain conditions (like permissions, roles, ACLs, etc.) present at run-time. 
+
+**HINT**: Guards are executed after each middleware, but before any interceptor or pipe.
+
+```typescript
+
+import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+import { Reflector } from '@nestjs/core';
+
+@Injectable()
+export class RolesGuard implements CanActivate {
+  constructor(private reflector: Reflector) {}
+
+  canActivate(context: ExecutionContext): boolean {
+    const roles = this.reflector.get<string[]>('roles', context.getHandler());
+    if (!roles) {
+      return true;
+    }
+    const request = context.switchToHttp().getRequest();
+    const user = request.user;
+    return matchRoles(roles, user.roles);
+  }
+}
+
+// In the node.js world, it's common practice to attach 
+// the authorized user to the request object. Thus, in our 
+// sample code above, we are assuming that request.user contains 
+// the user instance and allowed roles. In your app, you will 
+// probably make that association in your custom 
+// authentication guard (or middleware).
+```
+
+## Interceptors
+
+[See details here](https://docs.nestjs.com/interceptors)
+
+

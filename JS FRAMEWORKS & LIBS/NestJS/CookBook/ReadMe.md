@@ -302,7 +302,64 @@ bootstrap();
 
 // The second method is to use the APP_FILTER 
 // See examples above
-
-
-
 ```
+
+## Pipes
+
+[See details here](https://docs.nestjs.com/pipes)
+
+A pipe is a class annotated with the `@Injectable()` decorator. Pipes should implement the `PipeTransform` interface. Pipes have two typical use cases:
+
+- **transformation**: transform input data to the desired form (e.g., from string to integer)
+- **validation**: evaluate input data and if valid, simply pass it through unchanged; otherwise, throw an exception when the data is incorrect
+
+**HINT**: Pipes run inside the exceptions zone. This means that when a Pipe throws an exception it is handled by the exceptions layer (global exceptions filter and any exceptions filters that are applied to the current context). Given the above, it should be clear that when an exception is thrown in a Pipe, no controller method is subsequently executed. This gives you a best-practice technique for validating data coming into the application from external sources at the system boundary.
+
+### Built-in pipes
+
+Pipes available out-of-the-box are:
+
+- ValidationPipe
+- ParseIntPipe
+- ParseBoolPipe
+- ParseArrayPipe
+- ParseUUIDPipe
+- DefaultValuePipe
+
+They're exported from the @nestjs/common package.
+
+### Binding Pipes
+
+```typescript
+@Get(':id')
+async findOne(@Param('id', ParseIntPipe) id: number) {
+  return this.catsService.findOne(id);
+}
+
+// GET localhost:3000/abc
+// will throw an exception like:
+
+{
+  "statusCode": 400,
+  "message": "Validation failed (numeric string is expected)",
+  "error": "Bad Request"
+}
+
+// Here's an example of using the ParseUUIDPipe 
+// to parse a string parameter and validate if is a UUID.
+
+@Get(':uuid')
+async findOne(@Param('uuid', new ParseUUIDPipe()) uuid: string) {
+  return this.catsService.findOne(uuid);
+}
+
+// HINT: When using ParseUUIDPipe() you are parsing UUID 
+// in version 3, 4 or 5, if you only require a specific 
+// version of UUID you can pass a version in the pipe options.
+```
+
+#### Validation
+
+[See Details here](https://docs.nestjs.com/techniques/validation)
+
+

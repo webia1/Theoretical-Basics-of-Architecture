@@ -157,4 +157,82 @@ export class HttpExceptionFilter implements ExceptionFilter {
 }
 ```
 
+#### Binding Filters
 
+```typescript
+@Post()
+@UseFilters(new HttpExceptionFilter())
+async create(@Body() createCatDto: CreateCatDto) {
+  throw new ForbiddenException();
+}
+
+// Alternatively, you may pass the class (instead of an instance), 
+// leaving responsibility for instantiation to the framework, 
+// and enabling dependency injection.
+
+// Prefer applying filters by using classes instead of 
+// instances when possible. It reduces memory usage since 
+// Nest can easily reuse instances of the same class 
+// across your entire module.
+
+@Post()
+@UseFilters(HttpExceptionFilter)
+async create(@Body() createCatDto: CreateCatDto) {
+  throw new ForbiddenException();
+}
+
+// Exception filters can be scoped at different levels: 
+// method-scoped, controller-scoped, or global-scoped. 
+// For example, to set up a filter as controller-scoped, 
+// you would do the following:
+
+@UseFilters(new HttpExceptionFilter())
+export class CatsController {}
+
+// To create a global-scoped filter, 
+// you would do the following:
+// WARNING: The useGlobalFilters() method does not 
+// set up filters for gateways or hybrid applications.
+
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  app.useGlobalFilters(new HttpExceptionFilter());
+  await app.listen(3000);
+}
+bootstrap();
+
+
+// global filters registered from outside of any module 
+// (with useGlobalFilters() as in the example above) 
+// cannot inject dependencies since this is done 
+// outside the context of any module. In order to solve 
+// this issue, you can register a global-scoped filter 
+// directly from any module using the following construction:
+
+import { Module } from '@nestjs/common';
+import { APP_FILTER } from '@nestjs/core';
+
+@Module({
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
+    },
+  ],
+})
+export class AppModule {}
+
+// When using this approach to perform dependency 
+// injection for the filter, note that regardless 
+// of the module where this construction is employed, 
+// the filter is, in fact, global. Where should this 
+// be done? Choose the module where the filter 
+// (HttpExceptionFilter in the example above) is defined. 
+// Also, useClass is not the only way of dealing with 
+// custom provider registration. Learn more here:
+// https://docs.nestjs.com/fundamentals/custom-providers
+
+
+
+```

@@ -8,6 +8,8 @@
 
 ## Working with DateFns
 
+[ >> Playground Stackblitz:](https://stackblitz.com/edit/angular-date-fns-examples?file=src%2Fapp%2Fapp.component.ts)
+
 ### Installing (also pipes &rarr; ngx-date-fns)
 
 ```bash

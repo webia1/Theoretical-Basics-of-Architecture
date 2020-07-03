@@ -2,7 +2,10 @@
 
 ## Using OK sign (&#10004;)
 
+`HTML: &#10004;  CSS content="\2714"` 
+
 Link1: https://www.toptal.com/designers/htmlarrows/symbols/heavy-check-mark/
+
 Link2: https://stackoverflow.com/questions/9963576/ok-or-accepted-symbol-in-html
 
 ## Working with Text in Scalable Vector Graphics (SVG)

@@ -223,6 +223,22 @@ If the version is not the `latest` you have the use it so:
 
 ## Cook Book
 
+### Manage a LINUX Swarm cluster with Portainer Server and the Portainer Agent
+
+```bash
+docker ps
+CONTAINER ID        IMAGE                 COMMAND       .......     
+665da4a3b427        portainer/portainer   "/portainer"  .......     
+
+docker stop 665d
+docker rm 665d
+
+curl -L https://downloads.portainer.io/portainer-agent-stack.yml -o portainer-agent-stack.yml
+
+docker swarm init
+docker stack deploy --compose-file=portainer-agent-stack.yml portainer
+```
+
 ### Image No Cache
 
     docker build -t my-image-name:1.0.0 . --no-cache

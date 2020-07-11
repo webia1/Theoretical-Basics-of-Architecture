@@ -6,6 +6,7 @@
 
 - [NestJS Cookbook](#nestjs-cookbook)
   - [Installation](#installation)
+  - [`nest/cli`](#nestcli)
   - [`nest generate`](#nest-generate)
   - [Full Resource Example](#full-resource-example)
   - [Error Handling](#error-handling)
@@ -33,6 +34,19 @@ npm i -g @nestjs/cli
 
 nest new [project-name]
 
+```
+
+## `nest/cli`
+
+```bash
+Command     Alias     Description
+new         n         New Project
+generate    g         Generates and/or modifies (see next chapter).
+build                 Compiles an application
+start                 Compiles and runs an application
+add                   Imports a library
+update      u         Update @nestjs dependencies
+info        i         Displays information
 ```
 
 ## `nest generate`

@@ -58,6 +58,31 @@ nest g s [service-name]
 13. service (s)
 ```
 
+```bash
+    Version 7.4.1 - Available schematics:
+      ┌───────────────┬─────────────┐
+      │ name          │ alias       │
+      │ application   │ application │
+      │ class         │ cl          │
+      │ configuration │ config      │
+      │ controller    │ co          │
+      │ decorator     │ d           │
+      │ filter        │ f           │
+      │ gateway       │ ga          │
+      │ guard         │ gu          │
+      │ interceptor   │ in          │
+      │ interface     │ interface   │
+      │ middleware    │ mi          │
+      │ module        │ mo          │
+      │ pipe          │ pi          │
+      │ provider      │ pr          │
+      │ resolver      │ r           │
+      │ service       │ s           │
+      │ library       │ lib         │
+      │ sub-app       │ app         │
+      └───────────────┴─────────────┘
+```
+
 ## Full Resource Example
 
 An Excerpt from [NestJS-Documentation](https://docs.nestjs.com/controllers)

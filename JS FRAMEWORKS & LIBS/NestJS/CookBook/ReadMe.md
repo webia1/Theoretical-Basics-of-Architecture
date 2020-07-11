@@ -6,6 +6,7 @@
 
 - [NestJS Cookbook](#nestjs-cookbook)
   - [Installation](#installation)
+  - [`nest generate`](#nest-generate)
   - [Full Resource Example](#full-resource-example)
   - [Error Handling](#error-handling)
     - [Exception Filters](#exception-filters)
@@ -29,6 +30,9 @@
 
 ```bash
 npm i -g @nestjs/cli
+
+nest new [project-name]
+
 ```
 
 ## `nest generate`

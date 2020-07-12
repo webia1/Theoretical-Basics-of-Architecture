@@ -656,6 +656,8 @@ GraphQLModule &rarr; Wrapper around the Apollo Server
 
 ### CQRS (Command Query Responsibility Segregation)
 
+> CQRS: a command and an event bus
+
 ### Testing (`@nestjs/testing`)
 
 HTTP-Requests &larr; Jest (supertest)

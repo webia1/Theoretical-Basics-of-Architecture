@@ -128,7 +128,11 @@ export const My = (...args: string[]): CustomDecorator =>
 ### A Custom Filter
 
 ```typescript
-import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
+import {
+  ArgumentsHost,
+  Catch,
+  ExceptionFilter,
+} from '@nestjs/common';
 
 @Catch()
 export class MyFilter<T> implements ExceptionFilter {
@@ -143,12 +147,19 @@ npm i @nestjs/websockets
 ```
 
 ```typescript
-import { SubscribeMessage, WebSocketGateway } from '@nestjs/websockets';
+import {
+  SubscribeMessage,
+  WebSocketGateway,
+} from '@nestjs/websockets';
+
+type MyAny = Record<string, unknown> | unknown;
 
 @WebSocketGateway()
 export class MyGateway {
   @SubscribeMessage('message')
-  handleMessage(client: any, payload: any): string {
+  handleMessage(client: MyAny, payload: MyAny): string {
+    console.log('Client: ', client);
+    console.log('Payload: ', payload);
     return 'Hello world!';
   }
 }
@@ -198,7 +209,10 @@ export class CatsController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateCatDto: UpdateCatDto,
+  ) {
     return `This action updates a #${id} cat`;
   }
 
@@ -567,7 +581,11 @@ permissions, roles, ACLs, etc.) present at run-time.
 or pipe.
 
 ```typescript
-import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+import {
+  Injectable,
+  CanActivate,
+  ExecutionContext,
+} from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 
 @Injectable()
@@ -575,7 +593,10 @@ export class RolesGuard implements CanActivate {
   constructor(private reflector: Reflector) {}
 
   canActivate(context: ExecutionContext): boolean {
-    const roles = this.reflector.get<string[]>('roles', context.getHandler());
+    const roles = this.reflector.get<string[]>(
+      'roles',
+      context.getHandler(),
+    );
     if (!roles) {
       return true;
     }

@@ -29,6 +29,10 @@
       - [Validation](#validation)
   - [Guards](#guards)
   - [Interceptors](#interceptors)
+  - [Trouble Shooting](#trouble-shooting)
+    - [Parsing error: "parserOptions.project" has been set for @typescript-eslint/parser](#parsing-error-parseroptionsproject-has-been-set-for-typescript-eslintparser)
+      - [`Problem` &rarr; Following errors](#problem-rarr-following-errors)
+      - [`Solution`](#solution)
 
 <!-- /code_chunk_output -->
 
@@ -148,6 +152,15 @@ export class MyGateway {
     return 'Hello world!';
   }
 }
+```
+
+```typescript
+// app.module.ts
+@Module({
+  // ...
+  providers: [AppService, MyGateway],
+})
+export class AppModule {}
 ```
 
 ## Full Resource Example
@@ -583,3 +596,30 @@ export class RolesGuard implements CanActivate {
 ## Interceptors
 
 [See details here](https://docs.nestjs.com/interceptors)
+
+## Trouble Shooting
+
+### Parsing error: "parserOptions.project" has been set for @typescript-eslint/parser
+
+#### `Problem` &rarr; Following errors
+
+- Parsing error: "parserOptions.project" has been set for
+  @typescript-eslint/parser.
+- The file does not match your project config: .eslintrc.js.
+- The file must be included in at least one of the projects provided.
+
+#### `Solution`
+
+Create a `tsconfig.eslint.json` file i your project root with the following
+content and restart VSCode:
+
+```json
+{
+  "compilerOptions": { "strict": true },
+  "include": [
+    "**/src/**/*.ts",
+    "**/test/**/*.ts"
+    // etc
+  ]
+}
+```

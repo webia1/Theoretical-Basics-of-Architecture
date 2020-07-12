@@ -5,9 +5,14 @@
 <!-- code_chunk_output -->
 
 - [NestJS Cookbook](#nestjs-cookbook)
-  - [Installation](#installation)
-  - [`nest/cli`](#nestcli)
-  - [`nest generate`](#nest-generate)
+  - [Getting Started](#getting-started)
+    - [`nest/cli`](#nestcli)
+    - [`nest generate`](#nest-generate)
+  - [Excerpts from File-Structure](#excerpts-from-file-structure)
+    - [`app-module.ts`](#app-modulets)
+    - [A Custom Decorator](#a-custom-decorator)
+    - [A Custom Filter](#a-custom-filter)
+    - [A Custom Gateway](#a-custom-gateway)
   - [Full Resource Example](#full-resource-example)
   - [Error Handling](#error-handling)
     - [Exception Filters](#exception-filters)
@@ -27,7 +32,7 @@
 
 <!-- /code_chunk_output -->
 
-## Installation
+## Getting Started
 
 ```bash
 npm i -g @nestjs/cli
@@ -36,7 +41,7 @@ nest new [project-name]
 
 ```
 
-## `nest/cli`
+### `nest/cli`
 
 ```bash
 Command     Alias     Description
@@ -49,27 +54,11 @@ update      u         Update @nestjs dependencies
 info        i         Displays information
 ```
 
-## `nest generate`
+### `nest generate`
 
 ```bash
 nest generate service [service-name] # oder
 nest g s [service-name]
-```
-
-```bash
-1.  class (cl)
-2.  controller (co)
-3.  decorator (d)
-4.  exception (e)
-5.  filter (f)
-6.  gateway (ga)
-7.  guard (gu)
-8.  interceptor (i)
-9.  middleware (mi)
-10. module (mo)
-11. pipe (pi)
-12. provider (pr)
-13. service (s)
 ```
 
 ```bash
@@ -95,6 +84,70 @@ nest g s [service-name]
       │ library       │ lib         │
       │ sub-app       │ app         │
       └───────────────┴─────────────┘
+```
+
+## Excerpts from File-Structure
+
+### `app-module.ts`
+
+```typescript
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { MyController } from './ebia/controller/my/my.controller';
+
+@Module({
+  imports: [],
+  controllers: [AppController, MyController],
+  providers: [AppService],
+})
+export class AppModule {}
+```
+
+### A Custom Decorator
+
+```typescript
+import { CustomDecorator, SetMetadata } from '@nestjs/common';
+export const My = (...args: string[]): CustomDecorator =>
+  SetMetadata('my', args);
+```
+
+or
+
+```typescript
+import { CustomDecorator, SetMetadata } from '@nestjs/common';
+
+export const My = (...args: string[]): CustomDecorator =>
+  SetMetadata('my', args);
+```
+
+### A Custom Filter
+
+```typescript
+import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
+
+@Catch()
+export class MyFilter<T> implements ExceptionFilter {
+  catch(exception: T, host: ArgumentsHost) {}
+}
+```
+
+### A Custom Gateway
+
+```bash
+npm i @nestjs/websockets
+```
+
+```typescript
+import { SubscribeMessage, WebSocketGateway } from '@nestjs/websockets';
+
+@WebSocketGateway()
+export class MyGateway {
+  @SubscribeMessage('message')
+  handleMessage(client: any, payload: any): string {
+    return 'Hello world!';
+  }
+}
 ```
 
 ## Full Resource Example

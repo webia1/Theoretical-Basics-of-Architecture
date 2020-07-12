@@ -13,6 +13,14 @@
     - [A Custom Decorator](#a-custom-decorator)
     - [A Custom Filter](#a-custom-filter)
     - [A Custom Gateway](#a-custom-gateway)
+    - [A Custom Guard](#a-custom-guard)
+    - [A Custom Interceptor](#a-custom-interceptor)
+    - [A Middleware](#a-middleware)
+    - [A Module](#a-module)
+    - [A Pipe](#a-pipe)
+    - [Provider](#provider)
+    - [A Resolver (GraphQL)](#a-resolver-graphql)
+    - [A Service](#a-service)
   - [Full Resource Example](#full-resource-example)
   - [Error Handling](#error-handling)
     - [Exception Filters](#exception-filters)
@@ -144,6 +152,7 @@ export class MyFilter<T> implements ExceptionFilter {
 
 ```bash
 npm i @nestjs/websockets
+nest g ga ebia/gateway/my
 ```
 
 ```typescript
@@ -172,6 +181,138 @@ export class MyGateway {
   providers: [AppService, MyGateway],
 })
 export class AppModule {}
+```
+
+### A Custom Guard
+
+```typescript
+import {
+  CanActivate,
+  ExecutionContext,
+  Injectable,
+} from '@nestjs/common';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class MyGuard implements CanActivate {
+  canActivate(
+    context: ExecutionContext,
+  ): boolean | Promise<boolean> | Observable<boolean> {
+    console.log('ExecutionContext: ', context);
+    return true;
+  }
+}
+```
+
+### A Custom Interceptor
+
+```typescript
+import {
+  CallHandler,
+  ExecutionContext,
+  Injectable,
+  NestInterceptor,
+} from '@nestjs/common';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class MyInterceptor implements NestInterceptor {
+  intercept(
+    context: ExecutionContext,
+    next: CallHandler,
+  ): Observable<any> {
+    return next.handle();
+  }
+}
+```
+
+### A Middleware
+
+```typescript
+import { Injectable, NestMiddleware } from '@nestjs/common';
+
+@Injectable()
+export class MyMiddleware implements NestMiddleware {
+  use(req, res, next: () => void) {
+    next();
+  }
+}
+```
+
+### A Module
+
+```typescript
+import { Module } from '@nestjs/common';
+
+@Module({})
+export class MyModule {}
+```
+
+```typescript
+// app.module.ts
+import { MyModule } from './ebia/module/my/my.module';
+
+@Module({
+  imports: [MyModule], // <-- Module Import
+  controllers: [AppController, MyController],
+  providers: [AppService, MyGateway],
+})
+export class AppModule {}
+```
+
+### A Pipe
+
+```typescript
+import {
+  ArgumentMetadata,
+  Injectable,
+  PipeTransform,
+} from '@nestjs/common';
+
+@Injectable()
+export class MyPipe implements PipeTransform {
+  transform(value: any, metadata: ArgumentMetadata) {
+    return value;
+  }
+}
+```
+
+### Provider
+
+A Provider is a global available Service:
+
+```typescript
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class My {}
+```
+
+```typescript
+@Module({
+  imports: [MyModule],
+  controllers: [AppController, MyController],
+  providers: [/* .. */ My /* .. */],
+})
+export class AppModule {}
+```
+
+### A Resolver (GraphQL)
+
+```typescript
+import { Resolver } from '@nestjs/graphql';
+
+@Resolver('My')
+export class MyResolver {}
+```
+
+### A Service
+
+```typescript
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class MyService {}
 ```
 
 ## Full Resource Example

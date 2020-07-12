@@ -10,6 +10,7 @@
     - [`nest generate`](#nest-generate)
   - [Excerpts from File-Structure](#excerpts-from-file-structure)
     - [`app-module.ts`](#app-modulets)
+    - [A Controller](#a-controller)
     - [A Custom Decorator](#a-custom-decorator)
     - [A Custom Filter](#a-custom-filter)
     - [A Custom Gateway](#a-custom-gateway)
@@ -21,6 +22,27 @@
     - [Provider](#provider)
     - [A Resolver (GraphQL)](#a-resolver-graphql)
     - [A Service](#a-service)
+  - [Concepts (Excerpt)](#concepts-excerpt)
+    - [Bootstrapping](#bootstrapping)
+    - [Dependency Injection (similar to Angular)](#dependency-injection-similar-to-angular)
+    - [Authentication Library: `@nestjs/passport`](#authentication-library-nestjspassport)
+    - [ORM (Object-relational Mapping)](#orm-object-relational-mapping)
+      - [TypeORM](#typeorm)
+        - [Supporting Databases](#supporting-databases)
+        - [An `ormconfig.json` example](#an-ormconfigjson-example)
+        - [Initialize TypeORM](#initialize-typeorm)
+        - [Entity Example](#entity-example)
+      - [Sequelize](#sequelize)
+      - [Mongoose](#mongoose)
+    - [REST API](#rest-api)
+    - [WebSockets (`@nestjs/websockets`)](#websockets-nestjswebsockets)
+    - [MicroServices](#microservices)
+    - [GraphQL (`@nestjs/graphql`)](#graphql-nestjsgraphql)
+    - [Routing](#routing)
+    - [OpenAPI (`@nestjs/swagger`)](#openapi-nestjsswagger)
+    - [CQRS (Command Query Responsibility Segregation)](#cqrs-command-query-responsibility-segregation)
+    - [Testing (`@nestjs/testing`)](#testing-nestjstesting)
+    - [Angular Universal](#angular-universal)
   - [Full Resource Example](#full-resource-example)
   - [Error Handling](#error-handling)
     - [Exception Filters](#exception-filters)
@@ -41,6 +63,7 @@
     - [Parsing error: "parserOptions.project" has been set for @typescript-eslint/parser](#parsing-error-parseroptionsproject-has-been-set-for-typescript-eslintparser)
       - [`Problem` &rarr; Following errors](#problem-rarr-following-errors)
       - [`Solution`](#solution)
+  - [Own Notices / Own Styles](#own-notices-own-styles)
 
 <!-- /code_chunk_output -->
 
@@ -114,6 +137,17 @@ import { MyController } from './ebia/controller/my/my.controller';
   providers: [AppService],
 })
 export class AppModule {}
+```
+
+### A Controller
+
+[>> See full resource example in coming chapters below](#full-resource-example)
+
+```typescript
+import { Controller } from '@nestjs/common';
+
+@Controller('my')
+export class MyController {}
 ```
 
 ### A Custom Decorator
@@ -228,6 +262,8 @@ export class MyInterceptor implements NestInterceptor {
 
 ### A Middleware
 
+Middleware implements `NestMiddleware` interface and it is called before route handlers.
+
 ```typescript
 import { Injectable, NestMiddleware } from '@nestjs/common';
 
@@ -240,6 +276,14 @@ export class MyMiddleware implements NestMiddleware {
 ```
 
 ### A Module
+
+@Module() decorator takes a single object with following properties:
+
+- components
+- controllers
+- imports
+- exports
+- providers
 
 ```typescript
 import { Module } from '@nestjs/common';
@@ -279,7 +323,7 @@ export class MyPipe implements PipeTransform {
 
 ### Provider
 
-A Provider is a global available Service:
+Providers are global available (Services/Factories/Helpers/..):
 
 ```typescript
 import { Injectable } from '@nestjs/common';
@@ -314,6 +358,152 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class MyService {}
 ```
+
+## Concepts (Excerpt)
+
+### Bootstrapping
+
+`NestFactory` &rarr; `listen()`
+
+```typescript
+// main.ts
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  await app.listen(3000);
+}
+bootstrap();
+```
+
+### Dependency Injection (similar to Angular)
+
+- see `reflect-metadata` library
+
+```typescript
+// Simple Example
+
+@Injectable()
+export class UserService {
+  /*...*/
+}
+
+@Injectable()
+export class AuthenticationService {
+  constructor(private userService: UserService) {}
+}
+```
+
+### Authentication Library: `@nestjs/passport`
+
+```bash
+npm i passport-jwt @types/passport-jwt
+npm i jsonwebtoken @types/jsonwebtoken
+```
+
+[>> Passport Website](https://www.npmjs.com/package/passport)
+[>> NestJS Documentation -> Authentication](https://docs.nestjs.com/techniques/authentication)
+
+- Strategy (local, jwt, googleOAuth, facebook, twitter,..)
+- Application Middleware
+- The Session (Optional)
+
+### ORM (Object-relational Mapping)
+
+An ORM provides a mapping between objects in memory and database entities (relational database tables, nosql,..).
+
+#### TypeORM
+
+<https://typeorm.io>
+<https://www.npmjs.com/package/typeorm>
+
+> simple-json &rarr; column type is supported by almost all RDMBSs
+> Storing plain old JS-Objects in RDBMS-Columns
+
+##### Supporting Databases
+
+- MySQL
+- MariaDB
+- PostgreSQL
+- MS SQL Server
+- sql.js
+- MongoDB
+- Oracle (experimental)
+
+##### An `ormconfig.json` example
+
+```json
+{
+  "type": "mariadb",
+  "host": "mariadb",
+  "port": 3306,
+  "username": "myUserName",
+  "password": "myUserPassword",
+  "database": "MyDatabase",
+  "synchronize": true,
+  "entities": ["src/**/*.entity.ts"]
+}
+```
+
+##### Initialize TypeORM
+
+```typescript
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+@Module({
+    imports: [
+        TypeOrmModule.forRoot(),
+        ...
+    ]
+})
+
+export class AppModule {}
+```
+
+##### Entity Example
+
+```typescript
+import { Entity } from 'typeorm';
+
+@Entity()
+export class Entry {}
+```
+
+#### Sequelize
+
+<https://www.npmjs.com/package/sequelize>
+
+#### Mongoose
+
+<https://www.npmjs.com/package/mongoose>
+
+### REST API
+
+### WebSockets
+
+[>> Details &rarr; Official Documentation](https://docs.nestjs.com/websockets/gateways)
+
+`@nestjs/websockets`, `@WebSocketGateway`
+
+> **Hint:** It is also possible to implement the web socket over a Rest API using the decorators provided by NestJS.
+
+### MicroServices
+
+### GraphQL (`@nestjs/graphql`)
+
+GraphQLModule &rarr; Wrapper around the Apollo Server
+
+### Routing
+
+### OpenAPI (`@nestjs/swagger`)
+
+### CQRS (Command Query Responsibility Segregation)
+
+### Testing (`@nestjs/testing`)
+
+HTTP-Requests &larr; Jest (supertest)
+
+### Angular Universal
 
 ## Full Resource Example
 
@@ -719,7 +909,7 @@ be handled by the route handler or not, depending on certain conditions (like
 permissions, roles, ACLs, etc.) present at run-time.
 
 **HINT**: Guards are executed after each middleware, but before any interceptor
-or pipe.
+or pipe. Unlike middleware, Guards have access to the `ExecutionContext`
 
 ```typescript
 import {
@@ -785,3 +975,5 @@ content and restart VSCode:
   ]
 }
 ```
+
+## Own Notices / Own Styles

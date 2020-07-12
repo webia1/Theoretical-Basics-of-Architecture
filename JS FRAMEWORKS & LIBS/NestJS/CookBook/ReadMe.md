@@ -35,8 +35,18 @@
       - [Sequelize](#sequelize)
       - [Mongoose](#mongoose)
     - [REST API](#rest-api)
-    - [WebSockets (`@nestjs/websockets`)](#websockets-nestjswebsockets)
+    - [WebSockets](#websockets)
     - [MicroServices](#microservices)
+    - [Routing & Request Handling](#routing-request-handling)
+      - [Controller & Decorators](#controller-decorators)
+      - [Standard (NestJS) Response](#standard-nestjs-response)
+      - [ExpressJS Response](#expressjs-response)
+      - [Route Parameters](#route-parameters)
+      - [Request Body](#request-body)
+      - [Request Object](#request-object)
+      - [Asynchronous handlers](#asynchronous-handlers)
+      - [Promise](#promise)
+      - [Observables](#observables)
     - [GraphQL (`@nestjs/graphql`)](#graphql-nestjsgraphql)
     - [Routing](#routing)
     - [OpenAPI (`@nestjs/swagger`)](#openapi-nestjsswagger)
@@ -488,6 +498,153 @@ export class Entry {}
 > **Hint:** It is also possible to implement the web socket over a Rest API using the decorators provided by NestJS.
 
 ### MicroServices
+
+### Routing & Request Handling
+
+#### Controller & Decorators
+
+2 Possibilities for decorators:
+
+```typescript
+import { Controller, Get } from '@nestjs/common';
+
+@Controller('entries')
+export class EntryController {
+  @Get()
+  index(): Entry[] {
+      const entries: Entry[] =
+      this.entriesService.findAll();
+      return entries;
+}
+```
+
+or
+
+```typescript
+import { Controller, Get } from '@nestjs/common';
+
+@Controller() // <-- DIFFERENCE
+export class EntryController {
+  @Get('entries') // <-- DIFFERENCE
+  index(): Entry[] {
+      const entries: Entry[] =
+      this.entriesService.findAll();
+      return entries;
+}
+```
+
+#### Standard (NestJS) Response
+
+```typescript
+@HttpCode(204)
+@Post()
+create() {
+// This handler will return a 204 status response
+}
+```
+
+#### ExpressJS Response
+
+```typescript
+import { Controller, Get, Res } from '@nestjs/common';
+import { Response } from 'express'; // <- DIFFERENCE
+
+@Controller('entries')
+export class EntryController {
+  @Get()
+  index(@Res() res: Response) {
+    const entries: Entry[] = this.entriesService.findAll();
+    return res.status(HttpStatus.OK).json(entries);
+  }
+}
+```
+
+#### Route Parameters
+
+```typescript
+@Get(':entryId') // entries/:entryId
+
+```
+
+#### Request Body
+
+```typescript
+import { Body, Controller, Post } from '@nestjs/common';
+
+@Controller('entries')
+export class EntryController {
+  @Post()
+  create(@Body() body: Entry) {
+    this.entryService.create(body);
+  }
+}
+```
+
+#### Request Object
+
+```typescript
+import { Controller, Get, Req } from '@nestjs/common';
+import { Request } from 'express';
+
+@Controller('entries')
+export class EntryController {
+  @Get()
+  index(@Req() req: Request): Entry[] {
+      const entries: Entry[] =
+      this.entriesService.findAll();
+      return entries;
+}
+```
+
+#### Asynchronous handlers
+
+```typescript
+import { Controller, Get } from '@nestjs/common';
+
+@Controller('entries')
+export class EntryController {
+  @Get()
+  async index(): Promise<Entry[]> {
+    const entries: Entry[] = await this.entryService.findAll();
+    return entries;
+  }
+}
+```
+
+#### Promise
+
+Similarly, you can also just return a promise from a handler function directly without using async/await.
+
+```typescript
+import { Controller, Get } from '@nestjs/common';
+
+@Controller('entries')
+export class EntryController {
+  @Get()
+  index(): Promise<Entry[]> {
+    const entriesPromise: Promise<
+      Entry[]
+    > = this.entryService.findAll();
+    return entriesPromise;
+  }
+}
+```
+
+#### Observables
+
+```typescript
+import { Controller, Get } from '@nestjs/common';
+@Controller('entries')
+export class EntryController {
+  @Get()
+  index(): Observable<Entry[]> {
+    const entriesPromise: Observable<
+      Entry[]
+    > = this.entryService.findAll();
+    return entriesPromise;
+  }
+}
+```
 
 ### GraphQL (`@nestjs/graphql`)
 

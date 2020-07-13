@@ -131,12 +131,17 @@ nest g s [service-name]
       └───────────────┴─────────────┘
 ```
 
-## List of Template Engines (Nest & Express)
+## Template Engine (pug)
 
-https://expressjs.com/en/resources/template-engines.html
-Chosen Template Engine: pug
+Chosen Template Engine: **pug**
+
 Website: https://github.com/pugjs/pug
+
 Tutorial: https://leanpub.com/pug-node/read
+
+[List of Template Engines](https://expressjs.com/en/resources/template-engines.html)
+
+
 
 ## Excerpts from File-Structure
 

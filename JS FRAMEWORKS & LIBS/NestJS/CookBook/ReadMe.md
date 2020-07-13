@@ -208,6 +208,58 @@ bootstrap();
 }
 ```
 
+### Update Corresponding Service 
+
+E.g. `app.service.ts`
+
+```typescript
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class AppService {
+  getIndex(): unknown {
+    return {
+      title: 'MyTitle',
+      subTitle: 'MySubTitle',
+    };
+  }
+}
+```
+
+### Update Corresponding Controller
+
+E.g. `app.controller.ts`
+
+```typescript
+import { Controller, Get, Render } from '@nestjs/common';
+import { AppService } from './app.service';
+
+@Controller()
+export class AppController {
+  constructor(private readonly appService: AppService) {}
+
+  @Get()
+  @Render('index')
+  root() {
+    return this.appService.getIndex();
+  }
+}
+```
+
+### Last but not least `index.pug`
+
+```pug
+doctype html5
+html
+  head
+    link(rel="stylesheet" href="css/style.css")
+    title= title
+  body
+    h1.cTitle= title 
+    h2.cSubTitle= subTitle
+```
+
+
 ## Excerpts from File-Structure
 
 ### `app-module.ts`

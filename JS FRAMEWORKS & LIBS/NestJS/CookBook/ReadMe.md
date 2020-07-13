@@ -131,6 +131,10 @@ nest g s [service-name]
       └───────────────┴─────────────┘
 ```
 
+## List of Template Engines (Nest & Express)
+
+https://expressjs.com/en/resources/template-engines.html
+
 ## Excerpts from File-Structure
 
 ### `app-module.ts`

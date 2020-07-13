@@ -134,6 +134,9 @@ nest g s [service-name]
 ## List of Template Engines (Nest & Express)
 
 https://expressjs.com/en/resources/template-engines.html
+Chosen Template Engine: pug
+Website: https://github.com/pugjs/pug
+Tutorial: https://leanpub.com/pug-node/read
 
 ## Excerpts from File-Structure
 

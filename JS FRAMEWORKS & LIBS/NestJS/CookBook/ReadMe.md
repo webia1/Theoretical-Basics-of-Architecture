@@ -141,7 +141,70 @@ Tutorial: https://leanpub.com/pug-node/read
 
 [List of Template Engines](https://expressjs.com/en/resources/template-engines.html)
 
+## NestExpressApplication: Static Sites with `pug`
 
+### Install `pug`
+
+```bash
+npm i pug
+```
+### Create Static Folder within `src`
+
+```bash
+src
+├── app.controller.spec.ts
+├── app.controller.ts
+├── app.module.ts
+├── app.service.ts
+├── main.ts
+└── static
+    ├── public
+    │   └── css
+    │       └── style.css
+    └── views
+        └── index.pug
+```
+
+### Update `src/main.ts`
+
+```typescript
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { NestExpressApplication } from '@nestjs/platform-express';
+import { join } from 'path';
+
+async function bootstrap() {
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  app.useStaticAssets(join(__dirname, 'static/public'));
+  app.setBaseViewsDir(join(__dirname, 'static/views'));
+  app.setViewEngine('pug');
+  await app.listen(3000);
+  console.log(`App is running on: ${await app.getUrl()}`);
+}
+bootstrap();
+```
+
+### Update `nest-cli.json`
+
+```json
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "compilerOptions": {
+    "assets": ["static/**/*"],
+    "watchAssets": true
+  }
+}
+```
+
+### Update `tsconfig.build.json` 
+
+```json
+{
+  "extends": "./tsconfig.json",
+  "exclude": ["node_modules", "test", "dist", "static", "**/*spec.ts"]
+}
+```
 
 ## Excerpts from File-Structure
 

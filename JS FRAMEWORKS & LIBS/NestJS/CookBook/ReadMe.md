@@ -143,7 +143,7 @@ Tutorial: https://leanpub.com/pug-node/read
 
 ## NestExpressApplication: Static Sites with `pug`
 
-After the configuration above, static files (=Assets) will be served from `./dist/static`.
+After the configuration below, static files (=Assets) will be served from `./dist/static`.
 
 ### Install `pug`
 

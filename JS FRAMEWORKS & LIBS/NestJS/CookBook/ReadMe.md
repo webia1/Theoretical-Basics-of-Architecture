@@ -150,6 +150,7 @@ After the configuration below, static files (=Assets) will be served from `./dis
 ```bash
 npm i pug
 ```
+
 ### Create Static Folder within `src`
 
 ```bash
@@ -176,7 +177,9 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(
+    AppModule,
+  );
   app.useStaticAssets(join(__dirname, 'static/public'));
   app.setBaseViewsDir(join(__dirname, 'static/views'));
   app.setViewEngine('pug');
@@ -199,7 +202,7 @@ bootstrap();
 }
 ```
 
-### Update `tsconfig.build.json` 
+### Update `tsconfig.build.json`
 
 ```json
 {
@@ -208,7 +211,7 @@ bootstrap();
 }
 ```
 
-### Update Corresponding Service 
+### Update Corresponding Service
 
 E.g. `app.service.ts`
 
@@ -255,10 +258,9 @@ html
     link(rel="stylesheet" href="css/style.css")
     title= title
   body
-    h1.cTitle= title 
+    h1.cTitle= title
     h2.cSubTitle= subTitle
 ```
-
 
 ## Excerpts from File-Structure
 

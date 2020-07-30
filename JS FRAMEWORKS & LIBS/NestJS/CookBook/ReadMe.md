@@ -141,6 +141,16 @@ Tutorial: https://leanpub.com/pug-node/read
 
 [List of Template Engines](https://expressjs.com/en/resources/template-engines.html)
 
+## NestJS with Kafka
+
+### Setup
+
+```bash
+npm i --save @nestjs/microservices
+npm i --save kafkajs
+nest g sub-app kafka
+```
+
 ## NestExpressApplication: Static Sites with `pug`
 
 After the configuration below, static files (=Assets) will be served from `./dist/static`.

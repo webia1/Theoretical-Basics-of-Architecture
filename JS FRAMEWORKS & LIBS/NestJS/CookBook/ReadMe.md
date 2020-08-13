@@ -504,10 +504,27 @@ export class MyResolver {}
 ### A Service
 
 ```typescript
-import { Injectable } from '@nestjs/common';
+import {
+  Injectable,
+  OnModuleDestroy,
+  OnModuleInit,
+} from '@nestjs/common';
 
 @Injectable()
-export class MyService {}
+export class MyService implements OnModuleInit, OnModuleDestroy {
+  constructor() {
+    //
+  }
+
+  async onModuleInit(): Promise<void> {
+    //
+  }
+
+  async onModuleDestroy(): Promise<void> {
+    //
+  }
+}
+
 ```
 
 ## Concepts (Excerpt)

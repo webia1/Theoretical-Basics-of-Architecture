@@ -576,6 +576,62 @@ npm i jsonwebtoken @types/jsonwebtoken
 - Application Middleware
 - The Session (Optional)
 
+
+### Connection to MSSSQL
+
+#### Install the mpm package
+
+    npm install mssql
+
+#### Example
+
+If you're on Windows Azure, add ?encrypt=true to your connection string.
+
+```typescript
+import { MyConfig } from './whatever';
+import {
+  Injectable,
+  OnModuleDestroy,
+  OnModuleInit,
+} from '@nestjs/common';
+// @ts-ignore
+const sql = require('mssql');
+
+@Injectable()
+export class MyWhatEverDBService implements OnModuleInit, OnModuleDestroy {
+  Something: Array<any> = [];
+
+  async onModuleInit(): Promise<void> {
+    // if necessary
+  }
+
+  async getSomething(): Promise<Array<any>> {
+    try {
+      await sql.connect(
+        `mssql://${MyConfig.db_user}:${MyConfig.db_password}@${MyConfig.db_server}/${MyConfig.db_database}`,
+      );
+      this.Something = await sql.query(
+        `select * from ${MyConfig.db_table_something}`,
+      );
+      console.log(Object.keys(this.Something));
+      return this.Something && this.Something['recordset']
+        ? this.Something['recordset']
+        : [];
+    } catch (error) {
+      console.warn('Errors: ', error);
+      return [];
+    }
+  }
+
+  async onModuleDestroy(): Promise<void> {
+    sql.disconnect();
+  }
+}
+```
+
+ 
+
+
 ### ORM (Object-relational Mapping)
 
 An ORM provides a mapping between objects in memory and database entities (relational database tables, nosql,..).
@@ -597,6 +653,7 @@ An ORM provides a mapping between objects in memory and database entities (relat
 - sql.js
 - MongoDB
 - Oracle (experimental)
+
 
 ##### An `ormconfig.json` example
 

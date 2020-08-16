@@ -1,5 +1,17 @@
 # CSS(3) Cook Book
 
+## Background Image (Color Linear Gradient)
+
+```css
+  background-image: linear-gradient(
+    to bottom right,
+    #31388d 0%,
+    #753fa9 30%,
+    #ff0762 60%,
+    #f25632 100%
+  );
+```
+
 ## Using OK sign (&#10004;)
 
 `HTML: &#10004;  CSS content="\2714"` 

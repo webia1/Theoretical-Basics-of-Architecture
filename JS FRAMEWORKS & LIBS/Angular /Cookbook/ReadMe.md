@@ -51,6 +51,10 @@ Use it in your component
 let dayString = '2019-06-20 19:46:20.187'
 let parsedDayString =  parseISO(dayString);
 let myLocalDate = format(parsedDayString, DATE_FORMATS.SHORT, { locale: de });
+
+// that also helps:
+// new Date(Date.parse("2019-06-15T00:00:00"));
+
 ```
 ### Time Distance with DateFns (date-fns)
 

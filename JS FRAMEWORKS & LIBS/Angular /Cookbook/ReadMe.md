@@ -29,6 +29,8 @@ import { DateFnsModule } from 'ngx-date-fns';
 
 ### Format Dates with DateFns (date-fns)
 
+Stickblitz playground: <https://stackblitz.com/edit/date-fns-playground-zeitzonen?file=index.ts>
+
 Import necessary parts:
 
 ```ts

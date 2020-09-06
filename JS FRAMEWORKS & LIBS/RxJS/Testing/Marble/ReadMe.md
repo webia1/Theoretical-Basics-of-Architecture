@@ -2,6 +2,7 @@
 
 ## Run the code
 
+`npm install`
 `npm run test`
 
 ## Basic methods

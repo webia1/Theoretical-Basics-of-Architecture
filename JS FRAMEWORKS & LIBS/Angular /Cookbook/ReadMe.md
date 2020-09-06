@@ -29,6 +29,8 @@ import { DateFnsModule } from 'ngx-date-fns';
 
 ### Format Dates with DateFns (date-fns)
 
+Stickblitz playground: <https://stackblitz.com/edit/date-fns-playground-zeitzonen?file=index.ts>
+
 Import necessary parts:
 
 ```ts
@@ -51,6 +53,10 @@ Use it in your component
 let dayString = '2019-06-20 19:46:20.187'
 let parsedDayString =  parseISO(dayString);
 let myLocalDate = format(parsedDayString, DATE_FORMATS.SHORT, { locale: de });
+
+// that also helps:
+// new Date(Date.parse("2019-06-15T00:00:00"));
+
 ```
 ### Time Distance with DateFns (date-fns)
 

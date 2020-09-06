@@ -7,13 +7,16 @@ function resolveAfter(ms, value) {
 }
 
 function timeout(ms, measuringPromise) {
+  let timeoutID;
   const timeoutPromise = new Promise((_, reject) => {
-    setTimeout(() => {
+    timeoutID = setTimeout(() => {
       reject(Error(`Timed out after ${ms}ms`));
     }, ms);
   });
 
-  return Promise.race([somePromise, timeoutPromise]);
+  return Promise.race([somePromise, timeoutPromise]).finally(() => {
+    clearTimeout(timeoutID);
+  });
 }
 
 const somePromise = resolveAfter(1000, 'Some Content');

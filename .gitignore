@@ -17,3 +17,4 @@ node_modules
 package-lock.json
 Lodash/examples/node_modules
 Lodash/examples/package-lock.json
+__IGNORED_CACHE

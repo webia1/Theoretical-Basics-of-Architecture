@@ -30,7 +30,7 @@ git add .
 git commit -m "INITIAL COMMIT"
 git remote add origin https://github.com/webia1/regex.github.io.git
 git branch -M master
-git push -u origin master
+git push -u origin master -ff
 ```
 
 ## Navigate to the Webpage

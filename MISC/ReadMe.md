@@ -37,6 +37,85 @@ _    underline
 \    backslash, hack, whack, escape-sign, reverse slash
 ```
 
+## Programming Signs (German/English)
+
+```text
+(   Klammer auf, 
+	open paren
+	
+)   Klammer zu, 
+	close paren
+	
+[   Eckige Klammer auf, 
+	open bracket  or open square bracket
+	
+]   Eckige Klammer zu, 
+	close bracket or close square bracket
+	
+{   Geschwungene Klammer auf, 
+	open curly or open curly bracket
+	
+}   Geschwungene Klammer zu, 
+	close curly or close curly bracket
+	
+<   Kleiner Zeichen, Spitze Klammer auf, 
+	open angle or open angle bracket or less than
+	
+>   Größer Zeichen, Spitze Klammer zu 
+	close angle or close angle bracket or greater than
+	
+|   Pipe-zeichen, Filterzeichen, senkrechter Strich, 
+	pipe
+	
+/	Schrägstrich, 
+	slash
+	
+\   Der Backslash, 
+	backslash
+	
+"   Doppeltes Anführungszeichen, 
+	double quote
+	
+'   Einfaches Anführungszeichen, 
+	single quote
+	
+:   Doppelpunkt, 
+	colon
+	
+;   Semikolon oder Strichpunkt, 
+	sem or semicolon
+	
+!   Rufzeichen, 
+	bang or not
+	
+^   Dach- oder Hutzeichen, Caret aber auch Zirkumflexzeichen, 
+	hat or caret
+	
+°   Gradzeichen, 
+	degree  or degrees or degree sign
+	
+#   Die Raute, der Rhombus (selten auch das Karo)
+	pound or number or sharp or hash sign
+	
+`   Backtick oder Graviszeichen, 
+	back tick
+	
+´   Der Akut oder Akzentzeichen, 
+	tick
+	
+§   Paragraf, 
+	section sign
+	
+-   Bindestrich oder Minus, 
+	hyphen  or minus
+	
+_   Unterstrich, 
+	underline
+
+~   Die Tilde, das Ungefährzeichen, 
+	twiddle or tilde
+```
+
 ## [Gif for CLI](https://github.com/google/gif-for-cli)
 
 Takes in a GIF, short video, or a query to the Tenor GIF API

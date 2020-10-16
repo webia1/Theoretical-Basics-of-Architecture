@@ -40,79 +40,79 @@ _    underline
 ## Programming Signs (German/English)
 
 ```text
-(   Klammer auf, 
+(   Klammer auf,
 	open paren
-	
-)   Klammer zu, 
+
+)   Klammer zu,
 	close paren
-	
-[   Eckige Klammer auf, 
+
+[   Eckige Klammer auf,
 	open bracket  or open square bracket
-	
-]   Eckige Klammer zu, 
+
+]   Eckige Klammer zu,
 	close bracket or close square bracket
-	
-{   Geschwungene Klammer auf, 
+
+{   Geschwungene Klammer auf,
 	open curly or open curly bracket
-	
-}   Geschwungene Klammer zu, 
+
+}   Geschwungene Klammer zu,
 	close curly or close curly bracket
-	
-<   Kleiner Zeichen, Spitze Klammer auf, 
+
+<   Kleiner Zeichen, Spitze Klammer auf,
 	open angle or open angle bracket or less than
-	
->   Größer Zeichen, Spitze Klammer zu 
+
+>   Größer Zeichen, Spitze Klammer zu
 	close angle or close angle bracket or greater than
-	
-|   Pipe-zeichen, Filterzeichen, senkrechter Strich, 
+
+|   Pipe-zeichen, Filterzeichen, senkrechter Strich,
 	pipe
-	
-/	Schrägstrich, 
+
+/	Schrägstrich,
 	slash
-	
-\   Der Backslash, 
+
+\   Der Backslash,
 	backslash
-	
-"   Doppeltes Anführungszeichen, 
+
+"   Doppeltes Anführungszeichen,
 	double quote
-	
-'   Einfaches Anführungszeichen, 
+
+'   Einfaches Anführungszeichen,
 	single quote
-	
-:   Doppelpunkt, 
+
+:   Doppelpunkt,
 	colon
-	
-;   Semikolon oder Strichpunkt, 
+
+;   Semikolon oder Strichpunkt,
 	sem or semicolon
-	
-!   Rufzeichen, 
+
+!   Rufzeichen,
 	bang or not
-	
-^   Dach- oder Hutzeichen, Caret aber auch Zirkumflexzeichen, 
+
+^   Dach- oder Hutzeichen, Caret aber auch Zirkumflexzeichen,
 	hat or caret
-	
-°   Gradzeichen, 
+
+°   Gradzeichen,
 	degree  or degrees or degree sign
-	
+
 #   Die Raute, der Rhombus (selten auch das Karo)
 	pound or number or sharp or hash sign
-	
-`   Backtick oder Graviszeichen, 
+
+`   Backtick oder Graviszeichen,
 	back tick
-	
-´   Der Akut oder Akzentzeichen, 
+
+´   Der Akut oder Akzentzeichen,
 	tick
-	
-§   Paragraf, 
+
+§   Paragraf,
 	section sign
-	
--   Bindestrich oder Minus, 
+
+-   Bindestrich oder Minus,
 	hyphen  or minus
-	
-_   Unterstrich, 
+
+_   Unterstrich,
 	underline
 
-~   Die Tilde, das Ungefährzeichen, 
+~   Die Tilde, das Ungefährzeichen,
 	twiddle or tilde
 ```
 

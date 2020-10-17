@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { each, extend } from 'lodash';
 
 const somethingFromAPI = [
   { id: 1, whatever: 'foo' },
@@ -14,8 +14,27 @@ const missingParts = {
   },
 };
 
-_.each(somethingFromAPI, (item) => {
-  _.extend(item, missingParts);
+each(somethingFromAPI, (item) => {
+  extend(item, missingParts);
 });
 
-console.log('Array from API extended: ', somethingFromAPI);
+const output = [
+  {
+    id: 1,
+    whatever: 'foo',
+    editable: false,
+    someProps: { clicked: false, size: 'normal' },
+  },
+  {
+    id: 2,
+    whatever: 'bar',
+    editable: false,
+    someProps: { clicked: false, size: 'normal' },
+  },
+  {
+    id: 3,
+    whatever: 'bar',
+    editable: false,
+    someProps: { clicked: false, size: 'normal' },
+  },
+];

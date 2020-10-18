@@ -62,6 +62,7 @@ Abbreviations:
   - [attempt](#attempt)
   - [defaultTo(value, defaultValue)](#defaulttovalue-defaultvalue)
   - [identity(value) (??)](#identityvalue)
+  - [itaretee](#itaretee)
   - [flow ([funcs])](#flow-funcs)
   - [property](#property)
 
@@ -1280,7 +1281,7 @@ truncate('hi-diddly-ho there, neighborino', {
 
 **identity**
 
-> iteratee
+**iteratee**
 
 > matches
 
@@ -1368,6 +1369,31 @@ var object = { a: 1 };
 
 console.log(_.identity(object) === object);
 // => true
+```
+
+### itaretee
+
+```javascript
+var users = [
+  { user: 'barney', age: 36, active: true },
+  { user: 'fred', age: 40, active: false },
+];
+map(users, iteratee('user')); // => [ 'barney', 'fred' ]
+
+filter(users, iteratee(['user', 'fred']));
+// => [{ 'user': 'fred', 'age': 40 }]
+
+// Create custom iteratee shorthands.
+iteratee = wrap(iteratee, function (iteratee, func) {
+  return !isRegExp(func)
+    ? iteratee(func)
+    : function (string) {
+        return func.test(string);
+      };
+});
+
+filter(['abc', 'def'], /ef/);
+// => ['def']
 ```
 
 ### flow ([funcs])

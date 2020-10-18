@@ -50,6 +50,7 @@ Abbreviations:
 - [Object](#object-1)
   - [get(object, path, [defaultValue])](#getobject-path-defaultvalue)
   - [mapKeys, mapValues](#mapkeys-mapvalues)
+  - [omitBy(object, [predicate=\_.identity])](#omitbyobject-predicate_identity)
   - [transform](#transform)
 - [Seq](#seq)
   - [chain, tap, thru, prototype.value()](#chain-tap-thru-prototypevalue)
@@ -59,7 +60,8 @@ Abbreviations:
   - [truncate](#truncate)
 - [Util](#util)
   - [attempt](#attempt)
-  - [defaultTo](#defaultto)
+  - [defaultTo(value, defaultValue)](#defaulttovalue-defaultvalue)
+  - [flow ([funcs])](#flow-funcs)
   - [property](#property)
 
 <!-- /code_chunk_output -->
@@ -894,7 +896,7 @@ round(4060, -2); // => 4100
 
 > omit,
 
-> omitBy,
+_omitBy_,
 
 > pick,
 
@@ -965,6 +967,21 @@ mapValues(users, function (o) {
 // The `property` iteratee shorthand.
 mapValues(users, 'age');
 // => { 'fred': 40, 'pebbles': 1 } (iteration order is not guaranteed)
+```
+
+### omitBy(object, [predicate=_.identity])
+
+The opposite of `pickBy`; this method creates an object composed of the own and inherited enumerable string keyed properties of object that predicate doesn't return truthy for. The predicate is invoked with two arguments: (value, key).
+
+```javascript
+var object = { a: 1, b: '2', c: 3 };
+omitBy(object); // => {}
+
+var object = { a: 1, b: '2', c: false };
+omitBy(object); // => { c: false }
+
+var object = { a: 1, b: '2', c: 3 };
+omitBy(object, isNumber); // => { b: '2' } because 2 is string
 ```
 
 ### transform
@@ -1260,7 +1277,7 @@ truncate('hi-diddly-ho there, neighborino', {
 
 > flowRight
 
-> identity
+**identity**
 
 > iteratee
 
@@ -1339,6 +1356,17 @@ _.defaultTo(1, 10);
 
 _.defaultTo(undefined, 10);
 // => 10
+```
+
+### identity(value) (??)
+
+This method returns the first argument it receives.
+
+```javascript
+var object = { a: 1 };
+
+console.log(_.identity(object) === object);
+// => true
 ```
 
 ### flow ([funcs])

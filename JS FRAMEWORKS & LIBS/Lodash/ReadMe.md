@@ -61,6 +61,7 @@ Abbreviations:
 - [Util](#util)
   - [attempt](#attempt)
   - [defaultTo(value, defaultValue)](#defaulttovalue-defaultvalue)
+  - [identity(value) (??)](#identityvalue)
   - [flow ([funcs])](#flow-funcs)
   - [property](#property)
 

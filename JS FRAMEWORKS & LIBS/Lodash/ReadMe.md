@@ -17,23 +17,29 @@ Abbreviations:
   - [difference, differenceBy, differenceWith](#difference-differenceby-differencewith)
   - [drop, dropRight, dropRightWhile](#drop-dropright-droprightwhile)
   - [fill](#fill)
-  - [fromPairs, intersection, sortedIndex, zip](#frompairs-intersection-sortedindex-zip)
+  - [fromPairs, intersection, sortedIndex, zip, zipObjectDeep](#frompairs-intersection-sortedindex-zip-zipobjectdeep)
 - [Object](#object)
-  - [countBy](#countby)
+  - [countBy (!!)](#countby)
   - [every](#every)
   - [flatMap](#flatmap)
-  - [groupBy](#groupby)
-  - [invokeMap](#invokemap)
-  - [keyBy](#keyby)
-  - [orderBy](#orderby)
-  - [partition](#partition)
+  - [flatMapDeep](#flatmapdeep)
+  - [groupBy (!!)](#groupby)
+  - [invokeMap (!!)](#invokemap)
+  - [keyBy (!!)](#keyby)
+  - [orderBy (!!)](#orderby)
+  - [partition (!!)](#partition)
 - [Date](#date)
 - [Function](#function)
+  - [debounce](#debounce)
+  - [memoize(func, [resolver]) (!!)](#memoizefunc-resolver)
+  - [once](#once)
   - [spread](#spread)
   - [wrap](#wrap)
 - [Lang](#lang)
+  - [castArray](#castarray)
   - [isNil](#isnil)
   - [toFinite](#tofinite)
+  - [toPlainObject (!!)](#toplainobject)
 - [Math](#math)
   - [ceil (aufrunden)](#ceil-aufrunden)
   - [divide](#divide)
@@ -179,7 +185,7 @@ The inverse of \_.toPairs; this method returns an object composed from key-value
 
 > **zipObject:**
 
-> **zipObjectDeep:**
+**zipObjectDeep:**
 
 > **zipWith:**
 
@@ -238,7 +244,7 @@ fill([4, 6, 8, 10], '*', 1, 3); // from 1 (incl.) to 3 (excl.)
 //=> [4, '*', '*', 10]
 ```
 
-### fromPairs, intersection, sortedIndex, zip
+### fromPairs, intersection, sortedIndex, zip, zipObjectDeep
 
 ```javascript
 fromPairs([
@@ -247,7 +253,7 @@ fromPairs([
 ]);
 // => { 'a': 1, 'b': 2 }
 
-intersection([2, 1], [2, 3]); // => [2]
+intersection([1, 3], [2, 3], [3, 4], [5, 3], [7, 3]); // => [3]
 
 sortedIndex([30, 50], 40); // => 1
 
@@ -255,6 +261,9 @@ uniq([3, 1, 1, 2, 3]); // => [3,1,2]
 
 zip(['x', 'x', 'y'], ['a', 'b', 'c'], [1, 2, 3]);
 // => [ [ 'x', 'a', 1 ], [ 'x', 'b', 2 ], [ 'y', 'c', 3 ] ]
+
+zipObjectDeep(['a.b[0].c', 'a.b[1].d'], [1, 2]);
+// => { 'a': { 'b': [{ 'c': 1 }, { 'd': 2 }] } }
 ```
 
 ## Object
@@ -275,7 +284,7 @@ zip(['x', 'x', 'y'], ['a', 'b', 'c'], [1, 2, 3]);
 
 **flatMap**,
 
-> flatMapDeep,
+**flatMapDeep**,
 
 > flatMapDepth,
 
@@ -301,7 +310,7 @@ zip(['x', 'x', 'y'], ['a', 'b', 'c'], [1, 2, 3]);
 
 > reduceRight,
 
-> reject,
+> **reject**: The opposite of \_.filter; this method returns the elements of collection that predicate does not return truthy for.
 
 > sample,
 
@@ -315,7 +324,7 @@ zip(['x', 'x', 'y'], ['a', 'b', 'c'], [1, 2, 3]);
 
 > sortBy,
 
-### countBy
+### countBy (!!)
 
 ```javascript
 countBy([6.1, 4.2, 6.3], Math.floor);
@@ -352,7 +361,25 @@ flatMap([1, 2], duplicate);
 // => [1, 1, 2, 2]
 ```
 
-### groupBy
+### flatMapDeep
+
+```javascript
+let a = [
+  [{ a: 1, b: { b0: 1 } }],
+  [[[[{ a: 2, b: { b0: 2 } }]]]],
+  [[{ a: 3, b: { b0: 3 } }]],
+];
+
+console.log(flatMapDeep(a));
+
+/*
+[ { a: 1, b: { b0: 1 } },
+  { a: 2, b: { b0: 2 } },
+  { a: 3, b: { b0: 3 } } ]
+*/
+```
+
+### groupBy (!!)
 
 ```javascript
 groupBy([6.1, 4.2, 6.3], Math.floor);
@@ -363,7 +390,10 @@ groupBy(['one', 'two', 'three'], 'length');
 // => { '3': ['one', 'two'], '5': ['three'] }
 ```
 
-### invokeMap
+### invokeMap (!!)
+
+> invokeMap(collection, path, [args])
+> path: `sort`, `toUpperCase`, `toFixed`, `String.prototype.split`, whatever ..
 
 ```javascript
 invokeMap(
@@ -379,7 +409,7 @@ invokeMap([123, 456], String.prototype.split, '');
 // => [['1', '2', '3'], ['4', '5', '6']]
 ```
 
-### keyBy
+### keyBy (!!)
 
 ```javascript
 var array = [
@@ -396,7 +426,7 @@ keyBy(array, 'value');
 // = { 97: { key: 'left', value: 97 }, 100: { key: 'right', value: 100 } }
 ```
 
-### orderBy
+### orderBy (!!)
 
 ```javascript
 var users = [
@@ -411,7 +441,7 @@ orderBy(users, ['user', 'age'], ['asc', 'desc']);
 // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
 ```
 
-### partition
+### partition (!!)
 
 Creates an array of elements split into two groups, the first of which contains elements predicate returns truthy for, the second of which contains elements predicate returns falsey for. The predicate is invoked with one argument: (value).
 
@@ -446,7 +476,7 @@ partition(users, 'active');
 
 > curryRight
 
-> debounce
+**debounce**
 
 > defer
 
@@ -454,11 +484,11 @@ partition(users, 'active');
 
 > flip
 
-> memoize
+**memoize**
 
 > negate
 
-> once
+**once**
 
 > overArgs
 
@@ -477,6 +507,51 @@ partition(users, 'active');
 > unary,
 
 **wrap**,
+
+### debounce
+
+> [Difference between debouncing and throttling](https://css-tricks.com/debouncing-throttling-explained-examples/)
+
+> [Lodash `debounce()`](https://lodash.com/docs/4.17.15#debounce)
+
+### memoize(func, [resolver]) (!!)
+
+Creates a function that memoizes the result of `func`. If `resolver` is provided, it determines the cache key for storing the result based on the arguments provided to the memoized function. By default, the first argument provided to the memoized function is used as the map cache key. The `func` is invoked with the `this` binding of the memoized function.
+
+**Note:** The cache is exposed as the `cache` property on the memoized function. Its creation may be customized by replacing the `memoize.Cache` constructor with one whose instances implement the `Map` method interface of `clear`, `delete`, `get`, `has`, and `set`.
+
+```javascript
+var object = { a: 1, b: 2 };
+var other = { c: 3, d: 4 };
+
+var values = memoize(_.values);
+values(object);
+// => [1, 2]
+
+values(other);
+// => [3, 4]
+
+object.a = 2;
+values(object);
+// => [1, 2]
+
+// Modify the result cache.
+values.cache.set(object, ['a', 'b']);
+values(object);
+// => ['a', 'b']
+
+// Replace `_.memoize.Cache`.
+memoize.Cache = WeakMap;
+```
+
+### once
+
+```javascript
+var initialize = _.once(createApplication);
+initialize();
+initialize();
+// => `createApplication` is invoked once
+```
 
 ### spread
 
@@ -502,7 +577,7 @@ p('fred, barney, & pebbles');
 
 ## Lang
 
-> castArray,
+**castArray**,
 
 > clone,
 
@@ -608,11 +683,37 @@ p('fred, barney, & pebbles');
 
 > toNumber
 
-> toPlainObject
+**toPlainObject**
 
 > toSafeInteger
 
 > toString,
+
+### castArray
+
+```javascript
+castArray(1);
+// => [1]
+
+castArray({ a: 1 });
+// => [{ 'a': 1 }]
+
+castArray('abc');
+// => ['abc']
+
+castArray(null);
+// => [null]
+
+castArray(undefined);
+// => [undefined]
+
+castArray();
+// => []
+
+var array = [1, 2, 3];
+console.log(castArray(array) === array);
+// => true
+```
 
 ### isNil
 
@@ -622,6 +723,22 @@ Checks if value is null or undefined
 
 ```javascript
 toFinite(Infinity); // => 1.7976931348623157e+308
+```
+
+### toPlainObject (!!)
+
+```javascript
+function Foo() {
+  this.b = 2;
+}
+
+Foo.prototype.c = 3;
+
+_.assign({ a: 1 }, new Foo());
+// => { 'a': 1, 'b': 2 }
+
+_.assign({ a: 1 }, _.toPlainObject(new Foo()));
+// => { 'a': 1, 'b': 2, 'c': 3 }
 ```
 
 ## Math
@@ -699,7 +816,8 @@ round(4060, -2); // => 4100
 
 ## Number
 
-> clamp,
+> clamp: `clamp(number, [lower], upper)`
+> Clamps number within the inclusive lower and upper bounds.
 
 **inRange**,
 
@@ -917,9 +1035,14 @@ chain([1, 2, 3])
   .value(); // => [3,2,1,0]
 
 chain('  abc  ')
+  //.trim()
+  .thru((s) => s.split(''))
+  .value(); // => [ ' ', ' ', 'a', 'b', 'c', ' ', ' ' ]
+
+chain('  abc  ')
   .trim()
-  .thru((a) => [a])
-  .value(); // => [ 'abc' ]
+  .thru((s) => s.split(''))
+  .value(); // => [ 'a', 'b', 'c' ]
 
 var array = [1, 2, 3];
 

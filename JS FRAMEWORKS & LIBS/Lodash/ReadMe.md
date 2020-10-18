@@ -59,6 +59,7 @@ Abbreviations:
   - [truncate](#truncate)
 - [Util](#util)
   - [attempt](#attempt)
+  - [defaultTo](#defaultto)
   - [property](#property)
 
 <!-- /code_chunk_output -->
@@ -1253,7 +1254,7 @@ truncate('hi-diddly-ho there, neighborino', {
 
 > constant
 
-> defaultTo
+**defaultTo**
 
 > flow
 
@@ -1324,6 +1325,35 @@ var elements = attempt(function (selector) {
 if (isError(elements)) {
   elements = [];
 }
+```
+
+### defaultTo(value, defaultValue)
+
+If `value` `NaN`, `null` or `undefined` then take `defaltValue`.
+
+Checks value to determine whether a default value should be returned in its place. The defaultValue is returned if value is NaN, null, or undefined.
+
+```javascript
+_.defaultTo(1, 10);
+// => 1
+
+_.defaultTo(undefined, 10);
+// => 10
+```
+
+### flow ([funcs])
+
+```javascript
+function myAdd(n1: number, n2: number) {
+  return n1 + n2;
+}
+
+function mySquare(n: number) {
+  return n * n;
+}
+
+var addSquare = flow([myAdd, mySquare]);
+addSquare(1, 2); // => (1+2) * (1+2) = 9
 ```
 
 ### property

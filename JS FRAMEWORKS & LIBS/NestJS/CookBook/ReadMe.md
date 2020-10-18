@@ -1,79 +1,93 @@
 # NestJS Cookbook
 
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
 
-- [NestJS Cookbook](#nestjs-cookbook)
-  - [Getting Started](#getting-started)
-    - [`nest/cli`](#nestcli)
-    - [`nest generate`](#nest-generate)
-  - [Excerpts from File-Structure](#excerpts-from-file-structure)
-    - [`app-module.ts`](#app-modulets)
-    - [A Controller](#a-controller)
-    - [A Custom Decorator](#a-custom-decorator)
-    - [A Custom Filter](#a-custom-filter)
-    - [A Custom Gateway](#a-custom-gateway)
-    - [A Custom Guard](#a-custom-guard)
-    - [A Custom Interceptor](#a-custom-interceptor)
-    - [A Middleware](#a-middleware)
-    - [A Module](#a-module)
-    - [A Pipe](#a-pipe)
-    - [Provider](#provider)
-    - [A Resolver (GraphQL)](#a-resolver-graphql)
-    - [A Service](#a-service)
-  - [Concepts (Excerpt)](#concepts-excerpt)
-    - [Bootstrapping](#bootstrapping)
-    - [Dependency Injection (similar to Angular)](#dependency-injection-similar-to-angular)
-    - [Authentication Library: `@nestjs/passport`](#authentication-library-nestjspassport)
-    - [ORM (Object-relational Mapping)](#orm-object-relational-mapping)
-      - [TypeORM](#typeorm)
-        - [Supporting Databases](#supporting-databases)
-        - [An `ormconfig.json` example](#an-ormconfigjson-example)
-        - [Initialize TypeORM](#initialize-typeorm)
-        - [Entity Example](#entity-example)
-      - [Sequelize](#sequelize)
-      - [Mongoose](#mongoose)
-    - [REST API](#rest-api)
-    - [WebSockets](#websockets)
-    - [MicroServices](#microservices)
-    - [Routing & Request Handling](#routing-request-handling)
-      - [Controller & Decorators](#controller-decorators)
-      - [Standard (NestJS) Response](#standard-nestjs-response)
-      - [ExpressJS Response](#expressjs-response)
-      - [Route Parameters](#route-parameters)
-      - [Request Body](#request-body)
-      - [Request Object](#request-object)
-      - [Asynchronous handlers](#asynchronous-handlers)
-      - [Promise](#promise)
-      - [Observables](#observables)
-    - [GraphQL (`@nestjs/graphql`)](#graphql-nestjsgraphql)
-    - [Routing](#routing)
-    - [OpenAPI (`@nestjs/swagger`)](#openapi-nestjsswagger)
-    - [CQRS (Command Query Responsibility Segregation)](#cqrs-command-query-responsibility-segregation)
-    - [Testing (`@nestjs/testing`)](#testing-nestjstesting)
-    - [Angular Universal](#angular-universal)
-  - [Full Resource Example](#full-resource-example)
-  - [Error Handling](#error-handling)
-    - [Exception Filters](#exception-filters)
-      - [Default Exception Response](#default-exception-response)
-      - [Throwing Standard Exceptions](#throwing-standard-exceptions)
-      - [Custom Exceptions](#custom-exceptions)
-      - [Built-In Exceptions](#built-in-exceptions)
-      - [Exception Filters](#exception-filters-1)
-      - [Binding Filters](#binding-filters)
-      - [Catch Everything](#catch-everything)
-  - [Pipes](#pipes)
-    - [Built-in pipes](#built-in-pipes)
-    - [Binding Pipes](#binding-pipes)
-      - [Validation](#validation)
-  - [Guards](#guards)
-  - [Interceptors](#interceptors)
-  - [Trouble Shooting](#trouble-shooting)
-    - [Parsing error: "parserOptions.project" has been set for @typescript-eslint/parser](#parsing-error-parseroptionsproject-has-been-set-for-typescript-eslintparser)
-      - [`Problem` &rarr; Following errors](#problem-rarr-following-errors)
-      - [`Solution`](#solution)
-  - [Own Notices / Own Styles](#own-notices-own-styles)
+- [Getting Started](#getting-started)
+  - [`nest/cli`](#nestcli)
+  - [`nest generate`](#nest-generate)
+- [Template Engine (pug)](#template-engine-pug)
+- [NestJS with Kafka](#nestjs-with-kafka)
+  - [Setup](#setup)
+- [NestExpressApplication: Static Sites with `pug`](#nestexpressapplication-static-sites-with-pug)
+  - [Install `pug`](#install-pug)
+  - [Create Static Folder within `src`](#create-static-folder-within-src)
+  - [Update `src/main.ts`](#update-srcmaints)
+  - [Update `nest-cli.json`](#update-nest-clijson)
+  - [Update `tsconfig.build.json`](#update-tsconfigbuildjson)
+  - [Update Corresponding Service](#update-corresponding-service)
+  - [Update Corresponding Controller](#update-corresponding-controller)
+  - [Last but not least `index.pug`](#last-but-not-least-indexpug)
+- [Excerpts from File-Structure](#excerpts-from-file-structure)
+  - [`app-module.ts`](#app-modulets)
+  - [A Controller](#a-controller)
+  - [A Custom Decorator](#a-custom-decorator)
+  - [A Custom Filter](#a-custom-filter)
+  - [A Custom Gateway](#a-custom-gateway)
+  - [A Custom Guard](#a-custom-guard)
+  - [A Custom Interceptor](#a-custom-interceptor)
+  - [A Middleware](#a-middleware)
+  - [A Module](#a-module)
+  - [A Pipe](#a-pipe)
+  - [Provider](#provider)
+  - [A Resolver (GraphQL)](#a-resolver-graphql)
+  - [A Service](#a-service)
+- [Concepts (Excerpt)](#concepts-excerpt)
+  - [Bootstrapping](#bootstrapping)
+  - [Dependency Injection (similar to Angular)](#dependency-injection-similar-to-angular)
+  - [Authentication Library: `@nestjs/passport`](#authentication-library-nestjspassport)
+  - [Connection to MSSSQL](#connection-to-msssql)
+    - [Install the mpm package](#install-the-mpm-package)
+    - [Example](#example)
+  - [ORM (Object-relational Mapping)](#orm-object-relational-mapping)
+    - [TypeORM](#typeorm)
+      - [Supporting Databases](#supporting-databases)
+      - [An `ormconfig.json` example](#an-ormconfigjson-example)
+      - [Initialize TypeORM](#initialize-typeorm)
+      - [Entity Example](#entity-example)
+    - [Sequelize](#sequelize)
+    - [Mongoose](#mongoose)
+  - [REST API](#rest-api)
+  - [WebSockets](#websockets)
+  - [MicroServices](#microservices)
+  - [Routing & Request Handling](#routing-request-handling)
+    - [Controller & Decorators](#controller-decorators)
+    - [Standard (NestJS) Response](#standard-nestjs-response)
+    - [ExpressJS Response](#expressjs-response)
+    - [Route Parameters](#route-parameters)
+    - [Request Body](#request-body)
+    - [Request Object](#request-object)
+    - [Asynchronous handlers](#asynchronous-handlers)
+    - [Promise](#promise)
+    - [Observables](#observables)
+  - [GraphQL (`@nestjs/graphql`)](#graphql-nestjsgraphql)
+  - [Routing](#routing)
+  - [OpenAPI (`@nestjs/swagger`)](#openapi-nestjsswagger)
+  - [CQRS (Command Query Responsibility Segregation)](#cqrs-command-query-responsibility-segregation)
+  - [Testing (`@nestjs/testing`)](#testing-nestjstesting)
+  - [Angular Universal](#angular-universal)
+- [Full Resource Example](#full-resource-example)
+- [Error Handling](#error-handling)
+  - [Exception Filters](#exception-filters)
+    - [Default Exception Response](#default-exception-response)
+    - [Throwing Standard Exceptions](#throwing-standard-exceptions)
+    - [Custom Exceptions](#custom-exceptions)
+    - [Built-In Exceptions](#built-in-exceptions)
+    - [Exception Filters](#exception-filters-1)
+    - [Binding Filters](#binding-filters)
+    - [Catch Everything](#catch-everything)
+- [Pipes](#pipes)
+  - [Built-in pipes](#built-in-pipes)
+  - [Binding Pipes](#binding-pipes)
+    - [Validation](#validation)
+- [Guards](#guards)
+- [Interceptors](#interceptors)
+- [Trouble Shooting](#trouble-shooting)
+  - [Parsing error: "parserOptions.project" has been set for @typescript-eslint/parser](#parsing-error-parseroptionsproject-has-been-set-for-typescript-eslintparser)
+    - [`Problem` &rarr; Following errors](#problem-rarr-following-errors)
+    - [`Solution`](#solution)
+- [Own Notices / Own Styles](#own-notices-own-styles)
 
 <!-- /code_chunk_output -->
 
@@ -524,7 +538,6 @@ export class MyService implements OnModuleInit, OnModuleDestroy {
     //
   }
 }
-
 ```
 
 ## Concepts (Excerpt)
@@ -576,7 +589,6 @@ npm i jsonwebtoken @types/jsonwebtoken
 - Application Middleware
 - The Session (Optional)
 
-
 ### Connection to MSSSQL
 
 #### Install the mpm package
@@ -598,7 +610,8 @@ import {
 const sql = require('mssql');
 
 @Injectable()
-export class MyWhatEverDBService implements OnModuleInit, OnModuleDestroy {
+export class MyWhatEverDBService
+  implements OnModuleInit, OnModuleDestroy {
   Something: Array<any> = [];
 
   async onModuleInit(): Promise<void> {
@@ -629,9 +642,6 @@ export class MyWhatEverDBService implements OnModuleInit, OnModuleDestroy {
 }
 ```
 
- 
-
-
 ### ORM (Object-relational Mapping)
 
 An ORM provides a mapping between objects in memory and database entities (relational database tables, nosql,..).
@@ -653,7 +663,6 @@ An ORM provides a mapping between objects in memory and database entities (relat
 - sql.js
 - MongoDB
 - Oracle (experimental)
-
 
 ##### An `ormconfig.json` example
 

@@ -6,6 +6,8 @@ Abbreviations:
 - Notice &rarr; `N:`
 - Result &rarr; `res` or `r`
 
+**All features were mentioned, but only the following topics were covered in detail:**
+
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
@@ -57,47 +59,129 @@ Abbreviations:
 
 ## Array
 
-chunk, compact, concat,
+> **chunk:**
+> Creates an array of elements split into groups the length of size. If array can't be split evenly, the final chunk will be the remaining elements.
 
-difference, differenceBy, differenceWith,
+> **compact:**
+> Creates an array with all falsey values removed. The values false, null, 0, "", undefined, and NaN are falsey.
 
-drop, dropRight, dropRightWhile, dropWhile,
+**concat**:
+Creates a new array concatenating array with any additional arrays and/or values.
 
-fill,
+**difference:**
+Creates an array of array values not included in the other given arrays using SameValueZero for equality comparisons. The order and references of result values are determined by the first array. Note: Unlike `pullAll`, this method returns a new array.
 
-findIndex, findLastIndex,
+**differenceBy:**
+This method is like difference except that it accepts iteratee which is invoked for each element of array and values to generate the criterion by which they're compared. The order and references of result values are determined by the first array. The iteratee is invoked with one argument: (value). Note: Unlike `pullAllBy`, this method returns a new array.
 
-first -> head
+**differenceWith,**
 
-flatten, flattenDeep, flattenDepth,
+**drop**, **dropRight**, **dropRightWhile**, dropWhile,
 
-fromPairs, head, indexOf, initial,
+**fill**,
 
-intersection intersectionBy, intersectionWith,
+> **findIndex:** > _.findIndex(array, [predicate=_.identity], [fromIndex=0])
 
-join, last, lastIndexOf, nth,
+> **findLastIndex:**
+> This method is like \_.findIndex except that it iterates over elements of collection from right to left.
 
-pull, pullAll, pullAllBy pullAllWith, pullAt,
+> **first** or **head** (alias)
+> Gets the first element of array.
 
-remove, reverse, slice,
+> **flatten, flattenDeep, flattenDepth**,
+> flatten: 1, flattenDeep: all, flattenDepth n
 
-sortedIndex, sortedIndexBy, sortedIndexOf sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf, sortedUniq, sortedUniqBy,
+**fromPairs**,
+The inverse of \_.toPairs; this method returns an object composed from key-value pairs.
 
-tail
+> **head:** see above &rarr; `first`
 
-take, takeRight, takeRightWhile, takeWhile,
+> **indexOf:** indexOf(array, value, [fromIndex=0])
+> Gets the index at which the first occurrence of value is found in array using SameValueZero for equality comparisons. If fromIndex is negative, it's used as the offset from the end of array.
 
-union, unionBy, unionWith,
+> **initial:** Gets all but the last element of array.
 
-uniq, uniqBy uniqWith,
+**intersection**
 
-unzip, unzipWith,
+> **intersectionBy:**
 
-without,
+> **intersectionWith:**
 
-xor, xorBy, xorWith,
+> **join:**
 
-zip, zipObject, zipObjectDeep zipWith
+> **last:**
+
+> **lastIndexOf:**
+
+> **nth:**
+
+> **pull:**
+
+> **pullAll:**
+
+> **pullAllBy:**
+
+> **pullAllWith:**
+
+> **pullAt:**
+
+> **remove:**
+
+> **reverse:**
+
+> **slice:**
+
+**sortedIndex**
+
+> **sortedIndexBy**
+
+> **sortedIndexOf sortedLastIndex**
+
+> **sortedLastIndexBy**
+
+> **sortedLastIndexOf**
+
+> **sortedUniq**
+
+> **sortedUniqBy**
+
+> **tail**
+
+> **take**
+
+> **takeRight**
+
+> **takeRightWhile**
+
+> **takeWhile**
+
+> **union**
+
+> **unionBy**
+
+> **unionWith**
+
+> **uniq**
+
+> **uniqBy**
+
+> **uniqWith**
+
+> **unzip**
+
+> **unzipWith**
+
+> **without,**
+
+> **xor xorBy xorWith**
+
+**zip**
+
+> **zipObject:**
+
+> **zipObjectDeep:**
+
+> **zipWith:**
 
 ### concat
 
@@ -175,23 +259,61 @@ zip(['x', 'x', 'y'], ['a', 'b', 'c'], [1, 2, 3]);
 
 ## Object
 
-countBy,
+**countBy**,
 
-each -> forEach, eachRight -> forEachRight,
+> each -> forEach,
 
-every, filter,
+> eachRight -> forEachRight,
 
-find, findLast,
+**every**,
 
-flatMap, flatMapDeep, flatMapDepth,
+> filter,
 
-forEach, forEachRight,
+> find,
 
-groupBy, includes, invokeMap, keyBy, map, orderBy, partition,
+> findLast,
 
-reduce, reduceRight,
+**flatMap**,
 
-reject, sample, sampleSize, shuffle, size, some, sortBy,
+> flatMapDeep,
+
+> flatMapDepth,
+
+> forEach,
+
+> forEachRight,
+
+**groupBy**,
+
+> includes,
+
+**invokeMap**,
+
+**keyBy**,
+
+> map,
+
+**orderBy**,
+
+**partition**,
+
+> reduce,
+
+> reduceRight,
+
+> reject,
+
+> sample,
+
+> sampleSize,
+
+> shuffle,
+
+> size,
+
+> some,
+
+> sortBy,
 
 ### countBy
 
@@ -306,11 +428,55 @@ partition(users, 'active');
 
 ## Date
 
-now
+> now
 
 ## Function
 
-after, ary, before, bind, bindKey, curry, curryRight, debounce, defer, delay, flip, memoize, negate, once, overArgs, partial, partialRight, rearg, rest, spread, throttle, unary, wrap,
+> after
+
+> ary
+
+> before
+
+> bind
+
+> bindKey
+
+> curry
+
+> curryRight
+
+> debounce
+
+> defer
+
+> delay
+
+> flip
+
+> memoize
+
+> negate
+
+> once
+
+> overArgs
+
+> partial,
+
+> partialRight,
+
+> rearg,
+
+> rest,
+
+**spread**,
+
+> throttle,
+
+> unary,
+
+**wrap**,
 
 ### spread
 
@@ -336,7 +502,117 @@ p('fred, barney, & pebbles');
 
 ## Lang
 
-castArray, clone, **cloneDeep**, cloneDeepWith, cloneWith, conformsTo, eq, gt, gte, isArguments, isArray, isArrayBuffer, isArrayLike, isArrayLikeObject, isBoolean, isBuffer, isDate, isElement, isEmpty, isEqual, isEqualWith, isError, isFinite, isFunction, isInteger, isLength, isMap, isMatch, isMatchWith, isNaN, isNative, **isNil**, isNull, isNumber, isObject, isObjectLike, **isPlainObject**, isRegExp, isSafeInteger, isSet, isString, isSymbol, isTypedArray, isUndefined, isWeakMap, isWeakSet, lt, lte, toArray, **toFinite**, toInteger, toLength, toNumber, toPlainObject, toSafeInteger, toString,
+> castArray,
+
+> clone,
+
+> cloneDeep
+
+> cloneDeepWith
+
+> cloneWith,
+
+> conformsTo
+
+> eq
+
+> gt
+
+> gte
+
+> isArguments
+
+> isArray
+
+> isArrayBuffer
+
+> isArrayLike
+
+> isArrayLikeObject
+
+> isBoolean
+
+> isBuffer
+
+> isDate
+
+> isElement
+
+> isEmpty
+
+> isEqual
+
+> isEqualWith
+
+> isError
+
+> isFinite
+
+> isFunction
+
+> isInteger
+
+> isLength
+
+> isMap,
+
+> isMatch
+
+> isMatchWith,
+
+> isNaN
+
+> isNative
+
+**isNil**
+
+> isNull
+
+> isNumber,
+
+> isObject
+
+> isObjectLike
+
+> _isPlainObject_,
+
+> isRegExp
+
+> isSafeInteger
+
+> isSet
+
+> isString
+
+> isSymbol
+
+> isTypedArray
+
+> isUndefined
+
+> isWeakMap
+
+> isWeakSet
+
+> lt
+
+> lte
+
+> toArray,
+
+**toFinite**
+
+> toInteger
+
+> toLength
+
+> toNumber
+
+> toPlainObject
+
+> toSafeInteger
+
+> toString,
 
 ### isNil
 
@@ -350,7 +626,35 @@ toFinite(Infinity); // => 1.7976931348623157e+308
 
 ## Math
 
-add, ceil, divide, floor, max, maxBy, **mean** (arithmetisches Mittel), meanBy, min, minBy, multiply, round, subtract, **sum**, sumBy,
+> add,
+
+**ceil**,
+
+**divide**,
+
+**floor**,
+
+> max
+
+> maxBy,
+
+**mean** (arithmetisches Mittel),
+
+> meanBy
+
+> min
+
+> minBy
+
+> multiply
+
+**round**
+
+> subtract,
+
+**sum**
+
+> sumBy,
 
 ### ceil (aufrunden)
 
@@ -395,7 +699,11 @@ round(4060, -2); // => 4100
 
 ## Number
 
-clamp, inRange, random,
+> clamp,
+
+**inRange**,
+
+**random**,
 
 ### inRange(number, [start=0], end)
 
@@ -403,7 +711,97 @@ clamp, inRange, random,
 
 ## Object
 
-assign, **assignIn**, assignInWith, assignWith, at, create, defaults, defaultsDeep, entries -> toPairs, entriesIn -> toPairsIn, extend -> assignIn, extendWith -> assignInWith, findKey, findLastKey, forIn, forInRight, forOwn, forOwnRight, functions, functionsIn, **get**, has, hasIn, **invert**, invertBy, invoke, keys, keysIn, mapKeys, mapValues, merge, mergeWith, omit, omitBy, pick, pickBy, result, set, setWith, toPairs, toPairsIn, transform, unset, update, updateWith, values, valuesIn,
+> assign
+
+> _assignIn_
+
+> assignInWith
+
+> assignWith
+
+> at
+
+> create
+
+> defaults
+
+> defaultsDeep
+
+> entries -> toPairs
+
+> entriesIn -> toPairsIn
+
+> extend -> assignIn
+
+> extendWith -> assignInWith
+
+> findKey
+
+> findLastKey
+
+> forIn
+
+> forInRight
+
+> forOwn
+
+> forOwnRight
+
+> functions
+
+> functionsIn,
+
+**get**,
+
+> has
+
+> hasIn,
+
+> _invert_
+
+> invertBy,
+
+> invoke,
+
+> keys
+
+> keysIn,
+
+**mapKeys, mapValues,**
+
+> merge,
+
+> mergeWith,
+
+> omit,
+
+> omitBy,
+
+> pick,
+
+> pickBy,
+
+> result,
+
+> set,
+
+> setWith,
+
+> toPairs,
+
+> toPairsIn,
+
+**transform**,
+
+> unset,
+
+> update,
+
+> updateWith,
+
+> values,
+
+> valuesIn,
 
 ### get(object, path, [defaultValue])
 
@@ -456,7 +854,7 @@ mapValues(users, 'age');
 
 ```javaScript
 const a = [3, 6, 9, 7, 8];
-let b = [];
+let b = [1];
 
 const r = transform(
   a,
@@ -465,12 +863,38 @@ const r = transform(
     return n % 3 === 0; // ?
   },
   b
-); // => [ 3, 6, 9, 7 ]
+); // => [ 1, 3, 6, 9, 7 ]
 ```
+
+Hinweis: 1 war schon in b, bei 7 wird abgebrochen, wurde aber schon gepusht.
 
 ## Seq
 
-**chain**, tap, thru, prototype[Symbol.iterator], prototype.at, prototype.chain, prototype.commit, prototype.next, prototype.plant, prototype.reverse, prototype.toJSON -> value, prototype.value, prototype.valueOf -> value,
+**chain**,
+
+**tap**,
+
+**thru**,
+
+> prototype[Symbol.iterator],
+
+> prototype.at,
+
+> prototype.chain,
+
+> prototype.commit,
+
+> prototype.next,
+
+> prototype.plant,
+
+> prototype.reverse,
+
+> prototype.toJSON -> value,
+
+**prototype.value**,
+
+> prototype.valueOf -> value,
 
 ### chain, tap, thru, prototype.value()
 
@@ -504,7 +928,65 @@ chain(array).reverse().value(); // => [3,2,1]
 
 ## String
 
-camelCase, capitalize, deburr, endsWith, escape, escapeRegExp, kebabCase, lowerCase, lowerFirst, pad, padEnd, padStart, parseInt, repeat, replace, snakeCase, split, startCase, startsWith, template, toLower, toUpper, trim, trimEnd, trimStart, truncate, unescape, upperCase, upperFirst, words,
+**camelCase**
+
+**capitalize**
+
+> deburr
+
+> endsWith
+
+**escape**
+
+**escapeRegExp**
+
+> kebabCase
+
+> lowerCase
+
+> lowerFirst
+
+> pad
+
+> padEnd
+
+> padStart
+
+> parseInt
+
+> repeat
+
+> replace
+
+> snakeCase
+
+> split
+
+> startCase
+
+> startsWith
+
+**template**
+
+> toLower
+
+> toUpp
+
+> tr
+
+> trimEnd
+
+> trimStart
+
+**truncate**
+
+> unescape
+
+> upperCase
+
+> upperFirst
+
+> words
 
 ### camelCase, capitalize, escape, escapeRegExp
 
@@ -638,7 +1120,75 @@ truncate('hi-diddly-ho there, neighborino', {
 
 ## Util
 
-attempt, bindAll, **cond**, **conforms**, constant, defaultTo, flow, flowRight, identity, iteratee, matches, matchesProperty, method, methodOf, mixin, noConflict, noop, nthArg, **over**, overEvery, overSome, property, propertyOf, range, rangeRight, runInContext, stubArray, stubFalse, stubObject, stubString, stubTrue, times, toPath, **uniqueId**,
+**attempt**
+
+> bindAll
+
+> _cond_
+
+> _conforms_
+
+> constant
+
+> defaultTo
+
+> flow
+
+> flowRight
+
+> identity
+
+> iteratee
+
+> matches
+
+> matchesProperty
+
+> method
+
+> methodOf
+
+> mixin
+
+> noConflict
+
+> noop
+
+> nthArg
+
+> _over_
+
+> overEvery
+
+> overSome
+
+**property**
+
+> propertyOf
+
+> range
+
+> rangeRight
+
+> runInContext
+
+> stubArray
+
+> stubFalse
+
+> stubObject
+
+> stubString
+
+> stubTrue
+
+> times
+
+> toPath
+
+> _uniqueId_
+
+>
 
 ### attempt
 

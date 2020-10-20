@@ -1360,3 +1360,6 @@ content and restart VSCode:
 ```
 
 ## Own Notices / Own Styles
+## StackOverflow
+### Deleting Cache 
+[nestjs-how-to-clear-reset-all-cache](https://stackoverflow.com/questions/62351708/nestjs-how-to-clear-reset-all-cache)

@@ -1,5 +1,52 @@
 # CSS(3) Cook Book
 
+## Google Fonts (Angular & Co.)
+
+> See [Google Fonts Helper -> Example: EB Garamond](https://google-webfonts-helper.herokuapp.com/fonts/eb-garamond?subsets=latin)
+
+1) Download Fonts into e.g. assets/fonts/eb-garamond/.. (use the link above)
+2) Create a File e.g. assets/scss/fonts.scss and integrate font
+
+```scss
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 700;
+  src: url("assets/fonts/eb-garamond/eb-garamond-v14-latin-700.eot"); /* IE9 Compat Modes */
+  src: local(""),
+    url("assets/fonts/eb-garamond/eb-garamond-v14-latin-700.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */
+      url("assets/fonts/eb-garamond/eb-garamond-v14-latin-700.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */
+      url("assets/fonts/eb-garamond/eb-garamond-v14-latin-700.woff")
+      format("woff"),
+    /* Modern Browsers */
+      url("assets/fonts/eb-garamond/eb-garamond-v14-latin-700.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("assets/fonts/eb-garamond/eb-garamond-v14-latin-700.svg#EBGaramond")
+      format("svg"); /* Legacy iOS */
+}
+```
+3) import into style.css
+
+```scss
+@import "assets/scss/fonts.scss";
+```
+
+4) Use it e.g.
+
+```scss
+.cTitle1 {
+  font-family: "EB Garamond";
+  font-size: 2rem;
+}
+```
+
+
+
 ## Background Image (Color Linear Gradient)
 
 ```css

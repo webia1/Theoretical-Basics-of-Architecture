@@ -1,198 +1,70 @@
-# Regular Expressions in JavaScript
-
-> Examples (German) here: <https://webia1.github.io/regex.github.io/>
+# Regular Expressions
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
 
-- [Pattern](#pattern)
-- [Caracters with special meanings](#caracters-with-special-meanings)
-  - [Punctiation Characters](#punctiation-characters)
-    - [^](#)
-    - [\$](#-1)
-    - [.](#-2)
-    - [\*](#-3)
-    - [+](#-4)
-    - [?](#-5)
-    - [=](#-6)
-      - [(?=...) Positive Look Ahead](#positive-look-ahead)
-    - [!](#-7)
-    - [:](#-8)
-    - [|](#-9)
-    - [\\](#-10)
-    - [/](#-11)
-    - [()](#-12)
-    - [[]](#-13)
-    - [{}](#-14)
+- [Overview](#overview)
+  - [Main Rules](#main-rules)
+  - [Engines](#engines)
+    - [DFA - Deterministic Finite Automation](#dfa-deterministic-finite-automation)
+    - [NFA - Nondeterministic Finite Automation](#nfa-nondeterministic-finite-automation)
+      - [Traditional NFA](#traditional-nfa)
+      - [POSIX](#posix)
+- [Character Representations](#character-representations)
   - [Special Characters](#special-characters)
-    - [\w](#w)
-    - [\W](#w-1)
-    - [\s](#s)
-    - [\S](#s-1)
-    - [\d](#d)
-    - [\D](#d-1)
-    - [[\b]](#b)
-  - [Literal Characters](#literal-characters)
-    - [\0](#0)
-    - [\t](#t)
-    - [\n](#n)
-    - [\v](#v)
-    - [\f](#f)
-    - [\r](#r)
-    - [\xnn](#xnn)
-- [Details](#details)
-- [Character Classes](#character-classes)
-  - [Unicode Character Classes (ES2018)](#unicode-character-classes-es2018)
+  - [Octal Escape `\num`](#octal-escape-num)
+  - [Hex and Unicode Escapes: `\xnum \x{num} \unum \Unum`](#hex-and-unicode-escapes-xnum-xnum-unum-unum)
+- [Glossary](#glossary)
+  - [PCRE](#pcre)
 
 <!-- /code_chunk_output -->
 
-## Pattern
+## Overview
 
-```javascript
-let pattern = /^e/gims; // or
-let pattern = new RegExp('^e');
-```
+### Main Rules
 
-## Caracters with special meanings
+- The earliest (leftmost) match wins
+- Standard quantifiers are greedy
 
-### Punctiation Characters
+### Engines
 
-#### ^
+#### DFA - Deterministic Finite Automation
 
-Start of string, or the point after newline if match mode `/m`
+#### NFA - Nondeterministic Finite Automation
 
-#### \$
+##### Traditional NFA
 
-End of search string, or before any newline if match mode `/m`
+##### POSIX
 
-#### .
+Posix always picks the longest of the leftmode matches. Example: `cat|category` Would match `category` even if `cat` appears earlier.
 
-Any Character except newline or another Unicode line terminator (with s flag -> line terminators are included)
+Slower than DFA but provides:
 
-#### \*
+- Capturing,
+- Look-Around and
+- NonGreedy Quantifiers
 
-0 or more
-
-#### +
-
-1 or more
-
-#### ?
-
-0 or 1
-
-#### =
-
-##### (?=...) Positive Look Ahead
-
-Asserts that the given subpattern can be matched here, without consuming characters
-
-```javascript
-'foobar foobaz'.match(/foo(?=bar)/gi); // => ["foo"]
-```
-
-#### !
-
-in negative lookea-head/behind etc, details later
-
-#### :
-
-(?:...) Match everything enclose
-
-#### |
-
-(a|b) a or b
-
-#### \\
-
-#### /
-
-#### ()
-
-#### []
-
-Character Classes
-
-#### {}
+## Character Representations
 
 ### Special Characters
 
-#### \w
-
-Any ASCII word character. Equivalent to [a-zA-Z0-9_]
-
-#### \W
-
-Any non ASCII word character. Equivalent to [^a-za-z0-9_]
-
-#### \s
-
-Any Unicode whitespace character
-
-#### \S
-
-Any non Unicode whitespace character
-
-#### \d
-
-Any ASCII digit. Equivalent to [0-9]
-
-#### \D
-
-Any character other than an ASCII digit. Equivalent to [^0-9]
-
-#### [\b]
-
-A literal backspace (Special case).
-
-### Literal Characters
-
-#### \0
-
-NUL Character (\u0000)
-
-#### \t
-
-Tab
-
-#### \n
-
-Newline
-
-#### \v
-
-Vertical Tab
-
-#### \f
-
-Form feed
-
-#### \r
-
-Carriage return
-
-#### \xnn
-
-z.B. x0A for Newline
-
-## Details
-
-## Character Classes
-
-```txt
-  [abc]    Any one of the letters a, b, or c
-  [^abc]   Any one character other than a, b, or c
-            (A caret (^) within character classes is negation!)
-  [a-z]    Hypen (-) indicates a range ()
+```javascript
+^ $ . , - * + ? = ! : | ( ) [ ] { } \ /
 ```
 
-### Unicode Character Classes (ES2018)
+### Octal Escape `\num`
 
-```js
-  \p
-  \P
-
-/\p{Decimal_Number}/u; // one decimal digit any of the world's writing system
-
+```javascript
+let re = /\015\012/; // matches an ASCII CR/LF Sequence
 ```
+
+### Hex and Unicode Escapes: `\xnum \x{num} \unum \Unum`
+
+### Control Characters: `\cchar`
+
+## Glossary
+
+### PCRE
+
+Perl Compatible Regular Expressions

@@ -50,7 +50,9 @@ Case insensitive match
 
 ### `y` sticky
 
-Proceed matching from where previous match ended only
+Proceed matching from where previous match ended only. The sticky property reflects whether or not the search is sticky (searches in strings only from the index indicated by the lastIndex property of this regular expression).
+
+> See here: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/sticky>
 
 ### `u` unicode
 

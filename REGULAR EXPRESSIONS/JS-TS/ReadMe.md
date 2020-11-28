@@ -32,6 +32,9 @@
   - [RegExp.prototype@@search](#regexpprototypesearch)
   - [RegExp.prototype@@split](#regexpprototypesplit)
 - [Basics](#basics)
+  - [test](#test)
+  - [exec](#exec)
+- [Cookbook](#cookbook)
 
 <!-- /code_chunk_output -->
 
@@ -74,7 +77,7 @@ if (regex.sticky) {
 
 ### `u` unicode
 
-Match with full unicode
+Match with full Unicode
 
 ### `s` single line
 
@@ -131,7 +134,7 @@ Whether or not Unicode features are enabled.
 
 ### RegExp.prototype.compile() (deprecated)
 
-(Re-)compiles a regular expression during execution of a script.
+(Re-)compiles a regular expression during the execution of a script.
 
 ### RegExp.prototype.exec()
 
@@ -296,3 +299,31 @@ For example, the following are equivalent:
 let re = /\w+/;
 let re = new RegExp('\\w+');
 ```
+
+### regex.test
+
+```javascript
+let text = 'Hello World!';
+let regex = /hello/gi; // dot or digits
+
+let m = regex.test(text); // => true
+```
+
+### regex.exec
+
+```javascript
+let text = 'Hello World!';
+let regex = /hello/gi; // dot or digits
+
+let m = regex.exec(text);
+
+if (m) {
+  console.log('Match: ', m);
+  // Match:  [ 'Hello', index: 0, input: 'Hello World!', groups: undefined ]
+  // m[0] => first match
+  // m.index => index of first match
+  // m.input => the text we're searching within
+}
+```
+
+## Cookbook

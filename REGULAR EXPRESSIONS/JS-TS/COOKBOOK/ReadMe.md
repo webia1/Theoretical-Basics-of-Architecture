@@ -15,8 +15,8 @@
 
 ## Wiederholungen
 
-`{1,2}` wenigstens einmal, höchstens zweimal
-`{2}` genau viermal
+`{1,2}` wenigstens einmal, höchstens zweimal <br/>
+`{2}` genau viermal <br/>
 `{x,}` mindestens x mal oder öfter
 
 ```javascript

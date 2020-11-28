@@ -16,7 +16,7 @@
 
 ### Zeichenklassen
 
-`/[0-9]/` = `[\d]` Beliebige Ziffer
+`/[0-9]+/` = `\d+` Beliebige Ziffer
 
 ```javascript
 /\d+/gi.test('Enthält der Satz eine Nummer wie 4711?'); // true

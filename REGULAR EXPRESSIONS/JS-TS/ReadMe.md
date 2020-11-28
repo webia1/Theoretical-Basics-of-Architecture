@@ -32,9 +32,8 @@
   - [RegExp.prototype@@search](#regexpprototypesearch)
   - [RegExp.prototype@@split](#regexpprototypesplit)
 - [Basics](#basics)
-  - [test](#test)
-  - [exec](#exec)
-- [Cookbook](#cookbook)
+  - [regex.test](#regextest)
+  - [regex.exec](#regexexec)
 
 <!-- /code_chunk_output -->
 
@@ -325,5 +324,3 @@ if (m) {
   // m.input => the text we're searching within
 }
 ```
-
-## Cookbook

@@ -54,6 +54,23 @@ Proceed matching from where previous match ended only. The sticky property refle
 
 > See here: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/sticky>
 
+```javascript
+let text = 'Me foo';
+let regex = /foo/iy;
+
+if (regex.sticky) {
+  // => true
+
+  regex.lastIndex = 0;
+  regex.test(text); // => false
+  regex.test(text); // => false
+
+  regex.lastIndex = 3;
+  regex.test(text); // => true
+  regex.test(text); // => false
+}
+```
+
 ### `u` unicode
 
 Match with full unicode

@@ -23,6 +23,7 @@
 - [Instance methods](#instance-methods)
   - [RegExp.prototype.compile() (deprecated)](#regexpprototypecompile-deprecated)
   - [RegExp.prototype.exec()](#regexpprototypeexec)
+    - [Exec All Matches](#exec-all-matches)
   - [RegExp.prototype.test()](#regexpprototypetest)
   - [RegExp.prototype.toString()](#regexpprototypetostring)
   - [RegExp.prototype@@match](#regexpprototypematch)
@@ -141,6 +142,37 @@ JavaScript `RegExp` objects are stateful when they have the global or sticky fla
 A newer function has been proposed to simplify matching multiple parts of a string (with capture groups): `String.prototype.matchAll()`.
 
 If you are executing a match simply to find `true` or `false`, use `RegExp.prototype.test()` method or `String.prototype.search()` instead.
+
+#### Exec All Matches
+
+```javascript
+let text = 'It is OK. I am 34.';
+let regex = /[.\d]+/g; // dot or digits
+
+interface RegExpExecArray {
+  groups?: {
+    [key: string]: string,
+  };
+}
+
+let match: RegExpExecArray | null;
+let matchArray = [];
+
+while ((match = regex.exec(text))) {
+  // The following is necessary to avoid infinite loops
+  // width zero-width matches
+  if (match.index === regex.lastIndex) {
+    regex.lastIndex++;
+  }
+
+  if (match[0]) {
+    matchArray.push(match[0]);
+  }
+}
+
+console.log('Matches: ', matchArray);
+// output: Matches:  [ '.', '34.' ]
+```
 
 ### RegExp.prototype.test()
 

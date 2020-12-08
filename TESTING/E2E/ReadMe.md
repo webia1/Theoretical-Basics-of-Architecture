@@ -16,6 +16,7 @@
     2. [Puppeteer](#puppeteer)
     3. [TestCafe](#testcafe)
     4. [Nightwatch](#nightwatch)
+    5. [Zombie.js](#zombiejs)
 
 <!-- /code_chunk_output -->
 
@@ -56,7 +57,12 @@ Excerpt (Puppeteer missing!):
 
 >[>> Website](https://github.com/nightwatchjs/nightwatch)
 
+## Simulations & Co
+
 ### Zombie.js
 
 >[>> Website](https://github.com/assaf/zombie)
 
+### Simple Browser
+
+> [>> Website](https://github.com/SimpleBrowserDotNet/SimpleBrowser)

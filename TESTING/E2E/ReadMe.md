@@ -16,7 +16,9 @@
     2. [Puppeteer](#puppeteer)
     3. [TestCafe](#testcafe)
     4. [Nightwatch](#nightwatch)
-    5. [Zombie.js](#zombiejs)
+3. [Simulations & Co](#simulations-co)
+    1. [Zombie.js](#zombiejs)
+    2. [Simple Browser](#simple-browser)
 
 <!-- /code_chunk_output -->
 

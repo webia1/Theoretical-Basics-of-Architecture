@@ -5,16 +5,16 @@
 <!-- code_chunk_output -->
 
 - [Basics](#basics)
-  - [Zeichenklassen](#zeichenklassen)
-  - [Wiederholungen](#wiederholungen)
-  - [Gruppen](#gruppen)
+  - [Zeichenklassen `[...]`](#zeichenklassen)
+  - [Wiederholungen `{x,y}`](#wiederholungen-xy)
+  - [Gruppen `(...)`](#gruppen)
     - [Teilausdrücke](#teilausdrücke)
 
 <!-- /code_chunk_output -->
 
 ## Basics
 
-### Zeichenklassen
+### Zeichenklassen `[...]`
 
 `/[0-9]+/` = `\d+` Beliebige Ziffer
 
@@ -22,7 +22,7 @@
 /\d+/gi.test('Enthält der Satz eine Nummer wie 4711?'); // true
 ```
 
-### Wiederholungen
+### Wiederholungen `{x,y}`
 
 `{1,2}` wenigstens einmal, höchstens zweimal <br/>
 `{2}` genau viermal <br/>
@@ -38,7 +38,7 @@ if (match) {
 }
 ```
 
-### Gruppen
+### Gruppen `(...)`
 
 #### Teilausdrücke
 

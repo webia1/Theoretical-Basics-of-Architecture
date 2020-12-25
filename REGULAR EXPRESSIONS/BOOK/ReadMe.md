@@ -36,6 +36,15 @@
       7. [RegExp.prototype@@replace](#regexpprototypereplace)
       8. [RegExp.prototype@@search](#regexpprototypesearch)
       9. [RegExp.prototype@@split](#regexpprototypesplit)
+4. [Cookbook](#cookbook)
+   1. [Basics](#basics)
+      1. [Test & Exec](#test-exec)
+         1. [regex.test](#regextest)
+         2. [regex.exec](#regexexec)
+   2. [Zeichenklassen `[...]`](#zeichenklassen)
+   3. [Wiederholungen `{x,y}`](#wiederholungen-xy)
+   4. [Gruppen `(...)`](#gruppen)
+      1. [Teilausdrücke](#teilausdrücke)
 
 <!-- /code_chunk_output -->
 
@@ -318,11 +327,9 @@ console.log('2016-01-02'.split(new RegExp('-')));
 
 ## Cookbook
 
-### Basics
+### Test & Exec
 
-#### Test & Exec
-
-##### regex.test
+#### regex.test
 
 ```javascript
 let text = 'Hello World!';
@@ -331,7 +338,7 @@ let regex = /hello/gi; // dot or digits
 let m = regex.test(text); // => true
 ```
 
-##### regex.exec
+#### regex.exec
 
 ```javascript
 let text = 'Hello World!';

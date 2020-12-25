@@ -1,5 +1,9 @@
 # Regular Expressions in JS/TS (DENGLISH)
 
+> [Drehbuch hier](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+
+> [>> See Browser Compatibility here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#Browser_compatibility)
+
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=true} -->
 
 <!-- code_chunk_output -->
@@ -14,7 +18,7 @@
    4. [`y` sticky](#y-sticky)
    5. [`u` unicode](#u-unicode)
 3. [Built-in Properties and Methods](#built-in-properties-and-methods)
-   1. [Instance properties](#instance-properties)
+   1. [Instance properties (STANDARD)](#instance-properties-standard)
       1. [get RegExp[@@species]](#get-regexpspecies)
       2. [RegExp.prototype.dotAll](#regexpprototypedotall)
       3. [RegExp.prototype.flags](#regexpprototypeflags)
@@ -22,9 +26,18 @@
       5. [RegExp.prototype.ignoreCase](#regexpprototypeignorecase)
       6. [RegExpInstance.lastIndex](#regexpinstancelastindex)
       7. [RegExp.prototype.multiline](#regexpprototypemultiline)
-      8. [RegExp.prototype.source](#regexpprototypesource)
-      9. [RegExp.prototype.sticky](#regexpprototypesticky)
-      10. [RegExp.prototype.unicode](#regexpprototypeunicode)
+      8. [RegExp.`$1-$9`](#regexp1-9)
+         1. [Using $n with String.replace](#using-n-with-stringreplace)
+         2. [Using $n with RegExp.test](#using-n-with-regexptest)
+      9. [RegExp.prototype.source](#regexpprototypesource)
+      10. [RegExp.prototype.sticky](#regexpprototypesticky)
+      11. [RegExp.prototype.unicode](#regexpprototypeunicode)
+      12. [Not Yet Standard Instance Properties](#not-yet-standard-instance-properties)
+          1. [RegExp.input `($_)`](#regexpinput-_)
+          2. [RegExp.lastMatch `($&)`](#regexplastmatch)
+          3. [RegExp.lastParen `($+)`](#regexplastparen)
+          4. [RegExp.leftContext ($`)](#regexpleftcontext)
+          5. [RegExp.rightContext `($')`](#regexprightcontext)
    2. [Instance methods](#instance-methods)
       1. [RegExp.prototype.compile() (deprecated)](#regexpprototypecompile-deprecated)
       2. [RegExp.prototype.exec()](#regexpprototypeexec)
@@ -37,10 +50,9 @@
       8. [RegExp.prototype@@search](#regexpprototypesearch)
       9. [RegExp.prototype@@split](#regexpprototypesplit)
 4. [Cookbook](#cookbook)
-   1. [Basics](#basics)
-      1. [Test & Exec](#test-exec)
-         1. [regex.test](#regextest)
-         2. [regex.exec](#regexexec)
+   1. [Test & Exec](#test-exec)
+      1. [regex.test](#regextest)
+      2. [regex.exec](#regexexec)
    2. [Zeichenklassen `[...]`](#zeichenklassen)
    3. [Wiederholungen `{x,y}`](#wiederholungen-xy)
    4. [Gruppen `(...)`](#gruppen)
@@ -116,7 +128,7 @@ Match with full Unicode
 
 ## Built-in Properties and Methods
 
-### Instance properties
+### Instance properties (STANDARD)
 
 #### get RegExp[@@species]
 
@@ -146,6 +158,34 @@ Whether to ignore case while attempting a match in a string.
 
 Whether or not to search in strings across multiple lines.
 
+#### RegExp.`$1-$9`
+
+Further details [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/n).
+
+##### Using $n with String.replace
+
+The following script uses the replace() method of the String instance to match a name in the format first last and output it in the format last, first. In the replacement text, the script uses $1 and $2 to indicate the results of the corresponding matching parentheses in the regular expression pattern.
+
+```javascript
+var re = /(\w+)\s(\w+)/;
+var str = 'John Smith';
+str.replace(re, '$2, $1'); // "Smith, John"
+RegExp.$1; // "John"
+RegExp.$2; // "Smith"
+```
+
+##### Using $n with RegExp.test
+
+The following script uses the test() method of the RegExp instance to grab a number in a generic string.
+
+```javascript
+var str = 'Test 24';
+var number = /(\d+)/.test(str) ? RegExp.$1 : '0';
+number; // "24"
+```
+
+Please note that any operation involving the usage of other regular expressions between a re.test(str) call and the RegExp.$n property, might have side effects, so that accessing these special properties should be done instantly, otherwise the result might be unexpected.
+
 #### RegExp.prototype.source
 
 The text of the pattern. The source property returns a `String` containing the source text of the regexp object, and it doesn't contain the two forward slashes on both sides and any flags.
@@ -170,6 +210,24 @@ Whether or not the search is sticky.
 #### RegExp.prototype.unicode
 
 Whether or not Unicode features are enabled.
+
+#### Not Yet Standard Instance Properties
+
+See further details [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+
+##### RegExp.input `($_)`
+
+##### RegExp.lastMatch `($&)`
+
+##### RegExp.lastParen `($+)`
+
+##### RegExp.leftContext ($`)
+
+```javascript
+($`)
+```
+
+##### RegExp.rightContext `($')`
 
 ### Instance methods
 

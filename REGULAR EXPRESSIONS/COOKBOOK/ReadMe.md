@@ -5,6 +5,9 @@
 <!-- code_chunk_output -->
 
 - [Basics](#basics)
+  - [Test & Exec](#test-exec)
+    - [regex.test](#regextest)
+    - [regex.exec](#regexexec)
   - [Zeichenklassen `[...]`](#zeichenklassen)
   - [Wiederholungen `{x,y}`](#wiederholungen-xy)
   - [Gruppen `(...)`](#gruppen)

@@ -15,14 +15,15 @@
    5. [`u` unicode](#u-unicode)
 3. [Built-in Properties and Methods](#built-in-properties-and-methods)
    1. [Instance properties](#instance-properties)
-      1. [RegExp.prototype.flags](#regexpprototypeflags)
-      2. [RegExp.prototype.dotAll](#regexpprototypedotall)
-      3. [RegExp.prototype.global](#regexpprototypeglobal)
-      4. [RegExp.prototype.ignoreCase](#regexpprototypeignorecase)
-      5. [RegExp.prototype.multiline](#regexpprototypemultiline)
-      6. [RegExp.prototype.source](#regexpprototypesource)
-      7. [RegExp.prototype.sticky](#regexpprototypesticky)
-      8. [RegExp.prototype.unicode](#regexpprototypeunicode)
+      1. [get RegExp[@@species]](#get-regexpspecies)
+      2. [RegExp.prototype.flags](#regexpprototypeflags)
+      3. [RegExp.prototype.dotAll](#regexpprototypedotall)
+      4. [RegExp.prototype.global](#regexpprototypeglobal)
+      5. [RegExp.prototype.ignoreCase](#regexpprototypeignorecase)
+      6. [RegExp.prototype.multiline](#regexpprototypemultiline)
+      7. [RegExp.prototype.source](#regexpprototypesource)
+      8. [RegExp.prototype.sticky](#regexpprototypesticky)
+      9. [RegExp.prototype.unicode](#regexpprototypeunicode)
    2. [Instance methods](#instance-methods)
       1. [RegExp.prototype.compile() (deprecated)](#regexpprototypecompile-deprecated)
       2. [RegExp.prototype.exec()](#regexpprototypeexec)
@@ -107,13 +108,17 @@ Match with full Unicode
 
 ### Instance properties
 
-#### RegExp.prototype.flags
+#### get RegExp[@@species]
 
-A string that contains the flags of the RegExp object.
+[>> Details here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/@@species)
 
 #### RegExp.prototype.dotAll
 
 Whether . matches newlines or not. The `dotAll` property indicates whether or not the "s" flag is used with the regular expression. `dotAll` is a read-only property of an individual regular expression instance.
+
+#### RegExp.prototype.flags
+
+A string that contains the flags of the RegExp object.
 
 #### RegExp.prototype.global
 
@@ -122,6 +127,10 @@ Whether to test the regular expression against all possible matches in a string,
 #### RegExp.prototype.ignoreCase
 
 Whether to ignore case while attempting a match in a string.
+
+#### RegExpInstance.lastIndex
+
+[>> Details here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/lastIndex)
 
 #### RegExp.prototype.multiline
 

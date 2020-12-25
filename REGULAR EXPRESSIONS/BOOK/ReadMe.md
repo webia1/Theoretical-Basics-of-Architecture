@@ -1,4 +1,4 @@
-# RegularExpressions in JS/TS
+# Regular Expressions in JS/TS (DENGLISH)
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=true} -->
 
@@ -16,14 +16,15 @@
 3. [Built-in Properties and Methods](#built-in-properties-and-methods)
    1. [Instance properties](#instance-properties)
       1. [get RegExp[@@species]](#get-regexpspecies)
-      2. [RegExp.prototype.flags](#regexpprototypeflags)
-      3. [RegExp.prototype.dotAll](#regexpprototypedotall)
+      2. [RegExp.prototype.dotAll](#regexpprototypedotall)
+      3. [RegExp.prototype.flags](#regexpprototypeflags)
       4. [RegExp.prototype.global](#regexpprototypeglobal)
       5. [RegExp.prototype.ignoreCase](#regexpprototypeignorecase)
-      6. [RegExp.prototype.multiline](#regexpprototypemultiline)
-      7. [RegExp.prototype.source](#regexpprototypesource)
-      8. [RegExp.prototype.sticky](#regexpprototypesticky)
-      9. [RegExp.prototype.unicode](#regexpprototypeunicode)
+      6. [RegExpInstance.lastIndex](#regexpinstancelastindex)
+      7. [RegExp.prototype.multiline](#regexpprototypemultiline)
+      8. [RegExp.prototype.source](#regexpprototypesource)
+      9. [RegExp.prototype.sticky](#regexpprototypesticky)
+      10. [RegExp.prototype.unicode](#regexpprototypeunicode)
    2. [Instance methods](#instance-methods)
       1. [RegExp.prototype.compile() (deprecated)](#regexpprototypecompile-deprecated)
       2. [RegExp.prototype.exec()](#regexpprototypeexec)
@@ -313,4 +314,68 @@ console.log('2016-01-02'.split(new RegExp1('-')));
 
 console.log('2016-01-02'.split(new RegExp('-')));
 // expected output: Array ["2016", "01", "02"]
+```
+
+## Cookbook
+
+### Basics
+
+#### Test & Exec
+
+##### regex.test
+
+```javascript
+let text = 'Hello World!';
+let regex = /hello/gi; // dot or digits
+
+let m = regex.test(text); // => true
+```
+
+##### regex.exec
+
+```javascript
+let text = 'Hello World!';
+let regex = /hello/gi; // dot or digits
+
+let m = regex.exec(text);
+
+if (m) {
+  console.log('Match: ', m);
+  // Match:  [ 'Hello', index: 0, input: 'Hello World!', groups: undefined ]
+  // m[0] => first match
+  // m.index => index of first match
+  // m.input => the text we're searching within
+}
+```
+
+### Zeichenklassen `[...]`
+
+`/[0-9]+/` = `\d+` Beliebige Ziffer
+
+```javascript
+/\d+/gi.test('Enthält der Satz eine Nummer wie 4711?'); // true
+```
+
+### Wiederholungen `{x,y}`
+
+`{1,2}` wenigstens einmal, höchstens zweimal <br/>
+`{2}` genau viermal <br/>
+`{x,}` mindestens x mal oder öfter
+
+```javascript
+let text = 'Es ist 21:00.';
+let regex = /\d{1,2}:\d{2}/gi;
+let match = regex.exec(text);
+
+if (match) {
+  console.log('Match: ', match[0]); // 21:00
+}
+```
+
+### Gruppen `(...)`
+
+#### Teilausdrücke
+
+```javascript
+/oh(ha)+da/gi.test('OhhahahaDa'); // true
 ```

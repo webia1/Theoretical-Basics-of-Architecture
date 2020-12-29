@@ -1,5 +1,70 @@
 # Angular Cookbook
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Angular Cookbook](#angular-cookbook)
+  - [Dividing a Form into multiple components](#dividing-a-form-into-multiple-components)
+    - [PARENT](#parent)
+      - [Passing nested FormGroup](#passing-nested-formgroup)
+    - [CHILD](#child)
+      - [TS](#ts)
+      - [HTML](#html)
+  - [Customizing Angular-Flex-Layout Breakpoints](#customizing-angular-flex-layout-breakpoints)
+  - [Working with DateFns](#working-with-datefns)
+    - [Installing (also pipes &rarr; ngx-date-fns)](#installing-also-pipes-rarr-ngx-date-fns)
+    - [Format Dates with DateFns (date-fns)](#format-dates-with-datefns-date-fns)
+    - [Time Distance with DateFns (date-fns)](#time-distance-with-datefns-date-fns)
+  - [Injecting Window Object](#injecting-window-object)
+    - [Provide it](#provide-it)
+    - [Create a Service](#create-a-service)
+    - [Inject and use it in your Component](#inject-and-use-it-in-your-component)
+    - [Or Inject it directly without Service](#or-inject-it-directly-without-service)
+
+<!-- /code_chunk_output -->
+
+## Dividing a Form into multiple components
+
+### PARENT
+
+If this is the form and you want to pass `address` to a child component:
+
+```typescript
+ngOnInit() {
+  this.myForm = this.fb.group({
+    name: [''],
+    address: this.fb.group({ // create nested formgroup to pass to child
+      street: [''],
+      zip: [''],
+      city: ['']
+    })
+  })
+}
+```
+
+#### Passing nested FormGroup
+
+<address [address]="myForm.get('address')"></address>
+
+### CHILD
+
+#### TS
+
+```typescript
+@Input() address: FormGroup;
+```
+
+#### HTML
+
+```html
+<div [formGroup]="address">
+  <input formControlName="street" />
+  <input formControlName="zip" />
+  <input formControlName="city" />
+</div>
+```
+
 ## Customizing Angular-Flex-Layout Breakpoints
 
 [>> Modifying existing ones](https://stackblitz.com/edit/angular-fxlayout-custom-breakpoints?file=app%2Fcustom-breakpoints.ts)
@@ -16,6 +81,7 @@
 npm i -S date-fns
 npm i -S ngx-date-fns
 ```
+
 import { DateFnsModule } from 'ngx-date-fns';
 
 ```bash
@@ -46,18 +112,21 @@ const DATE_FORMATS = {
   MIDDLE: 'd .MMM yyyy, HH:mm, E',
 };
 ```
+
 Use it in your component
 
 ```ts
 // e.g. timestamp as "yyyy-MM-dd'T'HH:mm:ss.SSS";
-let dayString = '2019-06-20 19:46:20.187'
-let parsedDayString =  parseISO(dayString);
-let myLocalDate = format(parsedDayString, DATE_FORMATS.SHORT, { locale: de });
+let dayString = '2019-06-20 19:46:20.187';
+let parsedDayString = parseISO(dayString);
+let myLocalDate = format(parsedDayString, DATE_FORMATS.SHORT, {
+  locale: de,
+});
 
 // that also helps:
 // new Date(Date.parse("2019-06-15T00:00:00"));
-
 ```
+
 ### Time Distance with DateFns (date-fns)
 
 ```ts
@@ -70,11 +139,10 @@ import { de } from 'date-fns/locale';
 const startTime = Date.now();
 // do something meanwhile and then
 
-const itTook = formatDistanceToNow(
-    startTime,
-    { includeSeconds: true, locale: de }
-);
-
+const itTook = formatDistanceToNow(startTime, {
+  includeSeconds: true,
+  locale: de,
+});
 ```
 
 ## Injecting Window Object
@@ -82,7 +150,7 @@ const itTook = formatDistanceToNow(
 ### Provide it
 
 ```ts
-// app.module.ts  
+// app.module.ts
 providers: [
   { provide: 'MY_CLIENT_INFO', useFactory: getClientInfo },
 ],
@@ -97,7 +165,6 @@ export function getClientInfo() {
 ### Create a Service
 
 ```ts
-  
 import { Injectable, Inject } from '@angular/core';
 
 @Injectable({
@@ -173,4 +240,3 @@ import {
     @Inject(DOCUMENT) private document: Document,
     @Inject('WINDOW') private window: Window, ... // Attention it is a String!
 ```
-

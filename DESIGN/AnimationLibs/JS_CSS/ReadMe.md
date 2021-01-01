@@ -1,4 +1,4 @@
-# JS Animation Libraries
+# JS/CSS/SVG/.. Animation Libraries
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 
@@ -101,6 +101,7 @@ Mächtige (SVG) Library
 ### Glorious MIT (Code Demo)\*
 
 - https://github.com/glorious-codes/glorious-demo
+- https://glorious.codes/demo
 
 ### Three.js WebGL (MIT)
 

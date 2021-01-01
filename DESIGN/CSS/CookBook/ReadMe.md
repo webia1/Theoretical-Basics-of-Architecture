@@ -1,67 +1,80 @@
 # CSS(3) Cook Book
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Google Fonts (Angular & Co.)](#google-fonts-angular-co)
+- [Background Image (Color Linear Gradient)](#background-image-color-linear-gradient)
+- [Using OK sign (&#10004;)](#using-ok-sign-10004)
+- [Working with Text in Scalable Vector Graphics (SVG)](#working-with-text-in-scalable-vector-graphics-svg)
+- [Breaking Words and Lines](#breaking-words-and-lines)
+- [Hypens (Bindestriche-Silbentrennung) & Breakpoints](#hypens-bindestriche-silbentrennung-breakpoints)
+- [Styling `hr`](#styling-hr)
+- [Min Font Size](#min-font-size)
+- [Simple TypeWriter Animation](#simple-typewriter-animation)
+
+<!-- /code_chunk_output -->
+
 ## Google Fonts (Angular & Co.)
 
 > See [Google Fonts Helper -> Example: EB Garamond](https://google-webfonts-helper.herokuapp.com/fonts/eb-garamond?subsets=latin)
 
-1) Download Fonts into e.g. assets/fonts/eb-garamond/.. (use the link above)
-2) Create a File e.g. assets/scss/fonts.scss and integrate font
+1. Download Fonts into e.g. assets/fonts/eb-garamond/.. (use the link above)
+2. Create a File e.g. assets/scss/fonts.scss and integrate font
 
 ```scss
 @font-face {
-  font-family: "EB Garamond";
+  font-family: 'EB Garamond';
   font-style: normal;
   font-weight: 700;
-  src: url("/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.eot"); /* IE9 Compat Modes */
-  src: local(""),
-    url("/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.eot?#iefix")
-      format("embedded-opentype"),
-    /* IE6-IE8 */
-      url("/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.woff2")
-      format("woff2"),
+  src: url('/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.eot'); /* IE9 Compat Modes */
+  src: local(''),
+    url('/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.eot?#iefix')
+      format('embedded-opentype'), /* IE6-IE8 */
+      url('/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.woff2')
+      format('woff2'),
     /* Super Modern Browsers */
-      url("/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.woff")
-      format("woff"),
-    /* Modern Browsers */
-      url("/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.ttf")
-      format("truetype"),
+      url('/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.woff')
+      format('woff'), /* Modern Browsers */
+      url('/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.ttf')
+      format('truetype'),
     /* Safari, Android, iOS */
-      url("/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.svg#EBGaramond")
-      format("svg"); /* Legacy iOS */
+      url('/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.svg#EBGaramond')
+      format('svg'); /* Legacy iOS */
 }
 ```
-3) import into style.css
+
+3. import into style.css
 
 ```scss
-@import "assets/scss/fonts.scss";
+@import 'assets/scss/fonts.scss';
 ```
 
-4) Use it e.g.
+4. Use it e.g.
 
 ```scss
 .cTitle1 {
-  font-family: "EB Garamond";
+  font-family: 'EB Garamond';
   font-size: 2rem;
 }
 ```
 
-
-
 ## Background Image (Color Linear Gradient)
 
 ```css
-  background-image: linear-gradient(
-    to bottom right,
-    #31388d 0%,
-    #753fa9 30%,
-    #ff0762 60%,
-    #f25632 100%
-  );
+background-image: linear-gradient(
+  to bottom right,
+  #31388d 0%,
+  #753fa9 30%,
+  #ff0762 60%,
+  #f25632 100%
+);
 ```
 
 ## Using OK sign (&#10004;)
 
-`HTML: &#10004;  CSS content="\2714"` 
+`HTML: &#10004; CSS content="\2714"`
 
 Link1: https://www.toptal.com/designers/htmlarrows/symbols/heavy-check-mark/
 
@@ -81,7 +94,7 @@ The `&shy;` character is just like the `<wbr>` element. You can inject a line br
 
 [css-tricks.com &rarr; hypens](https://css-tricks.com/almanac/properties/h/hyphenate/)
 
-The hyphens property controls hyphenation of text in block level elements. 
+The hyphens property controls hyphenation of text in block level elements.
 
 ## Styling `hr`
 
@@ -90,7 +103,6 @@ The hyphens property controls hyphenation of text in block level elements.
 An Excerpt:
 
 ```css
-
 hr.style-one {
   width: 100%;
   border: 0;
@@ -103,17 +115,15 @@ hr.style-one {
   );
 }
 
-
 /* Inset, by Dan Eden */
 
 hr.style-six {
-    border: 0;
-    height: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 ```
-
 
 ## Min Font Size
 

@@ -12,21 +12,21 @@
   font-family: "EB Garamond";
   font-style: normal;
   font-weight: 700;
-  src: url("assets/fonts/eb-garamond/eb-garamond-v14-latin-700.eot"); /* IE9 Compat Modes */
+  src: url("/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.eot"); /* IE9 Compat Modes */
   src: local(""),
-    url("assets/fonts/eb-garamond/eb-garamond-v14-latin-700.eot?#iefix")
+    url("/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.eot?#iefix")
       format("embedded-opentype"),
     /* IE6-IE8 */
-      url("assets/fonts/eb-garamond/eb-garamond-v14-latin-700.woff2")
+      url("/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.woff2")
       format("woff2"),
     /* Super Modern Browsers */
-      url("assets/fonts/eb-garamond/eb-garamond-v14-latin-700.woff")
+      url("/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.woff")
       format("woff"),
     /* Modern Browsers */
-      url("assets/fonts/eb-garamond/eb-garamond-v14-latin-700.ttf")
+      url("/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.ttf")
       format("truetype"),
     /* Safari, Android, iOS */
-      url("assets/fonts/eb-garamond/eb-garamond-v14-latin-700.svg#EBGaramond")
+      url("/assets/fonts/eb-garamond/eb-garamond-v14-latin-700.svg#EBGaramond")
       format("svg"); /* Legacy iOS */
 }
 ```

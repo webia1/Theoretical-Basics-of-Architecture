@@ -336,10 +336,13 @@ Die Strukturdirektiven unterscheiden sich zumindest in der Namensgebung, Angular
   <tr><td><code>*ngFor="let e of elements"</code></td></tr>  
   <tr><td><code>*ngIf="condition"</code></td></tr>  
   <tr><td>
-<code>[ngSwitch]="someVariable"   </br>
-*ngSwitchCase="matchValue1" </br>
-*ngSwitchCase="matchValue2" </br>
-`ngSwitchDefault` 
-</code></td></tr>  
+<table>
+  <tr><td><code>[ngSwitch]="someVariable"</code></td></tr>  
+  <tr><td><code>*ngSwitchCase="matchValue1"</code></td></tr>  
+  <tr><td><code>*ngSwitchCase="matchValue2" </code></td></tr>  
+  <tr><td><code>`ngSwitchDefault` </code></td></tr>    
+</table>
+
+</td></tr>  
   
 </table>

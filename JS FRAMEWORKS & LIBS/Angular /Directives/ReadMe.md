@@ -339,6 +339,6 @@ Die Strukturdirektiven unterscheiden sich zumindest in der Namensgebung, Angular
   [ngSwitch]="someVariable"
     *ngSwitchCase="matchValue1"
     *ngSwitchCase="matchValue2"
-    `ngSwitchDefault`
+    *ngSwitchDefault
 -----------------------------------
 ```

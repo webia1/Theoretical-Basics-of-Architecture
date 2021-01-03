@@ -1,4 +1,4 @@
-# Angular Directives (German)
+# Angular Directives (~German)
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 
@@ -12,6 +12,12 @@
   - [Host Bindings](#host-bindings)
     - [Ein Beispiel](#ein-beispiel)
   - [Zugriff mittels `ElementRef`](#zugriff-mittels-elementref)
+    - [Beispiele](#beispiele)
+      - [Console.log `ElementRef.nativeElement`](#consolelog-elementrefnativeelement)
+      - [Changing CSS Class & InnerHTML](#changing-css-class-innerhtml)
+  - [HostListener](#hostlistener)
+    - [Beispiel](#beispiel)
+  - [Renderer2](#renderer2)
 
 <!-- /code_chunk_output -->
 
@@ -222,3 +228,97 @@ export class NeuDirective implements OnInit {
 ElementRef ermöglicht den direkten Zugriff auf das DOM-Element.
 
 `ElementRef.nativeElement` &rarr; `document.getElementBy..`
+
+> **Permitting direct access to the DOM can make your application more vulnerable to XSS attacks.** Carefully review any use of ElementRef in your code. For more detail, see the [Security Guide](https://g.co/ng/security).
+
+> **USE WITH CAUTION**
+> Use this API as the last resort when direct access to DOM is needed. Use templating and data-binding provided by Angular instead. Alternatively you can take a look at Renderer2 which provides API that can safely be used even when direct access to native elements is not supported.
+
+> Relying on direct DOM access creates tight coupling between your application and rendering layers which will make it impossible to separate the two and deploy your application into a web worker.
+
+#### Beispiele
+
+For all Element-Properties and Methods see: https://developer.mozilla.org/en-US/docs/Web/API/Element
+
+Some of them:
+
+- `nativeElement.innerHTML`
+- `nativeElement.className`
+- `nativeElement.setAttribute(name, value)`
+- `nativeElement.removeAttribute(attrName)`
+
+##### Console.log `ElementRef.nativeElement`
+
+```typescript
+import { Directive, Input, OnInit, ElementRef } from '@angular/core';
+@Directive({
+  selector: '[appNeu]',
+})
+export class NeuDirective implements OnInit {
+  @Input() appNeu: any;
+  constructor(private el: ElementRef) {}
+
+  ngOnInit() {
+    console.log(this.el.nativeElement);
+  }
+}
+```
+
+**console.log:**
+
+```html
+<div
+  _ngcontent-lrq-c17=""
+  appneu="Title"
+  class="cTitle"
+  ng-reflect-app-neu="Title"
+>
+  Hi
+</div>
+```
+
+##### Changing CSS Class & InnerHTML
+
+```typescript
+import { Directive, Input, OnInit, ElementRef } from '@angular/core';
+@Directive({
+  selector: '[appNeu]',
+})
+export class NeuDirective implements OnInit {
+  @Input() appNeu: any;
+  constructor(private el: ElementRef) {}
+
+  ngOnInit() {
+    this.el.nativeElement.innerHTML = 'Hello World';
+    this.el.nativeElement.className = 'cTitle2';
+  }
+}
+```
+
+### HostListener
+
+Hostlistener können wir einsetzen, wenn wir auf die Events des Host-Elements reagieren möchten.
+
+> Liste aller Events: https://developer.mozilla.org/en-US/docs/Web/API/Element#Events
+
+#### Beispiel
+
+```html
+<div appNeu>Hi</div>
+```
+
+```typescript
+import { Directive, HostListener } from '@angular/core';
+@Directive({
+  selector: '[appNeu]',
+})
+export class NeuDirective {
+  @HostListener('click') myOnclickHandler() {
+    console.log('Clicked!');
+  }
+}
+```
+
+### Renderer2
+
+[See other document here.](../DOM/ReadMe.md#renderer2)

@@ -328,21 +328,17 @@ export class NeuDirective {
 
 Die Unterscheidung zwischen Attribut- & Struktur Direktiven sind für mich nicht klar genug abgegrenzt, da ich ich auch mit Attribut-Direktiven mittels ElementRef DOM-Struktur verändern kann. Aber da wollen wir nicht so pingelig sein.
 
-Die Strukturdirektiven unterscheiden sich zumindest in der Namensgebung, Angular stellt immer ein Stern davor.
+Die Strukturdirektiven unterscheiden sich zumindest in der Namensgebung, Angular stellt immer ein Stern davor, Beispiele:
 
-<table>
-
-  <tr><td><strong>Bindings</strong></td></tr>  
-  <tr><td><code>*ngFor="let e of elements"</code></td></tr>  
-  <tr><td><code>*ngIf="condition"</code></td></tr>  
-  <tr><td>
-<table>
-  <tr><td><code>[ngSwitch]="someVariable"</code></td></tr>  
-  <tr><td><code>*ngSwitchCase="matchValue1"</code></td></tr>  
-  <tr><td><code>*ngSwitchCase="matchValue2" </code></td></tr>  
-  <tr><td><code>`ngSwitchDefault` </code></td></tr>    
-</table>
-
-</td></tr>  
-  
-</table>
+```bash
+-----------------------------------
+  *ngFor="let e of elements"
+-----------------------------------
+  *ngIf="condition"
+-----------------------------------
+  [ngSwitch]="someVariable"
+    *ngSwitchCase="matchValue1"
+    *ngSwitchCase="matchValue2"
+    `ngSwitchDefault`
+-----------------------------------
+```

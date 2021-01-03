@@ -18,6 +18,7 @@
   - [HostListener](#hostlistener)
     - [Beispiel](#beispiel)
   - [Renderer2](#renderer2)
+    - [Renderer2-Beispiel: Der Unterschied zu Renderer2](#renderer2-beispiel-der-unterschied-zu-renderer2)
 - [Structure Directives (Details)](#structure-directives-details)
   - [Beispiele](#beispiele-1)
     - [`*ngIf` eigenständig nachbauen](#ngif-eigenständig-nachbauen)

@@ -18,6 +18,7 @@
   - [HostListener](#hostlistener)
     - [Beispiel](#beispiel)
   - [Renderer2](#renderer2)
+- [Structure Directives (Details)](#structure-directives-details)
 
 <!-- /code_chunk_output -->
 
@@ -322,3 +323,23 @@ export class NeuDirective {
 ### Renderer2
 
 [See other document here.](../DOM/ReadMe.md#renderer2)
+
+## Structure Directives (Details)
+
+Die Unterscheidung zwischen Attribut- & Struktur Direktiven sind für mich nicht klar genug abgegrenzt, da ich ich auch mit Attribut-Direktiven mittels ElementRef DOM-Struktur verändern kann. Aber da wollen wir nicht so pingelig sein.
+
+Die Strukturdirektiven unterscheiden sich zumindest in der Namensgebung, Angular stellt immer ein Stern davor.
+
+<table>
+
+  <tr><td><strong>Bindings</strong></td></tr>  
+  <tr><td><code>*ngFor="let e of elements"</code></td></tr>  
+  <tr><td><code>*ngIf="condition"</code></td></tr>  
+  <tr><td>
+<code>[ngSwitch]="someVariable"   </br>
+*ngSwitchCase="matchValue1" </br>
+*ngSwitchCase="matchValue2" </br>
+`ngSwitchDefault` 
+</code></td></tr>  
+  
+</table>

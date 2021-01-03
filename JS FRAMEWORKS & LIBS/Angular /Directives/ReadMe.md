@@ -19,6 +19,8 @@
     - [Beispiel](#beispiel)
   - [Renderer2](#renderer2)
 - [Structure Directives (Details)](#structure-directives-details)
+  - [Beispiele](#beispiele-1)
+    - [`*ngIf` eigenständig nachbauen](#ngif-eigenständig-nachbauen)
 
 <!-- /code_chunk_output -->
 
@@ -341,4 +343,45 @@ Die Strukturdirektiven unterscheiden sich zumindest in der Namensgebung, Angular
     *ngSwitchCase="matchValue2"
     *ngSwitchDefault
 -----------------------------------
+```
+
+Wichtig sind in dem Zusammenhang `ViewContainerRef` und `TemplateRef`. Official Angular Documentation gibt nicht viel her. Erst durch Beispiele wird die Funktion halbwegs klar (s. weiter unten)
+
+> **`TemplateRef`** represents an embedded template that can be used to instantiate embedded views. To instantiate embedded views based on a template, use the **`ViewContainerRef`** method **`createEmbeddedView()`**. [>> Details here](https://angular.io/api/core/TemplateRef)
+
+> **`ViewContainerRef`** represents a container where one or more views can be attached to a component. [>> Details here](https://angular.io/api/core/ViewContainerRef#description)
+
+### Beispiele
+
+#### `*ngIf` eigenständig nachbauen
+
+```html
+<div *appMyOwnIf="true">Hello</div>
+<div *appMyOwnIf="false">World</div>
+```
+
+```typescript
+import {
+  Directive,
+  Input,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
+@Directive({
+  selector: '[appMyOwnIf]',
+})
+export class MyOwnIf {
+  @Input() set appMyOwnIf(condition: boolean) {
+    if (condition) {
+      this.viewContainerRef.createEmbeddedView(this.templateRef);
+    } else {
+      this.viewContainerRef.clear();
+    }
+  }
+
+  constructor(
+    private templateRef: TemplateRef<any>,
+    private viewContainerRef: ViewContainerRef,
+  ) {}
+}
 ```

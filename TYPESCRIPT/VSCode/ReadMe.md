@@ -21,7 +21,7 @@ tsc -w --outFile bundle.js index.ts
 
 ### ts-node watch witch nodemon
 
-1) package.json
+1. package.json
 
 ```js
 {
@@ -47,7 +47,7 @@ tsc -w --outFile bundle.js index.ts
 }
 ```
 
-2) nodemon.json
+2. nodemon.json
 
 ```js
 {
@@ -59,7 +59,6 @@ tsc -w --outFile bundle.js index.ts
 }
 
 ```
-
 
 #### tsc --lib
 
@@ -130,9 +129,7 @@ npm install ts-node --save-dev // dev-dependency
   "description": "",
   "main": "build/src/index.js",
   "types": "build/src/index.d.ts",
-  "files": [
-    "build/src"
-  ],
+  "files": ["build/src"],
   "license": "Apache-2.0",
   "keywords": [],
   "scripts": {
@@ -151,7 +148,6 @@ npm install ts-node --save-dev // dev-dependency
     "@types/node": "^10.0.3"
   }
 }
-
 ```
 
 #### tsconfig.json
@@ -173,9 +169,9 @@ npm install ts-node --save-dev // dev-dependency
 ### .eslintignore
 
 ```js
-node_modules
-dist
-coverage
+node_modules;
+dist;
+coverage;
 ```
 
 ### .eslintrc
@@ -207,7 +203,6 @@ module.exports = {
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
   },
 };
-
 ```
 
 ### .prettierrc.js
@@ -240,3 +235,16 @@ module.exports = {
     "ts-node": "^8.10.1"
   }
 ```
+
+## Migrate from TSLint to ESLint (2021+)
+
+See the Documentation here: https://code.visualstudio.com/api/advanced-topics/tslint-eslint-migration
+
+> Excerpt from an answer at [SO](https://stackoverflow.com/a/65288426/3025289) by [GG](https://stackoverflow.com/users/7629107/gaurav-gupta)
+
+**Steps:**
+
+1.  `npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin` (Install ESlint and TSLint)
+2.  `npx tslint-to-eslint-config` (This will install utility tool and make configuration easier. Post install a new **.eslintrc.js** will be created. There will be changes to **.vscode/settings.json** as well.)
+3.  Disable/Uninstall TS lint from your VS Code.
+4.  You can then, place a script in your **package.json** file as - `"lint": "eslint -c .eslintrc.js --ext .ts <mySrcFolder>"`. (This will tell ESLint to look for TSLint)

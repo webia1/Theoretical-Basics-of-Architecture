@@ -9,6 +9,9 @@
   - [Strukturdirektive](#strukturdirektive)
 - [Eigene Directive](#eigene-directive)
 - [Attribute Directives (Details)](#attribute-directives-details)
+  - [Host Bindings](#host-bindings)
+    - [Ein Beispiel](#ein-beispiel)
+  - [Zugriff mittels `ElementRef`](#zugriff-mittels-elementref)
 
 <!-- /code_chunk_output -->
 
@@ -88,7 +91,7 @@ Die Verbindung zu einem Element geschieht:
 <div appNeu>WhatEverText</div>
 ```
 
-Alle Möglichkeiten für eine ÜBergabe der Werte an die Direktive aus der aktuellen Komponente:
+Alle Möglichkeiten für eine Übergabe der Werte an die Direktive aus der aktuellen Komponente:
 
 ```html
 <div appNeu="value">WhatEverText</div>
@@ -112,7 +115,58 @@ export class NeuDirective {
 }
 ```
 
-**Wichtig:** Mittels Dekoratoren können beliebige Attribute eingelesen werden, u.A. auch `class`.
+**Wichtig:** Mittels Input Dekoratoren können auch beliebige Attribute **eingelesen** werden, u.A. auch `class`. Selbst wenn man den Wert diese Klasse in der Direktive ändern kann, hat es keine Auswirkung auf die Darstellung im DOM. Das muss man wissen! Um DOM Eigenschaften modifizieren können sind weitere Methoden (siehe weiter unten: HostBinding bzw. ElementRef) erfoderlich.
+
+```html
+<div
+  [myDirective]="expression"
+  someAttribute="foo"
+  class="myClass"
+></div>
+```
+
+**Wichtig**: Alles andere als directive muss initialisiert werden, sei es vorerst mit leeren Werten!
+
+```typescript
+
+@Input() myDirective: any;
+@Input() someAttribute: string = '';
+@Input() class: string = '';
+```
+
+**Das Komplette Beispiel:**
+
+```html
+<div appNeu="Title" class="cTitle" someAttr="foo">Hi</div>
+```
+
+```typescript
+import { Directive, Input, OnInit } from '@angular/core';
+
+@Directive({
+  selector: '[appNeu]',
+})
+export class NeuDirective implements OnInit {
+  @Input() appNeu: any;
+  @Input() someAttr: string = '';
+  @Input() class: string = '';
+  constructor() {}
+
+  ngOnInit() {
+    console.log('appNeu: ', this.appNeu);
+    console.log('someAttr: ', this.someAttr);
+    console.log('class: ', this.class);
+  }
+}
+```
+
+**console.log:**
+
+```bash
+appNeu:  Title     neu.directive.ts:13
+someAttr:  foo     neu.directive.ts:14
+class:  cTitle     neu.directive.ts:15
+```
 
 ## Attribute Directives (Details)
 
@@ -121,9 +175,50 @@ Zugriff auf das Hostelement (z.B. div) erfolgt
 - über `Host Bindings` oder
 - über `ElementRef`
 
+### Host Bindings
+
+Während @Input() nur lesen kann, kann @HostBinding auch verändern.
+
 | Binding              | Name                |
 | -------------------- | ------------------- |
 | `[appNeu]`           | Property Binding    |
 | `[style.color]`      | Style Binding       |
 | `[class.MyCSSClass]` | (CSS) Class Binding |
 | `[attr.href]`        | Attribute Binding   |
+
+#### Ein Beispiel
+
+```html
+<div appNeu="Title" class="cTitle">Hi</div>
+```
+
+```typescript
+import { Directive, Input, OnInit, HostBinding } from '@angular/core';
+@Directive({
+  selector: '[appNeu]',
+})
+export class NeuDirective implements OnInit {
+  @Input() appNeu: any;
+  @HostBinding() class: string = '';
+  constructor() {}
+  ngOnInit() {
+    this.class = 'cTitle2';
+  }
+}
+```
+
+```css
+.cTitle {
+  font-size: 3rem;
+}
+
+.cTitle2 {
+  font-size: 1rem;
+}
+```
+
+### Zugriff mittels `ElementRef`
+
+ElementRef ermöglicht den direkten Zugriff auf das DOM-Element.
+
+`ElementRef.nativeElement` &rarr; `document.getElementBy..`

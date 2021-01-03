@@ -326,6 +326,22 @@ export class NeuDirective {
 
 [See other document here.](../DOM/ReadMe.md#renderer2)
 
+Hier nur kurz: ElementRef ist direkter DOM-Zugriff, mit Renderer kann es abgekapselt werden (~ etwas sicherere Lösung!):
+
+#### Renderer2-Beispiel: Der Unterschied zu Renderer2
+
+```typescript
+// ElementRef
+this.elementRef.nativeElement.setAttribute('class', 'btn btn-danger');
+
+// Das gleiche wie oben mit Renderer2
+this.renderer.setAttribute(
+  this.elementRef.nativeElement,
+  'class',
+  'btn btn-danger',
+);
+```
+
 ## Structure Directives (Details)
 
 Die Unterscheidung zwischen Attribut- & Struktur Direktiven sind für mich nicht klar genug abgegrenzt, da ich ich auch mit Attribut-Direktiven mittels ElementRef DOM-Struktur verändern kann. Aber da wollen wir nicht so pingelig sein.

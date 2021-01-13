@@ -23,6 +23,7 @@
 ## Show Hidden Files in Finder
 
     defaults write com.apple.finder AppleShowAllFiles YES
+    killall Finder
     
 ## Change Screenshots Folder
 

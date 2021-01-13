@@ -4,17 +4,36 @@
 
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-## Add Homebrew to PATH (zsh) - shows then only ~ without user@machine
+## Add Homebrew to PATH (zsh) 
     
     echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/user/.zprofile
     eval $(/opt/homebrew/bin/brew shellenv)
     
 ## Beatiful Zsh - OhMyZsh
 
+shows then only ~ without user@machine and with Git-Info
+
     # INSTALL
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
     
+    # SET THEME .zshrc
+    ZSH_THEME="agnoster"
+    
+    # Comment prompt_context in
+    # userdir/.oh-my-zsh/themes/agnoster.zsh-theme
+    
+    build_prompt() {
+     RETVAL=$?
+     prompt_status
+     prompt_virtualenv
+     prompt_aws
+     # prompt_context    <----------- HERE
+     prompt_dir
+     prompt_git
+     prompt_bzr
+     prompt_hg
+     prompt_end
+    }    
 
 ## Change Default Shell (if an older apple machine)
 

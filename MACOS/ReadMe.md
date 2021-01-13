@@ -4,12 +4,21 @@
 
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-## Add Homebrew to PATH (zsh)
+## Add Homebrew to PATH (zsh) - shows then only ~ without user@machine
     
     echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/user/.zprofile
     eval $(/opt/homebrew/bin/brew shellenv)
+    
+## Beatiful Zsh - OhMyZsh
 
-## Change Default Shell
+    # INSTALL
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    
+
+## Change Default Shell (if an older apple machine)
+
+New machines have all zsh already!.
 
     chsh -s /bin/zsh
     chsh -s /bin/bash

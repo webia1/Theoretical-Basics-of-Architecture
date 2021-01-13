@@ -1,5 +1,14 @@
 # MacOS Related
 
+## Install Brew
+
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+## Add Homebrew to PATH (zsh)
+    
+    echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/user/.zprofile
+    eval $(/opt/homebrew/bin/brew shellenv)
+
 ## Change Default Shell
 
     chsh -s /bin/zsh

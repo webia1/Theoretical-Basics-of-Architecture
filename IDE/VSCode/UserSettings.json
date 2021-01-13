@@ -1,71 +1,46 @@
 {
-  "window.zoomLevel": 0.2,
-  "terminal.integrated.fontSize": 13,
-  "workbench.iconTheme": "material-icon-theme",
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "prettier.arrowParens": "always",
-  "prettier.printWidth": 70,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "es5",
-  "typescript.preferences.quoteStyle": "single",
-  "prettier.jsxSingleQuote": true,
-  "javascript.preferences.quoteStyle": "single",
+  "auto-close-tag.activationOnLanguage": ["html", "xml"],
+
+  "css.lint.emptyRules": "ignore",
+
+  "editor.codeLens": true,
+  "editor.fontFamily": "Menlo",
+  "editor.fontSize": 13,
+  "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
-  "workbench.colorTheme": "Slack Theme Aubergine Dark",
-  "workbench.colorCustomizations": {
-    "activityBar.foreground": "#feabea",
-    "statusBar.background": "#430133",
-    "editorGroup.border": "#feabea44",
-    "titleBar.activeBackground": "#000",
-    "editorLineNumber.foreground": "#666",
-    "editorIndentGuide.background": "#66666666"
+  //  "editor.quickSuggestions": true,
+  "editor.rulers": [66],
+  //  "editor.snippetSuggestions": "top",
+  "editor.suggestSelection": "first",
+  "editor.tabCompletion": "on",
+
+  "explorer.confirmDelete": false,
+
+  "files.associations": {
+    "*.htm": "html"
   },
 
-  "editor.codeLens": false,
-  "editor.fontSize": 13,
-  "editor.wordWrapColumn": 70,
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
-  "editor.suggest.localityBonus": true,
-  "workbench.list.horizontalScrolling": true,
-  "javascript.referencesCodeLens.enabled": true,
-  "typescript.referencesCodeLens.enabled": true,
-  "typescript.implementationsCodeLens.enabled": true,
-  "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "git.autofetch": true,
+
+  "grammarly.autoActivate": false,
+  "grammarly.userWords": ["dotAll"],
+  "grammarly.diagnostics": {
+    "[markdown]": {
+      "ignore": ["code"]
+    }
+  },
+
+  "markdown-preview-enhanced.enableExtendedTableSyntax": true,
+  "markdown-preview-enhanced.enableTypographer": true,
+
   "peacock.favoriteColors": [
     {
       "name": "Angular Red",
-      "value": "#b52e31"
-    },
-    {
-      "name": "Auth0 Orange",
-      "value": "#eb5424"
+      "value": "#dd0531"
     },
     {
       "name": "Azure Blue",
       "value": "#007fff"
-    },
-    {
-      "name": "C# Purple",
-      "value": "#68217A"
-    },
-    {
-      "name": "Gatsby Purple",
-      "value": "#639"
-    },
-    {
-      "name": "Go Cyan",
-      "value": "#5dc9e2"
-    },
-    {
-      "name": "Java Blue-Gray",
-      "value": "#557c9b"
     },
     {
       "name": "JavaScript Yellow",
@@ -81,87 +56,53 @@
     },
     {
       "name": "React Blue",
-      "value": "#00b3e6"
+      "value": "#61dafb"
     },
     {
       "name": "Something Different",
       "value": "#832561"
     },
     {
+      "name": "Svelte Orange",
+      "value": "#ff3d00"
+    },
+    {
       "name": "Vue Green",
       "value": "#42b883"
     }
   ],
-  "peacock.affectTabActiveBorder": true,
-  "peacock.surpriseMeOnStartup": true,
-  "[markdown]": {
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 70
-  },
-  "markdown-preview-enhanced.enableExtendedTableSyntax": true,
-  "markdown-preview-enhanced.enableHTML5Embed": true,
-  "markdown-preview-enhanced.enableTypographer": true,
-  "markdown-preview-enhanced.HTML5EmbedIsAllowedHttp": true,
-  "cSpell.userWords": [
-    "Atos",
-    "Attersee",
-    "Aurena",
-    "Bitbucket",
-    "Buelbuel",
-    "CRISPR",
-    "DOCX",
-    "EBIA",
-    "Eisenstadt",
-    "Ellwangen",
-    "Erkan",
-    "Fabasoft",
-    "Foto",
-    "HATEOAS",
-    "IPAM",
-    "Kubernetes",
-    "München",
-    "PLRB",
-    "Sidenav",
-    "Virtualbox",
-    "Wireframes",
-    "XING",
-    "busybox",
-    "codelyzer",
-    "deletable",
-    "devkit",
-    "downlevel",
-    "esnext",
-    "eval",
-    "httpd",
-    "ifconfig",
-    "jasminewd",
-    "lifecycle",
-    "macos",
-    "myfiles",
-    "onbuild",
-    "railmate",
-    "subnav",
-    "tslib",
-    "userxy",
-    "webcomponents",
-    "webia",
-    "yeasy",
-    "Österr"
-  ],
-  "cSpell.dictionaries": ["German", "English"],
-  "cSpell.language": "en, de",
-  "cSpell.logLevel": "Warning",
-  "terminal.integrated.shell.osx": "/bin/bash",
 
-  "javascript.format.semicolons": "insert",
-  "javascript.implicitProjectConfig.experimentalDecorators": true,
-  "typescript.format.enable": false,
-  "tslint.jsEnable": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnType": true,
-  "prettier.quoteProps": "consistent",
-  "prettier.useEditorConfig": false,
-  "editor.tabSize": 2,
-  "markdown-preview-enhanced.usePandocParser": true,
-  "git.autofetch": true
+  "scss.lint.emptyRules": "ignore",
+
+  "terminal.integrated.fontFamily": "'Meslo LG S for Powerline'",
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.rendererType": "dom",
+  "terminal.integrated.shell.osx": "/bin/zsh",
+
+  "typescript.referencesCodeLens.enabled": false,
+
+  "vsintellicode.typescript.completionsEnabled": true,
+
+  "window.zoomLevel": 0.2,
+
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.colorTheme": "Material Theme Darker High Contrast",
+  "workbench.iconTheme": "eq-material-theme-icons-darker",
+  "workbench.statusBar.visible": true,
+  "workbench.colorCustomizations": {
+    "editor.selectionHighlightBackground": "#a3620099",
+    "editor.selectionBackground": "#ff00cc44"
+  },
+
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

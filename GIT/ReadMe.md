@@ -34,10 +34,6 @@
   - [Rename local branch](#rename-local-branch)
   - [Delete local branch](#delete-local-branch)
   - [Delete remote branch](#delete-remote-branch)
-  - [Merge: Overwrite](#merge-overwrite)
-  - [Merge without checkout](#merge-without-checkout)
-  - [Merge: Abort if conflicts (1)](#merge-abort-if-conflicts-1)
-  - [Merge: Abort if conflicts (2)](#merge-abort-if-conflicts-2)
   - [stash](#stash)
   - [tag](#tag)
   - [Correct last commit](#correct-last-commit)
@@ -48,6 +44,10 @@
   - [Check Integrity](#check-integrity)
   - [Create Branch from Commit Hash](#create-branch-from-commit-hash)
   - [Merge](#merge)
+    - [Merge without checkout](#merge-without-checkout)
+    - [Merge: Abort if conflicts (1)](#merge-abort-if-conflicts-1)
+    - [Merge: Abort if conflicts (2)](#merge-abort-if-conflicts-2)
+    - [Make a branch master or replace/overwrite master with an old branch](#make-a-branch-master-or-replaceoverwrite-master-with-an-old-branch)
   - [Statistics](#statistics)
   - [Bisect](#bisect)
   - [Miscellaneous](#miscellaneous)
@@ -236,23 +236,6 @@ then use it:
     git push origin --delete branch_name
     git push origin :branch_name
 
-## Merge: Overwrite
-
-    git merge -X theirs source_branch_name
-
-## Merge without checkout
-
-    git fetch . dev:master // from dev -> into -> master
-
-## Merge: Abort if conflicts (1)
-
-    git merge --no-commit branch2
-    git merge --abort
-
-## Merge: Abort if conflicts (2)
-
-    git format-patch $(git merge-base branch1 branch2)..branch2 --stdout | git apply --check -
-
 ## stash
 
     git stash --include-untracked
@@ -307,6 +290,33 @@ then use it:
     git mergetool --tool-help   // list of merge tools
     git reset --merge  // cancel merge
     git log --merges
+
+### Merge without checkout
+
+    git fetch . dev:master // from dev -> into -> master
+
+### Merge: Abort if conflicts (1)
+
+    git merge --no-commit branch2
+    git merge --abort
+
+### Merge: Abort if conflicts (2)
+
+    git format-patch $(git merge-base branch1 branch2)..branch2 --stdout | git apply --check -
+
+### Make a branch master or replace/overwrite master with an old branch
+
+Use the "ours" merge strategy to overwrite master with e.g. develop like this:
+
+    git checkout develop
+    git merge -s ours master
+    git checkout master
+    git merge develop
+
+or easier
+
+    git checkout master
+    git merge -s theirs develop
 
 ## Statistics
 
@@ -396,9 +406,7 @@ Run this command in root folder of git repository
 
     git config --get http.postBuffer
 
-If it shows nothing, than used default value ( 1 MiB from
-[git config man page](http://kernel.org/pub/software/scm/git/docs/v1.7.10.1/git-config.html)
-)
+If it shows nothing, than used default value 1 MiB from [git config man page](http://kernel.org/pub/software/scm/git/docs/v1.7.10.1/git-config.html).
 
 Now set this value
 

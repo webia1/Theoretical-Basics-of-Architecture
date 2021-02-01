@@ -12,6 +12,9 @@
 - [Show Hidden Files in Finder](#show-hidden-files-in-finder)
 - [Change Screenshots Folder](#change-screenshots-folder)
 - [Show the Path in the Finder Title Bar](#show-the-path-in-the-finder-title-bar)
+- [Install Calibre (eBook: epub, mobi,..)](#install-calibre-ebook-epub-mobi)
+  - [Download and Install](#download-and-install)
+  - [Create a SymLink For Markdown Preview Enhanced Exports](#create-a-symlink-for-markdown-preview-enhanced-exports)
 - [icu4c](#icu4c)
 - [zshrc](#zshrc)
 
@@ -80,6 +83,16 @@ New machines have all zsh already!.
 
     defaults write com.apple.finder _FXShowPosixPathInTitle -bool true;
     killall Finder
+
+## Install Calibre (eBook: epub, mobi,..)
+
+### Download and Install
+
+[Calibre Download for macOS](https://calibre-ebook.com/download_osx)
+
+### Create a SymLink For Markdown Preview Enhanced Exports
+
+    sudo ln -s /Applications/calibre.app/Contents/MacOS/ebook-convert /usr/local/bin
 
 ## icu4c
 

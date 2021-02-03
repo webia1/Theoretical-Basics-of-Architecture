@@ -8,6 +8,7 @@
 - [Add Homebrew to PATH (zsh)](#add-homebrew-to-path-zsh)
 - [Beatiful Zsh - OhMyZsh](#beatiful-zsh-ohmyzsh)
 - [Change Default Shell (if an older apple machine)](#change-default-shell-if-an-older-apple-machine)
+- [Python & tcl-tk](#python-tcl-tk)
 - [Turn Off Screen if connected to external monitors](#turn-off-screen-if-connected-to-external-monitors)
 - [Show Hidden Files in Finder](#show-hidden-files-in-finder)
 - [Change Screenshots Folder](#change-screenshots-folder)
@@ -62,6 +63,17 @@ New machines have all zsh already!.
     chsh -s /bin/zsh
     chsh -s /bin/bash
     ...
+
+## Python & tcl-tk
+
+If you need to have tcl-tk first in your PATH, run:
+
+    echo 'export PATH="/opt/homebrew/opt/tcl-tk/bin:$PATH"' >> ~/.zshrc
+
+For compilers to find tcl-tk you may need to set:
+
+    export LDFLAGS="-L/opt/homebrew/opt/tcl-tk/lib"
+    export CPPFLAGS="-I/opt/homebrew/opt/tcl-tk/include"
 
 ## Turn Off Screen if connected to external monitors
 

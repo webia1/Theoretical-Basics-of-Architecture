@@ -8,6 +8,7 @@
 - [Add Homebrew to PATH (zsh)](#add-homebrew-to-path-zsh)
 - [Beatiful Zsh - OhMyZsh](#beatiful-zsh-ohmyzsh)
 - [Change Default Shell (if an older apple machine)](#change-default-shell-if-an-older-apple-machine)
+- [Replace Python 2 through Python 3](#replace-python-2-through-python-3)
 - [Python & tcl-tk](#python-tcl-tk)
 - [Turn Off Screen if connected to external monitors](#turn-off-screen-if-connected-to-external-monitors)
 - [Show Hidden Files in Finder](#show-hidden-files-in-finder)
@@ -63,6 +64,10 @@ New machines have all zsh already!.
     chsh -s /bin/zsh
     chsh -s /bin/bash
     ...
+
+## Replace Python 2 through Python 3
+
+    echo 'export PATH="/opt/homebrew/opt/python3/libexec/bin"' >> ~/.zshrc
 
 ## Python & tcl-tk
 

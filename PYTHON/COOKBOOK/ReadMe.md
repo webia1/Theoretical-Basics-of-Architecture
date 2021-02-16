@@ -2,6 +2,12 @@
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 
+<!-- code_chunk_output -->
+
+- [Call JSON API and open Browser](#call-json-api-and-open-browser)
+
+<!-- /code_chunk_output -->
+
 ## Call JSON API and open Browser
 
 ```Python

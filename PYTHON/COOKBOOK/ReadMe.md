@@ -54,3 +54,11 @@ url = 'https://swapi.dev/api/people/1'  # JSON REST API
 contents = json.loads(urlopen(url).read().decode('utf-8'))
 webbrowser.open(contents['homeworld'])
 ```
+
+## Trouble Shooting
+
+### The headers or library files could not be found for jpeg, a required dependency when compiling Pillow from source.
+
+```bash
+brew install libtiff libjpeg webp little-cms2
+```

@@ -62,3 +62,11 @@ webbrowser.open(contents['homeworld'])
 ```bash
 brew install libtiff libjpeg webp little-cms2
 ```
+### Installing Matplotlib
+
+    python -m pip install -U matplotlib --prefer-binary
+
+### Delete Pip Cache
+
+    echo "$(pip cache dir)" # Detect where it is
+    rm -r "$(pip cache dir)"

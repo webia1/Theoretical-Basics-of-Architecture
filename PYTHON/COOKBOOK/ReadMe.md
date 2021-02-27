@@ -20,6 +20,23 @@
 ### Generate .pylintrc
 
     pylint --generate-rcfile >> .pylintrc
+    
+## Install Python Env (Like nvm or n in nodejs)
+
+    brew install pyenv
+    
+Edit `~/.zshrc` and add pyenv related information
+
+    export PYENV_ROOT="${HOME}/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+
+Install a python version and use it
+    
+    pyenv install --list   # List available packages
+    pyenv install 3.7.6    
+    pyenv versions         # Show installed Versions
+    pyenv global 3.7.6.    # Set Version 3.7.6 global
 
 ## Clear Python Interpreter Console
 

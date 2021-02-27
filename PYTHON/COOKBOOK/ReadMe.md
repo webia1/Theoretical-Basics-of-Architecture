@@ -6,10 +6,19 @@
 
 - [Install pylint](#install-pylint)
   - [Generate .pylintrc](#generate-pylintrc)
+- [Install Python Env (Like nvm or n in nodejs)](#install-python-env-like-nvm-or-n-in-nodejs)
 - [Clear Python Interpreter Console](#clear-python-interpreter-console)
   - [Via `os.system``](#via-ossystem)
   - [Tricky](#tricky)
 - [Call JSON API and open Browser](#call-json-api-and-open-browser)
+- [Trouble Shooting](#trouble-shooting)
+  - [The headers or library files could not be found for jpeg, a required dependency when compiling Pillow from source.](#the-headers-or-library-files-could-not-be-found-for-jpeg-a-required-dependency-when-compiling-pillow-from-source)
+  - [Installing Matplotlib](#installing-matplotlib)
+  - [Delete Pip Cache](#delete-pip-cache)
+  - [PyEnv Install Problems](#pyenv-install-problems)
+    - [.zshrc File](#zshrc-file)
+    - [To get the right paths use](#to-get-the-right-paths-use)
+    - [Install an old version with patch](#install-an-old-version-with-patch)
 
 <!-- /code_chunk_output -->
 
@@ -20,11 +29,11 @@
 ### Generate .pylintrc
 
     pylint --generate-rcfile >> .pylintrc
-    
+
 ## Install Python Env (Like nvm or n in nodejs)
 
     brew install pyenv
-    
+
 Edit `~/.zshrc` and add pyenv related information
 
     export PYENV_ROOT="${HOME}/.pyenv"
@@ -32,9 +41,9 @@ Edit `~/.zshrc` and add pyenv related information
     eval "$(pyenv init -)"
 
 Install a python version and use it
-    
+
     pyenv install --list   # List available packages
-    pyenv install 3.7.6    
+    pyenv install 3.7.6
     pyenv versions         # Show installed Versions
     pyenv global 3.7.6.    # Set Version 3.7.6 global
 
@@ -79,6 +88,7 @@ webbrowser.open(contents['homeworld'])
 ```bash
 brew install libtiff libjpeg webp little-cms2
 ```
+
 ### Installing Matplotlib
 
     python -m pip install -U matplotlib --prefer-binary
@@ -87,3 +97,46 @@ brew install libtiff libjpeg webp little-cms2
 
     echo "$(pip cache dir)" # Detect where it is
     rm -r "$(pip cache dir)"
+
+### PyEnv Install Problems
+
+#### .zshrc File
+
+```shell
+# EBIA
+export PATH="/opt/homebrew/opt/python3/libexec/bin:$PATH"
+export PATH="/Users/user/Library/Python/3.9/lib/python/site-packages:$PATH"
+export PYENV_ROOT="${HOME}/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="/opt/homebrew/opt/bzip2/bin:$PATH"
+
+eval "$(pyenv init -)"
+
+export LDFLAGS="-L/opt/homebrew/opt/zlib/lib -L/opt/homebrew/opt/openssl@1.1/lib -L/opt/homebrew/opt/readline/lib  -L/opt/homebrew/opt/bzip2/lib"
+export CFLAGS="-I/opt/homebrew/opt/zlib/include -I/opt/homebrew/opt/openssl@1.1/include -I/opt/homebrew/opt/readline/include -I/opt/homebrew/opt/bzip2/include -I/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include"
+```
+
+#### To get the right paths use
+
+```shell
+brew --prefix zlib
+# /opt/homebrew/opt/zlib
+
+brew --prefix openssl
+# /opt/homebrew/opt/openssl@1.1
+
+brew --prefix readline
+# /opt/homebrew/opt/readline
+
+brew --prefix bzip2
+# /opt/homebrew/opt/bzip2
+
+xcrun --show-sdk-path
+# /Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
+```
+
+#### Install an old version with patch
+
+```shell
+pyenv install --patch 3.6.13 < <(curl -sSL https://github.com/python/cpython/commit/8ea6353.patch\?full_index\=1)
+```

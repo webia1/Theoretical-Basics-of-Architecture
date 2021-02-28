@@ -6,12 +6,14 @@
 
 - [Install pylint](#install-pylint)
   - [Generate .pylintrc](#generate-pylintrc)
+  - [Create Kernel For Jupyter](#create-kernel-for-jupyter)
 - [Install Python Env (Like nvm or n in nodejs)](#install-python-env-like-nvm-or-n-in-nodejs)
 - [Clear Python Interpreter Console](#clear-python-interpreter-console)
   - [Via `os.system``](#via-ossystem)
   - [Tricky](#tricky)
 - [Call JSON API and open Browser](#call-json-api-and-open-browser)
 - [Trouble Shooting](#trouble-shooting)
+  - [Install the x86_64 version of Homebrew](#install-the-x86_64-version-of-homebrew)
   - [The headers or library files could not be found for jpeg, a required dependency when compiling Pillow from source.](#the-headers-or-library-files-could-not-be-found-for-jpeg-a-required-dependency-when-compiling-pillow-from-source)
   - [Installing Matplotlib](#installing-matplotlib)
   - [Delete Pip Cache](#delete-pip-cache)
@@ -29,6 +31,15 @@
 ### Generate .pylintrc
 
     pylint --generate-rcfile >> .pylintrc
+
+### Create Kernel For Jupyter
+
+Change to an existing env, install jupiter and name
+
+    conda activate tha
+    pip install jupyter
+    ipython kernel install --name "tha" --user
+    jupyter notebook # change Kernel on the UI
 
 ## Install Python Env (Like nvm or n in nodejs)
 
@@ -82,6 +93,10 @@ webbrowser.open(contents['homeworld'])
 ```
 
 ## Trouble Shooting
+
+### Install the x86_64 version of Homebrew
+
+    arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 ### The headers or library files could not be found for jpeg, a required dependency when compiling Pillow from source.
 

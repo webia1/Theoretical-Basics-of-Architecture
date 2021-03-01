@@ -40,6 +40,16 @@ Change to an existing env, install jupiter and name
     pip install jupyter
     ipython kernel install --name "tha" --user
     jupyter notebook # change Kernel on the UI
+    
+## Conda List Environments
+
+   conda info --envs
+
+OR
+
+   conda env list
+  
+    
 
 ## Install Python Env (Like nvm or n in nodejs)
 

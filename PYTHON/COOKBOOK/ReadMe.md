@@ -32,14 +32,19 @@
 
     pylint --generate-rcfile >> .pylintrc
 
-### Create Kernel For Jupyter
+## Create Kernel For Jupyter
 
-Change to an existing env, install jupiter and name
+Create a new enviroment (via anaconda navigator), install jupyter and give it a name
 
     conda activate tha
     pip install jupyter
     ipython kernel install --name "tha" --user
     jupyter notebook # change Kernel on the UI
+    
+## Delete Jupyter Kernel
+
+    jupyter kernelspec list
+    jupyter kernelspec uninstall myKernelName
     
 ## Conda List Environments
 

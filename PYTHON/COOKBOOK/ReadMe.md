@@ -57,14 +57,14 @@ Install a python version and use it
     pyenv install 3.7.6
     pyenv versions         # Show installed Versions
     pyenv global 3.7.6.    # Set Version 3.7.6 global
-    
+
 ## Install older Versions of Python
 
 > Important: Change Environment to a Apple Supported Version before, like
 
     . "/Users/user/tensorflow_macos_venv/bin/activate"
 
-then use 
+then use
 
     pyenv install 3.7.9
 

@@ -43,11 +43,15 @@ Change to an existing env, install jupiter and name
     
 ## Conda List Environments
 
-   conda info --envs
+    conda info --envs
 
 OR
 
-   conda env list
+    conda env list
+   
+## Conda Don't Activate Base
+
+    conda config --set auto_activate_base false
   
     
 

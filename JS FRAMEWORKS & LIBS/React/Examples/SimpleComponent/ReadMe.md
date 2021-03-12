@@ -11,9 +11,9 @@ class App extends React.Component {
   myName = "Webia1";
   constructor (props) {
     super(props);
-		this.state = {
-	    myName: this.myName
-		};
+    this.state = {
+      myName: this.myName
+    };
   }
 
 ```

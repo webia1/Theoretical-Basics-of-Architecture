@@ -32,7 +32,7 @@ After the reading, you will get to know:
 
 ## Why Different Environments?
 
-My motivation was to get the right environment on macOS M1 Machine for TensorFlow. #Google (#TensorFlow) obviously doesn't like to support #Apple #MacOS and there is - at the time of writing - still no support for #Python 3.9.
+My motivation was to get the right environment on macOS M1 Machine for TensorFlow. `#Google` (`#TensorFlow`) obviously doesn't like to support `#Apple #MacOS` and there is - at the time of writing - still no support for `#Python 3.9`.
 
 So I was forced to downgrade Python and I did not want to do it for the entire system.
 

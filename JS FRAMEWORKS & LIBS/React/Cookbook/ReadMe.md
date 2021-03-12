@@ -8,6 +8,7 @@
 - [Create React App with TypeScript](#create-react-app-with-typescript)
 - [Simple Component](#simple-component)
 - [Simple Hook Example](#simple-hook-example)
+  - [ESLint React Hooks PlugIn](#eslint-react-hooks-plugin)
 
 <!-- /code_chunk_output -->
 
@@ -58,3 +59,9 @@ function Example() {
   );
 }
 ```
+
+### ESLint React Hooks PlugIn
+
+<https://www.npmjs.com/package/eslint-plugin-react-hooks>
+
+    npm install eslint-plugin-react-hooks --save-dev

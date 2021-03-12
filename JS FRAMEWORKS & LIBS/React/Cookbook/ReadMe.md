@@ -1,4 +1,20 @@
-# React
+# React Cookbook
+
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Create React App with TypeScript](#create-react-app-with-typescript)
+- [Simple Component](#simple-component)
+- [Simple Hook Example](#simple-hook-example)
+
+<!-- /code_chunk_output -->
+
+
+## Create React App with TypeScript
+
+    create-react-app react-tsx --template typescript
 
 ## Simple Component
 

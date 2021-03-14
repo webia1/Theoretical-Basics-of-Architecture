@@ -16,6 +16,7 @@
 ### Modify existing Python Symbolic Link
 
     sudo ln -sf python3 python    # f -> Update existing
+    sudo ln -sf pip-3 pip
     
 ### Set Python3 as standard
 

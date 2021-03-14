@@ -214,4 +214,8 @@ yum install libffi-devel
 wget http://repo.iotti.biz/CentOS/7/noarch/lux-release-7-1.noarch.rpm
 rpm -Uvh lux-release*rpm
 yum install mod_python -y
+
+# RESTART HTTP or SERVER
+service httpd restart # OR
+shutdown -r now
 ```

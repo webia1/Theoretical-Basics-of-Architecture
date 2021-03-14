@@ -24,4 +24,7 @@
     yum install nmap
     nmap -v -A ebia.eu
     
+## Show used space
+
+    df -h                 # -h, --human-readable
     

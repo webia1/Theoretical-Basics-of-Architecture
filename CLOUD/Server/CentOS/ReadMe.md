@@ -1,5 +1,9 @@
 # CentOS 
 
+## Restart
+
+   shutdown -r
+
 ## Instal & update DNF
 
     yum install dnf

@@ -15,6 +15,7 @@
     
 ### Modify existing Python Symbolic Link
 
+    # ATTENTION yum requires python2
     sudo ln -sf python3 python    # f -> Update existing
     sudo ln -sf pip-3 pip
     

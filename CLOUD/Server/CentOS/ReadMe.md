@@ -1,40 +1,63 @@
 # CentOS 
 
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Restart](#restart)
+- [Instal & update DNF](#instal-update-dnf)
+- [Install Python](#install-python)
+  - [Modify existing Symbolic Link (Setting Python3 Standard)](#modify-existing-symbolic-link-setting-python3-standard)
+- [Show Resources](#show-resources)
+  - [List Hardware](#list-hardware)
+  - [Show used ports](#show-used-ports)
+  - [Show used space](#show-used-space)
+
+<!-- /code_chunk_output -->
+
+
 ## Restart
 
-   shutdown -r
+```shell
+shutdown -r
+```
 
 ## Instal & update DNF
 
-    yum install dnf
-    dnf update 
+```shell
+yum install dnf
+dnf update 
+```
 
 ## Install Python
 
-    dnf install python3
+```shell
+dnf install python3
+```
     
-### Modify existing Python Symbolic Link
+### Modify existing Symbolic Link (Setting Python3 Standard)
 
-    # ATTENTION yum requires python2
-    sudo ln -sf python3 python    # f -> Update existing
-    sudo ln -sf pip-3 pip
-    
-### Set Python3 as standard
+```shell
+# ATTENTION yum requires python2
+sudo ln -sf python3 python    # f -> Update existing
+sudo ln -sf pip-3 pip
+```
 
-    echo 'export PATH="/usr/bin/python3/libexec/bin:$PATH"' >>  ~/.bashrc 
+## Show Resources    
 
-## Show Hardware/Software Resources
+###  List Hardware
 
     yum install lshw      # if not installed
     lshw
     lshw -short
     
-## Show used ports 
+### Show used ports 
 
     yum install nmap
     nmap -v -A ebia.eu
     
-## Show used space
+### Show used space
 
     df -h                 # -h, --human-readable
     

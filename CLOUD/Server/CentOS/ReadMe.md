@@ -1,31 +1,45 @@
-# CentOS 
+# CentOS
 
+Deals with the topics, among other things:
+
+- Preparing CentOS for Python/AI  Applications
+
+
+## Table of Contents
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
 
-- [Restart](#restart)
+- [Table of Contents](#table-of-contents)
+- [Restart Server](#restart-server)
 - [Install & update DNF](#install-update-dnf)
 - [Install Python](#install-python)
   - [Modify existing Symbolic Link](#modify-existing-symbolic-link)
+  - [Unterstanding Differences Between `venv` & `pyenv`](#unterstanding-differences-between-venv-pyenv)
+  - [Using `venv`](#using-venv)
   - [Install Python Versions Manager PyEnv](#install-python-versions-manager-pyenv)
   - [Install Different Python Versions](#install-different-python-versions)
   - [Install Python/Anaconda (not to confuse with Linux Anaconda)](#install-pythonanaconda-not-to-confuse-with-linux-anaconda)
     - [Deactivating Base-Environment at Start-Up](#deactivating-base-environment-at-start-up)
-    - [Trouble Shooting - LC_CTYPE: cannot change locale (UTF-8)](#trouble-shooting-lc_ctype-cannot-change-locale-utf-8)
+    - [Create, activate, deactivate. list an environment with `conda`](#create-activate-deactivate-list-an-environment-with-conda)
+    - [Use Jupyter in this context](#use-jupyter-in-this-context)
+    - [Trouble Shooting](#trouble-shooting)
+      - [LC_CTYPE: cannot change locale (UTF-8)](#lc_ctype-cannot-change-locale-utf-8)
+      - [No module named `_ctypes`](#no-module-named-_ctypes)
 - [Show Resources](#show-resources)
   - [List Hardware](#list-hardware)
   - [Show used ports](#show-used-ports)
   - [Show used space](#show-used-space)
+- [Install Python Support on Plesk](#install-python-support-on-plesk)
 
 <!-- /code_chunk_output -->
 
 
-## Restart
+## Restart Server
 
 ```shell
-shutdown -r
+shutdown -r now
 ```
 
 ## Install & update DNF
@@ -51,6 +65,36 @@ sudo ln -sf python3 python    # f -> Update existing
 sudo ln -sf pip-3 pip
 ```
 
+### Unterstanding Differences Between `venv` & `pyenv`
+
+- `venv`: Single Version of Pyhton
+  - Different Environments (Packages)
+- `pyenv`: Multiple Versions of Pyhton
+
+Use both if multiple versions with different environments. In this case you can also use `Anaconda` (see below).
+
+### Using `venv`
+
+It does not have to be installed explicitly.
+
+```shell
+# CREATE AN ENVIRONMENT
+# Uses the current global python version (e.g. 3.x.y)
+python3 -m venv my-env-v3  # directory ./my-env-v3
+
+# CREATE AN ENVIRONMENT WITH A CERTAIN VERSION e.g. v3.6
+python3.6 -m venv my-env-v3
+
+# ACTIVATE 
+source ./my-env-v3/bin/activate
+
+# DEACTIVATE
+deactivate
+
+# REMOTE COMPLETELY
+rm -rf ./my-env-v3
+```
+
 ### Install Python Versions Manager PyEnv
 
 Follow the instructions after the installation:
@@ -63,6 +107,14 @@ curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer 
 
 ### Install Different Python Versions
 
+```shell
+# LIST ALL EXISTING VERSIONS
+pyenv install --list
+
+# UPDATE IF NEWEST VERSIONS ARE MISSING
+cd /root/.pyenv/plugins/python-build/../.. && git pull && cd -
+```
+
 Examples:
 
 ```shell
@@ -70,6 +122,7 @@ pyenv install 3.9.2
 pyenv install 3.8.8
 pyenv install 3.7.10
 pyenv install 3.6.13
+pyenv install miniconda-3.10.1
 ```
 
 ### Install Python/Anaconda (not to confuse with Linux Anaconda)
@@ -94,13 +147,47 @@ conda config --set auto_activate_base false
 bash -l  # RESTART BASH
 ```
 
-#### Trouble Shooting - LC_CTYPE: cannot change locale (UTF-8)
+#### Create, activate, deactivate. list an environment with `conda`
+
+```shell
+conda env list
+conda create --name conda-ebia-p392
+conda activate conda-ebia-p392
+conda deactivate
+```
+
+#### Use Jupyter in this context
+
+```shell
+conda create --name conda-ebia-p392
+conda activate conda-ebia-p392
+ipython kernel install --name conda-ebia-p392 --user
+
+# START NOTEBOOK
+jupyter notebook
+```
+
+#### Trouble Shooting 
+
+##### LC_CTYPE: cannot change locale (UTF-8)
 
 Add the following to `~/.bashrc`
 
 ```shell
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+```
+And to `/etc/environment`
+
+```shell
+LANG=en_US.utf-8
+LC_ALL=en_US.utf-8
+```
+
+##### No module named `_ctypes`
+
+```shell
+yum install libffi-devel
 ```
 
 
@@ -121,3 +208,10 @@ export LANG=en_US.UTF-8
 
     df -h                 # -h, --human-readable
     
+## Install Python Support on Plesk
+
+```shell
+wget http://repo.iotti.biz/CentOS/7/noarch/lux-release-7-1.noarch.rpm
+rpm -Uvh lux-release*rpm
+yum install mod_python -y
+```

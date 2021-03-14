@@ -12,6 +12,14 @@
 ## Install Python
 
     dnf install python3
+    
+### Modify existing Python Symbolic Link
+
+    sudo ln -sf python3 python    # f -> Update existing
+    
+### Set Python3 as standard
+
+    echo 'export PATH="/usr/bin/python3/libexec/bin:$PATH"' >>  ~/.bashrc 
 
 ## Show Hardware/Software Resources
 

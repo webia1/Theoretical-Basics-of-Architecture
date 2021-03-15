@@ -32,6 +32,7 @@ Deals with the topics, among other things:
   - [Show used ports](#show-used-ports)
   - [Show used space](#show-used-space)
 - [Install Python Support on Plesk](#install-python-support-on-plesk)
+- [Clean Up Yum Packages](#clean-up-yum-packages)
 
 <!-- /code_chunk_output -->
 
@@ -218,4 +219,18 @@ yum install mod_python -y
 # RESTART HTTP or SERVER
 service httpd restart # OR
 shutdown -r now
+```
+
+## Clean Up Yum Packages
+
+```shell
+# TRANSACTION MANAGEMENT
+yum-complete-transaction
+yum-complete-transaction --cleanup-only
+yum history redo last
+
+# FURTHER CLEAN UPS
+package-cleanup --problems
+package-cleanup --dupes
+rpm -Va --nofiles --nodigest
 ```

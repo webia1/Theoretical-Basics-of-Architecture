@@ -16,15 +16,15 @@ Deals with the topics, among other things:
 - [Install & update DNF](#install-update-dnf)
 - [Install Python](#install-python)
   - [Modify existing Symbolic Link](#modify-existing-symbolic-link)
-  - [Unterstanding Differences Between `venv` & `pyenv`](#unterstanding-differences-between-venv-pyenv)
+  - [Understanding Differences Between `venv` & `pyenv`](#understanding-differences-between-venv-pyenv)
   - [Using `venv`](#using-venv)
   - [Install Python Versions Manager PyEnv](#install-python-versions-manager-pyenv)
   - [Install Different Python Versions](#install-different-python-versions)
-  - [Install Python/Anaconda (not to confuse with Linux Anaconda)](#install-pythonanaconda-not-to-confuse-with-linux-anaconda)
+  - [Install Python-Anaconda (not to confuse with Linux Anaconda)](#install-python-anaconda-not-to-confuse-with-linux-anaconda)
     - [Deactivating Base-Environment at Start-Up](#deactivating-base-environment-at-start-up)
     - [Create, activate, deactivate. list an environment with `conda`](#create-activate-deactivate-list-an-environment-with-conda)
     - [Use Jupyter in this context](#use-jupyter-in-this-context)
-      - [Jupyter IP/Port Settings](#jupyter-ipport-settings)
+      - [Jupyter IP & Port Settings](#jupyter-ip-port-settings)
     - [Trouble Shooting](#trouble-shooting)
       - [LC_CTYPE: cannot change locale (UTF-8)](#lc_ctype-cannot-change-locale-utf-8)
       - [No module named `_ctypes`](#no-module-named-_ctypes)
@@ -73,11 +73,11 @@ sudo ln -sf python3 python    # f -> Update existing
 sudo ln -sf pip-3 pip
 ```
 
-### Unterstanding Differences Between `venv` & `pyenv`
+### Understanding Differences Between `venv` & `pyenv`
 
-- `venv`: Single Version of Pyhton
+- `venv`: Single Version of Python
   - Different Environments (Packages)
-- `pyenv`: Multiple Versions of Pyhton
+- `pyenv`: Multiple Versions of Python
 
 Use both if multiple versions with different environments. In this case you can also use `Anaconda` (see below).
 
@@ -133,7 +133,7 @@ pyenv install 3.6.13
 pyenv install miniconda-3.10.1
 ```
 
-### Install Python/Anaconda (not to confuse with Linux Anaconda)
+### Install Python-Anaconda (not to confuse with Linux Anaconda)
 
 ```shell
 # PREREQUISITES
@@ -175,7 +175,7 @@ ipython kernel install --name conda-ebia-p392 --user
 jupyter notebook
 ```
 
-##### Jupyter IP/Port Settings
+##### Jupyter IP & Port Settings
 
 ```shell
 jupyter notebook --ip=0.0.0.0 --port=80 or

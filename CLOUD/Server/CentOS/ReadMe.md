@@ -24,6 +24,7 @@ Deals with the topics, among other things:
     - [Deactivating Base-Environment at Start-Up](#deactivating-base-environment-at-start-up)
     - [Create, activate, deactivate. list an environment with `conda`](#create-activate-deactivate-list-an-environment-with-conda)
     - [Use Jupyter in this context](#use-jupyter-in-this-context)
+      - [Jupyter IP/Port Settings](#jupyter-ipport-settings)
     - [Trouble Shooting](#trouble-shooting)
       - [LC_CTYPE: cannot change locale (UTF-8)](#lc_ctype-cannot-change-locale-utf-8)
       - [No module named `_ctypes`](#no-module-named-_ctypes)
@@ -34,6 +35,11 @@ Deals with the topics, among other things:
 - [Install Python Support on Plesk](#install-python-support-on-plesk)
 - [Clean Up Yum Packages](#clean-up-yum-packages)
 - [CentOS Yum Security Updates](#centos-yum-security-updates)
+- [Docker](#docker)
+  - [Installation](#installation)
+    - [Context](#context)
+    - [Docker Trouble Shooting](#docker-trouble-shooting)
+      - [Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?](#cannot-connect-to-the-docker-daemon-at-unixvarrundockersock-is-the-docker-daemon-running)
 
 <!-- /code_chunk_output -->
 
@@ -169,6 +175,13 @@ ipython kernel install --name conda-ebia-p392 --user
 jupyter notebook
 ```
 
+##### Jupyter IP/Port Settings
+
+```shell
+jupyter notebook --ip=0.0.0.0 --port=80 or
+ipython notebook --ip=0.0.0.0 --port=80
+```
+
 #### Trouble Shooting 
 
 ##### LC_CTYPE: cannot change locale (UTF-8)
@@ -248,4 +261,30 @@ yum --security update-minimal
 yum updateinfo list security all
 yum info-sec
 man yum-security
+```
+
+## Docker 
+
+### Installation
+
+```shell
+yum install docker
+```
+
+#### Context
+
+```shell
+docker context create \ 
+--docker host=ssh://docker-user@example.com \
+--description="Remote Engine" my-remote-engine
+```
+
+#### Docker Trouble Shooting
+
+##### Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+
+```shell
+sudo systemctl unmask docker
+systemctl start docker
+systemctl status docker
 ```

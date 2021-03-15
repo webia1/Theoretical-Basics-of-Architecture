@@ -33,6 +33,7 @@ Deals with the topics, among other things:
   - [Show used space](#show-used-space)
 - [Install Python Support on Plesk](#install-python-support-on-plesk)
 - [Clean Up Yum Packages](#clean-up-yum-packages)
+- [CentOS Yum Security Updates](#centos-yum-security-updates)
 
 <!-- /code_chunk_output -->
 
@@ -233,4 +234,18 @@ yum history redo last
 package-cleanup --problems
 package-cleanup --dupes
 rpm -Va --nofiles --nodigest
+```
+
+## CentOS Yum Security Updates
+
+Some of available commands:
+
+```shell
+yum install yum-plugin-security
+yum --security check-update
+yum --security update
+yum --security update-minimal
+yum updateinfo list security all
+yum info-sec
+man yum-security
 ```

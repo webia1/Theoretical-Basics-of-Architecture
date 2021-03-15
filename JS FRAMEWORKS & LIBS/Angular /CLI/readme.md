@@ -49,10 +49,10 @@ ng build
 ### Additional Commands
 #### ng lint
 ```
---fix            default: false
+--fix            # default: false
 --force         
 --type-check
---format         default: prose
+--format         # default: prose
 ```
 Linting using tslint, default format prose, other formats:
 

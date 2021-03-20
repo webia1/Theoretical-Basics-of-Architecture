@@ -1,23 +1,22 @@
 # React Cookbook
 
-
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
 
 - [Create React App with TypeScript](#create-react-app-with-typescript)
-- [Simple Component](#simple-component)
-- [Simple Hook Example](#simple-hook-example)
+- [Simple Component (Old Style v15)](#simple-component-old-style-v15)
+- [Simple Hook Example (v17)](#simple-hook-example-v17)
   - [ESLint React Hooks PlugIn](#eslint-react-hooks-plugin)
+- [Storybook](#storybook)
 
 <!-- /code_chunk_output -->
-
 
 ## Create React App with TypeScript
 
     create-react-app react-tsx --template typescript
 
-## Simple Component
+## Simple Component (Old Style v15)
 
 ```jsx
 import React from 'react';
@@ -35,7 +34,7 @@ class App extends React.Component {
 
 ```
 
-## Simple Hook Example
+## Simple Hook Example (v17)
 
 ```tsx
 import React, { useState, useEffect } from 'react';
@@ -52,9 +51,7 @@ function Example() {
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
     </div>
   );
 }
@@ -65,3 +62,28 @@ function Example() {
 <https://www.npmjs.com/package/eslint-plugin-react-hooks>
 
     npm install eslint-plugin-react-hooks --save-dev
+
+## Storybook
+
+Storybook is an open source tool for developing UI components in isolation for React, Vue, Angular, and more. [>> Watch Video](https://www.youtube.com/watch?v=p-LFh5Y89eM)
+
+```shell
+# INSTALLING
+
+npx sb init  # OR
+npx sb init -f # f -> force -> overwrite
+
+# STARTING
+# npm script: "storybook": "start-storybook -p 6006 -s public",
+npm run storybook
+
+╭─────────────────────────────────────────────────────╮
+│                                                     │
+│   Storybook 6.1.21 started                          │
+│   6.5 s for preview                                 │
+│                                                     │
+│    Local:            http://localhost:6006/         │
+│    On your network:  http://my-ip:6006/             │
+│                                                     │
+╰─────────────────────────────────────────────────────╯
+```

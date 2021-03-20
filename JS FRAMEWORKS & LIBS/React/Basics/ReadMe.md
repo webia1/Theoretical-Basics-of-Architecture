@@ -1,4 +1,4 @@
-# React v17+ Basics
+# Revisit React v17+
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 
@@ -12,8 +12,9 @@
   - [First Impressions](#first-impressions)
     - [Overview](#overview)
     - [Minimal possible version](#minimal-possible-version)
-    - [Return Type String is not allowed](#return-type-string-is-not-allowed)
-    - [Only One Single Wrapping Element](#only-one-single-wrapping-element)
+      - [Return Type String is not allowed](#return-type-string-is-not-allowed)
+      - [Only One Single Wrapping Element](#only-one-single-wrapping-element)
+    - [index.ts](#indexts)
 - [Generating a New Component](#generating-a-new-component)
   - ['generate-react-cli'](#generate-react-cli)
     - [Generated Files](#generated-files)

@@ -29,6 +29,9 @@
     - [Simple Counter](#simple-counter)
     - [One](#one)
     - [Two](#two)
+  - [Data Exchange between Components](#data-exchange-between-components)
+    - [Parent e.g. App.tsx](#parent-eg-apptsx)
+    - [Child e.g. Dashboard.tsx](#child-eg-dashboardtsx)
 
 <!-- /code_chunk_output -->
 
@@ -216,6 +219,15 @@ If it is the first time, CLI will create a configuration file `generate-react-cl
 ? .. create a corresponding lazy file .. ? Yes
 ```
 
+> Important: the newly created component must be within the `src` folder. If you want to create a certain directory for all your components e.g. `compontents/MyComponent` set `src/components` in your `generate-react-cli.json` file, like:
+
+```json
+  "component": {
+    "default": {
+      "path": "src/components",
+      ...
+```
+
 > See more on lazy files: <https://reactjs.org/docs/code-splitting.html#code-splitting>
 
 #### Generated Files
@@ -386,5 +398,44 @@ export default function App() {
       <button onClick={() => setCount(count + 1)}>Increment</button>
     </div>
   );
+}
+```
+
+### Data Exchange between Components
+
+#### Parent e.g. App.tsx
+
+```tsx
+import Dashboard from './components/Dashboard/Dashboard';
+export default function App() {
+  return <Dashboard title="My Dashboard"></Dashboard>;
+}
+```
+
+#### Child e.g. Dashboard.tsx
+
+```tsx
+import React from 'react';
+
+export type DashboardProps = {
+  title: string;
+};
+
+const Dashboard: React.FC<DashboardProps> = (props) => (
+  <div>Dashboard Component {props.title}</div>
+);
+
+export default Dashboard;
+```
+
+is the same like above (excerpt):
+
+```tsx
+export type DashboardProps = {
+  title: string;
+};
+
+export default function Dashboard(props: DashboardProps) {
+  return <div>Dashboard Component {props.title}</div>;
 }
 ```

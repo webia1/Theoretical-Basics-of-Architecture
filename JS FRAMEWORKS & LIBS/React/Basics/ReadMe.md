@@ -30,8 +30,13 @@
     - [One](#one)
     - [Two](#two)
   - [Data Exchange between Components](#data-exchange-between-components)
-    - [Parent e.g. App.tsx](#parent-eg-apptsx)
-    - [Child e.g. Dashboard.tsx](#child-eg-dashboardtsx)
+    - [Parent to Child](#parent-to-child)
+      - [Parent e.g. App.tsx](#parent-eg-apptsx)
+      - [Child e.g. Dashboard.tsx](#child-eg-dashboardtsx)
+    - [Child to Parent](#child-to-parent)
+      - [Parent, e.g. App.tsx](#parent-eg-apptsx-1)
+      - [Child, e.g. Dashboard.tsx](#child-eg-dashboardtsx-1)
+      - [Types](#types)
 
 <!-- /code_chunk_output -->
 
@@ -403,7 +408,9 @@ export default function App() {
 
 ### Data Exchange between Components
 
-#### Parent e.g. App.tsx
+#### Parent to Child
+
+##### Parent e.g. App.tsx
 
 ```tsx
 import Dashboard from './components/Dashboard/Dashboard';
@@ -412,7 +419,7 @@ export default function App() {
 }
 ```
 
-#### Child e.g. Dashboard.tsx
+##### Child e.g. Dashboard.tsx
 
 ```tsx
 import React from 'react';
@@ -428,14 +435,80 @@ const Dashboard: React.FC<DashboardProps> = (props) => (
 export default Dashboard;
 ```
 
-is the same like above (excerpt):
+is the same as above (excerpt):
 
 ```tsx
-export type DashboardProps = {
-  title: string;
-};
-
 export default function Dashboard(props: DashboardProps) {
   return <div>Dashboard Component {props.title}</div>;
 }
+```
+
+#### Child to Parent
+
+![Initial Situation](assests/images/1.png)
+![Message sent](assests/images/2.png)
+
+##### Parent, e.g. App.tsx
+
+```tsx
+import React from 'react';
+import Dashboard from './components/Dashboard/Dashboard';
+export default function App() {
+  const [messageFromChild, getMessageFromChild] = React.useState(
+    'Dad is waiting',
+  );
+
+  const sendDataToParent = (message: string) => {
+    getMessageFromChild(message);
+  };
+  return (
+    <div>
+      <Dashboard
+        props={{ title: 'My Dear Dashboard' }}
+        sendDataToParent={sendDataToParent}
+      ></Dashboard>
+      <div>
+        <strong>From Child to Parent:</strong> {messageFromChild}
+      </div>
+    </div>
+  );
+}
+```
+
+##### Child, e.g. Dashboard.tsx
+
+```tsx
+import React from 'react';
+import { DashboardProps } from '../../Types';
+import styles from './Dashboard.module.scss';
+
+const Dashboard: React.FC<DashboardProps> = ({
+  props,
+  sendDataToParent,
+}) => (
+  <div className={styles.Dashboard}>
+    <strong>From Parent to Child:</strong> {props.title}
+    &nbsp;
+    <button
+      onClick={() => {
+        sendDataToParent('Hi Dad');
+      }}
+    >
+      Send to Parent
+    </button>
+  </div>
+);
+
+export default Dashboard;
+```
+
+##### Types
+
+```tsx
+export type DashboardProps = {
+  props: {
+    title: string;
+  };
+  sendDataToParent: (message: string) => void;
+};
 ```

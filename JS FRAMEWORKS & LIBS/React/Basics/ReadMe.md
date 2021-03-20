@@ -24,6 +24,7 @@
       - [Dashboard.test.tx](#dashboardtesttx)
       - [Dashboard.tsx](#dashboardtsx)
 - [Basic Examples](#basic-examples)
+  - [Object.getOwnPropertyNames(React)](#objectgetownpropertynamesreact)
   - [React.useState()](#reactusestate)
 
 <!-- /code_chunk_output -->
@@ -286,12 +287,50 @@ export default Dashboard;
 
 ## Basic Examples
 
+### Object.getOwnPropertyNames(React)
+
+```js
+[
+  'Children',
+  'cloneElement',
+  'Component',
+  'createContext',
+  'createElement',
+  'createFactory',
+  'createRef',
+  'forwardRef',
+  'Fragment',
+  'isValidElement',
+  'lazy',
+  'memo',
+  'Profiler',
+  'PureComponent',
+  'StrictMode',
+  'Suspense',
+  'useCallback',
+  'useContext',
+  'useDebugValue',
+  'useEffect',
+  'useImperativeHandle',
+  'useLayoutEffect',
+  'useMemo',
+  'useReducer',
+  'useRef',
+  'useState',
+  'version',
+  '__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED',
+];
+```
+
 ### React.useState()
+
+> Basic Use: `const [state, setState] = useState(initialState)`
+> a: `string`, setA: `React.Dispatch<React.SetStateAction<string>>`
 
 ```tsx
 import React from 'react';
 export default function App() {
-  const [a, setWhatEver] = React.useState('');
+  const [a, setA] = React.useState('');
 
   function logClick() {
     console.log('A:', a);
@@ -299,10 +338,7 @@ export default function App() {
 
   return (
     <div>
-      <input
-        value={a}
-        onChange={(e) => setWhatEver(e.target.value)}
-      />
+      <input value={a} onChange={(e) => setA(e.target.value)} />
       <button onClick={logClick}>Log</button>
       <br />
       A: {a}

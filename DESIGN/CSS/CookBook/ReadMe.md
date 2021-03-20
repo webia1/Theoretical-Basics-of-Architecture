@@ -13,6 +13,7 @@
 - [Styling `hr`](#styling-hr)
 - [Min Font Size](#min-font-size)
 - [Simple TypeWriter Animation](#simple-typewriter-animation)
+- [Rotating an Image](#rotating-an-image)
 
 <!-- /code_chunk_output -->
 
@@ -157,6 +158,30 @@ h1{
   }
   to {
     width: 400px;
+  }
+}
+```
+
+## Rotating an Image
+
+```css
+.myAppLogo {
+  height: 10vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .myAppLogo {
+    animation: myAppLogoSpin infinite 10s linear;
+  }
+}
+
+@keyframes myAppLogoSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 ```

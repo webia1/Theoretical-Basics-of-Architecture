@@ -1,0 +1,280 @@
+# React v17+ Basics
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Important keywords at the beginning](#important-keywords-at-the-beginning)
+- [Creating a React App via CLI](#creating-a-react-app-via-cli)
+  - [Create React App &rarr; Templates](#create-react-app-rarr-templates)
+  - [Selecting a Package Manager](#selecting-a-package-manager)
+- [Default `app.tsx` file content](#default-apptsx-file-content)
+  - [First Impressions](#first-impressions)
+    - [Overview](#overview)
+    - [Minimal possible version](#minimal-possible-version)
+    - [Return Type String is not allowed](#return-type-string-is-not-allowed)
+    - [Only One Single Wrapping Element](#only-one-single-wrapping-element)
+- [Generating a New Component](#generating-a-new-component)
+  - ['generate-react-cli'](#generate-react-cli)
+    - [Generated Files](#generated-files)
+      - [Dashboard.lazy.tsx](#dashboardlazytsx)
+      - [Dashboard.module.scss](#dashboardmodulescss)
+      - [Dashboard.stories.tsx](#dashboardstoriestsx)
+      - [Dashboard.test.tx](#dashboardtesttx)
+      - [Dashboard.tsx](#dashboardtsx)
+- [Basic Examples](#basic-examples)
+  - [React.useState()](#reactusestate)
+
+<!-- /code_chunk_output -->
+
+## Important keywords at the beginning
+
+- UI as a function
+- React Component = UI + Logic
+- No Double-Binding in React
+- Props or States (More on that later)
+- Hooks-API (from v16.8) - Functional Style
+- Rich Eco-System (More on that later)
+  - Flux (Avoid &rarr; State mutable)
+  - Redux (better than Flux, Angular compatible, Immutable)
+  - React Router
+  - React Native
+
+## Creating a React App via CLI
+
+Install `create-react-app` & use it:
+
+```shell
+npm i -g create-react-app
+create-react-app my-app-name --template typescript
+cd my-app-name
+npm start
+```
+
+### Create React App &rarr; Templates
+
+Basic Syntax:
+
+```shell
+npx create-react-app my-app --template [template-name]
+```
+
+You can find a list of available templates by searching for ["cra-template-\*"](https://www.npmjs.com/search?q=cra-template-*) on npm.
+
+Some of them:
+
+```shell
+create-react-app my-app --template cypress # JS not TSX!
+create-react-app my-app --template pwa
+create-react-app --scripts-version universal-scripts my-app
+```
+
+### Selecting a Package Manager
+
+When you create a new app, the CLI will use Yarn to install dependencies (when available). If you have Yarn installed, but would prefer to use npm, you can append `--use-npm` to the creation command. For example:
+
+```shell
+npx create-react-app my-app --use-npm
+```
+
+## Default `app.tsx` file content
+
+```tsx
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### First Impressions
+
+#### Overview
+
+```tsx
+1) import SVG and CSS
+2) function App () { return (); }
+2.1) return () contains HTML
+2.2) css class is -> className
+2.3) <img src={logo} ...
+3) export default App
+```
+
+#### Minimal possible version
+
+```tsx
+export default function App() {
+  return <div>Hello World!</div>;
+}
+```
+
+#### Return Type String is not allowed
+
+The following would not work:
+
+```tsx
+export default function App() {
+  return 'Hello World!';
+}
+```
+
+outputs:
+
+```shell
+'App' cannot be used as a JSX component.
+  Its return type 'string' is not a valid JSX element.
+```
+
+#### Only One Single Wrapping Element
+
+The following would not work:
+
+```tsx
+export default function App() {
+  return (<div>Hello World One!</div><div>Hello World Two!</div>);
+}
+```
+
+outputs:
+
+```shell
+Adjacent JSX elements must be wrapped in an enclosing tag.
+```
+
+## Generating a New Component
+
+### 'generate-react-cli'
+
+> Installing it globally has no implications, therefore use `npx`
+> You can use StoryBook, if so: `yarn add @storybook/react`
+> StoryBook &rarr; More on that later
+
+```shell
+npx generate-react-cli component Dashboard
+```
+
+```shell
+? Does this project use TypeScript? Yes
+? Does this project use CSS modules? Yes
+? Does this project use a CSS Preprocessor? scss
+? What testing library does your project use? Enzyme
+? Set the default path directory..? components
+? .. create a CSS File  ..? Yes (SCSS)
+? .. create a corresponding test file ..? Yes
+? .. create a corresponding story ..? Yes
+? .. create a corresponding lazy file .. ? Yes
+```
+
+> See more on lazy files: <https://reactjs.org/docs/code-splitting.html#code-splitting>
+
+#### Generated Files
+
+##### Dashboard.lazy.tsx
+
+```tsx
+import React, { lazy, Suspense } from 'react';
+
+const LazyDashboard = lazy(() => import('./Dashboard'));
+
+const Dashboard = (
+  props: JSX.IntrinsicAttributes & { children?: React.ReactNode },
+) => (
+  <Suspense fallback={null}>
+    <LazyDashboard {...props} />
+  </Suspense>
+);
+
+export default Dashboard;
+```
+
+##### Dashboard.module.scss
+
+```css
+.Dashboard {
+}
+```
+
+##### Dashboard.stories.tsx
+
+```tsx
+/* eslint-disable */
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import Dashboard from './Dashboard';
+
+storiesOf('Dashboard', module).add('default', () => <Dashboard />);
+```
+
+##### Dashboard.test.tx
+
+> Enzyme is the only available option vie this cli
+
+```tsx
+import React from 'react';
+import { shallow } from 'enzyme';
+import Dashboard from './Dashboard';
+
+describe('<Dashboard />', () => {
+  let component;
+
+  beforeEach(() => {
+    component = shallow(<Dashboard />);
+  });
+
+  test('It should mount', () => {
+    expect(component.length).toBe(1);
+  });
+});
+```
+
+##### Dashboard.tsx
+
+```tsx
+import React from 'react';
+import styles from './Dashboard.module.scss';
+
+const Dashboard: React.FC = () => (
+  <div className={styles.Dashboard}>Dashboard Component</div>
+);
+
+export default Dashboard;
+```
+
+## Basic Examples
+
+### React.useState()
+
+```tsx
+import React from 'react';
+export default function App() {
+  const [a, setB] = React.useState('');
+  return (
+    <div>
+      <input value={a} onChange={(e) => setB(e.target.value)} />
+      <br />
+      A: {a}
+    </div>
+  );
+}
+```

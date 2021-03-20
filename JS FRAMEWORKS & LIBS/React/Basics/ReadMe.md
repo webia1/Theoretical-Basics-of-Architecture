@@ -129,7 +129,7 @@ export default function App() {
 }
 ```
 
-#### Return Type String is not allowed
+##### Return Type String is not allowed
 
 The following would not work:
 
@@ -146,7 +146,7 @@ outputs:
   Its return type 'string' is not a valid JSX element.
 ```
 
-#### Only One Single Wrapping Element
+##### Only One Single Wrapping Element
 
 The following would not work:
 
@@ -160,6 +160,28 @@ outputs:
 
 ```shell
 Adjacent JSX elements must be wrapped in an enclosing tag.
+```
+
+#### index.ts
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root'),
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
 ```
 
 ## Generating a New Component

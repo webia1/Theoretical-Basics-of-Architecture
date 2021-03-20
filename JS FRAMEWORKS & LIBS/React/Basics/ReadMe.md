@@ -196,17 +196,20 @@ reportWebVitals();
 > Installing it globally has no implications, therefore use `npx`
 > You can use StoryBook, if so: `yarn add @storybook/react`
 > StoryBook &rarr; More on that later
+> install also `yarn add node-sass`
 
 ```shell
 npx generate-react-cli component Dashboard
 ```
+
+If it is the first time, CLI will create a configuration file `generate-react-cli.json` at the project's root.
 
 ```shell
 ? Does this project use TypeScript? Yes
 ? Does this project use CSS modules? Yes
 ? Does this project use a CSS Preprocessor? scss
 ? What testing library does your project use? Enzyme
-? Set the default path directory..? components
+? Set the default path directory..? src/components
 ? .. create a CSS File  ..? Yes (SCSS)
 ? .. create a corresponding test file ..? Yes
 ? .. create a corresponding story ..? Yes
@@ -255,7 +258,8 @@ storiesOf('Dashboard', module).add('default', () => <Dashboard />);
 
 ##### Dashboard.test.tx
 
-> Enzyme is the only available option via this CLI
+> Enzyme is the only available option via this CLI but
+> you change it within `generate-react-cli.json` to `Jest`
 
 ```tsx
 import React from 'react';

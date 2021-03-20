@@ -251,7 +251,7 @@ storiesOf('Dashboard', module).add('default', () => <Dashboard />);
 
 ##### Dashboard.test.tx
 
-> Enzyme is the only available option vie this cli
+> Enzyme is the only available option via this CLI
 
 ```tsx
 import React from 'react';

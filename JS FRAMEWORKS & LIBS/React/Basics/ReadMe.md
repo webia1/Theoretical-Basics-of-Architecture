@@ -310,7 +310,7 @@ export default Dashboard;
   'PureComponent',
   'StrictMode',
   'Suspense',
-  'useCallback',
+  'useCallback', // React Hooks begin with -> use..
   'useContext',
   'useDebugValue',
   'useEffect',

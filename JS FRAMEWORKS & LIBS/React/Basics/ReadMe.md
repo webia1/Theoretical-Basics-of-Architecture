@@ -291,7 +291,7 @@ export default Dashboard;
 ```tsx
 import React from 'react';
 export default function App() {
-  const [a, setB] = React.useState('');
+  const [a, setWhatEver] = React.useState('');
 
   function logClick() {
     console.log('A:', a);
@@ -299,7 +299,10 @@ export default function App() {
 
   return (
     <div>
-      <input value={a} onChange={(e) => setB(e.target.value)} />
+      <input
+        value={a}
+        onChange={(e) => setWhatEver(e.target.value)}
+      />
       <button onClick={logClick}>Log</button>
       <br />
       A: {a}

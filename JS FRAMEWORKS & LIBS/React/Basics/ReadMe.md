@@ -26,6 +26,7 @@
 - [Basic Examples](#basic-examples)
   - [Object.getOwnPropertyNames(React)](#objectgetownpropertynamesreact)
   - [React.useState()](#reactusestate)
+    - [Simple Counter](#simple-counter)
 
 <!-- /code_chunk_output -->
 
@@ -342,6 +343,23 @@ export default function App() {
       <button onClick={logClick}>Log</button>
       <br />
       A: {a}
+    </div>
+  );
+}
+```
+
+#### Simple Counter
+
+```tsx
+import React from 'react';
+export default function App() {
+  const [count, setCount] = React.useState(0);
+  let a = count;
+
+  return (
+    <div>
+      Count: {count} <br />
+      <button onClick={() => setCount(++a)}>Increment</button>
     </div>
   );
 }

@@ -292,9 +292,15 @@ export default Dashboard;
 import React from 'react';
 export default function App() {
   const [a, setB] = React.useState('');
+
+  function logClick() {
+    console.log('A:', a);
+  }
+
   return (
     <div>
       <input value={a} onChange={(e) => setB(e.target.value)} />
+      <button onClick={logClick}>Log</button>
       <br />
       A: {a}
     </div>

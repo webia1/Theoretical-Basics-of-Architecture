@@ -27,6 +27,8 @@
   - [Object.getOwnPropertyNames(React)](#objectgetownpropertynamesreact)
   - [React.useState()](#reactusestate)
     - [Simple Counter](#simple-counter)
+    - [One](#one)
+    - [Two](#two)
 
 <!-- /code_chunk_output -->
 
@@ -350,6 +352,8 @@ export default function App() {
 
 #### Simple Counter
 
+#### One
+
 ```tsx
 import React from 'react';
 export default function App() {
@@ -360,6 +364,22 @@ export default function App() {
     <div>
       Count: {count} <br />
       <button onClick={() => setCount(++a)}>Increment</button>
+    </div>
+  );
+}
+```
+
+#### Two
+
+```tsx
+import React from 'react';
+export default function App() {
+  const [count, setCount] = React.useState(0);
+  // Without variable a
+  return (
+    <div>
+      Count: {count} <br />
+      <button onClick={() => setCount(count + 1)}>Increment</button>
     </div>
   );
 }

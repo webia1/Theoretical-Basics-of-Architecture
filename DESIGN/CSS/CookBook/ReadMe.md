@@ -14,6 +14,7 @@
 - [Min Font Size](#min-font-size)
 - [Simple TypeWriter Animation](#simple-typewriter-animation)
 - [Rotating an Image](#rotating-an-image)
+- [Defining Style Within Angular Template](#defining-style-within-angular-template)
 
 <!-- /code_chunk_output -->
 
@@ -184,4 +185,30 @@ h1{
     transform: rotate(360deg);
   }
 }
+```
+
+## Defining Style Within Angular Template
+
+Please note:
+
+- `<style>`
+- `:host {...}`
+- `font-family: -apple-system,...` &rarr; "Normalizing"
+  - See <https://github.com/necolas/normalize.css/issues/665>
+
+Source Code:
+
+```html
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+</style>
 ```

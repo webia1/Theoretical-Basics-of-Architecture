@@ -68,6 +68,14 @@
     git config --global user.name mmustermann
     git config --global user.email "max.mustermann@example.com"
 
+To configure the initial branch name to use in all of your new repositories call (names commonly chosen instead of `master` are `main`, `trunk` and `development`):
+
+    git config --global init.defaultBranch <name>
+
+The just-created branch can be renamed via this command:
+
+    git branch -m <name>
+
 ## .gitignore
 
     folder/file.txt

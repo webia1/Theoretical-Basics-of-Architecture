@@ -106,7 +106,7 @@ export class AppModule {}
 
 #### Overview
 
-> I may change some paths afterwards (ongoing documentation), please do not be confused!
+> I may change some paths afterwards (ongoing documentation). Please do not be confused; principles remain the same!
 
 <!-- prettier-ignore-start -->
 | What                   | Where                                |

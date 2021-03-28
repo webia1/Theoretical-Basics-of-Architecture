@@ -13,7 +13,7 @@
   - [Or manually](#or-manually)
     - [Importing StoreModule `app.module.ts`](#importing-storemodule-appmodulets)
 - [Simple Store](#simple-store)
-  - [First Example](#first-example)
+  - [First Example: Simple Counter](#first-example-simple-counter)
     - [Overview](#overview)
     - [Types](#types)
     - [Action](#action)
@@ -21,6 +21,9 @@
     - [Action Reducer Mapping](#action-reducer-mapping)
     - [Store Configuration](#store-configuration)
     - [Store DevTools Configuration](#store-devtools-configuration)
+    - [Counter Component](#counter-component)
+      - [Template](#template)
+      - [TS](#ts)
 
 <!-- /code_chunk_output -->
 
@@ -102,7 +105,7 @@ export class AppModule {}
 
 ## Simple Store
 
-### First Example
+### First Example: Simple Counter
 
 #### Overview
 
@@ -121,6 +124,9 @@ export class AppModule {}
 | `StoreModule.forRoot(actionReducerMap)` | `app.module.ts` |
 | **Store DevTools Configuration** |
 | `StoreDevtoolsModule.instrument({..}),` | `app.module.ts` |
+| **Counter Component** |
+| Component Template | `counter.component.html` |
+| Component | `counter.component.ts` |
 <!-- prettier-ignore-end -->
 
 #### Types
@@ -202,4 +208,51 @@ StoreDevtoolsModule.instrument({
   maxAge: 25,
   logOnly: environment.production,
 }),
+```
+
+#### Counter Component
+
+##### Template
+
+```html
+<p>Counter: {{ count$ | async }}</p>
+<button (click)="increment()">Increment</button>
+
+<p>
+  <input type="number" value="1" #factorInput />
+  <button (click)="multiply(factorInput.value)">Multiply</button>
+</p>
+```
+
+##### TS
+
+```ts
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { increment, multiply } from 'src/app/store/counter/actions';
+import { CounterState } from 'src/app/static/types';
+
+@Component({
+  selector: 'app-counter',
+  templateUrl: './counter.component.html',
+  styleUrls: ['./counter.component.scss'],
+})
+export class CounterComponent implements OnInit {
+  count$: Observable<number>;
+
+  constructor(private store: Store<CounterState>) {
+    this.count$ = this.store.select((state) => state.count);
+  }
+
+  ngOnInit(): void {}
+
+  increment(): void {
+    this.store.dispatch(increment());
+  }
+
+  multiply(factor: string) {
+    this.store.dispatch(multiply({ factor: parseFloat(factor) }));
+  }
+}
 ```

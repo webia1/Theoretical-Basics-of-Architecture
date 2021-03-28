@@ -28,7 +28,15 @@
   - [What Not to Put in the State](#what-not-to-put-in-the-state)
     - [Derived State](#derived-state)
     - [Local State](#local-state)
-    - [Classes and Special Objects (functions, blobs, date objects\*)](#classes-and-special-objects-functions-blobs-date-objects)
+    - [Classes and Special Objects](#classes-and-special-objects)
+      - [Functions](#functions)
+      - [Blobs](#blobs)
+      - [Date objects](#date-objects)
+      - [Promises](#promises)
+      - [Observables](#observables)
+      - [HTML Elements](#html-elements)
+      - [`window`](#window)
+      - [Other Non-Serializable Objects](#other-non-serializable-objects)
 
 <!-- /code_chunk_output -->
 
@@ -270,6 +278,22 @@ export class CounterComponent implements OnInit {
 
 #### Local State
 
-#### Classes and Special Objects (functions, blobs, date objects\*)
+#### Classes and Special Objects
 
-\* Try `Date.toJson()` or save DateString.
+##### Functions
+
+##### Blobs
+
+##### Date objects
+
+Try `Date.toJson()` or save DateString.
+
+##### Promises
+
+##### Observables
+
+##### HTML Elements
+
+##### `window`
+
+##### Other Non-Serializable Objects

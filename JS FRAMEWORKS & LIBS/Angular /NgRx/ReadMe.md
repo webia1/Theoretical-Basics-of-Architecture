@@ -24,6 +24,11 @@
     - [Counter Component](#counter-component)
       - [Template](#template)
       - [TS](#ts)
+- [Recipes](#recipes)
+  - [What Not to Put in the State](#what-not-to-put-in-the-state)
+    - [Derived State](#derived-state)
+    - [Local State](#local-state)
+    - [Classes and Special Objects (functions, blobs, date objects\*)](#classes-and-special-objects-functions-blobs-date-objects)
 
 <!-- /code_chunk_output -->
 
@@ -256,3 +261,15 @@ export class CounterComponent implements OnInit {
   }
 }
 ```
+
+## Recipes
+
+### What Not to Put in the State
+
+#### Derived State
+
+#### Local State
+
+#### Classes and Special Objects (functions, blobs, date objects\*)
+
+\* Try `Date.toJson()` or save DateString.

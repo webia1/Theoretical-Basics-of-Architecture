@@ -64,7 +64,7 @@ ng add @ngrx/schematics@latest
 ##### Both steps above could be performed manually
 
 ```shell
-npm i @ngrx/schematics -D
+npm i @ngrx/schematics -S
 ng config cli.defaultCollection @ngrx/schematics
 ```
 

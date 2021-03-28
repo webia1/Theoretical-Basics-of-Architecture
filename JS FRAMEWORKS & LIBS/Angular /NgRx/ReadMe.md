@@ -106,15 +106,17 @@ export class AppModule {}
 
 #### Overview
 
+> I may change some paths afterwards (ongoing documentation), please do not be confused!
+
 <!-- prettier-ignore-start -->
 | What                   | Where                                |
 | ---------------------- | ------------------------------------ |
 | **Store Types** |
 | types                  | `/static/types.ts`                   |
 | **Store Constituents** |
-| actions                | `/dynamic/store/actions.ts`          |
-| reducers               | `/dynamic/store/reducers.ts`         |
-| action-reducer-mapping | `/dynamic/store/actionReducerMap.ts` |
+| actions                | `/store/actions.ts`          |
+| reducers               | `/store/reducers.ts`         |
+| action-reducer-mapping | `/store/actionReducerMap.ts` |
 | **Store Configuration** |
 | `StoreModule.forRoot(actionReducerMap)` | `app.module.ts` |
 | **Store DevTools Configuration** |
@@ -161,7 +163,7 @@ export const countReducer = createReducer(
 
 ```ts
 import { ActionReducerMap } from '@ngrx/store';
-import { State } from '../../static/types';
+import { State } from '../static/types';
 import { countReducer } from './reducers';
 
 export const actionReducerMap: ActionReducerMap<State> = {
@@ -174,7 +176,7 @@ export const actionReducerMap: ActionReducerMap<State> = {
 ```ts
 // app.module.ts (excerpt)
 import { StoreModule } from '@ngrx/store';
-import { actionReducerMap } from './dynamic/store/actionReducerMap';
+import { actionReducerMap } from './store/actionReducerMap';
 // @NgModule -> imports
 StoreModule.forRoot(actionReducerMap),
 ```

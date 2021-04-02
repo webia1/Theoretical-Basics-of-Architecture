@@ -22,8 +22,8 @@
     - [Store Configuration](#store-configuration)
     - [Store DevTools Configuration](#store-devtools-configuration)
     - [Counter Component](#counter-component)
-      - [Template](#template)
       - [TS](#ts)
+      - [Template](#template)
 - [Recipes](#recipes)
   - [What Not to Put in the State](#what-not-to-put-in-the-state)
     - [Derived State](#derived-state)
@@ -225,18 +225,6 @@ StoreDevtoolsModule.instrument({
 
 #### Counter Component
 
-##### Template
-
-```html
-<p>Counter: {{ count$ | async }}</p>
-<button (click)="increment()">Increment</button>
-
-<p>
-  <input type="number" value="1" #factorInput />
-  <button (click)="multiply(factorInput.value)">Multiply</button>
-</p>
-```
-
 ##### TS
 
 ```ts
@@ -268,6 +256,18 @@ export class CounterComponent implements OnInit {
     this.store.dispatch(multiply({ factor: parseFloat(factor) }));
   }
 }
+```
+
+##### Template
+
+```html
+<p>Counter: {{ count$ | async }}</p>
+<button (click)="increment()">Increment</button>
+
+<p>
+  <input type="number" value="1" #factorInput />
+  <button (click)="multiply(factorInput.value)">Multiply</button>
+</p>
 ```
 
 ## Recipes

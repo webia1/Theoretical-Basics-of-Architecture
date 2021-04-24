@@ -49,9 +49,12 @@ If you're experiencing issues when trying to run your tests with Jest, please vi
 
 A common issues involves library dependencies. For example if your app depends on NgRx you'll need to tell Jest to compile the sources [explicitly](https://github.com/thymikee/jest-preset-angular#adjust-your-transformignorepatterns-whitelist) by appending it to the transformIgnorePatterns property in the jest.config.js file.
 
+```js
 module.exports = {
-transformIgnorePatterns: ['node_modules/(?!(jest-test|@ngrx))'],
+  transformIgnorePatterns: ['node_modules/(?!(jest-test|@ngrx))'],
 };
+```
+
 Issues with this schematic can be filed [here](https://github.com/briebug/jest-schematic/issues/new/choose).
 
 ## Explanation of Modifications

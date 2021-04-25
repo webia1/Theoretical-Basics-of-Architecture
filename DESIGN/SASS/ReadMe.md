@@ -1,3 +1,0 @@
-#SASS
-
-## Installing on MacOS

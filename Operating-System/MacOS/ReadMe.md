@@ -85,7 +85,11 @@ For compilers to find tcl-tk you may need to set:
     sudo nvram boot-args="iog=0x0"  // OFF
     sudo nvram -d boot-args         // ON AGAIN
 
-## Show Hidden Files in Finder
+## Show Hidden Files in Finder - Shortcut
+
+    Command + Shift + dot
+
+## Show Hidden Files in Finder - Defaults
 
     defaults write com.apple.finder AppleShowAllFiles YES
     killall Finder
